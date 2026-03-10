@@ -121,18 +121,33 @@ object-fit:cover;
 border-radius:50%;
 border:4px solid #4a90e2;
 box-shadow:0 10px 30px rgba(0,0,0,0.15);
-transition:0.3s;
+transition:.3s;
 }
 
 .profile-pic:hover{
 transform:scale(1.05);
 }
 
+/* CHAT BUBBLE ABOUT CARD */
+
 .about-text{
+position:relative;
 background:white;
 padding:35px;
-border-radius:14px;
-box-shadow:0 15px 40px rgba(0,0,0,0.08);
+border-radius:16px;
+box-shadow:0 20px 50px rgba(0,0,0,0.08);
+}
+
+.about-text::before{
+content:"";
+position:absolute;
+left:-18px;
+top:60px;
+width:0;
+height:0;
+border-top:12px solid transparent;
+border-bottom:12px solid transparent;
+border-right:18px solid white;
 }
 
 .about-text p{
