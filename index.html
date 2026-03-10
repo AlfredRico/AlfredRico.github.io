@@ -77,40 +77,17 @@ background:white;
 box-shadow:0 2px 10px rgba(0,0,0,0.08);
 }
 
-.nav-container{
-display:flex;
-align-items:center;
-justify-content:space-between;
-width:90%;
-max-width:1100px;
-margin:auto;
-padding:15px 0;
-}
-
-.logo{
-font-size:28px;
-font-weight:800;
-letter-spacing:2px;
-color:#00adb5;
-text-decoration:none;
-}
-
-.logo:hover{
-opacity:.8;
-transform:scale(1.05);
-transition:.2s;
-}
-
 nav ul{
 display:flex;
+justify-content:center;
 list-style:none;
-padding:0;
+padding:15px;
 margin:0;
 }
 
 nav a{
 text-decoration:none;
-margin-left:20px;
+margin:0 15px;
 color:#333;
 font-weight:600;
 }
@@ -279,17 +256,12 @@ color:white;
 
 <nav>
 
-<div class="nav-container">
-
-<a href="#" class="logo">AR</a>
-
 <ul>
 <li><a href="#about">About</a></li>
 <li><a href="#projects">Projects</a></li>
+<li><a href="#skills">Skills</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
-
-</div>
 
 </nav>
 
@@ -299,9 +271,7 @@ color:white;
 
 <h2>About Me</h2>
 
-<p>I am an aspiring data analyst passionate about discovering insights hidden within data. I enjoy transforming raw datasets through cleaning, statistical analysis, and modeling to uncover patterns and meaningful trends.
-
-What motivates me most is the moment when analysis reveals something new—the insight that turns data into understanding. My goal is to use data to answer questions, uncover opportunities, and support informed decision-making.</p>
+<p>I'm a data professional with expertise in transforming complex datasets into actionable insights and interactive dashboards.</p>
 
 </div>
 
@@ -358,7 +328,7 @@ What motivates me most is the moment when analysis reveals something new—the i
 
 <div class="container">
 
-<h2>Let's Connect!</h2>
+<h2>Send me a message</h2>
 
 <form action="https://formsubmit.co/alfred.m.rico@gmail.com" method="POST" class="contact-form">
 
@@ -395,13 +365,118 @@ What motivates me most is the moment when analysis reveals something new—the i
 
 <script>
 
+/* SEND BUTTON */
+
 function sendForm(button){
+
 button.classList.add("sending")
+
 setTimeout(()=>{
+
 button.classList.remove("sending")
 button.classList.add("sent")
+
 },700)
+
 }
+
+/* PROJECT FILTER */
+
+const filterButtons=document.querySelectorAll(".filter-btn")
+const projects=document.querySelectorAll(".project-card")
+
+filterButtons.forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+const filter=btn.dataset.filter
+
+filterButtons.forEach(b=>b.classList.remove("active"))
+btn.classList.add("active")
+
+projects.forEach(project=>{
+
+if(filter==="all"||project.dataset.category===filter){
+
+project.style.display="block"
+
+}else{
+
+project.style.display="none"
+
+}
+
+})
+
+})
+
+})
+
+/* DASHBOARD HERO ANIMATION */
+
+const canvas=document.getElementById("dashboardCanvas")
+const ctx=canvas.getContext("2d")
+
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+let bars=[120,180,90,220,160]
+let barWidth=60
+let gap=40
+
+let progress=0
+
+function drawBars(){
+
+bars.forEach((h,i)=>{
+
+let x=i*(barWidth+gap)+200
+
+ctx.fillStyle="rgba(74,144,226,.8)"
+
+ctx.fillRect(x,canvas.height,barWidth,-h*progress)
+
+})
+
+}
+
+function drawLine(){
+
+ctx.beginPath()
+
+ctx.strokeStyle="white"
+
+ctx.lineWidth=2
+
+ctx.moveTo(200,canvas.height-bars[0]*progress)
+
+for(let i=1;i<bars.length;i++){
+
+let x=i*(barWidth+gap)+200
+let y=canvas.height-bars[i]*progress
+
+ctx.lineTo(x,y)
+
+}
+
+ctx.stroke()
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+if(progress<1)progress+=0.01
+
+drawBars()
+drawLine()
+
+requestAnimationFrame(animate)
+
+}
+
+animate()
 
 </script>
 
