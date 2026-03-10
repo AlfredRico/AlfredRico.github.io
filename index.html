@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,7 +88,7 @@ margin:0;
 
 nav a{
 text-decoration:none;
-margin:0 15px;
+margin:0 12px;
 color:#333;
 font-weight:600;
 }
@@ -101,6 +102,17 @@ padding:70px 0;
 h2{
 text-align:center;
 margin-bottom:40px;
+}
+
+/* ABOUT SECTION FIX */
+
+#about p{
+max-width:700px;
+margin:20px auto;
+line-height:1.8;
+font-size:18px;
+text-align:center;
+color:#444;
 }
 
 /* PROJECTS */
@@ -182,7 +194,7 @@ border-color:#4a90e2;
 box-shadow:0 0 0 3px rgba(74,144,226,0.15);
 }
 
-/* APPLE SEND BUTTON */
+/* SEND BUTTON */
 
 .apple-send{
 display:flex;
@@ -270,9 +282,13 @@ color:white;
 
 <h2>About Me</h2>
 
-<p>I’m an aspiring data analyst passionate about discovering insights hidden within data. I enjoy transforming raw datasets through cleaning, statistical analysis, and modeling to uncover patterns and meaningful trends.
+<p>
+I’m an aspiring data analyst passionate about discovering insights hidden within data. I enjoy transforming raw datasets through cleaning, statistical analysis, and modeling to uncover patterns and meaningful trends.
+</p>
 
-What motivates me most is the moment when analysis reveals something new—the insight that turns data into understanding. My goal is to use data to answer questions, uncover opportunities, and support informed decision-making.</p>
+<p>
+What motivates me most is the moment when analysis reveals something new—the insight that turns data into understanding. My goal is to use data to answer questions, uncover opportunities, and support informed decision-making.
+</p>
 
 </div>
 
@@ -364,122 +380,6 @@ What motivates me most is the moment when analysis reveals something new—the i
 
 </footer>
 
-<script>
-
-/* SEND BUTTON */
-
-function sendForm(button){
-
-button.classList.add("sending")
-
-setTimeout(()=>{
-
-button.classList.remove("sending")
-button.classList.add("sent")
-
-},700)
-
-}
-
-/* PROJECT FILTER */
-
-const filterButtons=document.querySelectorAll(".filter-btn")
-const projects=document.querySelectorAll(".project-card")
-
-filterButtons.forEach(btn=>{
-
-btn.addEventListener("click",()=>{
-
-const filter=btn.dataset.filter
-
-filterButtons.forEach(b=>b.classList.remove("active"))
-btn.classList.add("active")
-
-projects.forEach(project=>{
-
-if(filter==="all"||project.dataset.category===filter){
-
-project.style.display="block"
-
-}else{
-
-project.style.display="none"
-
-}
-
-})
-
-})
-
-})
-
-/* DASHBOARD HERO ANIMATION */
-
-const canvas=document.getElementById("dashboardCanvas")
-const ctx=canvas.getContext("2d")
-
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
-
-let bars=[120,180,90,220,160]
-let barWidth=60
-let gap=40
-
-let progress=0
-
-function drawBars(){
-
-bars.forEach((h,i)=>{
-
-let x=i*(barWidth+gap)+200
-
-ctx.fillStyle="rgba(74,144,226,.8)"
-
-ctx.fillRect(x,canvas.height,barWidth,-h*progress)
-
-})
-
-}
-
-function drawLine(){
-
-ctx.beginPath()
-
-ctx.strokeStyle="white"
-
-ctx.lineWidth=2
-
-ctx.moveTo(200,canvas.height-bars[0]*progress)
-
-for(let i=1;i<bars.length;i++){
-
-let x=i*(barWidth+gap)+200
-let y=canvas.height-bars[i]*progress
-
-ctx.lineTo(x,y)
-
-}
-
-ctx.stroke()
-
-}
-
-function animate(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height)
-
-if(progress<1)progress+=0.01
-
-drawBars()
-drawLine()
-
-requestAnimationFrame(animate)
-
-}
-
-animate()
-
-</script>
-
 </body>
 </html>
+```
