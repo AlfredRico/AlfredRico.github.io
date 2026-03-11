@@ -322,24 +322,16 @@ margin-left:auto;
 }
 
 .python-tile{
-grid-row:1 / span 2;
-padding:14px;
+grid-row:1/span 2;
 }
 
 .skill-card{
 background:white;
 border-radius:12px;
-padding:12px;
+padding:14px;
 text-align:center;
 box-shadow:0 6px 16px rgba(0,0,0,0.06);
 font-size:13px;
-}
-
-.skill-card i{
-font-size:18px;
-color:#4a90e2;
-margin-bottom:4px;
-display:block;
 }
 
 .skill-card.small{
@@ -348,6 +340,12 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+}
+
+.skill-card i{
+font-size:18px;
+color:#4a90e2;
+margin-bottom:4px;
 }
 
 /* CERT */
@@ -590,7 +588,7 @@ for(let i=0;i<count;i++){
 bars.push({
 x:i*spacing,
 height:Math.random()*120+40,
-speed:Math.random()*0.6+0.2
+speed:(Math.random()*0.6+0.2)*0.5
 })
 
 }
@@ -620,9 +618,9 @@ ctx.clearRect(0,0,canvas.width,canvas.height)
 
 bars.forEach(bar=>{
 
-bar.height+=Math.sin(Date.now()*0.002*bar.speed)
+bar.height+=Math.sin(Date.now()*0.001*bar.speed)
 
-bar.x+=0.05*bar.speed
+bar.x+=0.025*bar.speed
 
 if(bar.x>canvas.width){
 bar.x=-20
