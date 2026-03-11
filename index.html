@@ -265,7 +265,7 @@ cursor:pointer;
 transform:translateY(-50%) scale(1.1);
 }
 
-/* TOOLS + CERTIFICATIONS */
+/* TOOLS */
 
 .tools-wrapper{
 max-width:900px;
@@ -281,7 +281,6 @@ text-align:center;
 font-size:18px;
 margin-bottom:15px;
 color:#666;
-font-weight:600;
 }
 
 .skills-grid{
@@ -310,6 +309,26 @@ display:block;
 .skill-card:hover{
 transform:translateY(-5px) scale(1.03);
 box-shadow:0 16px 30px rgba(0,0,0,0.12);
+}
+
+/* PYTHON PACKAGE TILE */
+
+.package-tile{
+grid-column:span 2;
+text-align:left;
+padding:20px;
+}
+
+.package-tile h4{
+margin:8px 0 4px 0;
+font-size:14px;
+color:#4a90e2;
+}
+
+.package-tile p{
+margin:0 0 8px 0;
+font-size:13px;
+color:#555;
 }
 
 .skill-card.cert{
@@ -361,7 +380,9 @@ color:white;
 <div class="main-layout">
 
 <section id="about">
+
 <h2>About Me</h2>
+
 <div class="about-grid">
 
 <img src="profile.jpg" class="profile-pic">
@@ -370,13 +391,14 @@ color:white;
 
 <p>Hi, I’m Alfred — an aspiring data analyst who enjoys turning raw data into meaningful insights.</p>
 
-<p>I’m naturally curious and enjoy exploring datasets to uncover patterns and answer questions.</p>
+<p>I’m naturally curious and enjoy exploring datasets to uncover patterns, answer questions, and communicate findings clearly.</p>
 
-<p>I use tools like Python, Jupyter Notebook, RStudio, and Tableau to analyze data and create visualizations.</p>
+<p>Through hands-on projects, I’ve gained experience using Python, Jupyter Notebook, RStudio, and Tableau to analyze data and build visualizations.</p>
+
+</div>
 
 </div>
 
-</div>
 </section>
 
 <section id="contact">
@@ -453,11 +475,43 @@ color:white;
 
 <div class="skills-grid">
 
-<div class="skill-card"><i class="fa-brands fa-python"></i>Python</div>
-<div class="skill-card"><i class="fa-solid fa-database"></i>SQL</div>
-<div class="skill-card"><i class="fa-solid fa-chart-line"></i>Tableau</div>
-<div class="skill-card"><i class="fa-solid fa-book"></i>Jupyter</div>
-<div class="skill-card"><i class="fa-solid fa-chart-bar"></i>RStudio</div>
+<div class="skill-card">
+<i class="fa-brands fa-python"></i>
+Python
+</div>
+
+<div class="skill-card package-tile">
+
+<h4>Data Science & Analysis</h4>
+<p>NumPy • Pandas • Matplotlib • Seaborn</p>
+
+<h4>Machine Learning</h4>
+<p>Scikit-learn</p>
+
+<h4>Visualization</h4>
+<p>Plotly</p>
+
+</div>
+
+<div class="skill-card">
+<i class="fa-solid fa-database"></i>
+SQL
+</div>
+
+<div class="skill-card">
+<i class="fa-solid fa-chart-line"></i>
+Tableau
+</div>
+
+<div class="skill-card">
+<i class="fa-solid fa-book"></i>
+Jupyter
+</div>
+
+<div class="skill-card">
+<i class="fa-solid fa-chart-bar"></i>
+RStudio
+</div>
 
 </div>
 
@@ -490,10 +544,14 @@ IBM Data Analyst
 </div>
 
 <footer>
+
 <p>© 2026 Alfred Rico</p>
+
 </footer>
 
 <script>
+
+/* PROJECT CAROUSEL */
 
 let index = 0
 const carousel = document.getElementById("carousel")
@@ -514,7 +572,7 @@ cards[index].classList.add("active")
 
 }
 
-/* HERO BAR GRAPH ANIMATION */
+/* HERO CHART */
 
 const canvas = document.getElementById("dashboardCanvas")
 const ctx = canvas.getContext("2d")
@@ -536,7 +594,7 @@ function drawBars(){
 
 const chartWidth = bars.length*(barWidth+gap)
 const startX = (canvas.width-chartWidth)/2
-const baseY = canvas.height - 5
+const baseY = canvas.height
 
 bars.forEach((h,i)=>{
 
@@ -553,7 +611,7 @@ function drawLine(){
 
 const chartWidth = bars.length*(barWidth+gap)
 const startX = (canvas.width-chartWidth)/2 + barWidth/2
-const baseY = canvas.height - 5
+const baseY = canvas.height
 
 ctx.beginPath()
 ctx.strokeStyle="#8fd3ff"
