@@ -82,10 +82,6 @@ font-family:'Playfair Display',serif;
 margin-bottom:5px;
 }
 
-.hero-content p{
-margin-bottom:25px;
-}
-
 .social-links a{
 color:white;
 margin:0 10px;
@@ -121,6 +117,7 @@ display:grid;
 grid-template-columns:1fr 1fr;
 grid-template-areas:
 "about contact"
+"tools tools"
 "projects projects";
 gap:60px;
 max-width:1200px;
@@ -130,11 +127,10 @@ padding:0 40px;
 
 #about{ grid-area:about; }
 #contact{ grid-area:contact; }
+#tools{ grid-area:tools; }
 #projects{ grid-area:projects; }
 
-/* SECTIONS */
-
-.section{ padding:0; }
+/* SECTION TITLES */
 
 h2{
 text-align:center;
@@ -166,27 +162,79 @@ transform:scale(1.05);
 }
 
 .about-text{
-position:relative;
 background:white;
 padding:30px;
 border-radius:16px;
 box-shadow:0 20px 50px rgba(0,0,0,0.08);
 }
 
-.about-text::before{
-content:"";
-position:absolute;
-left:-18px;
-top:60px;
-border-top:12px solid transparent;
-border-bottom:12px solid transparent;
-border-right:18px solid white;
-}
-
 .about-text p{
 text-indent:20px;
-margin-bottom:18px;
 line-height:1.7;
+}
+
+/* CONTACT */
+
+.contact-form{
+background:white;
+padding:40px;
+border-radius:16px;
+box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+.contact-form input,
+.contact-form textarea{
+width:100%;
+padding:12px;
+margin-top:6px;
+margin-bottom:15px;
+border-radius:8px;
+border:1px solid #ddd;
+}
+
+.apple-send{
+width:100%;
+padding:14px;
+border:none;
+border-radius:999px;
+background:#111;
+color:white;
+cursor:pointer;
+}
+
+/* APPLE STYLE SKILLS */
+
+.skills-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:25px;
+max-width:900px;
+margin:auto;
+}
+
+.skill-card{
+background:white;
+border-radius:18px;
+padding:30px 20px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.06);
+transition:all .25s ease;
+}
+
+.skill-card i{
+font-size:30px;
+color:#4a90e2;
+margin-bottom:10px;
+}
+
+.skill-card:hover{
+transform:translateY(-8px) scale(1.04);
+box-shadow:0 20px 40px rgba(0,0,0,0.12);
+}
+
+.skill-card.cert{
+text-decoration:none;
+color:#333;
 }
 
 /* PROJECT CAROUSEL */
@@ -245,7 +293,6 @@ border-radius:50%;
 box-shadow:0 8px 20px rgba(0,0,0,0.15);
 cursor:pointer;
 z-index:5;
-transition:transform .2s ease;
 }
 
 .carousel-btn.left{ left:10px; }
@@ -255,35 +302,6 @@ transition:transform .2s ease;
 transform:translateY(-50%) scale(1.1);
 }
 
-/* CONTACT */
-
-.contact-form{
-background:rgba(255,255,255,0.9);
-padding:40px;
-border-radius:16px;
-box-shadow:0 15px 40px rgba(0,0,0,0.08);
-}
-
-.contact-form input,
-.contact-form textarea{
-width:100%;
-padding:12px;
-margin-top:6px;
-margin-bottom:15px;
-border-radius:8px;
-border:1px solid #ddd;
-}
-
-.apple-send{
-width:100%;
-padding:14px;
-border:none;
-border-radius:999px;
-background:#111;
-color:white;
-cursor:pointer;
-}
-
 /* FOOTER */
 
 footer{
@@ -291,29 +309,6 @@ text-align:center;
 padding:30px;
 background:#111;
 color:white;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.main-layout{
-grid-template-columns:1fr;
-grid-template-areas:
-"about"
-"contact"
-"projects";
-}
-
-.about-grid{
-grid-template-columns:1fr;
-text-align:center;
-}
-
-.about-text::before{
-display:none;
-}
-
 }
 
 </style>
@@ -352,7 +347,7 @@ display:none;
 
 <div class="main-layout">
 
-<section id="about" class="section">
+<section id="about">
 
 <h2>About Me</h2>
 
@@ -364,9 +359,9 @@ display:none;
 
 <p>Hi, I’m Alfred — an aspiring data analyst who enjoys turning raw data into meaningful insights.</p>
 
-<p>I’m naturally curious and enjoy exploring datasets to uncover patterns, answer questions, and communicate findings in a clear and practical way. The most rewarding part of analysis for me is the moment when the data reveals something unexpected — the insight that turns numbers into understanding.</p>
+<p>I’m naturally curious and enjoy exploring datasets to uncover patterns, answer questions, and communicate findings in a clear and practical way.</p>
 
-<p>Through hands-on projects, I’ve gained experience using tools such as Python, Jupyter Notebook, RStudio, and Tableau to clean data, perform analysis, and create visualizations that help tell the story behind the data. I’m continually building my skills with the goal of using data to support smarter, more informed decision-making.</p>
+<p>Through hands-on projects, I’ve gained experience using tools such as Python, Jupyter Notebook, RStudio, and Tableau to clean data, perform analysis, and create visualizations that tell the story behind the data.</p>
 
 </div>
 
@@ -374,7 +369,7 @@ display:none;
 
 </section>
 
-<section id="contact" class="section">
+<section id="contact">
 
 <h2>Let's Connect!</h2>
 
@@ -390,7 +385,52 @@ display:none;
 
 </section>
 
-<section id="projects" class="section">
+<section id="tools">
+
+<h2>Tools & Certifications</h2>
+
+<div class="skills-grid">
+
+<div class="skill-card">
+<i class="fa-brands fa-python"></i>
+<p>Python</p>
+</div>
+
+<div class="skill-card">
+<i class="fa-solid fa-database"></i>
+<p>SQL</p>
+</div>
+
+<div class="skill-card">
+<i class="fa-solid fa-chart-line"></i>
+<p>Tableau</p>
+</div>
+
+<div class="skill-card">
+<i class="fa-solid fa-book"></i>
+<p>Jupyter Notebook</p>
+</div>
+
+<div class="skill-card">
+<i class="fa-solid fa-chart-bar"></i>
+<p>RStudio</p>
+</div>
+
+<a href="#" target="_blank" class="skill-card cert">
+<i class="fa-solid fa-award"></i>
+<p>Google Data Analytics</p>
+</a>
+
+<a href="#" target="_blank" class="skill-card cert">
+<i class="fa-solid fa-award"></i>
+<p>IBM Data Analyst</p>
+</a>
+
+</div>
+
+</section>
+
+<section id="projects">
 
 <h2>My Projects</h2>
 
@@ -443,123 +483,6 @@ display:none;
 <p>© 2026 Alfred Rico</p>
 
 </footer>
-
-<script>
-
-/* CAROUSEL */
-
-let index = 0
-const carousel = document.getElementById("carousel")
-const cards = document.querySelectorAll(".project-card")
-
-function moveCarousel(direction){
-
-index += direction
-
-if(index < 0) index = 0
-if(index > cards.length - 1) index = cards.length - 1
-
-const cardWidth = cards[0].offsetWidth + 20
-carousel.style.transform = `translateX(${-index * cardWidth}px)`
-
-cards.forEach(c => c.classList.remove("active"))
-cards[index].classList.add("active")
-
-}
-
-/* HERO CHART */
-
-const canvas = document.getElementById("dashboardCanvas")
-const ctx = canvas.getContext("2d")
-
-function resizeCanvas(){
-canvas.width = canvas.offsetWidth
-canvas.height = canvas.offsetHeight
-}
-
-resizeCanvas()
-window.addEventListener("resize", resizeCanvas)
-
-let bars=[120,180,90,220,160]
-let barWidth=60
-let gap=50
-let progress=0
-
-function drawGrid(){
-
-ctx.strokeStyle="rgba(255,255,255,0.05)"
-
-for(let i=0;i<canvas.width;i+=80){
-ctx.beginPath()
-ctx.moveTo(i,0)
-ctx.lineTo(i,canvas.height)
-ctx.stroke()
-}
-
-}
-
-function drawBars(){
-
-const chartWidth = bars.length*(barWidth+gap)
-const startX = (canvas.width-chartWidth)/2
-const baseY = canvas.height
-
-bars.forEach((h,i)=>{
-
-let x = startX + i*(barWidth+gap)
-
-ctx.fillStyle="rgba(74,144,226,.85)"
-ctx.fillRect(x,baseY,barWidth,-h*progress)
-
-})
-
-}
-
-function drawLine(){
-
-const chartWidth = bars.length*(barWidth+gap)
-const startX = (canvas.width-chartWidth)/2 + barWidth/2
-const baseY = canvas.height
-
-ctx.beginPath()
-ctx.strokeStyle="#8fd3ff"
-ctx.lineWidth=2
-
-ctx.moveTo(startX,baseY-bars[0]*progress)
-
-for(let i=1;i<bars.length;i++){
-
-let x=startX+i*(barWidth+gap)
-let y=baseY-bars[i]*progress
-
-ctx.lineTo(x,y)
-
-}
-
-ctx.stroke()
-
-}
-
-function animate(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height)
-
-drawGrid()
-
-if(progress<1){
-progress+=0.01
-}
-
-drawBars()
-drawLine()
-
-requestAnimationFrame(animate)
-
-}
-
-animate()
-
-</script>
 
 </body>
 </html>
