@@ -257,7 +257,7 @@ cursor:pointer;
 .carousel-btn.left{ left:10px; }
 .carousel-btn.right{ right:10px; }
 
-/* TOOLS & CERTIFICATIONS */
+/* TOOLS */
 
 .tools-wrapper{
 max-width:900px;
@@ -295,21 +295,21 @@ margin-bottom:4px;
 display:block;
 }
 
-/* CERTIFICATION TILE FIX */
+/* CERT */
 
 .cert-column{
 display:flex;
 justify-content:center;
-align-items:flex-start; /* prevents stretching */
+align-items:flex-start;
 }
 
 .cert{
 background:white;
 border-radius:12px;
-padding:12px 14px;
+padding:12px 16px;
 text-align:center;
 box-shadow:0 6px 16px rgba(0,0,0,0.06);
-max-width:200px;
+max-width:220px;
 }
 
 .cert-google{
@@ -342,8 +342,6 @@ transform:translateY(-6px);
 box-shadow:0 20px 40px rgba(0,0,0,0.15);
 }
 
-/* FOOTER */
-
 footer{
 text-align:center;
 padding:30px;
@@ -367,11 +365,56 @@ color:white;
 <a href="https://www.linkedin.com/in/alfred-rico-3992338a/" target="_blank"><i class="fab fa-linkedin"></i></a>
 <a href="https://github.com/ShadyEggs" target="_blank"><i class="fab fa-github"></i></a>
 </div>
-
 </div>
 </header>
 
-<!-- rest of HTML and JS remains exactly the same -->
+<nav>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#tools">Tools & Certifications</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<div class="main-layout">
+
+<!-- ABOUT -->
+<section id="about">
+<h2>About Me</h2>
+
+<div class="about-grid">
+<img src="profile.jpg" class="profile-pic">
+
+<div class="about-text">
+<p>Hi, I’m Alfred — an aspiring data analyst who enjoys turning raw data into meaningful insights.</p>
+<p>I’m naturally curious and enjoy exploring datasets to uncover patterns, answer questions, and communicate findings clearly.</p>
+<p>Through hands-on projects, I’ve gained experience using Python, Jupyter Notebook, RStudio, and Tableau to analyze data and build visualizations.</p>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+
+<h2>Let's Connect!</h2>
+
+<form action="https://formsubmit.co/alfred.m.rico@gmail.com" method="POST" class="contact-form">
+
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="message" rows="6" placeholder="Message" required></textarea>
+
+<button type="submit" class="apple-send">Send Message</button>
+
+</form>
+</section>
+
+</div>
+
+<footer>
+<p>© 2026 Alfred Rico</p>
+</footer>
 
 </body>
 </html>
