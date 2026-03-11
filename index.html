@@ -262,19 +262,17 @@ cursor:pointer;
 
 .tools-column{
 display:grid;
-grid-template-columns:1fr 90px;
+grid-template-columns:1fr 90px 90px;
+grid-template-rows:auto auto;
 gap:12px;
-align-items:start;
 max-width:420px;
 margin-left:auto;
 }
 
 .python-tile{
-grid-row:span 4;
+grid-row:1 / span 2;
 padding:14px;
 }
-
-/* PERFECT PYTHON TILE SPACING */
 
 .python-tile h4{
 margin:12px 0 3px 0;
@@ -399,6 +397,7 @@ color:white;
 
 <div class="main-layout">
 
+<!-- ABOUT -->
 <section id="about">
 <h2>About Me</h2>
 
@@ -415,6 +414,7 @@ color:white;
 </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
 
 <h2>Let's Connect!</h2>
@@ -430,6 +430,7 @@ color:white;
 </form>
 </section>
 
+<!-- PROJECTS -->
 <section id="projects">
 
 <h2>My Projects</h2>
@@ -476,13 +477,13 @@ color:white;
 
 </section>
 
+<!-- TOOLS -->
 <section id="tools">
 <h2>Tools</h2>
 
 <div class="tools-column">
 
 <div class="skill-card python-tile">
-
 <i class="fa-brands fa-python"></i>
 <strong>Python</strong>
 
@@ -494,7 +495,6 @@ color:white;
 
 <h4>Visualization</h4>
 <p>Plotly</p>
-
 </div>
 
 <div class="skill-card small"><i class="fa-solid fa-database"></i>SQL</div>
@@ -505,6 +505,7 @@ color:white;
 </div>
 </section>
 
+<!-- CERTIFICATIONS -->
 <section id="certifications">
 
 <h2>Certifications</h2>
