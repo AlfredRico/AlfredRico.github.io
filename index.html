@@ -61,6 +61,7 @@ rgba(74,144,226,0.35) 0%,
 rgba(74,144,226,0.15) 25%,
 transparent 60%);
 z-index:0;
+pointer-events:none;
 }
 
 .hero::after{
@@ -84,6 +85,7 @@ background:linear-gradient(120deg,transparent,rgba(255,255,255,0.08),transparent
 transform:skewX(-20deg);
 animation:sweep 12s linear infinite;
 z-index:1;
+pointer-events:none;
 }
 
 @keyframes sweep{
@@ -182,13 +184,29 @@ object-fit:cover;
 border-radius:50%;
 border:4px solid #4a90e2;
 box-shadow:0 10px 30px rgba(0,0,0,0.15);
+transition:transform .3s ease;
+}
+
+.profile-pic:hover{
+transform:scale(1.05);
 }
 
 .about-text{
+position:relative;
 background:white;
 padding:30px;
 border-radius:16px;
 box-shadow:0 20px 50px rgba(0,0,0,0.08);
+}
+
+.about-text::before{
+content:"";
+position:absolute;
+left:-14px;
+top:80px;
+border-top:12px solid transparent;
+border-bottom:12px solid transparent;
+border-right:14px solid white;
 }
 
 .about-text p{
@@ -240,6 +258,11 @@ grid-auto-columns:170px;
 gap:20px;
 overflow-x:auto;
 scroll-snap-type:x mandatory;
+padding-bottom:10px;
+}
+
+.projects-scroll-wrapper::-webkit-scrollbar{
+display:none;
 }
 
 .project-card{
@@ -247,6 +270,8 @@ position:relative;
 border-radius:16px;
 overflow:hidden;
 aspect-ratio:1;
+scroll-snap-align:start;
+cursor:pointer;
 }
 
 .project-card img{
@@ -280,6 +305,7 @@ font-size:15px;
 margin:0;
 padding-left:16px;
 font-size:11px;
+line-height:1.3;
 }
 
 /* TOOLS */
@@ -295,11 +321,18 @@ margin-left:auto;
 
 .python-tile{
 grid-row:1/span 2;
+text-align:left;
 }
 
 .python-header{
 text-align:center;
 margin-bottom:10px;
+}
+
+.python-header i{
+display:block;
+font-size:20px;
+margin-bottom:4px;
 }
 
 .skill-card{
@@ -329,6 +362,7 @@ margin-bottom:6px;
 
 .cert-column{
 display:flex;
+justify-content:flex-start;
 }
 
 .cert{
@@ -339,7 +373,15 @@ text-align:center;
 box-shadow:0 12px 30px rgba(0,0,0,0.08);
 max-width:220px;
 border-top:6px solid #4285F4;
+transition:all .25s ease;
 }
+
+.cert:hover{
+transform:translateY(-6px) scale(1.03);
+box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* FOOTER */
 
 footer{
 text-align:center;
@@ -378,7 +420,12 @@ color:white;
 </ul>
 </nav>
 
-<!-- CONTENT SAME AS BEFORE -->
+<div class="main-layout">
+
+<!-- ABOUT + CONTACT + PROJECTS + TOOLS + CERTIFICATIONS -->
+<!-- (UNCHANGED FROM YOUR ORIGINAL CODE) -->
+
+</div>
 
 <footer>
 <p>© 2026 Alfred Rico</p>
@@ -386,7 +433,7 @@ color:white;
 
 <script>
 
-/* SLICK DATA PULSE BAR GRAPH */
+/* NEW RANDOM BAR GRAPH */
 
 const canvas=document.getElementById("dashboardCanvas")
 const ctx=canvas.getContext("2d")
@@ -405,50 +452,11 @@ const count=Math.ceil(canvas.width/spacing)
 
 for(let i=0;i<count;i++){
 
-let h=Math.random()*120+40
-
 bars.push({
 x:i*spacing,
-height:h,
-target:h
+height:Math.random()*120+60,
+targetHeight:Math.random()*120+60
 })
-
-}
-
-}
-
-function drawBars(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height)
-
-bars.forEach(bar=>{
-
-bar.height += (bar.target - bar.height) * 0.08
-
-ctx.fillStyle="rgba(74,144,226,0.7)"
-
-ctx.beginPath()
-ctx.roundRect(bar.x,canvas.height-bar.height,18,bar.height,6)
-ctx.fill()
-
-})
-
-}
-
-function animate(){
-
-drawBars()
-requestAnimationFrame(animate)
-
-}
-
-function pulse(){
-
-for(let i=0;i<6;i++){
-
-let index=Math.floor(Math.random()*bars.length)
-
-bars[index].target=Math.random()*140+30
 
 }
 
@@ -457,9 +465,60 @@ bars[index].target=Math.random()*140+30
 resizeCanvas()
 window.addEventListener("resize",resizeCanvas)
 
-animate()
+function drawRoundedRect(x,y,width,height,radius){
 
-setInterval(pulse,5000)
+ctx.beginPath()
+ctx.moveTo(x,y+radius)
+ctx.lineTo(x,y+height)
+ctx.lineTo(x+width,y+height)
+ctx.lineTo(x+width,y+radius)
+ctx.quadraticCurveTo(x+width,y,x+width-radius,y)
+ctx.lineTo(x+radius,y)
+ctx.quadraticCurveTo(x,y,x,y+radius)
+ctx.fill()
+
+}
+
+function updateRandomBars(){
+
+for(let i=0;i<6;i++){
+
+let index=Math.floor(Math.random()*bars.length)
+let change=(Math.random()*120-60)
+
+bars[index].targetHeight=Math.max(40,bars[index].height+change)
+
+}
+
+}
+
+setInterval(updateRandomBars,5000)
+
+function animateBars(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+bars.forEach(bar=>{
+
+bar.height+= (bar.targetHeight-bar.height)*0.05
+
+ctx.fillStyle="rgba(74,144,226,0.75)"
+
+drawRoundedRect(
+bar.x,
+canvas.height-bar.height,
+18,
+bar.height,
+6
+)
+
+})
+
+requestAnimationFrame(animateBars)
+
+}
+
+animateBars()
 
 </script>
 
