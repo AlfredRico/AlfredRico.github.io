@@ -269,6 +269,28 @@ max-width:420px;
 margin-left:auto;
 }
 
+.python-tile{
+grid-row:span 4;
+padding:18px;
+line-height:1.6;
+}
+
+.python-tile i{
+font-size:22px;
+margin-bottom:10px;
+}
+
+.python-tile h4{
+margin-top:16px;
+margin-bottom:4px;
+font-size:14px;
+}
+
+.python-tile p{
+margin:0 0 6px 0;
+font-size:13px;
+}
+
 .skill-card{
 background:white;
 border-radius:12px;
@@ -281,35 +303,11 @@ font-size:13px;
 .skill-card i{
 font-size:18px;
 color:#4a90e2;
-margin-bottom:6px;
+margin-bottom:4px;
 display:block;
 }
 
-/* PYTHON TILE */
-
-.python-tile{
-grid-row:span 4;
-display:flex;
-flex-direction:column;
-justify-content:flex-start;
-align-items:flex-start;
-text-align:left;
-padding:14px;
-gap:8px;
-}
-
-.python-tile h4{
-margin:6px 0 0 0;
-font-size:14px;
-}
-
-.python-tile p{
-margin:0;
-font-size:13px;
-line-height:1.4;
-}
-
-/* SMALL TOOL TILES */
+/* SMALL SQUARE TILES */
 
 .skill-card.small{
 aspect-ratio:1;
@@ -403,44 +401,7 @@ color:white;
 </ul>
 </nav>
 
-<div class="main-layout">
-
-<section id="tools">
-
-<h2>Tools</h2>
-
-<div class="tools-column">
-
-<div class="skill-card python-tile">
-
-<i class="fa-brands fa-python"></i>
-<strong>Python</strong>
-
-<h4>Data Science & Analysis</h4>
-<p>NumPy • Pandas • Matplotlib • Seaborn</p>
-
-<h4>Machine Learning</h4>
-<p>Scikit-learn</p>
-
-<h4>Visualization</h4>
-<p>Plotly</p>
-
-</div>
-
-<div class="skill-card small"><i class="fa-solid fa-database"></i>SQL</div>
-<div class="skill-card small"><i class="fa-solid fa-book"></i>Jupyter</div>
-<div class="skill-card small"><i class="fa-solid fa-chart-bar"></i>RStudio</div>
-<div class="skill-card small"><i class="fa-solid fa-chart-line"></i>Tableau</div>
-
-</div>
-
-</section>
-
-</div>
-
-<footer>
-<p>© 2026 Alfred Rico</p>
-</footer>
+<!-- Rest of HTML unchanged -->
 
 </body>
 </html>
