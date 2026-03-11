@@ -167,8 +167,6 @@ border-radius:16px;
 box-shadow:0 20px 50px rgba(0,0,0,0.08);
 }
 
-/* CHAT BUBBLE POINTER */
-
 .about-text::before{
 content:"";
 position:absolute;
@@ -332,6 +330,11 @@ display:flex;
 justify-content:flex-start;
 }
 
+.cert-link{
+text-decoration:none;
+color:inherit;
+}
+
 .cert{
 background:white;
 border-radius:14px;
@@ -344,16 +347,17 @@ display:flex;
 flex-direction:column;
 align-items:center;
 gap:6px;
+transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.cert:hover{
+transform:translateY(-6px);
+box-shadow:0 18px 40px rgba(0,0,0,0.18);
+cursor:pointer;
 }
 
 .cert-google{
 height:24px;
-transition:transform .25s ease;
-}
-
-.cert-google:hover{
-transform:scale(1.15);
-cursor:pointer;
 }
 
 .cert-title{
@@ -526,11 +530,11 @@ color:white;
 
 <div class="cert-column">
 
+<a href="YOUR_CERT_LINK_HERE" target="_blank" class="cert-link">
+
 <div class="cert">
 
-<a href="YOUR_CERT_LINK_HERE" target="_blank">
 <img class="cert-google" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
-</a>
 
 <div class="cert-title">
 Google Data Analytics Professional Certificate
@@ -541,6 +545,8 @@ Google Data Analytics Professional Certificate
 <img class="cert-coursera" src="https://upload.wikimedia.org/wikipedia/commons/9/97/Coursera-Logo_600x600.svg">
 
 </div>
+
+</a>
 
 </div>
 
@@ -553,8 +559,6 @@ Google Data Analytics Professional Certificate
 </footer>
 
 <script>
-
-/* PROJECT CAROUSEL */
 
 let index = 0
 const carousel = document.getElementById("carousel")
@@ -574,8 +578,6 @@ cards.forEach(c => c.classList.remove("active"))
 cards[index].classList.add("active")
 
 }
-
-/* HERO GRAPH */
 
 const canvas = document.getElementById("dashboardCanvas")
 const ctx = canvas.getContext("2d")
