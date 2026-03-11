@@ -26,7 +26,7 @@ background:#f5f5f7;
 scroll-behavior:smooth;
 }
 
-/* GLOBAL CONTAINER */
+/* GLOBAL */
 
 .container{
 width:90%;
@@ -45,20 +45,77 @@ align-items:center;
 justify-content:center;
 text-align:center;
 overflow:hidden;
-background:#0f172a;
 color:white;
+
+background:
+radial-gradient(circle at 20% 30%, rgba(30,64,175,.45), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(14,165,233,.35), transparent 45%),
+linear-gradient(135deg,#020617,#0f172a 60%,#1e293b);
 }
+
+/* glow layer */
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+
+background:
+radial-gradient(circle at 50% 80%,
+rgba(74,144,226,0.35) 0%,
+rgba(74,144,226,0.15) 25%,
+transparent 60%);
+
+z-index:0;
+pointer-events:none;
+}
+
+/* grid texture */
 
 .hero::after{
 content:"";
 position:absolute;
-bottom:0;
-left:0;
-width:100%;
-height:200px;
-background:linear-gradient(to top,#0f172a,transparent);
-z-index:1;
+inset:0;
+
+background-image:
+linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+
+background-size:40px 40px;
+z-index:0;
 }
+
+/* LIGHT SWEEP */
+
+.light-sweep{
+position:absolute;
+top:0;
+left:-50%;
+width:50%;
+height:100%;
+
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.08),
+transparent
+);
+
+transform:skewX(-20deg);
+animation:sweep 12s linear infinite;
+
+z-index:1;
+pointer-events:none;
+}
+
+@keyframes sweep{
+
+0%{left:-50%;}
+100%{left:120%;}
+
+}
+
+/* CANVAS */
 
 #dashboardCanvas{
 position:absolute;
@@ -67,11 +124,12 @@ left:0;
 width:100%;
 height:100%;
 opacity:.35;
+z-index:2;
 }
 
 .hero-content{
 position:relative;
-z-index:2;
+z-index:3;
 transform:translateY(-60px);
 }
 
@@ -130,10 +188,6 @@ gap:40px;
 #tools{grid-area:tools;}
 #certifications{grid-area:certifications;}
 
-section{
-width:100%;
-}
-
 h2{
 text-align:center;
 margin-bottom:30px;
@@ -145,12 +199,6 @@ margin-bottom:30px;
 display:grid;
 grid-template-columns:200px 1fr;
 gap:30px;
-align-items:flex-start;
-}
-
-.profile-section{
-display:flex;
-justify-content:center;
 }
 
 .profile-pic{
@@ -180,8 +228,6 @@ content:"";
 position:absolute;
 left:-14px;
 top:80px;
-width:0;
-height:0;
 border-top:12px solid transparent;
 border-bottom:12px solid transparent;
 border-right:14px solid white;
@@ -277,7 +323,6 @@ width:8px;
 height:8px;
 border-radius:50%;
 background:#ccc;
-transition:all .3s;
 }
 
 .dot.active{
@@ -299,17 +344,6 @@ margin-left:auto;
 .python-tile{
 grid-row:1 / span 2;
 padding:14px;
-}
-
-.python-tile h4{
-margin:12px 0 3px 0;
-font-size:14px;
-}
-
-.python-tile p{
-margin:0;
-font-size:13px;
-line-height:1.4;
 }
 
 .skill-card{
@@ -334,10 +368,9 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-font-size:12px;
 }
 
-/* CERTIFICATIONS */
+/* CERT */
 
 .cert-column{
 display:flex;
@@ -375,6 +408,9 @@ color:white;
 <body>
 
 <header class="hero">
+
+<div class="light-sweep"></div>
+
 <canvas id="dashboardCanvas"></canvas>
 
 <div class="container hero-content">
@@ -386,6 +422,7 @@ color:white;
 <a href="https://github.com/ShadyEggs" target="_blank"><i class="fab fa-github"></i></a>
 </div>
 </div>
+
 </header>
 
 <nav>
@@ -405,7 +442,7 @@ color:white;
 
 <div class="about-grid">
 
-<div class="profile-section">
+<div>
 <img src="profile.jpg" class="profile-pic">
 </div>
 
@@ -430,10 +467,9 @@ color:white;
 </section>
 
 <section id="projects">
-
 <h2>My Projects</h2>
 
-<div class="projects-scroll-wrapper" id="projectScroll">
+<div class="projects-scroll-wrapper">
 
 <div class="project-card">
 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
@@ -467,25 +503,7 @@ color:white;
 </div>
 </div>
 
-<div class="project-card">
-<img src="https://images.unsplash.com/photo-1556157382-97eda2d62296">
-<div class="project-card-content">
-<h3>Sales Forecast Model</h3>
-<p>Time series prediction.</p>
 </div>
-</div>
-
-<div class="project-card">
-<img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c">
-<div class="project-card-content">
-<h3>Data Cleaning Pipeline</h3>
-<p>Automated preprocessing.</p>
-</div>
-</div>
-
-</div>
-
-<div class="scroll-dots" id="scrollDots"></div>
 
 </section>
 
@@ -497,15 +515,8 @@ color:white;
 <div class="skill-card python-tile">
 <i class="fa-brands fa-python"></i>
 <strong>Python</strong>
-
-<h4>Data Science & Analysis</h4>
 <p>NumPy • Pandas • Matplotlib • Seaborn</p>
-
-<h4>Machine Learning</h4>
-<p>Scikit-learn</p>
-
-<h4>Visualization</h4>
-<p>Plotly</p>
+<p>Scikit-learn • Plotly</p>
 </div>
 
 <div class="skill-card small"><i class="fa-solid fa-database"></i>SQL</div>
@@ -555,31 +566,49 @@ Issued via Coursera
 
 /* HERO BAR GRAPH */
 
-const canvas = document.getElementById("dashboardCanvas")
-const ctx = canvas.getContext("2d")
+const canvas=document.getElementById("dashboardCanvas")
+const ctx=canvas.getContext("2d")
 
 let bars=[]
 
 function resizeCanvas(){
+
 canvas.width=window.innerWidth
 canvas.height=document.querySelector(".hero").offsetHeight
 
 bars=[]
 
-const spacing=30
+const spacing=28
 const count=Math.ceil(canvas.width/spacing)
 
 for(let i=0;i<count;i++){
+
 bars.push({
 x:i*spacing,
 height:Math.random()*120+40,
 speed:Math.random()*0.6+0.2
 })
+
 }
+
 }
 
 resizeCanvas()
 window.addEventListener("resize",resizeCanvas)
+
+function drawRoundedRect(x,y,width,height,radius){
+
+ctx.beginPath()
+ctx.moveTo(x,y+radius)
+ctx.lineTo(x,y+height)
+ctx.lineTo(x+width,y+height)
+ctx.lineTo(x+width,y+radius)
+ctx.quadraticCurveTo(x+width,y,x+width-radius,y)
+ctx.lineTo(x+radius,y)
+ctx.quadraticCurveTo(x,y,x,y+radius)
+ctx.fill()
+
+}
 
 function animateBars(){
 
@@ -587,15 +616,24 @@ ctx.clearRect(0,0,canvas.width,canvas.height)
 
 bars.forEach(bar=>{
 
-bar.height += Math.sin(Date.now()*0.002*bar.speed)
+bar.height+=Math.sin(Date.now()*0.002*bar.speed)
+
+/* slow drift */
+
+bar.x+=0.05*bar.speed
+
+if(bar.x>canvas.width){
+bar.x=-20
+}
 
 ctx.fillStyle="rgba(74,144,226,0.7)"
 
-ctx.fillRect(
+drawRoundedRect(
 bar.x,
 canvas.height-bar.height,
-20,
-bar.height
+18,
+bar.height,
+6
 )
 
 })
@@ -605,31 +643,6 @@ requestAnimationFrame(animateBars)
 }
 
 animateBars()
-
-/* SCROLL DOTS */
-
-const scrollContainer=document.getElementById("projectScroll")
-const dotsContainer=document.getElementById("scrollDots")
-
-const pages=Math.ceil(scrollContainer.scrollWidth/scrollContainer.clientWidth)
-
-for(let i=0;i<pages;i++){
-let dot=document.createElement("div")
-dot.classList.add("dot")
-if(i===0)dot.classList.add("active")
-dotsContainer.appendChild(dot)
-}
-
-scrollContainer.addEventListener("scroll",()=>{
-
-let index=Math.round(scrollContainer.scrollLeft/scrollContainer.clientWidth)
-
-document.querySelectorAll(".dot").forEach(d=>d.classList.remove("active"))
-
-if(document.querySelectorAll(".dot")[index])
-document.querySelectorAll(".dot")[index].classList.add("active")
-
-})
 
 </script>
 
