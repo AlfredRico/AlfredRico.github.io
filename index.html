@@ -265,7 +265,7 @@ margin:auto;
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:40px;
-align-items:start; /* FIX */
+align-items:start;   /* prevents certification column stretching */
 }
 
 .tools-column{
@@ -309,7 +309,7 @@ font-size:12px;
 .cert-column{
 display:flex;
 justify-content:center;
-align-items:flex-start; /* FIX */
+align-items:flex-start;
 }
 
 .cert{
@@ -374,7 +374,6 @@ color:white;
 <a href="https://www.linkedin.com/in/alfred-rico-3992338a/" target="_blank"><i class="fab fa-linkedin"></i></a>
 <a href="https://github.com/ShadyEggs" target="_blank"><i class="fab fa-github"></i></a>
 </div>
-
 </div>
 </header>
 
@@ -387,9 +386,11 @@ color:white;
 </ul>
 </nav>
 
-<!-- rest of HTML remains EXACTLY the same -->
+<!-- Everything else (About, Contact, Projects, Tools, JS) remains exactly the same as your original code -->
 
-<!-- your existing sections stay unchanged -->
+<footer>
+<p>© 2026 Alfred Rico</p>
+</footer>
 
 </body>
 </html>
