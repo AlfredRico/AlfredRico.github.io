@@ -65,6 +65,7 @@ z-index:2;
 .hero h1{
 font-size:50px;
 font-family:'Playfair Display',serif;
+margin-bottom:5px;
 }
 
 .social-links a{
@@ -412,10 +413,8 @@ Send Message
 
 <script>
 
-/* HERO DATA DASHBOARD ANIMATION */
-
-const canvas=document.getElementById("dashboardCanvas")
-const ctx=canvas.getContext("2d")
+const canvas = document.getElementById("dashboardCanvas")
+const ctx = canvas.getContext("2d")
 
 function resizeCanvas(){
 canvas.width = canvas.offsetWidth
@@ -426,16 +425,35 @@ resizeCanvas()
 window.addEventListener("resize", resizeCanvas)
 
 let bars=[120,180,90,220,160]
+let barWidth=60
+let gap=50
 let progress=0
+
+function drawGrid(){
+
+ctx.strokeStyle="rgba(255,255,255,0.05)"
+
+for(let i=0;i<canvas.width;i+=80){
+ctx.beginPath()
+ctx.moveTo(i,0)
+ctx.lineTo(i,canvas.height)
+ctx.stroke()
+}
+
+}
 
 function drawBars(){
 
+const chartWidth = bars.length*(barWidth+gap)
+const startX = (canvas.width-chartWidth)/2
+const baseY = canvas.height*0.65
+
 bars.forEach((h,i)=>{
 
-let x=200+i*120
+let x = startX + i*(barWidth+gap)
 
-ctx.fillStyle="rgba(74,144,226,.8)"
-ctx.fillRect(x,canvas.height,60,-h*progress)
+ctx.fillStyle="rgba(74,144,226,.85)"
+ctx.fillRect(x,baseY,barWidth,-h*progress)
 
 })
 
@@ -443,30 +461,34 @@ ctx.fillRect(x,canvas.height,60,-h*progress)
 
 function drawLine(){
 
+const chartWidth = bars.length*(barWidth+gap)
+const startX = (canvas.width-chartWidth)/2 + barWidth/2
+const baseY = canvas.height*0.65
+
 ctx.beginPath()
-ctx.strokeStyle="white"
+ctx.strokeStyle="#8fd3ff"
 ctx.lineWidth=2
+ctx.shadowColor="#8fd3ff"
+ctx.shadowBlur=8
 
-let startX=230
-let startY=canvas.height-bars[0]*progress
-
-ctx.moveTo(startX,startY)
+ctx.moveTo(startX,baseY-bars[0]*progress)
 
 for(let i=1;i<bars.length;i++){
 
-let x=230+i*120
-let y=canvas.height-bars[i]*progress
+let x=startX+i*(barWidth+gap)
+let y=baseY-bars[i]*progress
 
 ctx.lineTo(x,y)
 
 }
 
 ctx.stroke()
+ctx.shadowBlur=0
 
 for(let i=0;i<bars.length;i++){
 
-let x=230+i*120
-let y=canvas.height-bars[i]*progress
+let x=startX+i*(barWidth+gap)
+let y=baseY-bars[i]*progress
 
 ctx.beginPath()
 ctx.arc(x,y,4,0,Math.PI*2)
@@ -480,6 +502,8 @@ ctx.fill()
 function animate(){
 
 ctx.clearRect(0,0,canvas.width,canvas.height)
+
+drawGrid()
 
 if(progress<1){
 progress+=0.01
