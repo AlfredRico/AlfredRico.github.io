@@ -324,28 +324,17 @@ grid-row:1/span 2;
 text-align:left;
 }
 
-.python-tile i{
-display:block;
+/* NEW: center only python icon + title */
+
+.python-header{
 text-align:center;
-font-size:22px;
-margin-bottom:6px;
+margin-bottom:10px;
 }
 
-.python-tile strong{
+.python-header i{
 display:block;
-text-align:center;
-font-size:16px;
-margin-bottom:6px;
-}
-
-.python-tile strong::after{
-content:"";
-display:block;
-width:60px;
-height:2px;
-background:#4a90e2;
-margin:8px auto 16px auto;
-border-radius:2px;
+font-size:20px;
+margin-bottom:4px;
 }
 
 .skill-card{
@@ -467,9 +456,11 @@ color:white;
 </section>
 
 <section id="projects">
+
 <h2>My Projects</h2>
 
 <div class="projects-container">
+
 <div class="projects-scroll-wrapper">
 
 <div class="project-card">
@@ -525,6 +516,7 @@ color:white;
 </div>
 
 </div>
+
 </div>
 
 </section>
@@ -535,8 +527,11 @@ color:white;
 <div class="tools-column">
 
 <div class="skill-card python-tile">
+
+<div class="python-header">
 <i class="fa-brands fa-python"></i>
 <strong>Python</strong>
+</div>
 
 <p><strong>Data Science and Analysis</strong><br>
 - NumPy &nbsp;&nbsp; - Pandas<br>
@@ -592,6 +587,88 @@ Issued via Coursera
 <footer>
 <p>© 2026 Alfred Rico</p>
 </footer>
+
+<script>
+
+/* HERO BAR GRAPH */
+
+const canvas=document.getElementById("dashboardCanvas")
+const ctx=canvas.getContext("2d")
+
+let bars=[]
+
+function resizeCanvas(){
+
+canvas.width=window.innerWidth
+canvas.height=document.querySelector(".hero").offsetHeight
+
+bars=[]
+
+const spacing=28
+const count=Math.ceil(canvas.width/spacing)
+
+for(let i=0;i<count;i++){
+
+bars.push({
+x:i*spacing,
+height:Math.random()*120+40,
+speed:(Math.random()*0.6+0.2)*0.25
+})
+
+}
+
+}
+
+resizeCanvas()
+window.addEventListener("resize",resizeCanvas)
+
+function drawRoundedRect(x,y,width,height,radius){
+
+ctx.beginPath()
+ctx.moveTo(x,y+radius)
+ctx.lineTo(x,y+height)
+ctx.lineTo(x+width,y+height)
+ctx.lineTo(x+width,y+radius)
+ctx.quadraticCurveTo(x+width,y,x+width-radius,y)
+ctx.lineTo(x+radius,y)
+ctx.quadraticCurveTo(x,y,x,y+radius)
+ctx.fill()
+
+}
+
+function animateBars(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+bars.forEach(bar=>{
+
+bar.height+=Math.sin(Date.now()*0.0005*bar.speed)
+
+bar.x+=0.0125*bar.speed
+
+if(bar.x>canvas.width){
+bar.x=-20
+}
+
+ctx.fillStyle="rgba(74,144,226,0.7)"
+
+drawRoundedRect(
+bar.x,
+canvas.height-bar.height,
+18,
+bar.height,
+6
+)
+
+})
+
+requestAnimationFrame(animateBars)
+
+}
+
+animateBars()
+
+</script>
 
 </body>
 </html>
