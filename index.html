@@ -273,33 +273,62 @@ grid-template-columns:1fr 1fr;
 gap:40px;
 }
 
-.tools-column,
-.cert-column{
-display:flex;
-flex-direction:column;
-gap:18px;
+/* TOOL GRID */
+
+.tools-column{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+align-items:start;
 }
+
+.python-tile{
+grid-row:span 3;
+padding:14px;
+}
+
+/* COMPACT SKILL TILES */
 
 .skill-card{
 background:white;
-border-radius:14px;
-padding:18px 12px;
+border-radius:12px;
+padding:12px 10px;
 text-align:center;
-box-shadow:0 8px 20px rgba(0,0,0,0.06);
+box-shadow:0 6px 16px rgba(0,0,0,0.06);
 transition:.25s;
-font-size:14px;
+font-size:13px;
 }
 
 .skill-card i{
-font-size:22px;
+font-size:18px;
 color:#4a90e2;
-margin-bottom:6px;
+margin-bottom:4px;
 display:block;
 }
 
 .skill-card:hover{
-transform:translateY(-5px) scale(1.03);
-box-shadow:0 16px 30px rgba(0,0,0,0.12);
+transform:translateY(-4px);
+box-shadow:0 14px 26px rgba(0,0,0,0.12);
+}
+
+/* PYTHON TILE SPACING */
+
+.python-tile h4{
+margin:6px 0 2px;
+font-size:13px;
+}
+
+.python-tile p{
+margin:0 0 6px;
+font-size:12px;
+}
+
+/* CERTIFICATIONS */
+
+.cert-column{
+display:flex;
+flex-direction:column;
+gap:18px;
 }
 
 .cert{
@@ -317,7 +346,6 @@ font-weight:600;
 font-size:14px;
 line-height:1.4;
 margin-bottom:10px;
-text-align:center;
 }
 
 .cert-coursera{height:18px;opacity:.85;}
@@ -461,12 +489,16 @@ color:white;
 <div class="skill-card python-tile">
 <i class="fa-brands fa-python"></i>
 <strong>Python</strong>
+
 <h4>Data Science & Analysis</h4>
 <p>NumPy • Pandas • Matplotlib • Seaborn</p>
+
 <h4>Machine Learning</h4>
 <p>Scikit-learn</p>
+
 <h4>Visualization</h4>
 <p>Plotly</p>
+
 </div>
 
 <div class="skill-card"><i class="fa-solid fa-database"></i>SQL</div>
