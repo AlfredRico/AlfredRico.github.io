@@ -57,13 +57,11 @@ linear-gradient(135deg,#020617,#0f172a 60%,#1e293b);
 content:"";
 position:absolute;
 inset:0;
-
 background:
 radial-gradient(circle at 50% 80%,
 rgba(74,144,226,0.35) 0%,
 rgba(74,144,226,0.15) 25%,
 transparent 60%);
-
 z-index:0;
 pointer-events:none;
 }
@@ -72,11 +70,9 @@ pointer-events:none;
 content:"";
 position:absolute;
 inset:0;
-
 background-image:
 linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
 linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-
 background-size:40px 40px;
 z-index:0;
 }
@@ -249,17 +245,22 @@ color:white;
 cursor:pointer;
 }
 
-/* PROJECTS */
+/* PROJECT SECTION */
+
+.projects-container{
+display:flex;
+justify-content:center;
+}
 
 .projects-scroll-wrapper{
 display:grid;
 grid-auto-flow:column;
 grid-template-rows:repeat(2,1fr);
-grid-auto-columns:45%;
+grid-auto-columns:160px;
 gap:20px;
 overflow-x:auto;
 scroll-snap-type:x mandatory;
-padding-bottom:20px;
+padding-bottom:10px;
 }
 
 .projects-scroll-wrapper::-webkit-scrollbar{
@@ -271,7 +272,7 @@ background:white;
 border-radius:14px;
 overflow:hidden;
 box-shadow:0 10px 25px rgba(0,0,0,0.05);
-width:100%;
+width:160px;
 scroll-snap-align:start;
 transition:transform .25s ease, box-shadow .25s ease;
 }
@@ -283,13 +284,13 @@ box-shadow:0 20px 40px rgba(0,0,0,0.12);
 
 .project-card img{
 width:100%;
-height:130px;
+height:120px;
 object-fit:cover;
 }
 
 .project-card-content{
-padding:14px;
-font-size:14px;
+padding:12px;
+font-size:13px;
 }
 
 /* TOOLS */
@@ -382,8 +383,8 @@ color:white;
 <a href="https://www.linkedin.com/in/alfred-rico-3992338a/" target="_blank"><i class="fab fa-linkedin"></i></a>
 <a href="https://github.com/ShadyEggs" target="_blank"><i class="fab fa-github"></i></a>
 </div>
-
 </div>
+
 </header>
 
 <nav>
@@ -428,7 +429,10 @@ color:white;
 </section>
 
 <section id="projects">
+
 <h2>My Projects</h2>
+
+<div class="projects-container">
 
 <div class="projects-scroll-wrapper">
 
@@ -465,6 +469,9 @@ color:white;
 </div>
 
 </div>
+
+</div>
+
 </section>
 
 <section id="tools">
@@ -523,6 +530,8 @@ Issued via Coursera
 </footer>
 
 <script>
+
+/* HERO BAR GRAPH */
 
 const canvas=document.getElementById("dashboardCanvas")
 const ctx=canvas.getContext("2d")
