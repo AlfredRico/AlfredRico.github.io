@@ -183,6 +183,14 @@ border-bottom:12px solid transparent;
 border-right:18px solid white;
 }
 
+/* paragraph indentation */
+
+.about-text p{
+text-indent:20px;
+margin-bottom:16px;
+line-height:1.7;
+}
+
 /* PROJECT CAROUSEL */
 
 .carousel-container{
@@ -356,13 +364,9 @@ display:none;
 
 <div class="about-text">
 
-<p>     Hi, I’m Alfred — an aspiring data analyst who enjoys turning raw data into meaningful insights.
+<p>Hi, I’m Alfred — an aspiring data analyst who enjoys turning raw data into meaningful insights.</p>
 
-I’m naturally curious and enjoy exploring datasets to uncover patterns, answer questions, and communicate findings in a clear and practical way. The most rewarding part of analysis for me is the moment when the data reveals something unexpected — the insight that turns numbers into understanding.<p>
-
-<p>     Through hands-on projects, I’ve gained experience using tools such as Python, Jupyter Notebook, RStudio, and Tableau to clean data, perform analysis, and create visualizations that help tell the story behind the data.
-
-I’m continually building my skills and projects with the goal of using data to support smarter, more informed decision-making.</p>
+<p>Through hands-on projects, I’ve gained experience using tools such as Python, Jupyter Notebook, RStudio, and Tableau to clean data, perform analysis, and create visualizations that help tell the story behind the data. I’m continually building my skills with the goal of using data to support smarter, more informed decision-making.</p>
 
 </div>
 
@@ -496,7 +500,7 @@ function drawBars(){
 
 const chartWidth = bars.length*(barWidth+gap)
 const startX = (canvas.width-chartWidth)/2
-const baseY = canvas.height - 40
+const baseY = canvas.height
 
 bars.forEach((h,i)=>{
 
@@ -513,7 +517,7 @@ function drawLine(){
 
 const chartWidth = bars.length*(barWidth+gap)
 const startX = (canvas.width-chartWidth)/2 + barWidth/2
-const baseY = canvas.height - 40
+const baseY = canvas.height
 
 ctx.beginPath()
 ctx.strokeStyle="#8fd3ff"
