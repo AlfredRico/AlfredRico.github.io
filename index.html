@@ -263,38 +263,51 @@ cursor:pointer;
 transform:translateY(-50%) scale(1.1);
 }
 
-/* TOOLS */
+/* TOOLS SECTION */
 
 .tools-wrapper{
 max-width:900px;
 margin:auto;
 }
 
-.tools-group{
-margin-bottom:30px;
+.tools-layout{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:25px;
+margin-bottom:25px;
 }
-
-.tools-group h3{
-text-align:center;
-font-size:18px;
-margin-bottom:15px;
-color:#666;
-}
-
-/* GRID LAYOUT */
 
 .skills-grid{
 display:grid;
-grid-template-columns:2fr 1fr 1fr;
-grid-template-rows:auto auto;
+grid-template-columns:1fr 1fr;
 gap:18px;
+}
+
+.skill-card{
+background:white;
+border-radius:14px;
+padding:18px 12px;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,0.06);
+transition:all .25s ease;
+font-size:14px;
+}
+
+.skill-card i{
+font-size:22px;
+color:#4a90e2;
+margin-bottom:6px;
+display:block;
+}
+
+.skill-card:hover{
+transform:translateY(-5px) scale(1.03);
+box-shadow:0 16px 30px rgba(0,0,0,0.12);
 }
 
 /* PYTHON TILE */
 
 .python-tile{
-grid-column:1;
-grid-row:1 / span 2;
 text-align:left;
 padding:20px;
 }
@@ -311,47 +324,14 @@ font-size:13px;
 color:#555;
 }
 
-/* TOOL TILE POSITIONS */
-
-.skills-grid .skill-card:nth-child(2){grid-column:2;grid-row:1;}
-.skills-grid .skill-card:nth-child(3){grid-column:3;grid-row:1;}
-.skills-grid .skill-card:nth-child(4){grid-column:2;grid-row:2;}
-.skills-grid .skill-card:nth-child(5){grid-column:3;grid-row:2;}
-
-/* TILE STYLE */
-
-.skill-card{
-background:white;
-border-radius:14px;
-padding:18px 12px;
-text-align:center;
-box-shadow:0 8px 20px rgba(0,0,0,0.06);
-transition:.25s;
-font-size:14px;
-}
-
-.skill-card i{
-font-size:22px;
-color:#4a90e2;
-margin-bottom:6px;
-display:block;
-}
-
-.skill-card:hover{
-transform:translateY(-5px) scale(1.03);
-box-shadow:0 16px 30px rgba(0,0,0,0.12);
-}
-
 /* CERTIFICATION */
 
-.skill-card.cert{
+.cert{
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
 padding:22px;
-max-width:240px;
-margin:auto;
 }
 
 .cert-google{height:26px;margin-bottom:10px;}
@@ -365,8 +345,6 @@ text-align:center;
 }
 
 .cert-coursera{height:18px;opacity:.85;}
-
-/* FOOTER */
 
 footer{
 text-align:center;
@@ -488,6 +466,58 @@ color:white;
 <button class="carousel-btn right" onclick="moveCarousel(1)">
 <i class="fa-solid fa-chevron-right"></i>
 </button>
+
+</div>
+
+</section>
+
+<section id="tools">
+
+<h2>Tools & Certifications</h2>
+
+<div class="tools-wrapper">
+
+<div class="tools-layout">
+
+<div class="skill-card python-tile">
+
+<i class="fa-brands fa-python"></i>
+<strong>Python</strong>
+
+<h4>Data Science & Analysis</h4>
+<p>NumPy • Pandas • Matplotlib • Seaborn</p>
+
+<h4>Machine Learning</h4>
+<p>Scikit-learn</p>
+
+<h4>Visualization</h4>
+<p>Plotly</p>
+
+</div>
+
+<div class="skill-card cert">
+
+<img class="cert-google" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
+
+<div class="cert-title">
+Google Data Analytics<br>
+Professional Certificate
+</div>
+
+<img class="cert-coursera" src="https://upload.wikimedia.org/wikipedia/commons/9/97/Coursera-Logo_600x600.svg">
+
+</div>
+
+</div>
+
+<div class="skills-grid">
+
+<div class="skill-card"><i class="fa-solid fa-database"></i>SQL</div>
+<div class="skill-card"><i class="fa-solid fa-chart-line"></i>Tableau</div>
+<div class="skill-card"><i class="fa-solid fa-book"></i>Jupyter</div>
+<div class="skill-card"><i class="fa-solid fa-chart-bar"></i>RStudio</div>
+
+</div>
 
 </div>
 
