@@ -19,8 +19,6 @@
 
 <style>
 
-/* ---------------- BODY ---------------- */
-
 body{
 font-family:'Lato',sans-serif;
 margin:0;
@@ -34,7 +32,7 @@ max-width:1100px;
 margin:auto;
 }
 
-/* ---------------- HERO ---------------- */
+/* HERO */
 
 .hero{
 position:relative;
@@ -105,7 +103,7 @@ margin:0 10px;
 font-size:22px;
 }
 
-/* ---------------- NAV ---------------- */
+/* NAV */
 
 nav{
 background:white;
@@ -127,7 +125,7 @@ color:#333;
 font-weight:600;
 }
 
-/* ---------------- GRID ---------------- */
+/* MAIN GRID */
 
 .main-layout{
 max-width:1100px;
@@ -154,130 +152,21 @@ margin-bottom:30px;
 color:white;
 }
 
-/* ---------------- ABOUT ---------------- */
+/* PROJECT FILTER EFFECT */
 
-.about-grid{
-display:grid;
-grid-template-columns:200px 1fr;
-gap:30px;
+.project-card.hidden{
+opacity:.15;
+filter:grayscale(100%);
 }
 
-.profile-pic{
-width:180px;
-height:180px;
-object-fit:cover;
-border-radius:50%;
-border:4px solid #4a90e2;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
-transition:transform .3s ease;
-}
-
-.profile-pic:hover{
-transform:scale(1.05);
-}
-
-.about-text{
-background:white;
-padding:30px;
-border-radius:16px;
-box-shadow:0 20px 50px rgba(0,0,0,0.08);
-}
-
-.about-text p{
-line-height:1.7;
-}
-
-/* ---------------- CONTACT ---------------- */
-
-.contact-form{
-background:white;
-padding:40px;
-border-radius:16px;
-box-shadow:0 15px 40px rgba(0,0,0,0.08);
-}
-
-.contact-form input,
-.contact-form textarea{
-width:100%;
-padding:12px;
-margin-top:6px;
-margin-bottom:15px;
-border-radius:8px;
-border:1px solid #ddd;
-}
-
-.apple-send{
-width:100%;
-padding:14px;
-border:none;
-border-radius:999px;
-background:#111;
-color:white;
-cursor:pointer;
-}
-
-/* ---------------- PROJECTS ---------------- */
-
-.projects-container{
-display:flex;
-justify-content:center;
-}
-
-.projects-scroll-wrapper{
-display:grid;
-grid-auto-flow:column;
-grid-template-rows:repeat(2,1fr);
-grid-auto-columns:170px;
-gap:20px;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-padding-bottom:10px;
-}
-
-.projects-scroll-wrapper::-webkit-scrollbar{
-display:none;
-}
-
-.project-card{
-position:relative;
-border-radius:16px;
-overflow:hidden;
-aspect-ratio:1;
-scroll-snap-align:start;
-cursor:pointer;
-text-decoration:none;
-color:inherit;
-}
-
-.project-card img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:all .4s ease;
-}
-
-.project-card:hover img{
-filter:blur(4px) brightness(.55);
-transform:scale(1.08);
-}
-
-.project-overlay{
-position:absolute;
-bottom:0;
-left:0;
-right:0;
-padding:14px;
-color:white;
-background:linear-gradient(transparent,rgba(0,0,0,0.85));
-}
-
-/* ---------------- TOOLS ---------------- */
+/* TOOLS GRID */
 
 .tools-grid{
 display:grid;
-grid-template-columns:repeat(3,80px);
+grid-template-columns:repeat(auto-fit,80px);
 gap:16px;
 justify-content:center;
+margin:auto;
 }
 
 .tool-tile{
@@ -290,7 +179,9 @@ align-items:center;
 justify-content:center;
 cursor:pointer;
 transition:.25s;
-position:relative;
+color:white;
+font-size:12px;
+text-align:center;
 }
 
 .tool-tile:hover{
@@ -298,30 +189,28 @@ transform:translateY(-4px);
 box-shadow:0 6px 18px rgba(74,144,226,.25);
 }
 
-.tool-logo{
-width:36px;
-height:36px;
-filter:brightness(0) invert(1);
+.tool-tile.active{
+background:#4a90e2;
 }
 
-.tool-details{
-position:absolute;
-top:90px;
-left:50%;
-transform:translateX(-50%);
-background:white;
-padding:10px;
-border-radius:10px;
-font-size:12px;
-display:none;
-box-shadow:0 10px 30px rgba(0,0,0,.2);
-}
+/* BRAND COLORS */
 
-.tool-tile.active .tool-details{
-display:block;
-}
+.tool-tile[data-tool="Python"].active{background:#3776AB;}
+.tool-tile[data-tool="R"].active{background:#276DC3;}
+.tool-tile[data-tool="SQL"].active{background:#F29111;}
+.tool-tile[data-tool="Tableau"].active{background:#E97627;}
+.tool-tile[data-tool="Microsoft Excel"].active{background:#217346;}
+.tool-tile[data-tool="Google Sheets"].active{background:#34A853;}
+.tool-tile[data-tool="plotly"].active{background:#636EFA;}
+.tool-tile[data-tool="ggplot2"].active{background:#3B7EA1;}
+.tool-tile[data-tool="dplyr"].active{background:#4E79A7;}
 
-/* ---------------- CERT ---------------- */
+/* CERT */
+
+.cert-column{
+display:flex;
+justify-content:flex-start;
+}
 
 .cert{
 background:white;
@@ -332,7 +221,7 @@ box-shadow:0 12px 30px rgba(0,0,0,0.08);
 max-width:220px;
 }
 
-/* ---------------- FOOTER ---------------- */
+/* FOOTER */
 
 footer{
 text-align:center;
@@ -373,43 +262,13 @@ color:white;
 
 <div class="main-layout">
 
-<!-- ABOUT -->
-<section id="about">
-<h2>About Me</h2>
-
-<div class="about-grid">
-
-<img src="profile.jpg" class="profile-pic">
-
-<div class="about-text">
-<p>Hi, I’m Alfred — an aspiring data analyst who enjoys turning messy data into clear insights and finding patterns that explain what’s really going on.</p>
-<p>Through hands-on projects, I’ve worked with Python, SQL, and visualization tools to analyze data and communicate findings in a way that’s easy to understand.</p>
-</div>
-
-</div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-<h2>Let's Connect!</h2>
-
-<form action="https://formsubmit.co/alfred.m.rico@gmail.com" method="POST" class="contact-form">
-<input type="text" name="name" placeholder="Name" required>
-<input type="email" name="email" placeholder="Email" required>
-<textarea name="message" rows="6" placeholder="Message" required></textarea>
-<button type="submit" class="apple-send">Send Message</button>
-</form>
-
-</section>
-
-<!-- PROJECTS -->
 <section id="projects">
 <h2>My Projects</h2>
 
 <div class="projects-container">
 <div class="projects-scroll-wrapper">
 
-<a href="https://shadyeggs.github.io/Fifa21-Data-Cleaning-Project/" target="_blank" class="project-card">
+<a class="project-card">
 <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6">
 <div class="project-overlay">
 <h3>Fifa 21 Data Cleaning</h3>
@@ -423,55 +282,26 @@ color:white;
 </div>
 </a>
 
-<a href="https://public.tableau.com/app/profile/alfred.rico/viz/CyclisticCaseStudy_17031395269510/Dashboard1" target="_blank" class="project-card">
+<a class="project-card">
 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
 <div class="project-overlay">
 <h3>Cyclistic Case Study</h3>
 <ul>
 <li>Tableau</li>
 <li>SQL</li>
-<li>Excel</li>
+<li>Microsoft Excel</li>
+<li>Google Sheets</li>
 </ul>
 </div>
 </a>
 
 </div>
 </div>
-
 </section>
 
-<!-- TOOLS -->
 <section id="tools">
 <h2>Tools</h2>
-
-<div class="tools-grid">
-
-<div class="tool-tile">
-<img class="tool-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
-<div class="tool-details">
-<strong>Python</strong><br>
-NumPy<br>Pandas<br>Matplotlib<br>Seaborn
-</div>
-</div>
-
-<div class="tool-tile">
-<img class="tool-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg">
-<div class="tool-details">
-<strong>SQL</strong><br>
-BigQuery<br>Joins<br>Aggregations
-</div>
-</div>
-
-<div class="tool-tile">
-<img class="tool-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg">
-<div class="tool-details">
-<strong>R</strong><br>
-tidyr<br>dplyr<br>ggplot2
-</div>
-</div>
-
-</div>
-
+<div id="tools-grid" class="tools-grid"></div>
 </section>
 
 </div>
@@ -482,12 +312,98 @@ tidyr<br>dplyr<br>ggplot2
 
 <script>
 
-/* TOOL TILE INTERACTION */
+/* HERO ANIMATION (UNCHANGED) */
 
-document.querySelectorAll(".tool-tile").forEach(tile=>{
-tile.addEventListener("click",()=>{
-tile.classList.toggle("active")
+const canvas=document.getElementById("dashboardCanvas")
+const ctx=canvas.getContext("2d")
+
+let bars=[]
+let particles=[]
+
+const spacing=28
+const barWidth=18
+
+const palette=[
+"rgba(52,152,219,0.45)",
+"rgba(26,188,156,0.45)",
+"rgba(160,160,160,0.45)"
+]
+
+function setupCanvas(){
+
+const hero=document.querySelector(".hero")
+
+canvas.width=hero.offsetWidth
+canvas.height=hero.offsetHeight
+
+bars=[]
+particles=[]
+
+const count=Math.floor(canvas.width/spacing)
+const totalWidth=count*spacing
+const offsetX=(canvas.width-totalWidth)/2
+
+for(let i=0;i<count;i++){
+
+const h=Math.random()*120+60
+
+bars.push({
+x:offsetX + i*spacing,
+height:h,
+target:h,
+color:palette[Math.floor(Math.random()*palette.length)]
 })
+
+}
+
+}
+
+setupCanvas()
+
+/* TOOL FILTER SYSTEM */
+
+const toolSet=new Set()
+const projectCards=document.querySelectorAll(".project-card")
+
+projectCards.forEach(card=>{
+card.querySelectorAll("ul li").forEach(tool=>{
+toolSet.add(tool.textContent.trim())
+})
+})
+
+const grid=document.getElementById("tools-grid")
+
+toolSet.forEach(tool=>{
+
+const tile=document.createElement("div")
+
+tile.className="tool-tile"
+tile.textContent=tool
+tile.dataset.tool=tool
+
+tile.addEventListener("click",()=>{
+
+tile.classList.toggle("active")
+
+const activeTools=[...document.querySelectorAll(".tool-tile.active")]
+.map(t=>t.textContent)
+
+projectCards.forEach(card=>{
+
+const cardTools=[...card.querySelectorAll("ul li")]
+.map(t=>t.textContent)
+
+const match=activeTools.length===0 ||
+activeTools.some(t=>cardTools.includes(t))
+
+card.classList.toggle("hidden",!match)
+
+})
+
+})
+
+grid.appendChild(tile)
+
 })
 
 </script>
