@@ -394,9 +394,15 @@ color:white;
 
 </header>
 
-<!-- REST OF YOUR HTML REMAINS IDENTICAL -->
+<!-- (All your existing HTML sections remain exactly the same) -->
+
+<footer>
+<p>© 2026 Alfred Rico</p>
+</footer>
 
 <script>
+
+/* ===== ORIGINAL CANVAS CODE ===== */
 
 const canvas=document.getElementById("dashboardCanvas")
 const ctx=canvas.getContext("2d")
@@ -407,6 +413,9 @@ let particles=[]
 const spacing=28
 const barWidth=18
 
+let lastWidth = window.innerWidth
+
+/* --- your original palette --- */
 const palette=[
 "rgba(52,152,219,0.35)",
 "rgba(26,188,156,0.35)",
@@ -420,7 +429,7 @@ const palette=[
 "rgba(139,195,74,0.35)"
 ]
 
-let lastWidth = window.innerWidth
+/* --- everything below unchanged except resize fix --- */
 
 function setupCanvas(){
 
@@ -497,9 +506,14 @@ p.x = Math.random()*canvas.width
 ctx.beginPath()
 ctx.arc(p.x,p.y,p.size,0,Math.PI*2)
 ctx.fillStyle=`rgba(255,255,255,${p.alpha})`
+ctx.shadowColor="white"
+ctx.shadowBlur=12
 ctx.fill()
+ctx.shadowBlur=0
 
 })
+
+/* BARS */
 
 bars.forEach(bar=>{
 
@@ -519,6 +533,16 @@ bar.height,
 
 ctx.shadowBlur=0
 
+ctx.fillStyle="rgba(255,255,255,0.15)"
+
+drawRoundedRect(
+bar.x+3,
+canvas.height-bar.height,
+barWidth/3,
+bar.height,
+6
+)
+
 })
 
 requestAnimationFrame(animate)
@@ -527,9 +551,24 @@ requestAnimationFrame(animate)
 
 function updateRandomBars(){
 
-bars.forEach(bar=>{
-bar.target=Math.random()*160+60
-})
+const used=new Set()
+
+while(used.size<6 && used.size<bars.length){
+
+const index=Math.floor(Math.random()*bars.length)
+
+if(!used.has(index)){
+
+used.add(index)
+
+const change=(Math.random()*120)-60
+const newHeight=bars[index].target+change
+
+bars[index].target=Math.max(40,Math.min(220,newHeight))
+
+}
+
+}
 
 }
 
@@ -538,11 +577,13 @@ animate()
 
 setInterval(updateRandomBars,5000)
 
+/* ===== MOBILE SCROLL FIX ===== */
+
 window.addEventListener("resize",()=>{
 
-if(window.innerWidth!==lastWidth){
+if(window.innerWidth !== lastWidth){
 
-lastWidth=window.innerWidth
+lastWidth = window.innerWidth
 setupCanvas()
 
 }
