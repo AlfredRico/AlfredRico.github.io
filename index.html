@@ -595,8 +595,8 @@ Issued via Coursera
 <p>© 2026 Alfred Rico</p>
 </footer>
 
-<!-- HERO ANIMATION SCRIPT -->
 <script>
+
 const canvas=document.getElementById("dashboardCanvas")
 const ctx=canvas.getContext("2d")
 
@@ -607,12 +607,9 @@ const spacing=28
 const barWidth=18
 
 const palette=[
-"rgba(52,152,219,0.35)",
-"rgba(26,188,156,0.35)",
-"rgba(46,204,113,0.35)",
-"rgba(230,126,34,0.35)",
-"rgba(241,196,15,0.35)",
-"rgba(155,89,182,0.35)"
+"rgba(52,152,219,0.45)",   // blue
+"rgba(26,188,156,0.45)",   // teal
+"rgba(160,160,160,0.45)"   // gray
 ]
 
 function setupCanvas(){
@@ -700,8 +697,6 @@ bars.forEach(bar=>{
 bar.height+=(bar.target-bar.height)*0.05
 
 ctx.fillStyle=bar.color
-ctx.shadowColor=bar.color
-ctx.shadowBlur=8
 
 drawRoundedRect(
 bar.x,
@@ -710,8 +705,6 @@ barWidth,
 bar.height,
 6
 )
-
-ctx.shadowBlur=0
 
 ctx.fillStyle="rgba(255,255,255,0.15)"
 
@@ -758,6 +751,7 @@ animate()
 setInterval(updateRandomBars,5000)
 
 window.addEventListener("resize",setupCanvas)
+
 </script>
 
 </body>
