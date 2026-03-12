@@ -538,13 +538,17 @@ margin:auto;
 <i class="fa-brands fa-python"></i>
 <strong>Python</strong>
 </div>
+
 <p><strong>Data Science and Analysis</strong><br>
 - NumPy &nbsp;&nbsp; - Pandas<br>
 - Matplotlib &nbsp;&nbsp; - Seaborn</p>
+
 <p><strong>Machine Learning</strong><br>
 Scikit-learn</p>
+
 <p><strong>Visualization</strong><br>
 Plotly</p>
+
 </div>
 
 <div class="skill-card small"><i class="fa-solid fa-database"></i>SQL</div>
@@ -593,7 +597,167 @@ Issued via Coursera
 
 <!-- HERO ANIMATION SCRIPT -->
 <script>
-/* Your original hero animation script remains unchanged */
+const canvas=document.getElementById("dashboardCanvas")
+const ctx=canvas.getContext("2d")
+
+let bars=[]
+let particles=[]
+
+const spacing=28
+const barWidth=18
+
+const palette=[
+"rgba(52,152,219,0.35)",
+"rgba(26,188,156,0.35)",
+"rgba(46,204,113,0.35)",
+"rgba(230,126,34,0.35)",
+"rgba(241,196,15,0.35)",
+"rgba(155,89,182,0.35)"
+]
+
+function setupCanvas(){
+
+const hero=document.querySelector(".hero")
+
+canvas.width=hero.offsetWidth
+canvas.height=hero.offsetHeight
+
+bars=[]
+particles=[]
+
+const count=Math.floor(canvas.width/spacing)
+const totalWidth=count*spacing
+const offsetX=(canvas.width-totalWidth)/2
+
+for(let i=0;i<count;i++){
+
+const h=Math.random()*120+60
+
+bars.push({
+x:offsetX + i*spacing,
+height:h,
+target:h,
+color:palette[Math.floor(Math.random()*palette.length)]
+})
+
+}
+
+const particleCount = window.innerWidth < 700 ? 18 : 35
+
+for(let i=0;i<particleCount;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*2+1,
+speed:Math.random()*0.4+0.1
+})
+}
+
+}
+
+function drawParticles(){
+
+particles.forEach(p=>{
+
+p.y -= p.speed
+
+if(p.y < 0){
+p.y = canvas.height
+p.x = Math.random()*canvas.width
+}
+
+ctx.fillStyle="rgba(255,255,255,0.25)"
+ctx.beginPath()
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2)
+ctx.fill()
+
+})
+
+}
+
+function drawRoundedRect(x,y,width,height,radius){
+
+ctx.beginPath()
+ctx.moveTo(x,y+radius)
+ctx.lineTo(x,y+height)
+ctx.lineTo(x+width,y+height)
+ctx.lineTo(x+width,y+radius)
+ctx.quadraticCurveTo(x+width,y,x+width-radius,y)
+ctx.lineTo(x+radius,y)
+ctx.quadraticCurveTo(x,y,x,y+radius)
+ctx.fill()
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+drawParticles()
+
+bars.forEach(bar=>{
+
+bar.height+=(bar.target-bar.height)*0.05
+
+ctx.fillStyle=bar.color
+ctx.shadowColor=bar.color
+ctx.shadowBlur=8
+
+drawRoundedRect(
+bar.x,
+canvas.height-bar.height,
+barWidth,
+bar.height,
+6
+)
+
+ctx.shadowBlur=0
+
+ctx.fillStyle="rgba(255,255,255,0.15)"
+
+drawRoundedRect(
+bar.x+3,
+canvas.height-bar.height,
+barWidth/3,
+bar.height,
+6
+)
+
+})
+
+requestAnimationFrame(animate)
+
+}
+
+function updateRandomBars(){
+
+const used=new Set()
+
+while(used.size<6 && used.size<bars.length){
+
+const index=Math.floor(Math.random()*bars.length)
+
+if(!used.has(index)){
+
+used.add(index)
+
+const change=(Math.random()*120)-60
+const newHeight=bars[index].target+change
+
+bars[index].target=Math.max(40,Math.min(220,newHeight))
+
+}
+
+}
+
+}
+
+setupCanvas()
+animate()
+
+setInterval(updateRandomBars,5000)
+
+window.addEventListener("resize",setupCanvas)
 </script>
 
 </body>
