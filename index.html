@@ -51,30 +51,6 @@ radial-gradient(circle at 80% 70%, rgba(180,180,180,.25), transparent 45%),
 linear-gradient(135deg,#020617,#111827 60%,#1f2933);
 }
 
-.hero::before{
-content:"";
-position:absolute;
-inset:0;
-background:
-radial-gradient(circle at 50% 80%,
-rgba(200,200,200,0.25) 0%,
-rgba(200,200,200,0.10) 25%,
-transparent 60%);
-z-index:0;
-pointer-events:none;
-}
-
-.hero::after{
-content:"";
-position:absolute;
-inset:0;
-background-image:
-linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-background-size:40px 40px;
-z-index:0;
-}
-
 #dashboardCanvas{
 position:absolute;
 top:0;
@@ -312,32 +288,20 @@ font-size:10px;
 }
 
 .project-tags span{
-background:rgba(255,255,255,0.2);
 padding:2px 6px;
 border-radius:6px;
+color:white;
+font-weight:600;
 }
 
-/* CERT */
+/* TOOL COLORS */
 
-.cert-column{
-display:flex;
-justify-content:center;
-}
-
-.cert{
-background:white;
-border-radius:14px;
-padding:14px 18px;
-text-align:center;
-box-shadow:0 12px 30px rgba(0,0,0,0.08);
-max-width:220px;
-transition:all .25s ease;
-}
-
-.cert:hover{
-transform:translateY(-6px) scale(1.03);
-box-shadow:0 20px 40px rgba(0,0,0,0.15);
-}
+.tag-python{background:#3776AB;}
+.tag-r{background:#276DC3;}
+.tag-sql{background:#008C95;}
+.tag-tableau{background:#E97627;}
+.tag-excel{background:#217346;}
+.tag-sheets{background:#34A853;}
 
 footer{
 text-align:center;
@@ -352,7 +316,6 @@ color:white;
 <body>
 
 <header class="hero">
-
 <canvas id="dashboardCanvas"></canvas>
 
 <div class="container hero-content">
@@ -376,8 +339,6 @@ color:white;
 
 <div class="main-layout">
 
-<!-- ABOUT -->
-
 <section id="about">
 <h2>About Me</h2>
 
@@ -388,18 +349,13 @@ color:white;
 </div>
 
 <div class="about-text">
-
 <p>Hi, I’m Alfred — an aspiring data analyst who enjoys turning messy data into clear insights and finding patterns that explain what’s really going on.</p>
-
 <p>Through hands-on projects, I’ve worked with Python, SQL, and visualization tools to analyze data and communicate findings in a way that’s easy to understand.</p>
-
 <p>I'm always looking for new problems to explore and new ways to learn.</p>
-
 </div>
+
 </div>
 </section>
-
-<!-- CONTACT -->
 
 <section id="contact">
 <h2>Let's Connect!</h2>
@@ -415,8 +371,6 @@ color:white;
 
 </form>
 </section>
-
-<!-- PROJECTS -->
 
 <section id="projects">
 
@@ -438,8 +392,6 @@ color:white;
 
 <div class="projects-grid" id="projectsGrid">
 
-<!-- EXISTING PROJECTS -->
-
 <a class="project-card"
 data-tags="r"
 href="https://shadyeggs.github.io/Fifa21-Data-Cleaning-Project/"
@@ -449,14 +401,12 @@ target="_blank">
 
 <div class="project-overlay">
 <h3>Fifa 21 Data Cleaning</h3>
+
 <div class="project-tags">
-<span>R</span>
-<span>dplyr</span>
-<span>tidyr</span>
-<span>ggplot2</span>
-</div>
+<span class="tag-r">R</span>
 </div>
 
+</div>
 </a>
 
 <a class="project-card"
@@ -468,21 +418,21 @@ target="_blank">
 
 <div class="project-overlay">
 <h3>Cyclistic Case Study</h3>
+
 <div class="project-tags">
-<span>SQL</span>
-<span>Tableau</span>
-<span>Excel</span>
-<span>Google Sheets</span>
-</div>
+<span class="tag-sql">SQL</span>
+<span class="tag-tableau">Tableau</span>
+<span class="tag-excel">Excel</span>
+<span class="tag-sheets">Sheets</span>
 </div>
 
+</div>
 </a>
 
 </div>
 </div>
-</section>
 
-<!-- CERTIFICATIONS -->
+</section>
 
 <section id="certifications">
 
@@ -522,186 +472,33 @@ Issued via Coursera
 
 <script>
 
-/* HERO ANIMATION */
+/* PROJECT FILTERING */
 
-const canvas=document.getElementById("dashboardCanvas")
-const ctx=canvas.getContext("2d")
+const filterButtons=document.querySelectorAll(".filter-btn")
+const projects=document.querySelectorAll(".project-card")
 
-let bars=[]
-let particles=[]
+filterButtons.forEach(btn=>{
 
-const spacing=28
-const barWidth=18
+btn.addEventListener("click",()=>{
 
-const palette=[
-"rgba(52,152,219,0.45)",
-"rgba(26,188,156,0.45)",
-"rgba(160,160,160,0.45)"
-]
+filterButtons.forEach(b=>b.classList.remove("active"))
+btn.classList.add("active")
 
-function setupCanvas(){
+const filter=btn.dataset.filter
 
-const hero=document.querySelector(".hero")
+projects.forEach(card=>{
 
-canvas.width=hero.offsetWidth
-canvas.height=hero.offsetHeight
+const tags=card.dataset.tags
 
-bars=[]
-particles=[]
-
-const count=Math.floor(canvas.width/spacing)
-const totalWidth=count*spacing
-const offsetX=(canvas.width-totalWidth)/2
-
-for(let i=0;i<count;i++){
-
-const h=Math.random()*120+60
-
-bars.push({
-x:offsetX+i*spacing,
-height:h,
-target:h,
-color:palette[Math.floor(Math.random()*palette.length)]
-})
-
+if(filter==="all" || tags.includes(filter)){
+card.style.display="block"
+}else{
+card.style.display="none"
 }
-
-for(let i=0;i<30;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-size:Math.random()*2+1,
-speed:Math.random()*0.4+0.1
-})
-}
-
-}
-
-function drawParticles(){
-
-particles.forEach(p=>{
-
-p.y -= p.speed
-
-if(p.y < 0){
-p.y = canvas.height
-p.x = Math.random()*canvas.width
-}
-
-ctx.fillStyle="rgba(255,255,255,0.25)"
-ctx.beginPath()
-ctx.arc(p.x,p.y,p.size,0,Math.PI*2)
-ctx.fill()
 
 })
 
-}
-
-function drawRoundedRect(x,y,width,height,radius){
-
-ctx.beginPath()
-ctx.moveTo(x,y+radius)
-ctx.lineTo(x,y+height)
-ctx.lineTo(x+width,y+height)
-ctx.lineTo(x+width,y+radius)
-ctx.quadraticCurveTo(x+width,y,x+width-radius,y)
-ctx.lineTo(x+radius,y)
-ctx.quadraticCurveTo(x,y,x,y+radius)
-ctx.fill()
-
-}
-
-function animate(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height)
-
-drawParticles()
-
-bars.forEach(bar=>{
-
-bar.height+=(bar.target-bar.height)*0.05
-
-ctx.fillStyle=bar.color
-
-drawRoundedRect(
-bar.x,
-canvas.height-bar.height,
-barWidth,
-bar.height,
-6
-)
-
 })
-
-requestAnimationFrame(animate)
-
-}
-
-function updateRandomBars(){
-
-const used=new Set()
-
-while(used.size<6 && used.size<bars.length){
-
-const index=Math.floor(Math.random()*bars.length)
-
-if(!used.has(index)){
-
-used.add(index)
-
-const change=(Math.random()*120)-60
-const newHeight=bars[index].target+change
-
-bars[index].target=Math.max(40,Math.min(220,newHeight))
-
-}
-
-}
-
-}
-
-setupCanvas()
-animate()
-
-setInterval(updateRandomBars,5000)
-
-window.addEventListener("resize",setupCanvas)
-
-/* INFINITE PROJECT SCROLL */
-
-const grid=document.getElementById("projectsGrid")
-const windowBox=document.querySelector(".projects-window")
-
-function createProject(){
-
-const card=document.createElement("a")
-card.className="project-card"
-card.href="#"
-
-card.innerHTML=`
-<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
-<div class="project-overlay">
-<h3>Future Project</h3>
-<div class="project-tags">
-<span>Python</span>
-<span>Pandas</span>
-</div>
-</div>
-`
-
-grid.appendChild(card)
-
-}
-
-windowBox.addEventListener("scroll",()=>{
-
-if(windowBox.scrollTop + windowBox.clientHeight >= windowBox.scrollHeight-5){
-
-for(let i=0;i<4;i++){
-createProject()
-}
-
-}
 
 })
 
