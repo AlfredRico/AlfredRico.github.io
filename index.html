@@ -152,21 +152,121 @@ margin-bottom:30px;
 color:white;
 }
 
-/* PROJECT FILTER EFFECT */
+/* ABOUT */
+
+.about-grid{
+display:grid;
+grid-template-columns:200px 1fr;
+gap:30px;
+}
+
+.profile-pic{
+width:180px;
+height:180px;
+object-fit:cover;
+border-radius:50%;
+border:4px solid #4a90e2;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* CONTACT */
+
+.contact-form{
+background:white;
+padding:40px;
+border-radius:16px;
+box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+.contact-form input,
+.contact-form textarea{
+width:100%;
+padding:12px;
+margin-top:6px;
+margin-bottom:15px;
+border-radius:8px;
+border:1px solid #ddd;
+}
+
+.apple-send{
+width:100%;
+padding:14px;
+border:none;
+border-radius:999px;
+background:#111;
+color:white;
+cursor:pointer;
+}
+
+/* PROJECTS */
+
+.projects-container{
+display:flex;
+justify-content:center;
+}
+
+.projects-scroll-wrapper{
+display:grid;
+grid-auto-flow:column;
+grid-template-rows:repeat(2,1fr);
+grid-auto-columns:170px;
+gap:20px;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+padding-bottom:10px;
+}
+
+.projects-scroll-wrapper::-webkit-scrollbar{
+display:none;
+}
+
+.project-card{
+position:relative;
+border-radius:16px;
+overflow:hidden;
+aspect-ratio:1;
+scroll-snap-align:start;
+cursor:pointer;
+text-decoration:none;
+color:inherit;
+}
+
+.project-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:all .4s ease;
+}
+
+.project-card:hover img{
+filter:blur(4px) brightness(.55);
+transform:scale(1.08);
+}
+
+.project-overlay{
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+padding:14px;
+color:white;
+background:linear-gradient(transparent,rgba(0,0,0,0.85));
+}
+
+/* PROJECT FILTER */
 
 .project-card.hidden{
 opacity:.2;
 filter:grayscale(100%);
 }
 
-/* TOOL FILTER GRID */
+/* TOOLS */
 
 .tools-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,90px);
 gap:16px;
 justify-content:center;
-margin:auto;
 }
 
 .tool-tile{
@@ -182,7 +282,6 @@ transition:.25s;
 color:white;
 font-size:12px;
 text-align:center;
-padding:5px;
 }
 
 .tool-tile:hover{
@@ -190,9 +289,7 @@ transform:translateY(-4px);
 box-shadow:0 6px 18px rgba(74,144,226,.25);
 }
 
-.tool-tile.active{
-background:#4a90e2;
-}
+.tool-tile.active{background:#4a90e2;}
 
 /* BRAND COLORS */
 
@@ -205,22 +302,6 @@ background:#4a90e2;
 .tool-tile[data-tool="plotly"].active{background:#636EFA;}
 .tool-tile[data-tool="ggplot2"].active{background:#3B7EA1;}
 .tool-tile[data-tool="dplyr"].active{background:#4E79A7;}
-
-/* ABOUT */
-
-.about-grid{
-display:grid;
-grid-template-columns:200px 1fr;
-gap:30px;
-}
-
-.profile-pic{
-width:180px;
-height:180px;
-object-fit:cover;
-border-radius:50%;
-border:4px solid #4a90e2;
-}
 
 /* CERT */
 
@@ -247,13 +328,26 @@ background:#111;
 color:white;
 }
 
+/* MOBILE */
+
+@media (max-width:900px){
+.main-layout{
+grid-template-columns:1fr;
+grid-template-areas:
+"about"
+"contact"
+"projects"
+"tools"
+"certifications";
+}
+}
+
 </style>
 </head>
 
 <body>
 
 <header class="hero">
-
 <canvas id="dashboardCanvas"></canvas>
 
 <div class="container hero-content">
@@ -264,9 +358,7 @@ color:white;
 <a href="https://www.linkedin.com/in/alfred-rico-3992338a/" target="_blank"><i class="fab fa-linkedin"></i></a>
 <a href="https://github.com/ShadyEggs" target="_blank"><i class="fab fa-github"></i></a>
 </div>
-
 </div>
-
 </header>
 
 <nav>
@@ -279,7 +371,6 @@ color:white;
 
 <div class="main-layout">
 
-<!-- ABOUT -->
 <section id="about">
 <h2>About Me</h2>
 <div class="about-grid">
@@ -291,14 +382,23 @@ color:white;
 </div>
 </section>
 
-<!-- PROJECTS -->
+<section id="contact">
+<h2>Let's Connect!</h2>
+<form action="https://formsubmit.co/alfred.m.rico@gmail.com" method="POST" class="contact-form">
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="message" rows="6" placeholder="Message" required></textarea>
+<button type="submit" class="apple-send">Send Message</button>
+</form>
+</section>
+
 <section id="projects">
 <h2>My Projects</h2>
 
 <div class="projects-container">
 <div class="projects-scroll-wrapper">
 
-<a class="project-card">
+<a href="https://shadyeggs.github.io/Fifa21-Data-Cleaning-Project/" target="_blank" class="project-card">
 <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6">
 <div class="project-overlay">
 <h3>Fifa 21 Data Cleaning</h3>
@@ -312,7 +412,7 @@ color:white;
 </div>
 </a>
 
-<a class="project-card">
+<a href="https://public.tableau.com/app/profile/alfred.rico/viz/CyclisticCaseStudy_17031395269510/Dashboard1" target="_blank" class="project-card">
 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
 <div class="project-overlay">
 <h3>Cyclistic Case Study</h3>
@@ -329,10 +429,26 @@ color:white;
 </div>
 </section>
 
-<!-- TOOLS -->
 <section id="tools">
 <h2>Tools</h2>
 <div id="tools-grid" class="tools-grid"></div>
+</section>
+
+<section id="certifications">
+<h2>Certifications</h2>
+<div class="cert-column">
+<a href="https://www.coursera.org/account/accomplishments/professional-cert/MSCMJL682NT9" target="_blank">
+<div class="cert">
+<img style="height:24px" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
+<div style="font-weight:700;font-size:14px;">
+Google Data Analytics Professional Certificate
+</div>
+<div style="font-size:11px;color:#666;">
+Issued via Coursera
+</div>
+</div>
+</a>
+</div>
 </section>
 
 </div>
@@ -342,54 +458,6 @@ color:white;
 </footer>
 
 <script>
-
-/* HERO ANIMATION — UNCHANGED */
-
-const canvas=document.getElementById("dashboardCanvas")
-const ctx=canvas.getContext("2d")
-
-let bars=[]
-let particles=[]
-
-const spacing=28
-const barWidth=18
-
-const palette=[
-"rgba(52,152,219,0.45)",
-"rgba(26,188,156,0.45)",
-"rgba(160,160,160,0.45)"
-]
-
-function setupCanvas(){
-
-const hero=document.querySelector(".hero")
-
-canvas.width=hero.offsetWidth
-canvas.height=hero.offsetHeight
-
-bars=[]
-particles=[]
-
-const count=Math.floor(canvas.width/spacing)
-const totalWidth=count*spacing
-const offsetX=(canvas.width-totalWidth)/2
-
-for(let i=0;i<count;i++){
-
-const h=Math.random()*120+60
-
-bars.push({
-x:offsetX + i*spacing,
-height:h,
-target:h,
-color:palette[Math.floor(Math.random()*palette.length)]
-})
-
-}
-
-}
-
-setupCanvas()
 
 /* TOOL FILTER SYSTEM */
 
