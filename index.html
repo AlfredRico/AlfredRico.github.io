@@ -152,80 +152,6 @@ margin-bottom:30px;
 color:white;
 }
 
-/* ABOUT */
-
-.about-grid{
-display:grid;
-grid-template-columns:200px 1fr;
-gap:30px;
-}
-
-.profile-pic{
-width:180px;
-height:180px;
-object-fit:cover;
-border-radius:50%;
-border:4px solid #4a90e2;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
-transition:transform .3s ease;
-}
-
-.profile-pic:hover{
-transform:scale(1.05);
-}
-
-.about-text{
-position:relative;
-background:white;
-padding:30px;
-border-radius:16px;
-box-shadow:0 20px 50px rgba(0,0,0,0.08);
-}
-
-.about-text::before{
-content:"";
-position:absolute;
-left:-14px;
-top:80px;
-border-top:12px solid transparent;
-border-bottom:12px solid transparent;
-border-right:14px solid white;
-}
-
-.about-text p{
-text-indent:20px;
-line-height:1.7;
-}
-
-/* CONTACT */
-
-.contact-form{
-background:white;
-padding:40px;
-border-radius:16px;
-box-shadow:0 15px 40px rgba(0,0,0,0.08);
-}
-
-.contact-form input,
-.contact-form textarea{
-width:100%;
-padding:12px;
-margin-top:6px;
-margin-bottom:15px;
-border-radius:8px;
-border:1px solid #ddd;
-}
-
-.apple-send{
-width:100%;
-padding:14px;
-border:none;
-border-radius:999px;
-background:#111;
-color:white;
-cursor:pointer;
-}
-
 /* PROJECTS */
 
 .projects-container{
@@ -247,8 +173,6 @@ padding-bottom:10px;
 .projects-scroll-wrapper::-webkit-scrollbar{
 display:none;
 }
-
-/* clickable card wrapper */
 
 .project-link{
 text-decoration:none;
@@ -297,86 +221,11 @@ margin:0 0 6px 0;
 font-size:15px;
 }
 
-.project-overlay p{
+.project-overlay ul{
+margin:0;
+padding-left:16px;
 font-size:11px;
-margin:0 0 6px 0;
-}
-
-.project-tools{
-font-size:10px;
-opacity:.85;
-}
-
-/* TOOLS */
-
-.tools-column{
-display:grid;
-grid-template-columns:1fr 90px 90px;
-grid-template-rows:1fr 1fr;
-gap:12px;
-max-width:420px;
-margin-left:auto;
-}
-
-.python-tile{
-grid-row:1/span 2;
-text-align:left;
-}
-
-.python-header{
-text-align:center;
-margin-bottom:10px;
-}
-
-.python-header i{
-display:block;
-font-size:20px;
-margin-bottom:4px;
-}
-
-.skill-card{
-background:white;
-border-radius:12px;
-padding:16px;
-box-shadow:0 6px 16px rgba(0,0,0,0.06);
-font-size:13px;
-}
-
-.skill-card.small{
-aspect-ratio:1;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-}
-
-.skill-card i{
-font-size:18px;
-color:#4a90e2;
-margin-bottom:6px;
-}
-
-/* CERT */
-
-.cert-column{
-display:flex;
-justify-content:flex-start;
-}
-
-.cert{
-background:white;
-border-radius:14px;
-padding:14px 18px;
-text-align:center;
-box-shadow:0 12px 30px rgba(0,0,0,0.08);
-max-width:220px;
-transition:all .25s ease;
-}
-
-.cert:hover{
-transform:translateY(-6px) scale(1.03);
-box-shadow:0 20px 40px rgba(0,0,0,0.15);
+line-height:1.3;
 }
 
 /* FOOTER */
@@ -400,20 +249,6 @@ grid-template-areas:
 "tools"
 "certifications";
 }
-}
-
-@media (max-width:700px){
-.about-grid{
-grid-template-columns:1fr;
-text-align:center;
-}
-.about-text::before{display:none;}
-.profile-pic{margin:auto;}
-.tools-column{
-grid-template-columns:1fr 1fr;
-margin:auto;
-}
-.python-tile{grid-column:1 / -1;}
 }
 
 @media (max-width:600px){
@@ -469,13 +304,11 @@ margin:auto;
 
 <h3>FIFA 21 Player Data Cleaning</h3>
 
-<p>
-Cleaned and standardized a large FIFA player dataset in R, fixing inconsistent formats, handling missing values, and preparing the data for analysis.
-</p>
-
-<div class="project-tools">
-Tools: R • RStudio • Data Cleaning
-</div>
+<ul>
+<li>R</li>
+<li>dplyr</li>
+<li>tidyr</li>
+</ul>
 
 </div>
 </div>
@@ -484,8 +317,6 @@ Tools: R • RStudio • Data Cleaning
 </div>
 </div>
 </section>
-
-<!-- tools, certifications, footer etc remain unchanged -->
 
 </div>
 
