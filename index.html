@@ -22,7 +22,7 @@
 body{
 font-family:'Lato',sans-serif;
 margin:0;
-background:#e2e2e7;
+background:#1f2933;
 scroll-behavior:smooth;
 }
 
@@ -149,6 +149,7 @@ gap:40px;
 h2{
 text-align:center;
 margin-bottom:30px;
+color:white;
 }
 
 /* ABOUT */
@@ -565,110 +566,6 @@ Issued via Coursera
 <footer>
 <p>© 2026 Alfred Rico</p>
 </footer>
-
-<script>
-
-const canvas=document.getElementById("dashboardCanvas")
-const ctx=canvas.getContext("2d")
-
-let bars=[]
-const spacing=28
-const barWidth=18
-
-function setupCanvas(){
-
-const hero=document.querySelector(".hero")
-
-canvas.width=hero.offsetWidth
-canvas.height=hero.offsetHeight
-
-bars=[]
-
-const count=Math.floor(canvas.width/spacing)
-
-for(let i=0;i<count;i++){
-
-const h=Math.random()*120+60
-
-bars.push({
-x:i*spacing,
-height:h,
-target:h
-})
-
-}
-
-}
-
-function drawRoundedRect(x,y,width,height,radius){
-
-ctx.beginPath()
-ctx.moveTo(x,y+radius)
-ctx.lineTo(x,y+height)
-ctx.lineTo(x+width,y+height)
-ctx.lineTo(x+width,y+radius)
-ctx.quadraticCurveTo(x+width,y,x+width-radius,y)
-ctx.lineTo(x+radius,y)
-ctx.quadraticCurveTo(x,y,x,y+radius)
-ctx.fill()
-
-}
-
-function animate(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height)
-
-bars.forEach(bar=>{
-
-bar.height+=(bar.target-bar.height)*0.05
-
-ctx.fillStyle="rgba(74,144,226,0.75)"
-
-drawRoundedRect(
-bar.x,
-canvas.height-bar.height,
-barWidth,
-bar.height,
-6
-)
-
-})
-
-requestAnimationFrame(animate)
-
-}
-
-function updateRandomBars(){
-
-const used=new Set()
-
-while(used.size<6 && used.size<bars.length){
-
-const index=Math.floor(Math.random()*bars.length)
-
-if(!used.has(index)){
-
-used.add(index)
-
-const change=(Math.random()*120)-60
-const newHeight=bars[index].target+change
-
-bars[index].target=Math.max(40,Math.min(220,newHeight))
-
-}
-
-}
-
-}
-
-setupCanvas()
-animate()
-
-setInterval(updateRandomBars,5000)
-
-window.addEventListener("resize",setupCanvas)
-
-</script>
 
 </body>
 </html>
