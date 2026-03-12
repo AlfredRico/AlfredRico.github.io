@@ -136,14 +136,13 @@ grid-template-columns:1fr 1fr;
 grid-template-areas:
 "about contact"
 "projects projects"
-"tools certifications";
+"certifications certifications";
 gap:40px;
 }
 
 #about{grid-area:about;}
 #contact{grid-area:contact;}
 #projects{grid-area:projects;}
-#tools{grid-area:tools;}
 #certifications{grid-area:certifications;}
 
 h2{
@@ -226,7 +225,7 @@ color:white;
 cursor:pointer;
 }
 
-/* FILTER BAR */
+/* FILTERS */
 
 .project-filters{
 display:flex;
@@ -244,7 +243,6 @@ background:#2f3a46;
 color:white;
 cursor:pointer;
 font-size:13px;
-transition:.2s;
 }
 
 .filter-btn.active{
@@ -322,61 +320,11 @@ padding:2px 6px;
 border-radius:6px;
 }
 
-/* TOOLS */
-
-.tools-column{
-display:grid;
-grid-template-columns:1fr 90px 90px;
-grid-template-rows:1fr 1fr;
-gap:12px;
-max-width:420px;
-margin-left:auto;
-}
-
-.python-tile{
-grid-row:1/span 2;
-text-align:left;
-}
-
-.python-header{
-text-align:center;
-margin-bottom:10px;
-}
-
-.python-header i{
-display:block;
-font-size:20px;
-margin-bottom:4px;
-}
-
-.skill-card{
-background:white;
-border-radius:12px;
-padding:16px;
-box-shadow:0 6px 16px rgba(0,0,0,0.06);
-font-size:13px;
-}
-
-.skill-card.small{
-aspect-ratio:1;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-}
-
-.skill-card i{
-font-size:18px;
-color:#4a90e2;
-margin-bottom:6px;
-}
-
 /* CERT */
 
 .cert-column{
 display:flex;
-justify-content:flex-start;
+justify-content:center;
 }
 
 .cert{
@@ -399,6 +347,19 @@ text-align:center;
 padding:14px;
 background:#111;
 color:white;
+}
+
+/* MOBILE */
+
+@media (max-width:900px){
+.main-layout{
+grid-template-columns:1fr;
+grid-template-areas:
+"about"
+"contact"
+"projects"
+"certifications";
+}
 }
 
 </style>
@@ -425,12 +386,35 @@ color:white;
 <nav>
 <ul>
 <li><a href="#projects">Projects</a></li>
-<li><a href="#tools">Tools</a></li>
 <li><a href="#certifications">Certifications</a></li>
 </ul>
 </nav>
 
 <div class="main-layout">
+
+<section id="about">
+<h2>About Me</h2>
+<div class="about-grid">
+<div>
+<img src="profile.jpg" class="profile-pic">
+</div>
+<div class="about-text">
+<p>Hi, I’m Alfred — an aspiring data analyst who enjoys turning messy data into clear insights and finding patterns that explain what’s really going on.</p>
+<p>Through hands-on projects, I’ve worked with Python, SQL, and visualization tools to analyze data and communicate findings in a way that’s easy to understand.</p>
+<p>I'm always looking for new problems to explore and new ways to learn.</p>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Let's Connect!</h2>
+<form action="https://formsubmit.co/alfred.m.rico@gmail.com" method="POST" class="contact-form">
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="message" rows="6" placeholder="Message" required></textarea>
+<button type="submit" class="apple-send">Send Message</button>
+</form>
+</section>
 
 <section id="projects">
 
@@ -479,6 +463,35 @@ target="_blank">
 
 </section>
 
+<section id="certifications">
+<h2>Certifications</h2>
+
+<div class="cert-column">
+
+<a href="https://www.coursera.org/account/accomplishments/professional-cert/MSCMJL682NT9" target="_blank">
+
+<div class="cert">
+
+<img style="height:24px" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
+
+<div style="font-weight:700;font-size:14px;">
+Google Data Analytics Professional Certificate
+</div>
+
+<div style="font-size:11px;color:#666;">
+Issued via Coursera
+</div>
+
+<img style="height:16px" src="https://upload.wikimedia.org/wikipedia/commons/9/97/Coursera-Logo_600x600.svg">
+
+</div>
+
+</a>
+
+</div>
+
+</section>
+
 </div>
 
 <footer>
@@ -487,8 +500,10 @@ target="_blank">
 
 <script>
 
-const filterButtons = document.querySelectorAll(".filter-btn")
-const projects = document.querySelectorAll(".project-card")
+/* MULTI FILTER */
+
+const filterButtons=document.querySelectorAll(".filter-btn")
+const projects=document.querySelectorAll(".project-card")
 
 let activeFilters=[]
 
@@ -506,11 +521,11 @@ btn.classList.add("active")
 projects.forEach(card=>{
 card.classList.remove("hide")
 })
+
 return
 }
 
 btn.classList.toggle("active")
-
 document.querySelector('[data-filter="all"]').classList.remove("active")
 
 activeFilters=[...document.querySelectorAll(".filter-btn.active")]
@@ -520,7 +535,6 @@ activeFilters=[...document.querySelectorAll(".filter-btn.active")]
 projects.forEach(card=>{
 
 const tags=card.dataset.tags
-
 const match=activeFilters.every(f=>tags.includes(f))
 
 if(activeFilters.length===0 || match){
