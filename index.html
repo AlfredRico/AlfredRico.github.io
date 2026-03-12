@@ -19,6 +19,8 @@
 
 <style>
 
+/* ---------------- BODY ---------------- */
+
 body{
 font-family:'Lato',sans-serif;
 margin:0;
@@ -32,7 +34,7 @@ max-width:1100px;
 margin:auto;
 }
 
-/* HERO */
+/* ---------------- HERO ---------------- */
 
 .hero{
 position:relative;
@@ -103,7 +105,7 @@ margin:0 10px;
 font-size:22px;
 }
 
-/* NAV */
+/* ---------------- NAV ---------------- */
 
 nav{
 background:white;
@@ -125,7 +127,7 @@ color:#333;
 font-weight:600;
 }
 
-/* MAIN GRID */
+/* ---------------- GRID ---------------- */
 
 .main-layout{
 max-width:1100px;
@@ -152,7 +154,7 @@ margin-bottom:30px;
 color:white;
 }
 
-/* ABOUT */
+/* ---------------- ABOUT ---------------- */
 
 .about-grid{
 display:grid;
@@ -175,29 +177,17 @@ transform:scale(1.05);
 }
 
 .about-text{
-position:relative;
 background:white;
 padding:30px;
 border-radius:16px;
 box-shadow:0 20px 50px rgba(0,0,0,0.08);
 }
 
-.about-text::before{
-content:"";
-position:absolute;
-left:-14px;
-top:80px;
-border-top:12px solid transparent;
-border-bottom:12px solid transparent;
-border-right:14px solid white;
-}
-
 .about-text p{
-text-indent:20px;
 line-height:1.7;
 }
 
-/* CONTACT */
+/* ---------------- CONTACT ---------------- */
 
 .contact-form{
 background:white;
@@ -226,7 +216,7 @@ color:white;
 cursor:pointer;
 }
 
-/* PROJECTS */
+/* ---------------- PROJECTS ---------------- */
 
 .projects-container{
 display:flex;
@@ -281,26 +271,13 @@ color:white;
 background:linear-gradient(transparent,rgba(0,0,0,0.85));
 }
 
-.project-overlay h3{
-margin:0 0 6px 0;
-font-size:15px;
-}
-
-.project-overlay ul{
-margin:0;
-padding-left:16px;
-font-size:11px;
-line-height:1.3;
-}
-
-/* TOOLS */
+/* ---------------- TOOLS ---------------- */
 
 .tools-grid{
 display:grid;
 grid-template-columns:repeat(3,80px);
 gap:16px;
 justify-content:center;
-margin:auto;
 }
 
 .tool-tile{
@@ -312,14 +289,13 @@ display:flex;
 align-items:center;
 justify-content:center;
 cursor:pointer;
-transition:all .25s ease;
+transition:.25s;
 position:relative;
 }
 
 .tool-tile:hover{
 transform:translateY(-4px);
-box-shadow:0 6px 18px rgba(74,144,226,0.25);
-background:#323b45;
+box-shadow:0 6px 18px rgba(74,144,226,.25);
 }
 
 .tool-logo{
@@ -334,26 +310,18 @@ top:90px;
 left:50%;
 transform:translateX(-50%);
 background:white;
-color:#333;
-padding:12px;
+padding:10px;
 border-radius:10px;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
 font-size:12px;
-line-height:1.4;
-width:150px;
 display:none;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
 .tool-tile.active .tool-details{
 display:block;
 }
 
-/* CERT */
-
-.cert-column{
-display:flex;
-justify-content:flex-start;
-}
+/* ---------------- CERT ---------------- */
 
 .cert{
 background:white;
@@ -362,15 +330,9 @@ padding:14px 18px;
 text-align:center;
 box-shadow:0 12px 30px rgba(0,0,0,0.08);
 max-width:220px;
-transition:all .25s ease;
 }
 
-.cert:hover{
-transform:translateY(-6px) scale(1.03);
-box-shadow:0 20px 40px rgba(0,0,0,0.15);
-}
-
-/* FOOTER */
+/* ---------------- FOOTER ---------------- */
 
 footer{
 text-align:center;
@@ -396,6 +358,7 @@ color:white;
 <a href="https://www.linkedin.com/in/alfred-rico-3992338a/" target="_blank"><i class="fab fa-linkedin"></i></a>
 <a href="https://github.com/ShadyEggs" target="_blank"><i class="fab fa-github"></i></a>
 </div>
+
 </div>
 
 </header>
@@ -413,27 +376,30 @@ color:white;
 <!-- ABOUT -->
 <section id="about">
 <h2>About Me</h2>
+
 <div class="about-grid">
-<div>
+
 <img src="profile.jpg" class="profile-pic">
-</div>
+
 <div class="about-text">
 <p>Hi, I’m Alfred — an aspiring data analyst who enjoys turning messy data into clear insights and finding patterns that explain what’s really going on.</p>
 <p>Through hands-on projects, I’ve worked with Python, SQL, and visualization tools to analyze data and communicate findings in a way that’s easy to understand.</p>
-<p>I'm always looking for new problems to explore and new ways to learn.</p>
 </div>
+
 </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
 <h2>Let's Connect!</h2>
+
 <form action="https://formsubmit.co/alfred.m.rico@gmail.com" method="POST" class="contact-form">
 <input type="text" name="name" placeholder="Name" required>
 <input type="email" name="email" placeholder="Email" required>
 <textarea name="message" rows="6" placeholder="Message" required></textarea>
 <button type="submit" class="apple-send">Send Message</button>
 </form>
+
 </section>
 
 <!-- PROJECTS -->
@@ -464,14 +430,14 @@ color:white;
 <ul>
 <li>Tableau</li>
 <li>SQL</li>
-<li>Microsoft Excel</li>
-<li>Google Sheets</li>
+<li>Excel</li>
 </ul>
 </div>
 </a>
 
 </div>
 </div>
+
 </section>
 
 <!-- TOOLS -->
@@ -484,7 +450,7 @@ color:white;
 <img class="tool-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
 <div class="tool-details">
 <strong>Python</strong><br>
-NumPy<br>Pandas<br>Matplotlib<br>Seaborn<br>Scikit-learn<br>Plotly
+NumPy<br>Pandas<br>Matplotlib<br>Seaborn
 </div>
 </div>
 
@@ -500,63 +466,9 @@ BigQuery<br>Joins<br>Aggregations
 <img class="tool-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg">
 <div class="tool-details">
 <strong>R</strong><br>
-tidyr<br>dplyr<br>ggplot2<br>plotly
+tidyr<br>dplyr<br>ggplot2
 </div>
 </div>
-
-<div class="tool-tile">
-<img class="tool-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tableau/tableau-original.svg">
-<div class="tool-details">
-<strong>Tableau</strong><br>
-Dashboards<br>Interactive Charts
-</div>
-</div>
-
-<div class="tool-tile">
-<img class="tool-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg">
-<div class="tool-details">
-<strong>Jupyter</strong><br>
-Notebook Analysis
-</div>
-</div>
-
-<div class="tool-tile">
-<img class="tool-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg">
-<div class="tool-details">
-<strong>Excel</strong><br>
-Pivot Tables<br>Data Cleaning
-</div>
-</div>
-
-</div>
-
-</section>
-
-<!-- CERTIFICATIONS -->
-<section id="certifications">
-<h2>Certifications</h2>
-
-<div class="cert-column">
-
-<a href="https://www.coursera.org/account/accomplishments/professional-cert/MSCMJL682NT9" target="_blank">
-
-<div class="cert">
-
-<img style="height:24px" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
-
-<div style="font-weight:700;font-size:14px;">
-Google Data Analytics Professional Certificate
-</div>
-
-<div style="font-size:11px;color:#666;">
-Issued via Coursera
-</div>
-
-<img style="height:16px" src="https://upload.wikimedia.org/wikipedia/commons/9/97/Coursera-Logo_600x600.svg">
-
-</div>
-
-</a>
 
 </div>
 
@@ -569,6 +481,8 @@ Issued via Coursera
 </footer>
 
 <script>
+
+/* TOOL TILE INTERACTION */
 
 document.querySelectorAll(".tool-tile").forEach(tile=>{
 tile.addEventListener("click",()=>{
