@@ -373,12 +373,9 @@ background:#111;
 color:white;
 }
 
-/* ===================== */
-/* MOBILE RESPONSIVENESS */
-/* ===================== */
+/* MOBILE */
 
 @media (max-width:900px){
-
 .main-layout{
 grid-template-columns:1fr;
 grid-template-areas:
@@ -388,50 +385,26 @@ grid-template-areas:
 "tools"
 "certifications";
 }
-
 }
 
 @media (max-width:700px){
-
 .about-grid{
 grid-template-columns:1fr;
 text-align:center;
 }
-
-.about-text::before{
-display:none;
-}
-
-.profile-pic{
-margin:auto;
-}
-
+.about-text::before{display:none;}
+.profile-pic{margin:auto;}
 .tools-column{
 grid-template-columns:1fr 1fr;
 margin:auto;
 }
-
-.python-tile{
-grid-column:1 / -1;
-}
-
+.python-tile{grid-column:1 / -1;}
 }
 
 @media (max-width:600px){
-
-.hero h1{
-font-size:28px;
-}
-
-.hero-content{
-transform:none;
-}
-
-.main-layout{
-padding:0 15px;
-gap:30px;
-}
-
+.hero h1{font-size:28px;}
+.hero-content{transform:none;}
+.main-layout{padding:0 15px;gap:30px;}
 }
 
 </style>
@@ -630,8 +603,6 @@ Issued via Coursera
 
 <script>
 
-/* HERO BAR GRAPH ANIMATION */
-
 const canvas=document.getElementById("dashboardCanvas")
 const ctx=canvas.getContext("2d")
 
@@ -662,13 +633,15 @@ canvas.height=hero.offsetHeight
 bars=[]
 
 const count=Math.floor(canvas.width/spacing)
+const totalWidth=count*spacing
+const offsetX=(canvas.width-totalWidth)/2
 
 for(let i=0;i<count;i++){
 
 const h=Math.random()*120+60
 
 bars.push({
-x:i*spacing,
+x:offsetX + i*spacing,
 height:h,
 target:h,
 color:palette[Math.floor(Math.random()*palette.length)]
