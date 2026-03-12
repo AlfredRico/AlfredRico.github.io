@@ -373,6 +373,40 @@ background:#111;
 color:white;
 }
 
+/* MOBILE */
+
+@media (max-width:900px){
+.main-layout{
+grid-template-columns:1fr;
+grid-template-areas:
+"about"
+"contact"
+"projects"
+"tools"
+"certifications";
+}
+}
+
+@media (max-width:700px){
+.about-grid{
+grid-template-columns:1fr;
+text-align:center;
+}
+.about-text::before{display:none;}
+.profile-pic{margin:auto;}
+.tools-column{
+grid-template-columns:1fr 1fr;
+margin:auto;
+}
+.python-tile{grid-column:1 / -1;}
+}
+
+@media (max-width:600px){
+.hero h1{font-size:28px;}
+.hero-content{transform:none;}
+.main-layout{padding:0 15px;gap:30px;}
+}
+
 </style>
 </head>
 
@@ -573,8 +607,6 @@ const canvas=document.getElementById("dashboardCanvas")
 const ctx=canvas.getContext("2d")
 
 let bars=[]
-let particles=[]
-
 const spacing=28
 const barWidth=18
 
@@ -599,7 +631,6 @@ canvas.width=hero.offsetWidth
 canvas.height=hero.offsetHeight
 
 bars=[]
-particles=[]
 
 const count=Math.floor(canvas.width/spacing)
 const totalWidth=count*spacing
@@ -614,20 +645,6 @@ x:offsetX + i*spacing,
 height:h,
 target:h,
 color:palette[Math.floor(Math.random()*palette.length)]
-})
-
-}
-
-const particleCount = window.innerWidth < 700 ? 15 : 30
-
-for(let i=0;i<particleCount;i++){
-
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-size:Math.random()*2+1,
-speed:Math.random()*0.3+0.05,
-alpha:Math.random()*0.5+0.2
 })
 
 }
@@ -651,29 +668,6 @@ ctx.fill()
 function animate(){
 
 ctx.clearRect(0,0,canvas.width,canvas.height)
-
-/* PARTICLES */
-
-particles.forEach(p=>{
-
-p.y -= p.speed
-
-if(p.y < -10){
-p.y = canvas.height + 10
-p.x = Math.random()*canvas.width
-}
-
-ctx.beginPath()
-ctx.arc(p.x,p.y,p.size,0,Math.PI*2)
-ctx.fillStyle=`rgba(255,255,255,${p.alpha})`
-ctx.shadowColor="white"
-ctx.shadowBlur=12
-ctx.fill()
-ctx.shadowBlur=0
-
-})
-
-/* BARS */
 
 bars.forEach(bar=>{
 
@@ -737,19 +731,7 @@ animate()
 
 setInterval(updateRandomBars,5000)
 
-/* MOBILE FIX */
-
-let resizeTimer
-
-window.addEventListener("resize",()=>{
-
-clearTimeout(resizeTimer)
-
-resizeTimer=setTimeout(()=>{
-setupCanvas()
-},200)
-
-})
+window.addEventListener("resize",setupCanvas)
 
 </script>
 
