@@ -281,53 +281,49 @@ color:white;
 background:linear-gradient(transparent,rgba(0,0,0,0.85));
 }
 
-/* PROJECT FILTER */
+/* TOOLS */
 
-.project-card.hidden{
-opacity:.2;
-filter:grayscale(100%);
-}
-
-/* TOOLS FILTER */
-
-.tools-grid{
+.tools-column{
 display:grid;
-grid-template-columns:repeat(auto-fit,90px);
-gap:16px;
-justify-content:center;
+grid-template-columns:1fr 90px 90px;
+grid-template-rows:1fr 1fr 1fr;
+gap:12px;
+max-width:420px;
+margin-left:auto;
 }
 
-.tool-tile{
-background:#2a323b;
-border-radius:14px;
-height:90px;
-width:90px;
+.python-tile{
+grid-row:1/span 3;
+text-align:left;
+}
+
+.python-header{
+text-align:center;
+margin-bottom:10px;
+}
+
+.skill-card{
+background:white;
+border-radius:12px;
+padding:16px;
+box-shadow:0 6px 16px rgba(0,0,0,0.06);
+font-size:13px;
+}
+
+.skill-card.small{
+aspect-ratio:1;
 display:flex;
-align-items:center;
+flex-direction:column;
 justify-content:center;
-cursor:pointer;
-transition:.25s;
-color:white;
-font-size:12px;
+align-items:center;
 text-align:center;
 }
 
-.tool-tile:hover{
-transform:translateY(-4px);
-box-shadow:0 6px 18px rgba(74,144,226,.25);
+.skill-card i{
+font-size:18px;
+color:#4a90e2;
+margin-bottom:6px;
 }
-
-.tool-tile.active{background:#4a90e2;}
-
-.tool-tile[data-tool="Python"].active{background:#3776AB;}
-.tool-tile[data-tool="R"].active{background:#276DC3;}
-.tool-tile[data-tool="SQL"].active{background:#F29111;}
-.tool-tile[data-tool="Tableau"].active{background:#E97627;}
-.tool-tile[data-tool="Microsoft Excel"].active{background:#217346;}
-.tool-tile[data-tool="Google Sheets"].active{background:#34A853;}
-.tool-tile[data-tool="plotly"].active{background:#636EFA;}
-.tool-tile[data-tool="ggplot2"].active{background:#3B7EA1;}
-.tool-tile[data-tool="dplyr"].active{background:#4E79A7;}
 
 /* CERT */
 
@@ -343,12 +339,6 @@ padding:14px 18px;
 text-align:center;
 box-shadow:0 12px 30px rgba(0,0,0,0.08);
 max-width:220px;
-transition:all .25s ease;
-}
-
-.cert:hover{
-transform:translateY(-6px) scale(1.03);
-box-shadow:0 20px 40px rgba(0,0,0,0.15);
 }
 
 /* FOOTER */
@@ -377,7 +367,6 @@ color:white;
 <a href="https://www.linkedin.com/in/alfred-rico-3992338a/" target="_blank"><i class="fab fa-linkedin"></i></a>
 <a href="https://github.com/ShadyEggs" target="_blank"><i class="fab fa-github"></i></a>
 </div>
-
 </div>
 
 </header>
@@ -392,7 +381,6 @@ color:white;
 
 <div class="main-layout">
 
-<!-- ABOUT -->
 <section id="about">
 <h2>About Me</h2>
 <div class="about-grid">
@@ -405,7 +393,6 @@ color:white;
 </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
 <h2>Let's Connect!</h2>
 <form action="https://formsubmit.co/alfred.m.rico@gmail.com" method="POST" class="contact-form">
@@ -416,7 +403,6 @@ color:white;
 </form>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
 <h2>My Projects</h2>
 
@@ -480,13 +466,39 @@ color:white;
 </div>
 </section>
 
-<!-- TOOLS -->
 <section id="tools">
 <h2>Tools</h2>
-<div id="tools-grid" class="tools-grid"></div>
+
+<div class="tools-column">
+
+<div class="skill-card python-tile">
+<div class="python-header">
+<i class="fa-brands fa-python"></i>
+<strong>Python</strong>
+</div>
+
+<p><strong>Data Science and Analysis</strong><br>
+- NumPy &nbsp;&nbsp; - Pandas<br>
+- Matplotlib &nbsp;&nbsp; - Seaborn</p>
+
+<p><strong>Machine Learning</strong><br>
+Scikit-learn</p>
+
+<p><strong>Visualization</strong><br>
+Plotly</p>
+
+</div>
+
+<div class="skill-card small"><i class="fa-solid fa-chart-bar"></i>R</div>
+<div class="skill-card small"><i class="fa-solid fa-database"></i>SQL</div>
+<div class="skill-card small"><i class="fa-solid fa-chart-line"></i>Tableau</div>
+<div class="skill-card small"><i class="fa-solid fa-file-excel"></i>Microsoft Excel</div>
+<div class="skill-card small"><i class="fa-solid fa-table"></i>Google Sheets</div>
+
+</div>
+
 </section>
 
-<!-- CERTIFICATIONS -->
 <section id="certifications">
 <h2>Certifications</h2>
 
@@ -523,8 +535,6 @@ Issued via Coursera
 </footer>
 
 <script>
-
-/* HERO ANIMATION */
 
 const canvas=document.getElementById("dashboardCanvas")
 const ctx=canvas.getContext("2d")
@@ -680,51 +690,6 @@ animate()
 setInterval(updateRandomBars,5000)
 
 window.addEventListener("resize",setupCanvas)
-
-/* TOOL FILTER SYSTEM */
-
-const toolSet=new Set()
-const projectCards=document.querySelectorAll(".project-card")
-
-projectCards.forEach(card=>{
-card.querySelectorAll("ul li").forEach(tool=>{
-toolSet.add(tool.textContent.trim())
-})
-})
-
-const grid=document.getElementById("tools-grid")
-
-toolSet.forEach(tool=>{
-
-const tile=document.createElement("div")
-tile.className="tool-tile"
-tile.textContent=tool
-tile.dataset.tool=tool
-
-tile.addEventListener("click",()=>{
-
-tile.classList.toggle("active")
-
-const activeTools=[...document.querySelectorAll(".tool-tile.active")]
-.map(t=>t.textContent)
-
-projectCards.forEach(card=>{
-
-const cardTools=[...card.querySelectorAll("ul li")]
-.map(t=>t.textContent)
-
-const match=activeTools.length===0 ||
-activeTools.some(t=>cardTools.includes(t))
-
-card.classList.toggle("hidden",!match)
-
-})
-
-})
-
-grid.appendChild(tile)
-
-})
 
 </script>
 
