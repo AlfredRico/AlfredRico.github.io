@@ -51,19 +51,6 @@ radial-gradient(circle at 80% 70%, rgba(180,180,180,.25), transparent 45%),
 linear-gradient(135deg,#020617,#111827 60%,#1f2933);
 }
 
-.hero::before{
-content:"";
-position:absolute;
-inset:0;
-background:
-radial-gradient(circle at 50% 80%,
-rgba(200,200,200,0.25) 0%,
-rgba(200,200,200,0.10) 25%,
-transparent 60%);
-z-index:0;
-pointer-events:none;
-}
-
 .hero::after{
 content:"";
 position:absolute;
@@ -166,34 +153,15 @@ height:180px;
 object-fit:cover;
 border-radius:50%;
 border:4px solid #4a90e2;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
-transition:transform .3s ease;
-}
-
-.profile-pic:hover{
-transform:scale(1.05);
 }
 
 .about-text{
-position:relative;
 background:white;
 padding:30px;
 border-radius:16px;
-box-shadow:0 20px 50px rgba(0,0,0,0.08);
-}
-
-.about-text::before{
-content:"";
-position:absolute;
-left:-14px;
-top:80px;
-border-top:12px solid transparent;
-border-bottom:12px solid transparent;
-border-right:14px solid white;
 }
 
 .about-text p{
-text-indent:20px;
 line-height:1.7;
 }
 
@@ -203,7 +171,6 @@ line-height:1.7;
 background:white;
 padding:40px;
 border-radius:16px;
-box-shadow:0 15px 40px rgba(0,0,0,0.08);
 }
 
 .contact-form input,
@@ -228,140 +195,46 @@ cursor:pointer;
 
 /* PROJECTS */
 
-.projects-container{
-display:flex;
-justify-content:center;
-}
-
-.projects-scroll-wrapper{
+.projects-grid{
 display:grid;
-grid-auto-flow:column;
-grid-template-rows:repeat(2,1fr);
-grid-auto-columns:170px;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:20px;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-padding-bottom:10px;
-}
-
-.projects-scroll-wrapper::-webkit-scrollbar{
-display:none;
 }
 
 .project-card{
-position:relative;
+background:white;
 border-radius:16px;
-overflow:hidden;
-aspect-ratio:1;
-scroll-snap-align:start;
-cursor:pointer;
-}
-
-.project-card img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:all .4s ease;
-}
-
-.project-card:hover img{
-filter:blur(4px) brightness(.55);
-transform:scale(1.08);
-}
-
-.project-overlay{
-position:absolute;
-bottom:0;
-left:0;
-right:0;
-padding:14px;
-color:white;
-background:linear-gradient(transparent,rgba(0,0,0,0.85));
-}
-
-.project-overlay h3{
-margin:0 0 6px 0;
-font-size:15px;
-}
-
-.project-overlay ul{
-margin:0;
-padding-left:16px;
-font-size:11px;
-line-height:1.3;
+padding:20px;
 }
 
 /* TOOLS */
 
-.tools-column{
+.tools-grid{
 display:grid;
-grid-template-columns:1fr 90px 90px;
-grid-template-rows:1fr 1fr;
-gap:12px;
-max-width:420px;
-margin-left:auto;
-}
-
-.python-tile{
-grid-row:1/span 2;
-text-align:left;
-}
-
-.python-header{
-text-align:center;
-margin-bottom:10px;
-}
-
-.python-header i{
-display:block;
-font-size:20px;
-margin-bottom:4px;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
 }
 
 .skill-card{
 background:white;
+padding:20px;
 border-radius:12px;
-padding:16px;
-box-shadow:0 6px 16px rgba(0,0,0,0.06);
-font-size:13px;
-}
-
-.skill-card.small{
-aspect-ratio:1;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
 text-align:center;
 }
 
 .skill-card i{
-font-size:18px;
+font-size:24px;
 color:#4a90e2;
-margin-bottom:6px;
+margin-bottom:10px;
 }
 
 /* CERT */
 
-.cert-column{
-display:flex;
-justify-content:flex-start;
-}
-
 .cert{
 background:white;
 border-radius:14px;
-padding:14px 18px;
+padding:20px;
 text-align:center;
-box-shadow:0 12px 30px rgba(0,0,0,0.08);
-max-width:220px;
-border-top:6px solid #4285F4;
-transition:all .25s ease;
-}
-
-.cert:hover{
-transform:translateY(-6px) scale(1.03);
-box-shadow:0 20px 40px rgba(0,0,0,0.15);
 }
 
 /* FOOTER */
@@ -393,6 +266,66 @@ color:white;
 </div>
 
 </header>
+
+<nav>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#tools">Tools</a></li>
+<li><a href="#certifications">Certifications</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<div class="main-layout">
+
+<section id="about">
+<h2>About</h2>
+<div class="about-grid">
+<img class="profile-pic" src="profile.jpg">
+<div class="about-text">
+<p>I am an aspiring data analyst with a passion for turning raw data into meaningful insights. My interests include statistical analysis, regression modeling, and time-series analysis.</p>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<div class="contact-form">
+<input placeholder="Name">
+<input placeholder="Email">
+<textarea rows="4" placeholder="Message"></textarea>
+<button class="apple-send">Send Message</button>
+</div>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+<div class="projects-grid">
+<div class="project-card">Sales Data Analysis</div>
+<div class="project-card">Customer Segmentation</div>
+<div class="project-card">Time Series Forecast</div>
+<div class="project-card">Marketing Dashboard</div>
+</div>
+</section>
+
+<section id="tools">
+<h2>Tools</h2>
+<div class="tools-grid">
+<div class="skill-card"><i class="fab fa-python"></i>Python</div>
+<div class="skill-card"><i class="fas fa-chart-line"></i>Data Viz</div>
+<div class="skill-card"><i class="fas fa-database"></i>SQL</div>
+</div>
+</section>
+
+<section id="certifications">
+<h2>Certifications</h2>
+<div class="cert">
+Google Data Analytics Certificate
+</div>
+</section>
+
+</div>
 
 <footer>
 <p>© 2026 Alfred Rico</p>
@@ -467,20 +400,6 @@ alpha:Math.random()*0.5+0.2
 
 }
 
-function drawRoundedRect(x,y,width,height,radius){
-
-ctx.beginPath()
-ctx.moveTo(x,y+radius)
-ctx.lineTo(x,y+height)
-ctx.lineTo(x+width,y+height)
-ctx.lineTo(x+width,y+radius)
-ctx.quadraticCurveTo(x+width,y,x+width-radius,y)
-ctx.lineTo(x+radius,y)
-ctx.quadraticCurveTo(x,y,x,y+radius)
-ctx.fill()
-
-}
-
 function animate(){
 
 ctx.clearRect(0,0,canvas.width,canvas.height)
@@ -497,10 +416,7 @@ p.x = Math.random()*canvas.width
 ctx.beginPath()
 ctx.arc(p.x,p.y,p.size,0,Math.PI*2)
 ctx.fillStyle=`rgba(255,255,255,${p.alpha})`
-ctx.shadowColor="white"
-ctx.shadowBlur=12
 ctx.fill()
-ctx.shadowBlur=0
 
 })
 
@@ -509,28 +425,7 @@ bars.forEach(bar=>{
 bar.height+=(bar.target-bar.height)*0.05
 
 ctx.fillStyle=bar.color
-ctx.shadowColor=bar.color
-ctx.shadowBlur=8
-
-drawRoundedRect(
-bar.x,
-canvas.height-bar.height,
-barWidth,
-bar.height,
-6
-)
-
-ctx.shadowBlur=0
-
-ctx.fillStyle="rgba(255,255,255,0.15)"
-
-drawRoundedRect(
-bar.x+3,
-canvas.height-bar.height,
-barWidth/3,
-bar.height,
-6
-)
+ctx.fillRect(bar.x,canvas.height-bar.height,barWidth,bar.height)
 
 })
 
@@ -538,35 +433,18 @@ requestAnimationFrame(animate)
 
 }
 
-function updateRandomBars(){
-
-const used=new Set()
-
-while(used.size<6 && used.size<bars.length){
-
-const index=Math.floor(Math.random()*bars.length)
-
-if(!used.has(index)){
-
-used.add(index)
-
-const change=(Math.random()*120)-60
-const newHeight=bars[index].target+change
-
-bars[index].target=Math.max(40,Math.min(220,newHeight))
-
-}
-
-}
-
-}
-
 setupCanvas()
 animate()
 
-setInterval(updateRandomBars,5000)
+setInterval(()=>{
 
-/* MOBILE SCROLL SAFE RESIZE */
+bars.forEach(bar=>{
+bar.target=Math.random()*180+40
+})
+
+},5000)
+
+/* MOBILE SAFE RESIZE */
 
 window.addEventListener("resize",()=>{
 
