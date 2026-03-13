@@ -51,6 +51,34 @@ radial-gradient(circle at 80% 70%, rgba(180,180,180,.25), transparent 45%),
 linear-gradient(135deg,#020617,#111827 60%,#1f2933);
 }
 
+/* subtle glow */
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at 50% 80%,
+rgba(200,200,200,0.25) 0%,
+rgba(200,200,200,0.10) 25%,
+transparent 60%);
+z-index:0;
+pointer-events:none;
+}
+
+/* GRID OVERLAY RESTORED */
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background-image:
+linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+background-size:40px 40px;
+z-index:0;
+}
+
 #dashboardCanvas{
 position:absolute;
 top:0;
@@ -225,20 +253,14 @@ font-size:13px;
 background:#4a90e2;
 }
 
-/* PROJECT WINDOW */
-
-.projects-window{
-max-width:920px;
-margin:auto;
-height:650px;
-overflow-y:auto;
-padding-right:8px;
-}
+/* PROJECT GRID */
 
 .projects-grid{
 display:grid;
-grid-template-columns:repeat(4,1fr);
+grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
 gap:20px;
+max-width:900px;
+margin:auto;
 }
 
 /* PROJECT CARD */
@@ -295,20 +317,10 @@ font-size:10px;
 }
 
 .project-tags span{
+background:rgba(255,255,255,0.2);
 padding:2px 6px;
 border-radius:6px;
-color:white;
-font-weight:600;
 }
-
-/* TOOL COLORS */
-
-.tag-python{background:#3776AB;}
-.tag-r{background:#276DC3;}
-.tag-sql{background:#008C95;}
-.tag-tableau{background:#E97627;}
-.tag-excel{background:#217346;}
-.tag-sheets{background:#34A853;}
 
 /* CERT */
 
@@ -371,6 +383,7 @@ color:white;
 
 <section id="about">
 <h2>About Me</h2>
+
 <div class="about-grid">
 
 <div>
@@ -420,8 +433,6 @@ color:white;
 
 </div>
 
-<div class="projects-window">
-
 <div class="projects-grid">
 
 <a class="project-card"
@@ -436,10 +447,11 @@ target="_blank">
 <h3>Fifa 21 Data Cleaning</h3>
 
 <div class="project-tags">
-<span class="tag-r">R</span>
+<span>R</span>
 <span>dplyr</span>
 <span>tidyr</span>
 <span>ggplot2</span>
+<span>plotly</span>
 </div>
 
 </div>
@@ -457,16 +469,15 @@ target="_blank">
 <h3>Cyclistic Case Study</h3>
 
 <div class="project-tags">
-<span class="tag-sql">SQL</span>
-<span class="tag-tableau">Tableau</span>
-<span class="tag-excel">Excel</span>
-<span class="tag-sheets">Sheets</span>
+<span>SQL</span>
+<span>Tableau</span>
+<span>Excel</span>
+<span>Google Sheets</span>
 </div>
 
 </div>
 </a>
 
-</div>
 </div>
 </section>
 
@@ -627,55 +638,6 @@ setupCanvas()
 animate()
 
 window.addEventListener("resize",setupCanvas)
-
-/* MULTI FILTER */
-
-const filterButtons=document.querySelectorAll(".filter-btn")
-const projects=document.querySelectorAll(".project-card")
-
-let activeFilters=[]
-
-filterButtons.forEach(btn=>{
-
-btn.addEventListener("click",()=>{
-
-const filter=btn.dataset.filter
-
-if(filter==="all"){
-activeFilters=[]
-filterButtons.forEach(b=>b.classList.remove("active"))
-btn.classList.add("active")
-
-projects.forEach(card=>{
-card.classList.remove("hide")
-})
-
-return
-}
-
-btn.classList.toggle("active")
-document.querySelector('[data-filter="all"]').classList.remove("active")
-
-activeFilters=[...document.querySelectorAll(".filter-btn.active")]
-.map(b=>b.dataset.filter)
-.filter(f=>f!=="all")
-
-projects.forEach(card=>{
-
-const tags=card.dataset.tags
-const match=activeFilters.every(f=>tags.includes(f))
-
-if(activeFilters.length===0 || match){
-card.classList.remove("hide")
-}else{
-card.classList.add("hide")
-}
-
-})
-
-})
-
-})
 
 </script>
 
