@@ -1497,7 +1497,7 @@ Issued via Coursera
 
 <script>
 
-/* HERO DASHBOARD ANIMATION — PINTEREST PALETTE */
+/* HERO DASHBOARD ANIMATION — FULL IMAGE PALETTE */
 
 const canvas=document.getElementById("dashboardCanvas")
 const ctx=canvas.getContext("2d")
@@ -1507,16 +1507,24 @@ let bars=[],particles=[]
 const spacing=28
 const barWidth=18
 
-/* COLORS FROM PROVIDED IMAGE */
+/* COOL COLORS */
 
-const palette=[
+const coolPalette=[
 "#0B3C5D",
-"#1D5C82",
-"#2F80A5",
-"#4DA3C8",
-"#6CC3E0",
-"#8BDDF4",
-"#B7F1FF"
+"#155E75",
+"#1D7FA6",
+"#2F9FC5",
+"#4FB6D3",
+"#6CCBE0",
+"#8BDDF4"
+]
+
+/* ORANGE ACCENTS */
+
+const warmPalette=[
+"#F39C12",
+"#F5B041",
+"#EB984E"
 ]
 
 function hexToRGBA(hex,a){
@@ -1526,7 +1534,6 @@ const g=parseInt(hex.slice(3,5),16)
 const b=parseInt(hex.slice(5,7),16)
 
 return `rgba(${r},${g},${b},${a})`
-
 }
 
 function setupCanvas(){
@@ -1543,15 +1550,23 @@ const count=Math.floor(canvas.width/spacing)
 const totalWidth=count*spacing
 const offsetX=(canvas.width-totalWidth)/2
 
-/* GRADIENT DISTRIBUTION */
+/* GRADIENT WITH OCCASIONAL ORANGE ACCENTS */
 
 for(let i=0;i<count;i++){
 
+let color
+
+if(Math.random()<0.12){
+
+color=warmPalette[Math.floor(Math.random()*warmPalette.length)]
+
+}else{
+
 const t=i/(count-1)
+const index=Math.floor(t*(coolPalette.length-1))
+color=coolPalette[index]
 
-const index=Math.floor(t*(palette.length-1))
-
-const color=palette[index]
+}
 
 const h=Math.random()*120+60
 
@@ -1642,8 +1657,8 @@ bar.x,
 canvas.height
 )
 
-gradient.addColorStop(0,hexToRGBA(bar.baseColor,.70))
-gradient.addColorStop(.6,hexToRGBA(bar.baseColor,.45))
+gradient.addColorStop(0,hexToRGBA(bar.baseColor,.75))
+gradient.addColorStop(.5,hexToRGBA(bar.baseColor,.45))
 gradient.addColorStop(1,hexToRGBA(bar.baseColor,.25))
 
 ctx.fillStyle=gradient
