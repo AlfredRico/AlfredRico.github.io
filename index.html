@@ -26,6 +26,8 @@ background:#1f2933;
 scroll-behavior:smooth;
 }
 
+/* HERO */
+
 .hero{
 position:relative;
 height:32vh;
@@ -37,8 +39,8 @@ text-align:center;
 overflow:hidden;
 color:white;
 background:
-radial-gradient(circle at 20% 30%, rgba(120,120,120,.35), transparent 40%),
-radial-gradient(circle at 80% 70%, rgba(180,180,180,.25), transparent 45%),
+radial-gradient(circle at 20% 30%,rgba(120,120,120,.35),transparent 40%),
+radial-gradient(circle at 80% 70%,rgba(180,180,180,.25),transparent 45%),
 linear-gradient(135deg,#020617,#111827 60%,#1f2933);
 }
 
@@ -54,16 +56,14 @@ content:"";
 position:absolute;
 inset:0;
 background-image:
-linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
 background-size:40px 40px;
 }
 
 #dashboardCanvas{
 position:absolute;
 inset:0;
-width:100%;
-height:100%;
 opacity:.45;
 z-index:2;
 }
@@ -86,6 +86,8 @@ margin:0 10px;
 font-size:22px;
 }
 
+/* NAV */
+
 nav{
 background:white;
 box-shadow:0 2px 10px rgba(0,0,0,.08);
@@ -105,6 +107,8 @@ margin:0 12px;
 color:#333;
 font-weight:600;
 }
+
+/* MAIN GRID */
 
 .main-layout{
 max-width:1100px;
@@ -130,6 +134,8 @@ margin-bottom:30px;
 color:white;
 }
 
+/* ABOUT */
+
 .about-grid{
 display:grid;
 grid-template-columns:200px 1fr;
@@ -147,7 +153,9 @@ box-shadow:0 10px 30px rgba(0,0,0,.15);
 transition:transform .3s ease;
 }
 
-.profile-pic:hover{transform:scale(1.05);}
+.profile-pic:hover{
+transform:scale(1.05);
+}
 
 .about-text{
 background:white;
@@ -155,6 +163,8 @@ padding:30px;
 border-radius:16px;
 box-shadow:0 20px 50px rgba(0,0,0,.08);
 }
+
+/* CONTACT */
 
 .contact-form{
 background:white;
@@ -182,6 +192,8 @@ color:white;
 cursor:pointer;
 }
 
+/* FILTERS */
+
 .project-filters,
 .package-filters{
 display:flex;
@@ -190,8 +202,8 @@ flex-wrap:wrap;
 gap:10px;
 }
 
-.project-filters{margin-bottom:12px;}
-.package-filters{margin-bottom:25px;}
+.project-filters{margin-bottom:12px}
+.package-filters{margin-bottom:25px}
 
 .filter-btn{
 padding:8px 14px;
@@ -201,17 +213,20 @@ background:#2f3a46;
 color:white;
 cursor:pointer;
 font-size:13px;
+min-height:36px;
 }
 
-.filter-btn.active.tag-all{background:#4a90e2;}
-.filter-btn.active.tag-python{background:#3776AB;}
-.filter-btn.active.tag-r{background:#276DC3;}
-.filter-btn.active.tag-sql{background:#336791;}
-.filter-btn.active.tag-tableau{background:#E97627;}
-.filter-btn.active.tag-excel{background:#217346;}
-.filter-btn.active.tag-sheets{background:#34A853;}
+.filter-btn.active.tag-all{background:#4a90e2}
+.filter-btn.active.tag-python{background:#3776AB}
+.filter-btn.active.tag-r{background:#276DC3}
+.filter-btn.active.tag-sql{background:#336791}
+.filter-btn.active.tag-tableau{background:#E97627}
+.filter-btn.active.tag-excel{background:#217346}
+.filter-btn.active.tag-sheets{background:#34A853}
 
-.package-btn.active{background:#4a90e2;}
+.package-btn.active{background:#4a90e2}
+
+/* PROJECT GRID */
 
 .projects-window{
 max-width:920px;
@@ -234,15 +249,16 @@ aspect-ratio:1;
 cursor:pointer;
 text-decoration:none;
 color:inherit;
+touch-action:manipulation;
 }
 
-.project-card.hide{display:none;}
+.project-card.hide{display:none}
 
 .project-card img{
 width:100%;
 height:100%;
 object-fit:cover;
-transition:.4s ease;
+transition:transform .4s ease,filter .4s ease;
 }
 
 .project-card:hover img{
@@ -280,16 +296,21 @@ color:white;
 font-weight:600;
 }
 
-.project-tags .tag-python{background:#3776AB;}
-.project-tags .tag-r{background:#276DC3;}
-.project-tags .tag-sql{background:#336791;}
-.project-tags .tag-tableau{background:#E97627;}
-.project-tags .tag-excel{background:#217346;}
-.project-tags .tag-sheets{background:#34A853;}
+.project-tags .tag-python{background:#3776AB}
+.project-tags .tag-r{background:#276DC3}
+.project-tags .tag-sql{background:#336791}
+.project-tags .tag-tableau{background:#E97627}
+.project-tags .tag-excel{background:#217346}
+.project-tags .tag-sheets{background:#34A853}
 
-.tag-package{background:#555;}
+.tag-package{background:#555}
 
-.cert-column{display:flex;justify-content:center;}
+/* CERT */
+
+.cert-column{
+display:flex;
+justify-content:center;
+}
 
 .cert{
 background:linear-gradient(145deg,#3a3a3c,#2c2c2e);
@@ -317,6 +338,8 @@ background:#111;
 color:white;
 }
 
+/* MOBILE */
+
 @media (max-width:900px){
 
 .main-layout{
@@ -333,7 +356,9 @@ grid-template-columns:1fr;
 text-align:center;
 }
 
-.profile-pic{margin:auto;}
+.profile-pic{
+margin:auto;
+}
 
 .projects-grid{
 grid-template-columns:repeat(3,1fr);
@@ -345,10 +370,16 @@ grid-template-columns:repeat(3,1fr);
 
 .hero h1{font-size:30px}
 
-.projects-window{height:auto;}
+.projects-window{
+height:auto;
+}
 
 .projects-grid{
 grid-template-columns:repeat(2,1fr);
+}
+
+.project-tags span{
+padding:4px 9px;
 }
 
 }
@@ -516,14 +547,12 @@ Issued via Coursera
 
 <script>
 
-/* HERO ANIMATION (unchanged) */
+/* HERO DASHBOARD ANIMATION */
 
 const canvas=document.getElementById("dashboardCanvas")
 const ctx=canvas.getContext("2d")
 
-let bars=[]
-let particles=[]
-
+let bars=[],particles=[]
 const spacing=28
 const barWidth=18
 
@@ -623,9 +652,7 @@ drawParticles()
 bars.forEach(bar=>{
 
 bar.height+=(bar.target-bar.height)*.05
-
 ctx.fillStyle=bar.color
-
 drawRoundedRect(bar.x,canvas.height-bar.height,barWidth,bar.height,6)
 
 })
@@ -647,7 +674,7 @@ r:["dplyr","tidyr","ggplot2","plotly"]
 
 const languageButtons=document.querySelectorAll(".filter-btn")
 const packageContainer=document.querySelector(".package-filters")
-const projects=document.querySelectorAll(".project-card")
+const projects=[...document.querySelectorAll(".project-card")]
 
 let activeLanguages=[]
 let activePackages=[]
@@ -671,9 +698,8 @@ return
 btn.classList.toggle("active")
 document.querySelector('[data-filter="all"]').classList.remove("active")
 
-activeLanguages=[...document.querySelectorAll(".filter-btn.active")]
+activeLanguages=[...document.querySelectorAll(".project-filters .active")]
 .map(b=>b.dataset.filter)
-.filter(f=>f!=="all")
 
 updatePackageFilters()
 showProjects()
