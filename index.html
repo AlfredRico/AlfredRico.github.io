@@ -92,8 +92,6 @@ gap:40px;
 #projects{grid-area:projects}
 #certifications{grid-area:certifications}
 
-/* SECTION TITLES */
-
 h2{
 text-align:center;
 margin-bottom:32px;
@@ -132,22 +130,6 @@ box-shadow:0 10px 30px rgba(0,0,0,.15);
 position:relative;background:white;padding:30px;
 border-radius:18px;
 box-shadow:0 20px 50px rgba(0,0,0,.08);
-transition:transform .3s ease,box-shadow .3s ease;
-}
-
-.about-text:hover{
-transform:scale(1.03);
-box-shadow:0 25px 60px rgba(0,0,0,.15);
-}
-
-.about-text::before{
-content:"";
-position:absolute;
-left:-18px;
-top:70px;
-border-width:10px;
-border-style:solid;
-border-color:transparent white transparent transparent;
 }
 
 /* CONTACT */
@@ -167,8 +149,7 @@ border-radius:8px;border:1px solid #ddd;
 width:100%;padding:14px;border:none;
 border-radius:999px;background:#111;color:white;cursor:pointer;
 }
-
-/* FILTERS */
+/* FILTER BUTTONS */
 
 .project-filters,.package-filters{
 display:flex;justify-content:center;flex-wrap:wrap;gap:10px
@@ -182,8 +163,6 @@ padding:8px 14px;border-radius:20px;border:none;
 background:#2f3a46;color:white;cursor:pointer;
 font-size:13px;min-height:36px;
 }
-
-/* LANGUAGE COLORS */
 
 .filter-btn.active.tag-all{background:#4a90e2}
 .filter-btn.active.tag-python{background:#3776AB}
@@ -202,10 +181,11 @@ display:grid;
 grid-template-columns:repeat(4,1fr);
 gap:20px;
 }
+
 .project-card{
 position:relative;border-radius:16px;overflow:hidden;
 aspect-ratio:1;cursor:pointer;text-decoration:none;
-color:inherit;touch-action:manipulation;
+color:inherit;
 }
 
 .project-card.hide{display:none}
@@ -226,10 +206,6 @@ padding:16px;color:white;
 background:linear-gradient(transparent,rgba(0,0,0,.85));
 }
 
-.project-overlay h3{
-font-size:17px;font-weight:700;margin:0 0 8px;
-}
-
 .project-tags{
 display:flex;flex-wrap:wrap;gap:6px;font-size:12px;
 }
@@ -247,59 +223,7 @@ padding:3px 8px;border-radius:6px;color:white;font-weight:600;
 
 .tag-package{background:#555}
 
-/* CERT */
-
-.cert-column{display:flex;justify-content:center}
-
-.cert{
-background:linear-gradient(145deg,#3a3a3c,#2c2c2e);
-border-radius:14px;padding:18px 20px;text-align:center;
-box-shadow:0 12px 30px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08);
-border:1px solid rgba(255,255,255,.08);
-max-width:220px;
-transition:.25s ease;
-color:white;
-}
-
-.cert:hover{
-transform:translateY(-6px) scale(1.03);
-}
-
-footer{text-align:center;padding:14px;background:#111;color:white}
-
-/* MOBILE */
-
-@media (max-width:900px){
-
-.main-layout{
-grid-template-columns:1fr;
-grid-template-areas:
-"about"
-"contact"
-"projects"
-"certifications";
-}
-
-.about-grid{grid-template-columns:1fr;text-align:center}
-
-.profile-pic{margin:auto}
-
-.projects-grid{grid-template-columns:repeat(3,1fr)}
-
-}
-
-@media (max-width:600px){
-
-.hero h1{font-size:34px}
-
-.projects-window{height:auto}
-
-.projects-grid{grid-template-columns:repeat(2,1fr)}
-
-}
-
 </style>
-
 </head>
 <body>
 
@@ -337,9 +261,11 @@ grid-template-areas:
 
 <div class="about-text">
 
-<p>Hi, I'm Alfred — a data analyst focused on turning messy datasets into clear, actionable insights.</p>
+<p>Hi, I'm Alfred — a data analyst focused on turning messy datasets into clear, actionable insights. My projects focus on exploratory data analysis, trend detection, and building clear visual stories from complex datasets.</p>
 
-<p>Using tools like Python, SQL, and visualization platforms I explore patterns, build dashboards, and communicate findings.</p>
+<p>Using tools like Python, SQL, and data visualization platforms, I explore patterns, build dashboards, and communicate findings that help explain what the data is really saying.</p>
+
+<p>My projects focus on exploratory data analysis, trend detection, and building clear visual stories from complex datasets.</p>
 
 </div>
 </div>
@@ -583,38 +509,38 @@ animate()
 
 window.addEventListener("resize",setupCanvas)
 
-/* FULLY DYNAMIC FILTER SYSTEM */
+/* FIXED DYNAMIC FILTERING */
 
 const languageButtons=document.querySelectorAll(".filter-btn")
 const packageContainer=document.querySelector(".package-filters")
 const projects=[...document.querySelectorAll(".project-card")]
 
+const languages=["python","r","sql","tableau","excel","sheets"]
+
 let activeLanguages=[]
 let activePackages=[]
 
-function extractPackages(languages){
+function getPackages(selectedLanguages){
 
-let packageSet=new Set()
+let set=new Set()
 
 projects.forEach(card=>{
 
 const tags=card.dataset.tags.split(" ")
 
-const languageMatch=!languages.length || languages.some(lang=>tags.includes(lang))
+const languageMatch=!selectedLanguages.length || selectedLanguages.some(lang=>tags.includes(lang))
 
 if(languageMatch){
 
 tags.forEach(tag=>{
-if(!["python","r","sql","tableau","excel","sheets"].includes(tag)){
-packageSet.add(tag)
-}
+if(!languages.includes(tag)) set.add(tag)
 })
 
 }
 
 })
 
-return [...packageSet].sort()
+return [...set].sort()
 
 }
 
@@ -637,14 +563,14 @@ packageContainer.innerHTML=""
 showProjects()
 
 return
+
 }
 
 btn.classList.toggle("active")
 
 document.querySelector('[data-filter="all"]').classList.remove("active")
 
-activeLanguages=[...document.querySelectorAll(".project-filters .active")]
-.map(b=>b.dataset.filter)
+activeLanguages=[...document.querySelectorAll(".project-filters .active")].map(b=>b.dataset.filter)
 
 buildPackageButtons()
 
@@ -659,7 +585,7 @@ function buildPackageButtons(){
 packageContainer.innerHTML=""
 activePackages=[]
 
-const packages=extractPackages(activeLanguages)
+const packages=getPackages(activeLanguages)
 
 packages.forEach(pkg=>{
 
@@ -673,8 +599,7 @@ btn.onclick=()=>{
 
 btn.classList.toggle("active")
 
-activePackages=[...document.querySelectorAll(".package-btn.active")]
-.map(b=>b.dataset.filter)
+activePackages=[...document.querySelectorAll(".package-btn.active")].map(b=>b.dataset.filter)
 
 showProjects()
 
@@ -692,16 +617,9 @@ projects.forEach(card=>{
 
 const tags=card.dataset.tags
 
-let languageMatch=true
-let packageMatch=true
+let languageMatch=!activeLanguages.length || activeLanguages.some(lang=>tags.includes(lang))
 
-if(activeLanguages.length){
-languageMatch=activeLanguages.every(l=>tags.includes(l))
-}
-
-if(activePackages.length){
-packageMatch=activePackages.every(p=>tags.includes(p))
-}
+let packageMatch=!activePackages.length || activePackages.every(pkg=>tags.includes(pkg))
 
 card.classList.toggle("hide",!(languageMatch && packageMatch))
 
