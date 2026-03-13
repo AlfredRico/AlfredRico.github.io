@@ -417,7 +417,6 @@ color:white;
 <h2>My Projects</h2>
 
 <div class="project-filters">
-
 <button class="filter-btn active" data-filter="all">All</button>
 <button class="filter-btn" data-filter="python">Python</button>
 <button class="filter-btn" data-filter="r">R</button>
@@ -425,11 +424,9 @@ color:white;
 <button class="filter-btn" data-filter="tableau">Tableau</button>
 <button class="filter-btn" data-filter="excel">Excel</button>
 <button class="filter-btn" data-filter="sheets">Google Sheets</button>
-
 </div>
 
 <div class="projects-window">
-
 <div class="projects-grid">
 
 <a class="project-card" data-tags="r" href="https://shadyeggs.github.io/Fifa21-Data-Cleaning-Project/" target="_blank">
@@ -461,6 +458,7 @@ color:white;
 
 </div>
 </div>
+
 </section>
 
 <section id="certifications">
@@ -471,19 +469,14 @@ color:white;
 <a href="https://www.coursera.org/account/accomplishments/professional-cert/MSCMJL682NT9" target="_blank">
 
 <div class="cert">
-
 <img style="height:24px" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
-
 <div style="font-weight:700;font-size:14px;">
 Google Data Analytics Professional Certificate
 </div>
-
 <div style="font-size:11px;color:#666;">
 Issued via Coursera
 </div>
-
 <img style="height:16px" src="https://upload.wikimedia.org/wikipedia/commons/9/97/Coursera-Logo_600x600.svg">
-
 </div>
 
 </a>
@@ -500,66 +493,125 @@ Issued via Coursera
 
 <script>
 
-/* MULTI FILTER */
+/* HERO ANIMATION */
 
-const filterButtons=document.querySelectorAll(".filter-btn")
-const projects=document.querySelectorAll(".project-card")
+const canvas=document.getElementById("dashboardCanvas")
+const ctx=canvas.getContext("2d")
 
-let activeFilters=[]
+let bars=[]
+let particles=[]
 
-filterButtons.forEach(btn=>{
+const spacing=28
+const barWidth=18
 
-btn.addEventListener("click",()=>{
+const palette=[
+"rgba(52,152,219,0.45)",
+"rgba(26,188,156,0.45)",
+"rgba(160,160,160,0.45)"
+]
 
-const filter=btn.dataset.filter
+function setupCanvas(){
 
-if(filter==="all"){
-activeFilters=[]
-filterButtons.forEach(b=>b.classList.remove("active"))
-btn.classList.add("active")
+const hero=document.querySelector(".hero")
 
-projects.forEach(card=>{
-card.classList.remove("hidden","removed")
+canvas.width=hero.offsetWidth
+canvas.height=hero.offsetHeight
+
+bars=[]
+particles=[]
+
+const count=Math.floor(canvas.width/spacing)
+const totalWidth=count*spacing
+const offsetX=(canvas.width-totalWidth)/2
+
+for(let i=0;i<count;i++){
+
+const h=Math.random()*120+60
+
+bars.push({
+x:offsetX+i*spacing,
+height:h,
+target:h,
+color:palette[Math.floor(Math.random()*palette.length)]
 })
-
-return
-}
-
-btn.classList.toggle("active")
-document.querySelector('[data-filter="all"]').classList.remove("active")
-
-activeFilters=[...document.querySelectorAll(".filter-btn.active")]
-.map(b=>b.dataset.filter)
-.filter(f=>f!=="all")
-
-projects.forEach(card=>{
-
-const tags=card.dataset.tags
-const match=activeFilters.every(f=>tags.includes(f))
-
-if(activeFilters.length===0 || match){
-
-card.classList.remove("removed")
-
-setTimeout(()=>{
-card.classList.remove("hidden")
-},10)
-
-}else{
-
-card.classList.add("hidden")
-
-setTimeout(()=>{
-card.classList.add("removed")
-},250)
 
 }
 
+for(let i=0;i<30;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*2+1,
+speed:Math.random()*0.4+0.1
 })
+}
+
+}
+
+function drawParticles(){
+
+particles.forEach(p=>{
+
+p.y -= p.speed
+
+if(p.y < 0){
+p.y = canvas.height
+p.x = Math.random()*canvas.width
+}
+
+ctx.fillStyle="rgba(255,255,255,0.25)"
+ctx.beginPath()
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2)
+ctx.fill()
 
 })
 
+}
+
+function drawRoundedRect(x,y,width,height,radius){
+
+ctx.beginPath()
+ctx.moveTo(x,y+radius)
+ctx.lineTo(x,y+height)
+ctx.lineTo(x+width,y+height)
+ctx.lineTo(x+width,y+radius)
+ctx.quadraticCurveTo(x+width,y,x+width-radius,y)
+ctx.lineTo(x+radius,y)
+ctx.quadraticCurveTo(x,y,x,y+radius)
+ctx.fill()
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+drawParticles()
+
+bars.forEach(bar=>{
+
+bar.height+=(bar.target-bar.height)*0.05
+
+ctx.fillStyle=bar.color
+
+drawRoundedRect(
+bar.x,
+canvas.height-bar.height,
+barWidth,
+bar.height,
+6
+)
+
 })
+
+requestAnimationFrame(animate)
+
+}
+
+setupCanvas()
+animate()
+
+window.addEventListener("resize",setupCanvas)
 
 </script>
 
