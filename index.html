@@ -317,8 +317,6 @@ gap:4px;
 font-size:10px;
 }
 
-/* default tag */
-
 .project-tags span{
 background:rgba(255,255,255,0.2);
 padding:2px 6px;
@@ -393,6 +391,7 @@ color:white;
 
 <div class="main-layout">
 
+<!-- ABOUT -->
 <section id="about">
 <h2>About Me</h2>
 
@@ -414,6 +413,7 @@ color:white;
 </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
 <h2>Let's Connect!</h2>
 
@@ -429,6 +429,7 @@ color:white;
 </form>
 </section>
 
+<!-- PROJECTS -->
 <section id="projects">
 
 <h2>My Projects</h2>
@@ -497,6 +498,7 @@ target="_blank">
 
 </section>
 
+<!-- CERT -->
 <section id="certifications">
 
 <h2>Certifications</h2>
@@ -590,6 +592,19 @@ speed:Math.random()*0.4+0.1
 
 }
 
+function randomizeBars(){
+
+for(let i=0;i<6;i++){
+
+const index=Math.floor(Math.random()*bars.length)
+bars[index].target=Math.random()*120+60
+
+}
+
+}
+
+setInterval(randomizeBars,5000)
+
 function drawParticles(){
 
 particles.forEach(p=>{
@@ -654,55 +669,6 @@ setupCanvas()
 animate()
 
 window.addEventListener("resize",setupCanvas)
-
-/* MULTI FILTER */
-
-const filterButtons=document.querySelectorAll(".filter-btn")
-const projects=document.querySelectorAll(".project-card")
-
-let activeFilters=[]
-
-filterButtons.forEach(btn=>{
-
-btn.addEventListener("click",()=>{
-
-const filter=btn.dataset.filter
-
-if(filter==="all"){
-activeFilters=[]
-filterButtons.forEach(b=>b.classList.remove("active"))
-btn.classList.add("active")
-
-projects.forEach(card=>{
-card.classList.remove("hide")
-})
-
-return
-}
-
-btn.classList.toggle("active")
-document.querySelector('[data-filter="all"]').classList.remove("active")
-
-activeFilters=[...document.querySelectorAll(".filter-btn.active")]
-.map(b=>b.dataset.filter)
-.filter(f=>f!=="all")
-
-projects.forEach(card=>{
-
-const tags=card.dataset.tags
-const match=activeFilters.every(f=>tags.includes(f))
-
-if(activeFilters.length===0 || match){
-card.classList.remove("hide")
-}else{
-card.classList.add("hide")
-}
-
-})
-
-})
-
-})
 
 </script>
 
