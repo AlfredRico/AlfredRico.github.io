@@ -238,13 +238,24 @@ font-size:13px;
 transition:.25s;
 }
 
-.filter-btn.active.tag-all{background:#4a90e2}
-.filter-btn.active.tag-python,.tag-python{background:#3776AB}
-.filter-btn.active.tag-r,.tag-r{background:#276DC3}
-.filter-btn.active.tag-sql,.tag-sql{background:#336791}
-.filter-btn.active.tag-tableau,.tag-tableau{background:#E97627}
-.filter-btn.active.tag-excel,.tag-excel{background:#217346}
-.filter-btn.active.tag-sheets,.tag-sheets{background:#34A853}
+/* active colors */
+
+.filter-btn.active.tag-all{background:#4a90e2;}
+.filter-btn.active.tag-python{background:#3776AB;}
+.filter-btn.active.tag-r{background:#276DC3;}
+.filter-btn.active.tag-sql{background:#336791;}
+.filter-btn.active.tag-tableau{background:#E97627;}
+.filter-btn.active.tag-excel{background:#217346;}
+.filter-btn.active.tag-sheets{background:#34A853;}
+
+/* project tag colors */
+
+.tag-python{background:#3776AB;}
+.tag-r{background:#276DC3;}
+.tag-sql{background:#336791;}
+.tag-tableau{background:#E97627;}
+.tag-excel{background:#217346;}
+.tag-sheets{background:#34A853;}
 
 /* PROJECT WINDOW */
 
@@ -511,7 +522,7 @@ Issued via Coursera
 
 <script>
 
-/* HERO ANIMATION */
+/* HERO DASHBOARD ANIMATION */
 
 const canvas=document.getElementById("dashboardCanvas")
 const ctx=canvas.getContext("2d")
@@ -621,13 +632,7 @@ bar.height+=(bar.target-bar.height)*.05
 
 ctx.fillStyle=bar.color
 
-drawRoundedRect(
-bar.x,
-canvas.height-bar.height,
-barWidth,
-bar.height,
-6
-)
+drawRoundedRect(bar.x,canvas.height-bar.height,barWidth,bar.height,6)
 
 })
 
