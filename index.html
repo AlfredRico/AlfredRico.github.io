@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -56,11 +56,7 @@ content:"";
 position:absolute;
 inset:0;
 background:
-radial-gradient(circle at 50% 80%,
-rgba(200,200,200,0.25) 0%,
-rgba(200,200,200,0.10) 25%,
-transparent 60%);
-z-index:0;
+radial-gradient(circle at 50% 80%,rgba(200,200,200,.25) 0%,rgba(200,200,200,.1) 25%,transparent 60%);
 }
 
 .hero::after{
@@ -68,16 +64,14 @@ content:"";
 position:absolute;
 inset:0;
 background-image:
-linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
 background-size:40px 40px;
-z-index:0;
 }
 
 #dashboardCanvas{
 position:absolute;
-top:0;
-left:0;
+inset:0;
 width:100%;
 height:100%;
 opacity:.45;
@@ -87,7 +81,7 @@ z-index:2;
 .hero-content{
 position:relative;
 z-index:3;
-transform:translateY(-40px);
+margin-top:-40px;
 }
 
 .hero h1{
@@ -106,7 +100,7 @@ font-size:22px;
 
 nav{
 background:white;
-box-shadow:0 2px 10px rgba(0,0,0,0.08);
+box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
 
 nav ul{
@@ -139,10 +133,10 @@ grid-template-areas:
 gap:40px;
 }
 
-#about{grid-area:about;}
-#contact{grid-area:contact;}
-#projects{grid-area:projects;}
-#certifications{grid-area:certifications;}
+#about{grid-area:about}
+#contact{grid-area:contact}
+#projects{grid-area:projects}
+#certifications{grid-area:certifications}
 
 h2{
 text-align:center;
@@ -164,7 +158,7 @@ height:180px;
 object-fit:cover;
 border-radius:50%;
 border:4px solid #4a90e2;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
+box-shadow:0 10px 30px rgba(0,0,0,.15);
 transition:transform .3s ease;
 }
 
@@ -177,7 +171,7 @@ position:relative;
 background:white;
 padding:30px;
 border-radius:16px;
-box-shadow:0 20px 50px rgba(0,0,0,0.08);
+box-shadow:0 20px 50px rgba(0,0,0,.08);
 }
 
 .about-text::before{
@@ -201,15 +195,14 @@ line-height:1.7;
 background:white;
 padding:40px;
 border-radius:16px;
-box-shadow:0 15px 40px rgba(0,0,0,0.08);
+box-shadow:0 15px 40px rgba(0,0,0,.08);
 }
 
 .contact-form input,
 .contact-form textarea{
 width:100%;
 padding:12px;
-margin-top:6px;
-margin-bottom:15px;
+margin:6px 0 15px;
 border-radius:8px;
 border:1px solid #ddd;
 }
@@ -245,26 +238,13 @@ font-size:13px;
 transition:.25s;
 }
 
-/* ensure tag classes do NOT color the buttons by default */
-
-.filter-btn.tag-python,
-.filter-btn.tag-r,
-.filter-btn.tag-sql,
-.filter-btn.tag-tableau,
-.filter-btn.tag-excel,
-.filter-btn.tag-sheets{
-background:#2f3a46;
-}
-
-/* active colors */
-
-.filter-btn.active.tag-all{background:#4a90e2;}
-.filter-btn.active.tag-python{background:#3776AB;}
-.filter-btn.active.tag-r{background:#276DC3;}
-.filter-btn.active.tag-sql{background:#336791;}
-.filter-btn.active.tag-tableau{background:#E97627;}
-.filter-btn.active.tag-excel{background:#217346;}
-.filter-btn.active.tag-sheets{background:#34A853;}
+.filter-btn.active.tag-all{background:#4a90e2}
+.filter-btn.active.tag-python,.tag-python{background:#3776AB}
+.filter-btn.active.tag-r,.tag-r{background:#276DC3}
+.filter-btn.active.tag-sql,.tag-sql{background:#336791}
+.filter-btn.active.tag-tableau,.tag-tableau{background:#E97627}
+.filter-btn.active.tag-excel,.tag-excel{background:#217346}
+.filter-btn.active.tag-sheets,.tag-sheets{background:#34A853}
 
 /* PROJECT WINDOW */
 
@@ -294,15 +274,13 @@ text-decoration:none;
 color:inherit;
 }
 
-.project-card.hide{
-display:none;
-}
+.project-card.hide{display:none}
 
 .project-card img{
 width:100%;
 height:100%;
 object-fit:cover;
-transition:all .4s ease;
+transition:.4s ease;
 }
 
 .project-card:hover img{
@@ -317,11 +295,11 @@ left:0;
 right:0;
 padding:14px;
 color:white;
-background:linear-gradient(transparent,rgba(0,0,0,0.85));
+background:linear-gradient(transparent,rgba(0,0,0,.85));
 }
 
 .project-overlay h3{
-margin:0 0 6px 0;
+margin:0 0 6px;
 font-size:15px;
 }
 
@@ -338,13 +316,6 @@ border-radius:6px;
 color:white;
 }
 
-.tag-python{background:#3776AB;}
-.tag-r{background:#276DC3;}
-.tag-sql{background:#336791;}
-.tag-tableau{background:#E97627;}
-.tag-excel{background:#217346;}
-.tag-sheets{background:#34A853;}
-
 /* CERT */
 
 .cert-column{
@@ -357,14 +328,14 @@ background:white;
 border-radius:14px;
 padding:14px 18px;
 text-align:center;
-box-shadow:0 12px 30px rgba(0,0,0,0.08);
+box-shadow:0 12px 30px rgba(0,0,0,.08);
 max-width:220px;
-transition:all .25s ease;
+transition:.25s ease;
 }
 
 .cert:hover{
 transform:translateY(-6px) scale(1.03);
-box-shadow:0 20px 40px rgba(0,0,0,0.15);
+box-shadow:0 20px 40px rgba(0,0,0,.15);
 }
 
 footer{
@@ -383,7 +354,7 @@ color:white;
 
 <canvas id="dashboardCanvas"></canvas>
 
-<div class="container hero-content">
+<div class="hero-content">
 <h1>Alfred Rico</h1>
 <p>Aspiring Data Analyst</p>
 
@@ -409,9 +380,7 @@ color:white;
 
 <div class="about-grid">
 
-<div>
 <img src="profile.jpg" class="profile-pic">
-</div>
 
 <div class="about-text">
 
@@ -463,7 +432,7 @@ color:white;
 <a class="project-card" data-tags="r"
 href="https://shadyeggs.github.io/Fifa21-Data-Cleaning-Project/" target="_blank">
 
-<img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6">
+<img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?w=800&q=80">
 
 <div class="project-overlay">
 <h3>Fifa 21 Data Cleaning</h3>
@@ -483,7 +452,7 @@ data-tags="sql tableau excel sheets"
 href="https://public.tableau.com/app/profile/alfred.rico/viz/CyclisticCaseStudy_17031395269510/Dashboard1"
 target="_blank">
 
-<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80">
 
 <div class="project-overlay">
 
@@ -514,7 +483,7 @@ target="_blank">
 
 <div class="cert">
 
-<img style="height:24px" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
+<img height="24" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
 
 <div style="font-weight:700;font-size:14px;">
 Google Data Analytics Professional Certificate
@@ -524,7 +493,7 @@ Google Data Analytics Professional Certificate
 Issued via Coursera
 </div>
 
-<img style="height:16px" src="https://upload.wikimedia.org/wikipedia/commons/9/97/Coursera-Logo_600x600.svg">
+<img height="16" src="https://upload.wikimedia.org/wikipedia/commons/9/97/Coursera-Logo_600x600.svg">
 
 </div>
 
@@ -542,7 +511,7 @@ Issued via Coursera
 
 <script>
 
-/* HERO DASHBOARD ANIMATION */
+/* HERO ANIMATION */
 
 const canvas=document.getElementById("dashboardCanvas")
 const ctx=canvas.getContext("2d")
@@ -554,9 +523,9 @@ const spacing=28
 const barWidth=18
 
 const palette=[
-"rgba(52,152,219,0.45)",
-"rgba(26,188,156,0.45)",
-"rgba(160,160,160,0.45)"
+"rgba(52,152,219,.45)",
+"rgba(26,188,156,.45)",
+"rgba(160,160,160,.45)"
 ]
 
 function setupCanvas(){
@@ -591,7 +560,7 @@ particles.push({
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
 size:Math.random()*2+1,
-speed:Math.random()*0.4+0.1
+speed:Math.random()*.4+.1
 })
 }
 
@@ -617,7 +586,7 @@ p.y=canvas.height
 p.x=Math.random()*canvas.width
 }
 
-ctx.fillStyle="rgba(255,255,255,0.25)"
+ctx.fillStyle="rgba(255,255,255,.25)"
 ctx.beginPath()
 ctx.arc(p.x,p.y,p.size,0,Math.PI*2)
 ctx.fill()
@@ -626,16 +595,16 @@ ctx.fill()
 
 }
 
-function drawRoundedRect(x,y,width,height,radius){
+function drawRoundedRect(x,y,w,h,r){
 
 ctx.beginPath()
-ctx.moveTo(x,y+radius)
-ctx.lineTo(x,y+height)
-ctx.lineTo(x+width,y+height)
-ctx.lineTo(x+width,y+radius)
-ctx.quadraticCurveTo(x+width,y,x+width-radius,y)
-ctx.lineTo(x+radius,y)
-ctx.quadraticCurveTo(x,y,x,y+radius)
+ctx.moveTo(x,y+r)
+ctx.lineTo(x,y+h)
+ctx.lineTo(x+w,y+h)
+ctx.lineTo(x+w,y+r)
+ctx.quadraticCurveTo(x+w,y,x+w-r,y)
+ctx.lineTo(x+r,y)
+ctx.quadraticCurveTo(x,y,x,y+r)
 ctx.fill()
 
 }
@@ -648,7 +617,7 @@ drawParticles()
 
 bars.forEach(bar=>{
 
-bar.height+=(bar.target-bar.height)*0.05
+bar.height+=(bar.target-bar.height)*.05
 
 ctx.fillStyle=bar.color
 
@@ -676,8 +645,6 @@ window.addEventListener("resize",setupCanvas)
 const filterButtons=document.querySelectorAll(".filter-btn")
 const projects=document.querySelectorAll(".project-card")
 
-let activeFilters=[]
-
 filterButtons.forEach(btn=>{
 
 btn.addEventListener("click",()=>{
@@ -686,40 +653,33 @@ const filter=btn.dataset.filter
 
 if(filter==="all"){
 
-activeFilters=[]
 filterButtons.forEach(b=>b.classList.remove("active"))
 btn.classList.add("active")
-projects.forEach(card=>card.classList.remove("hide"))
-return
 
+projects.forEach(card=>card.classList.remove("hide"))
+
+return
 }
 
 btn.classList.toggle("active")
-
 document.querySelector('[data-filter="all"]').classList.remove("active")
 
-activeFilters=[...document.querySelectorAll(".filter-btn.active")]
+const active=[...document.querySelectorAll(".filter-btn.active")]
 .map(b=>b.dataset.filter)
-.filter(f=>f!=="all")
 
-if(activeFilters.length===0){
+if(active.length===0){
 
 document.querySelector('[data-filter="all"]').classList.add("active")
 projects.forEach(card=>card.classList.remove("hide"))
 return
-
 }
 
 projects.forEach(card=>{
 
 const tags=card.dataset.tags
-const match=activeFilters.every(f=>tags.includes(f))
+const match=active.every(f=>tags.includes(f))
 
-if(match){
-card.classList.remove("hide")
-}else{
-card.classList.add("hide")
-}
+card.classList.toggle("hide",!match)
 
 })
 
