@@ -221,7 +221,7 @@ cursor:pointer;
 font-size:13px;
 }
 
-/* language active colors */
+/* LANGUAGE ACTIVE COLORS */
 
 .filter-btn.active.tag-all{background:#4a90e2;}
 .filter-btn.active.tag-python{background:#3776AB;}
@@ -230,8 +230,6 @@ font-size:13px;
 .filter-btn.active.tag-tableau{background:#E97627;}
 .filter-btn.active.tag-excel{background:#217346;}
 .filter-btn.active.tag-sheets{background:#34A853;}
-
-/* package buttons */
 
 .package-btn.active{
 background:#4a90e2;
@@ -258,6 +256,8 @@ border-radius:16px;
 overflow:hidden;
 aspect-ratio:1;
 cursor:pointer;
+text-decoration:none;
+color:inherit;
 }
 
 .project-card.hide{display:none;}
@@ -326,6 +326,7 @@ color:white;
 <body>
 
 <header class="hero">
+
 <canvas id="dashboardCanvas"></canvas>
 
 <div class="hero-content">
@@ -337,6 +338,7 @@ color:white;
 <a href="https://github.com/ShadyEggs" target="_blank"><i class="fab fa-github"></i></a>
 </div>
 </div>
+
 </header>
 
 <nav>
@@ -481,6 +483,129 @@ Issued via Coursera
 </footer>
 
 <script>
+
+/* HERO DASHBOARD ANIMATION */
+
+const canvas=document.getElementById("dashboardCanvas")
+const ctx=canvas.getContext("2d")
+
+let bars=[]
+let particles=[]
+
+const spacing=28
+const barWidth=18
+
+const palette=[
+"rgba(52,152,219,.45)",
+"rgba(26,188,156,.45)",
+"rgba(160,160,160,.45)"
+]
+
+function setupCanvas(){
+
+const hero=document.querySelector(".hero")
+
+canvas.width=hero.offsetWidth
+canvas.height=hero.offsetHeight
+
+bars=[]
+particles=[]
+
+const count=Math.floor(canvas.width/spacing)
+const totalWidth=count*spacing
+const offsetX=(canvas.width-totalWidth)/2
+
+for(let i=0;i<count;i++){
+
+const h=Math.random()*120+60
+
+bars.push({
+x:offsetX+i*spacing,
+height:h,
+target:h,
+color:palette[Math.floor(Math.random()*palette.length)]
+})
+
+}
+
+for(let i=0;i<30;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*2+1,
+speed:Math.random()*.4+.1
+})
+}
+
+}
+
+function randomizeBars(){
+for(let i=0;i<6;i++){
+const index=Math.floor(Math.random()*bars.length)
+bars[index].target=Math.random()*120+60
+}
+}
+
+setInterval(randomizeBars,5000)
+
+function drawParticles(){
+
+particles.forEach(p=>{
+
+p.y-=p.speed
+
+if(p.y<0){
+p.y=canvas.height
+p.x=Math.random()*canvas.width
+}
+
+ctx.fillStyle="rgba(255,255,255,.25)"
+ctx.beginPath()
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2)
+ctx.fill()
+
+})
+
+}
+
+function drawRoundedRect(x,y,w,h,r){
+
+ctx.beginPath()
+ctx.moveTo(x,y+r)
+ctx.lineTo(x,y+h)
+ctx.lineTo(x+w,y+h)
+ctx.lineTo(x+w,y+r)
+ctx.quadraticCurveTo(x+w,y,x+w-r,y)
+ctx.lineTo(x+r,y)
+ctx.quadraticCurveTo(x,y,x,y+r)
+ctx.fill()
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+drawParticles()
+
+bars.forEach(bar=>{
+
+bar.height+=(bar.target-bar.height)*.05
+
+ctx.fillStyle=bar.color
+
+drawRoundedRect(bar.x,canvas.height-bar.height,barWidth,bar.height,6)
+
+})
+
+requestAnimationFrame(animate)
+
+}
+
+setupCanvas()
+animate()
+
+window.addEventListener("resize",setupCanvas)
 
 /* PACKAGE MAP */
 
