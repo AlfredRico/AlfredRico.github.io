@@ -1894,7 +1894,44 @@ const barWidth=18
 
 /* USER PALETTE */
 
+
+
 const palette=[
+"#01204E",
+"#028391",
+"#F6DCAC",
+"#FAA968",
+"#F85525"
+]
+
+function getBarColor(index,total){
+
+const t=index/total
+
+/* brighter edges */
+
+if(t<0.15 || t>0.85){
+
+const edgeColors=["#FAA968","#F85525"]
+return edgeColors[Math.floor(Math.random()*edgeColors.length)]
+
+}
+
+/* mid region */
+
+if(t<0.35 || t>0.65){
+
+const midColors=["#028391","#F6DCAC"]
+return midColors[Math.floor(Math.random()*midColors.length)]
+
+}
+
+/* center */
+
+return "#01204E"
+
+}
+
 "#01204E",
 "#028391",
 "#F6DCAC",
