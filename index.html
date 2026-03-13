@@ -249,7 +249,6 @@ aspect-ratio:1;
 cursor:pointer;
 text-decoration:none;
 color:inherit;
-touch-action:manipulation;
 }
 
 .project-card.hide{display:none}
@@ -419,10 +418,10 @@ padding:4px 9px;
 
 <div class="about-grid">
 
-<img src="profile.jpg" class="profile-pic">
+<img src="profile.jpg" class="profile-pic" alt="Portrait of Alfred Rico">
 
 <div class="about-text">
-<p>Hi, I'm Alfred — a data analyst focused on turning messy datasets into clear, actionable insights.  My projects focus on exploratory data analysis, trend detection, and building clear visual stories from complex datasets.</p>
+<p>Hi, I'm Alfred — a data analyst focused on turning messy datasets into clear, actionable insights. My projects focus on exploratory data analysis, trend detection, and building clear visual stories from complex datasets.</p>
 
 <p>Using tools like Python, SQL, and data visualization platforms, I explore patterns, build dashboards, and communicate findings that help explain what the data is really saying.</p>
 
@@ -470,7 +469,7 @@ padding:4px 9px;
 <a class="project-card" data-tags="r dplyr tidyr ggplot2 plotly"
 href="https://shadyeggs.github.io/Fifa21-Data-Cleaning-Project/" target="_blank">
 
-<img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?w=800&q=80">
+<img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?w=800&q=80" alt="Fifa 21 dataset cleaning and analysis">
 
 <div class="project-overlay">
 <h3>Fifa 21 Data Cleaning</h3>
@@ -490,7 +489,7 @@ data-tags="sql tableau excel sheets"
 href="https://public.tableau.com/app/profile/alfred.rico/viz/CyclisticCaseStudy_17031395269510/Dashboard1"
 target="_blank">
 
-<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80">
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Cyclistic bike share analysis dashboard">
 
 <div class="project-overlay">
 <h3>Cyclistic Case Study</h3>
@@ -573,8 +572,7 @@ bars=[]
 particles=[]
 
 const count=Math.floor(canvas.width/spacing)
-const totalWidth=count*spacing
-const offsetX=(canvas.width-totalWidth)/2
+const offsetX=(canvas.width-(count*spacing))/2
 
 for(let i=0;i<count;i++){
 
@@ -714,9 +712,12 @@ packageContainer.innerHTML=""
 activePackages=[]
 
 activeLanguages.forEach(lang=>{
+
 if(packageMap[lang]){
 
-packageMap[lang].forEach(pkg=>{
+const uniquePackages=new Set(packageMap[lang])
+
+uniquePackages.forEach(pkg=>{
 
 const btn=document.createElement("button")
 btn.className="filter-btn package-btn"
@@ -727,8 +728,13 @@ btn.onclick=()=>{
 
 btn.classList.toggle("active")
 
-activePackages=[...document.querySelectorAll(".package-btn.active")]
-.map(b=>b.dataset.filter)
+const tag=pkg
+
+if(btn.classList.contains("active")){
+activePackages.push(tag)
+}else{
+activePackages=activePackages.filter(p=>p!==tag)
+}
 
 showProjects()
 
