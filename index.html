@@ -598,101 +598,93 @@ background:linear-gradient(
 
 
 
-/* -------------------------
-   PERFORMANCE OPTIMIZATION
-------------------------- */
-
-.project-card img{
-will-change:transform,filter;
-}
-
-.hero canvas{
-will-change:transform;
-}
+/* ------------------------------
+   PROJECT WINDOW (DESKTOP)
+------------------------------ */
 
 .projects-window{
-scroll-behavior:smooth;
-}
 
-/* Prevent horizontal overflow */
+max-width:920px;
+margin:auto;
+height:650px;
 
-body{
+overflow-y:auto;
 overflow-x:hidden;
+
+scrollbar-width:auto;
+scrollbar-color:#028391 rgba(255,255,255,.06);
+
 }
 
-/* -------------------------
-   MOBILE CENTERING
-------------------------- */
+/* Chrome / Edge / Safari */
+
+.projects-window::-webkit-scrollbar{
+width:12px;
+}
+
+.projects-window::-webkit-scrollbar-track{
+
+background:rgba(255,255,255,.05);
+border-radius:12px;
+
+}
+
+.projects-window::-webkit-scrollbar-thumb{
+
+background:linear-gradient(
+180deg,
+#028391,
+#FAA968
+);
+
+border-radius:12px;
+
+box-shadow:
+inset 0 1px 2px rgba(255,255,255,.35),
+0 0 6px rgba(0,0,0,.35);
+
+}
+
+/* --------------------------------
+   MOBILE PROJECT WINDOW (2x3)
+-------------------------------- */
 
 @media (max-width:900px){
 
-.main-layout{
-justify-items:center;
-text-align:center;
-}
-
-.about-grid{
-grid-template-columns:1fr;
-justify-items:center;
-}
-
-.profile-pic{
-margin:auto;
-display:block;
-}
-
-.contact-form{
-width:100%;
-max-width:420px;
-margin:auto;
-}
-
 .projects-window{
-width:100%;
-}
 
-/* -------------------------
-   FORCE 2x3 PROJECT GRID
-------------------------- */
+height:620px;
+overflow-y:auto;
+overflow-x:hidden;
+
+-webkit-overflow-scrolling:touch;
+
+}
 
 .projects-grid{
 
 grid-template-columns:repeat(2,1fr);
-gap:18px;
-
-}
-
-.project-card{
-
-aspect-ratio:1;
-
-}
-
-/* ensures grid stability */
-
-.projects-window{
-
-max-height:none;
-height:auto;
 
 }
 
 }
 
-/* -------------------------
-   SMALL MOBILE SCREENS
-------------------------- */
+/* --------------------------------
+   SMALL MOBILE
+-------------------------------- */
 
 @media (max-width:600px){
 
+.projects-window{
+
+height:600px;
+
+}
+
 .projects-grid{
 
 grid-template-columns:repeat(2,1fr);
 
-}
-
-.hero h1{
-font-size:32px;
 }
 
 }
