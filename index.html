@@ -579,6 +579,59 @@ background:linear-gradient(
 
 }
 
+
+
+/* ------------------------------
+   PROJECT WINDOW SCROLLBAR
+------------------------------ */
+
+/* Firefox */
+
+.projects-window{
+scrollbar-width:thin;
+scrollbar-color:#028391 rgba(255,255,255,.05);
+}
+
+/* Chrome / Edge / Safari */
+
+.projects-window::-webkit-scrollbar{
+width:6px;
+}
+
+.projects-window::-webkit-scrollbar-track{
+
+background:rgba(255,255,255,.05);
+border-radius:20px;
+
+}
+
+.projects-window::-webkit-scrollbar-thumb{
+
+background:linear-gradient(
+180deg,
+#028391,
+#FAA968
+);
+
+border-radius:20px;
+
+box-shadow:
+inset 0 1px 1px rgba(255,255,255,.35),
+0 0 6px rgba(0,0,0,.35);
+
+}
+
+.projects-window::-webkit-scrollbar-thumb:hover{
+
+background:linear-gradient(
+180deg,
+#028391,
+#F85525
+);
+
+}
+
+
 </style>
 
 </head>
