@@ -51,7 +51,7 @@ radial-gradient(circle at 80% 70%, rgba(180,180,180,.25), transparent 45%),
 linear-gradient(135deg,#020617,#111827 60%,#1f2933);
 }
 
-/* subtle glow */
+/* hero glow */
 
 .hero::before{
 content:"";
@@ -63,10 +63,9 @@ rgba(200,200,200,0.25) 0%,
 rgba(200,200,200,0.10) 25%,
 transparent 60%);
 z-index:0;
-pointer-events:none;
 }
 
-/* GRID OVERLAY RESTORED */
+/* hero grid overlay */
 
 .hero::after{
 content:"";
@@ -253,14 +252,20 @@ font-size:13px;
 background:#4a90e2;
 }
 
-/* PROJECT GRID */
+/* PROJECT WINDOW */
+
+.projects-window{
+max-width:920px;
+margin:auto;
+height:650px;
+overflow-y:auto;
+padding-right:8px;
+}
 
 .projects-grid{
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+grid-template-columns:repeat(4,1fr);
 gap:20px;
-max-width:900px;
-margin:auto;
 }
 
 /* PROJECT CARD */
@@ -433,6 +438,8 @@ color:white;
 
 </div>
 
+<div class="projects-window">
+
 <div class="projects-grid">
 
 <a class="project-card"
@@ -479,6 +486,8 @@ target="_blank">
 </a>
 
 </div>
+</div>
+
 </section>
 
 <section id="certifications">
