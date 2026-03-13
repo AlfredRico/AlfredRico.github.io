@@ -1534,7 +1534,7 @@ bars.push({
 x:offsetX+i*spacing,
 height:h,
 target:h,
-color:palette[(i + Math.floor(Math.random()*2)) % palette.length]
+color:palette[Math.floor(Math.random()*palette.length)]
 })
 
 }
@@ -1602,10 +1602,8 @@ drawParticles()
 bars.forEach(bar=>{
 
 bar.height+=(bar.target-bar.height)*.05
-ctx.globalAlpha=.85
 ctx.fillStyle=bar.color
 drawRoundedRect(bar.x,canvas.height-bar.height,barWidth,bar.height,6)
-ctx.globalAlpha=1
 
 })
 
