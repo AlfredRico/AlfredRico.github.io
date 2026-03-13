@@ -157,7 +157,7 @@ display:flex;
 justify-content:center;
 flex-wrap:wrap;
 gap:10px;
-margin-bottom:10px;
+margin-bottom:15px;
 }
 
 .filter-btn{
@@ -171,6 +171,8 @@ font-size:13px;
 transition:.25s;
 }
 
+/* prevent default coloring */
+
 .filter-btn.tag-python,
 .filter-btn.tag-r,
 .filter-btn.tag-sql,
@@ -180,6 +182,8 @@ transition:.25s;
 background:#2f3a46;
 }
 
+/* active colors */
+
 .filter-btn.active.tag-all{background:#4a90e2;}
 .filter-btn.active.tag-python{background:#3776AB;}
 .filter-btn.active.tag-r{background:#276DC3;}
@@ -188,32 +192,31 @@ background:#2f3a46;
 .filter-btn.active.tag-excel{background:#217346;}
 .filter-btn.active.tag-sheets{background:#34A853;}
 
-/* PACKAGE FILTER TAGS */
+/* PACKAGE TAG FILTERS */
 
 .package-filters{
 display:flex;
 justify-content:center;
 flex-wrap:wrap;
 gap:8px;
-margin-bottom:20px;
+margin-bottom:25px;
 }
 
 .package-btn{
-padding:6px 12px;
-border-radius:16px;
+padding:6px 10px;
+border-radius:14px;
 border:none;
 background:#3b4652;
 color:white;
 font-size:12px;
 cursor:pointer;
-transition:.2s;
 }
 
 .package-btn.active{
 background:#4a90e2;
 }
 
-/* PROJECT GRID */
+/* PROJECT WINDOW */
 
 .projects-window{
 max-width:920px;
@@ -228,6 +231,8 @@ display:grid;
 grid-template-columns:repeat(4,1fr);
 gap:20px;
 }
+
+/* PROJECT CARD */
 
 .project-card{
 position:relative;
@@ -265,11 +270,22 @@ color:white;
 background:linear-gradient(transparent,rgba(0,0,0,0.85));
 }
 
+.project-overlay h3{
+margin:0 0 6px 0;
+font-size:15px;
+}
+
 .project-tags{
 display:flex;
 flex-wrap:wrap;
 gap:4px;
 font-size:10px;
+}
+
+.project-tags span{
+padding:2px 6px;
+border-radius:6px;
+color:white;
 }
 
 .tag-python{background:#3776AB;}
@@ -279,16 +295,8 @@ font-size:10px;
 .tag-excel{background:#217346;}
 .tag-sheets{background:#34A853;}
 
-footer{
-text-align:center;
-padding:14px;
-background:#111;
-color:white;
-}
-
 </style>
 </head>
-
 <body>
 
 <header class="hero">
@@ -335,7 +343,9 @@ color:white;
 <div id="packageFilters" class="package-filters"></div>
 
 <div class="projects-window">
+
 <div class="projects-grid">
+
 <a class="project-card"
 data-tags="r"
 data-packages="dplyr tidyr ggplot2 plotly"
@@ -382,6 +392,7 @@ target="_blank">
 
 </div>
 </div>
+
 </section>
 
 </div>
@@ -417,7 +428,6 @@ canvas.width=hero.offsetWidth
 canvas.height=hero.offsetHeight
 
 bars=[]
-particles=[]
 
 const count=Math.floor(canvas.width/spacing)
 const totalWidth=count*spacing
@@ -447,6 +457,7 @@ bars.forEach(bar=>{
 bar.height+=(bar.target-bar.height)*0.05
 
 ctx.fillStyle=bar.color
+
 ctx.fillRect(bar.x,canvas.height-bar.height,barWidth,bar.height)
 
 })
@@ -458,39 +469,31 @@ requestAnimationFrame(animate)
 setupCanvas()
 animate()
 
-/* LANGUAGE → PACKAGE MAP */
+window.addEventListener("resize",setupCanvas)
+
+/* PACKAGE FILTER UI */
 
 const languagePackages={
-
-python:["pandas","numpy","matplotlib","seaborn"],
+python:["pandas","numpy","matplotlib"],
 r:["dplyr","tidyr","ggplot2","plotly"],
-sql:["postgresql","sqlite"],
+sql:["postgresql"],
 tableau:["tableau"],
-excel:["power query","pivot tables"],
-sheets:["google query","pivot tables"]
-
+excel:["powerquery"],
+sheets:["query"]
 }
 
 const packageContainer=document.getElementById("packageFilters")
 
-function populatePackages(){
+function populatePackages(activeLangs){
 
 packageContainer.innerHTML=""
 
-const activeLanguages=[...document.querySelectorAll(".filter-btn.active")]
-.map(b=>b.dataset.filter)
-.filter(f=>f!=="all")
-
 let packages=new Set()
 
-activeLanguages.forEach(lang=>{
-
+activeLangs.forEach(lang=>{
 if(languagePackages[lang]){
-
-languagePackages[lang].forEach(pkg=>packages.add(pkg))
-
+languagePackages[lang].forEach(p=>packages.add(p))
 }
-
 })
 
 packages.forEach(pkg=>{
@@ -498,14 +501,12 @@ packages.forEach(pkg=>{
 const btn=document.createElement("button")
 
 btn.className="package-btn"
-btn.dataset.package=pkg
+btn.dataset.pkg=pkg
 btn.textContent=pkg
 
 btn.onclick=()=>{
-
 btn.classList.toggle("active")
-applyFilters()
-
+applyPackageFilters()
 }
 
 packageContainer.appendChild(btn)
@@ -514,67 +515,27 @@ packageContainer.appendChild(btn)
 
 }
 
-/* FILTER SYSTEM */
-
-const filterButtons=document.querySelectorAll(".filter-btn")
-const projects=document.querySelectorAll(".project-card")
-
-function applyFilters(){
-
-const activeLanguages=[...document.querySelectorAll(".filter-btn.active")]
-.map(b=>b.dataset.filter)
-.filter(f=>f!=="all")
+function applyPackageFilters(){
 
 const activePackages=[...document.querySelectorAll(".package-btn.active")]
-.map(b=>b.dataset.package)
+.map(b=>b.dataset.pkg)
 
 projects.forEach(card=>{
 
-const tags=card.dataset.tags
 const pkgs=card.dataset.packages || ""
 
-const langMatch=
-activeLanguages.length===0 ||
-activeLanguages.every(f=>tags.includes(f))
-
-const pkgMatch=
-activePackages.length===0 ||
-activePackages.every(p=>pkgs.includes(p))
-
-card.classList.toggle("hide",!(langMatch && pkgMatch))
-
-})
-
-}
-
-filterButtons.forEach(btn=>{
-
-btn.addEventListener("click",()=>{
-
-const filter=btn.dataset.filter
-
-if(filter==="all"){
-
-filterButtons.forEach(b=>b.classList.remove("active"))
-btn.classList.add("active")
-
-projects.forEach(card=>card.classList.remove("hide"))
-
-populatePackages()
+if(activePackages.length===0){
+card.classList.remove("hide")
 return
-
 }
 
-btn.classList.toggle("active")
+const match=activePackages.every(p=>pkgs.includes(p))
 
-document.querySelector('[data-filter="all"]').classList.remove("active")
-
-populatePackages()
-applyFilters()
+card.classList.toggle("hide",!match)
 
 })
 
-})
+}
 
 </script>
 
