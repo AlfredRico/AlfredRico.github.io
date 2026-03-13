@@ -61,6 +61,7 @@ rgba(200,200,200,0.25) 0%,
 rgba(200,200,200,0.10) 25%,
 transparent 60%);
 z-index:0;
+pointer-events:none;
 }
 
 .hero::after{
@@ -80,7 +81,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-opacity:.45;
+opacity:.4;
 z-index:2;
 }
 
@@ -274,17 +275,13 @@ aspect-ratio:1;
 cursor:pointer;
 text-decoration:none;
 color:inherit;
-transition:opacity .25s ease, transform .25s ease;
+transition:opacity .3s ease, transform .3s ease;
 }
 
-.project-card.hidden{
+.project-card.hide{
 opacity:0;
 transform:scale(.9);
 pointer-events:none;
-}
-
-.project-card.removed{
-display:none;
 }
 
 .project-card img{
@@ -314,8 +311,6 @@ margin:0 0 6px 0;
 font-size:15px;
 }
 
-/* TOOL TAGS */
-
 .project-tags{
 display:flex;
 flex-wrap:wrap;
@@ -323,34 +318,20 @@ gap:4px;
 font-size:10px;
 }
 
-.tool-tag{
-background:#4a90e2;
+.project-tags span{
 padding:2px 6px;
 border-radius:6px;
-cursor:pointer;
+color:white;
 }
 
-/* CERT */
+/* TOOL COLORS */
 
-.cert-column{
-display:flex;
-justify-content:center;
-}
-
-.cert{
-background:white;
-border-radius:14px;
-padding:14px 18px;
-text-align:center;
-box-shadow:0 12px 30px rgba(0,0,0,0.08);
-max-width:220px;
-transition:all .25s ease;
-}
-
-.cert:hover{
-transform:translateY(-6px) scale(1.03);
-box-shadow:0 20px 40px rgba(0,0,0,0.15);
-}
+.tag-python{background:#3776AB;}
+.tag-r{background:#276DC3;}
+.tag-sql{background:#008C95;}
+.tag-tableau{background:#E97627;}
+.tag-excel{background:#217346;}
+.tag-sheets{background:#34A853;}
 
 footer{
 text-align:center;
@@ -360,11 +341,13 @@ color:white;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header class="hero">
+
 <canvas id="dashboardCanvas"></canvas>
 
 <div class="container hero-content">
@@ -376,6 +359,7 @@ color:white;
 <a href="https://github.com/ShadyEggs" target="_blank"><i class="fab fa-github"></i></a>
 </div>
 </div>
+
 </header>
 
 <nav>
@@ -387,38 +371,54 @@ color:white;
 
 <div class="main-layout">
 
+<!-- ABOUT -->
+
 <section id="about">
 <h2>About Me</h2>
 
 <div class="about-grid">
+
 <div>
 <img src="profile.jpg" class="profile-pic">
 </div>
 
 <div class="about-text">
-<p>Hi, I’m Alfred — an aspiring data analyst who enjoys turning messy data into clear insights.</p>
-<p>Through hands-on projects, I’ve worked with Python, SQL, and visualization tools.</p>
+
+<p>Hi, I’m Alfred — an aspiring data analyst who enjoys turning messy data into clear insights and finding patterns that explain what’s really going on.</p>
+
+<p>Through hands-on projects, I’ve worked with Python, SQL, and visualization tools to analyze data and communicate findings in a way that’s easy to understand.</p>
+
+<p>I'm always looking for new problems to explore and new ways to learn.</p>
+
 </div>
 </div>
 </section>
+
+<!-- CONTACT -->
 
 <section id="contact">
 <h2>Let's Connect!</h2>
 
 <form action="https://formsubmit.co/alfred.m.rico@gmail.com" method="POST" class="contact-form">
+
 <input type="text" name="name" placeholder="Name" required>
 <input type="email" name="email" placeholder="Email" required>
-<textarea name="message" rows="6" placeholder="Message" required></textarea>
-<button type="submit" class="apple-send">Send Message</button>
-</form>
 
+<textarea name="message" rows="6" placeholder="Message" required></textarea>
+
+<button type="submit" class="apple-send">Send Message</button>
+
+</form>
 </section>
+
+<!-- PROJECTS -->
 
 <section id="projects">
 
 <h2>My Projects</h2>
 
 <div class="project-filters">
+
 <button class="filter-btn active" data-filter="all">All</button>
 <button class="filter-btn" data-filter="python">Python</button>
 <button class="filter-btn" data-filter="r">R</button>
@@ -426,28 +426,64 @@ color:white;
 <button class="filter-btn" data-filter="tableau">Tableau</button>
 <button class="filter-btn" data-filter="excel">Excel</button>
 <button class="filter-btn" data-filter="sheets">Google Sheets</button>
+
 </div>
 
 <div class="projects-window">
+
 <div class="projects-grid">
 
-<a class="project-card" data-tags="r sql" href="#">
-<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
+<a class="project-card"
+data-tags="r"
+href="https://shadyeggs.github.io/Fifa21-Data-Cleaning-Project/"
+target="_blank">
+
+<img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6">
+
 <div class="project-overlay">
-<h3>Example Project</h3>
+
+<h3>Fifa 21 Data Cleaning</h3>
+
 <div class="project-tags">
-<span class="tool-tag" data-filter="sql">SQL</span>
-<span class="tool-tag" data-filter="r">R</span>
+<span class="tag-r">R</span>
+<span>dplyr</span>
+<span>tidyr</span>
+<span>ggplot2</span>
+<span>plotly</span>
 </div>
+
+</div>
+</a>
+
+<a class="project-card"
+data-tags="sql tableau excel sheets"
+href="https://public.tableau.com/app/profile/alfred.rico/viz/CyclisticCaseStudy_17031395269510/Dashboard1"
+target="_blank">
+
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
+
+<div class="project-overlay">
+
+<h3>Cyclistic Case Study</h3>
+
+<div class="project-tags">
+<span class="tag-sql">SQL</span>
+<span class="tag-tableau">Tableau</span>
+<span class="tag-excel">Excel</span>
+<span class="tag-sheets">Sheets</span>
+</div>
+
 </div>
 </a>
 
 </div>
 </div>
-
 </section>
 
+<!-- CERTIFICATIONS -->
+
 <section id="certifications">
+
 <h2>Certifications</h2>
 
 <div class="cert-column">
@@ -455,6 +491,7 @@ color:white;
 <a href="https://www.coursera.org/account/accomplishments/professional-cert/MSCMJL682NT9" target="_blank">
 
 <div class="cert">
+
 <img style="height:24px" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
 
 <div style="font-weight:700;font-size:14px;">
@@ -466,6 +503,7 @@ Issued via Coursera
 </div>
 
 <img style="height:16px" src="https://upload.wikimedia.org/wikipedia/commons/9/97/Coursera-Logo_600x600.svg">
+
 </div>
 
 </a>
@@ -597,8 +635,18 @@ requestAnimationFrame(animate)
 
 }
 
+function updateRandomBars(){
+
+bars.forEach(bar=>{
+bar.target=Math.random()*180+40
+})
+
+}
+
 setupCanvas()
 animate()
+
+setInterval(updateRandomBars,5000)
 
 window.addEventListener("resize",setupCanvas)
 
