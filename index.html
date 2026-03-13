@@ -275,7 +275,7 @@ aspect-ratio:1;
 cursor:pointer;
 text-decoration:none;
 color:inherit;
-transition:opacity .35s ease, transform .35s ease;
+transition: opacity .35s ease, transform .35s ease;
 }
 
 .project-card.hide{
@@ -390,7 +390,11 @@ color:white;
 </ul>
 </nav>
 
-<!-- PAGE CONTENT REMAINS THE SAME -->
+<!-- Your existing About, Contact, Projects, Certifications sections remain exactly unchanged -->
+
+<footer>
+<p>© 2026 Alfred Rico</p>
+</footer>
 
 <script>
 
@@ -438,30 +442,34 @@ color:palette[Math.floor(Math.random()*palette.length)]
 
 }
 
-for(let i=0;i<30;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-size:Math.random()*2+1,
-speed:Math.random()*0.4+0.1
-})
 }
 
-}
+/* Smooth animation */
 
 function animate(){
 
 ctx.clearRect(0,0,canvas.width,canvas.height)
 
 bars.forEach(bar=>{
+
 bar.height+=(bar.target-bar.height)*0.05
+
 ctx.fillStyle=bar.color
-ctx.fillRect(bar.x,canvas.height-bar.height,barWidth,bar.height)
+
+ctx.fillRect(
+bar.x,
+canvas.height-bar.height,
+barWidth,
+bar.height
+)
+
 })
 
 requestAnimationFrame(animate)
 
 }
+
+/* CORRECT BAR UPDATE */
 
 function updateRandomBars(){
 
@@ -506,15 +514,13 @@ const match=activeFilters.every(f=>tags.includes(f))
 
 if(activeFilters.length===0 || match){
 
-card.classList.remove("hide")
-
-setTimeout(()=>{card.style.display="block"},200)
+card.style.display="block"
+requestAnimationFrame(()=>card.classList.remove("hide"))
 
 }else{
 
 card.classList.add("hide")
-
-setTimeout(()=>{card.style.display="none"},200)
+setTimeout(()=>card.style.display="none",350)
 
 }
 
