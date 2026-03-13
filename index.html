@@ -40,12 +40,17 @@ background:radial-gradient(circle at 50% 80%,rgba(200,200,200,.25),transparent 6
 .hero::after{
 content:"";position:absolute;inset:0;
 background-image:
-linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
 background-size:40px 40px;
 }
 
-#dashboardCanvas{position:absolute;inset:0;opacity:.45;z-index:2}
+#dashboardCanvas{
+position:absolute;
+inset:0;
+opacity:.65;
+z-index:2
+}
 
 .hero-content{position:relative;z-index:3;margin-top:-40px}
 
@@ -1504,12 +1509,12 @@ const ctx=canvas.getContext("2d")
 
 let bars=[],particles=[]
 const spacing=28
-const barWidth=18
+const barWidth=14
 
 const palette=[
-"rgba(52,152,219,.45)",
-"rgba(26,188,156,.45)",
-"rgba(160,160,160,.45)"
+"rgba(59,130,246,.75)",
+"rgba(16,185,129,.70)",
+"rgba(148,163,184,.65)"
 ]
 
 function setupCanvas(){
@@ -1528,7 +1533,7 @@ const offsetX=(canvas.width-totalWidth)/2
 
 for(let i=0;i<count;i++){
 
-const h=Math.random()*120+60
+const h=Math.random()*140+50
 
 bars.push({
 x:offsetX+i*spacing,
@@ -1570,7 +1575,7 @@ p.y=canvas.height
 p.x=Math.random()*canvas.width
 }
 
-ctx.fillStyle="rgba(255,255,255,.25)"
+ctx.fillStyle="rgba(255,255,255,.35)"
 ctx.beginPath()
 ctx.arc(p.x,p.y,p.size,0,Math.PI*2)
 ctx.fill()
