@@ -671,6 +671,55 @@ setInterval(updateRandomBars,5000)
 
 window.addEventListener("resize",setupCanvas)
 
+/* PROJECT FILTERING */
+
+const filterButtons=document.querySelectorAll(".filter-btn")
+const projects=document.querySelectorAll(".project-card")
+
+let activeFilters=[]
+
+filterButtons.forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+const filter=btn.dataset.filter
+
+if(filter==="all"){
+activeFilters=[]
+filterButtons.forEach(b=>b.classList.remove("active"))
+btn.classList.add("active")
+
+projects.forEach(card=>{
+card.classList.remove("hide")
+})
+
+return
+}
+
+btn.classList.toggle("active")
+document.querySelector('[data-filter="all"]').classList.remove("active")
+
+activeFilters=[...document.querySelectorAll(".filter-btn.active")]
+.map(b=>b.dataset.filter)
+.filter(f=>f!=="all")
+
+projects.forEach(card=>{
+
+const tags=card.dataset.tags
+const match=activeFilters.every(f=>tags.includes(f))
+
+if(activeFilters.length===0 || match){
+card.classList.remove("hide")
+}else{
+card.classList.add("hide")
+}
+
+})
+
+})
+
+})
+
 </script>
 
 </body>
