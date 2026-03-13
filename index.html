@@ -324,7 +324,7 @@ border-radius:6px;
 
 .tag-python{background:#3776AB;color:white;}
 .tag-r{background:#276DC3;color:white;}
-.tag-sql{background:#008C95;color:white;}
+.tag-sql{background:#336791;color:white;}
 .tag-tableau{background:#E97627;color:white;}
 .tag-excel{background:#217346;color:white;}
 .tag-sheets{background:#34A853;color:white;}
@@ -586,14 +586,10 @@ speed:Math.random()*0.4+0.1
 }
 
 function randomizeBars(){
-
 for(let i=0;i<6;i++){
-
 const index=Math.floor(Math.random()*bars.length)
 bars[index].target=Math.random()*120+60
-
 }
-
 }
 
 setInterval(randomizeBars,5000)
@@ -663,7 +659,7 @@ animate()
 
 window.addEventListener("resize",setupCanvas)
 
-/* FILTERS */
+/* FILTER SYSTEM */
 
 const filterButtons=document.querySelectorAll(".filter-btn")
 const projects=document.querySelectorAll(".project-card")
@@ -677,15 +673,20 @@ btn.addEventListener("click",()=>{
 const filter=btn.dataset.filter
 
 if(filter==="all"){
+
 activeFilters=[]
+
 filterButtons.forEach(b=>b.classList.remove("active"))
+
 btn.classList.add("active")
 
 projects.forEach(card=>card.classList.remove("hide"))
+
 return
 }
 
 btn.classList.toggle("active")
+
 document.querySelector('[data-filter="all"]').classList.remove("active")
 
 activeFilters=[...document.querySelectorAll(".filter-btn.active")]
