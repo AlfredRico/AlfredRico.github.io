@@ -26,12 +26,6 @@ background:#1f2933;
 scroll-behavior:smooth;
 }
 
-.container{
-width:90%;
-max-width:1100px;
-margin:auto;
-}
-
 /* HERO */
 
 .hero{
@@ -54,7 +48,7 @@ linear-gradient(135deg,#020617,#111827 60%,#1f2933);
 content:"";
 position:absolute;
 inset:0;
-background:radial-gradient(circle at 50% 80%,rgba(200,200,200,.25) 0%,rgba(200,200,200,.1) 25%,transparent 60%);
+background:radial-gradient(circle at 50% 80%,rgba(200,200,200,.25),transparent 60%);
 }
 
 .hero::after{
@@ -169,22 +163,6 @@ background:white;
 padding:30px;
 border-radius:16px;
 box-shadow:0 20px 50px rgba(0,0,0,.08);
-position:relative;
-}
-
-.about-text::before{
-content:"";
-position:absolute;
-left:-14px;
-top:80px;
-border-top:12px solid transparent;
-border-bottom:12px solid transparent;
-border-right:14px solid white;
-}
-
-.about-text p{
-text-indent:20px;
-line-height:1.7;
 }
 
 /* CONTACT */
@@ -222,6 +200,14 @@ display:flex;
 justify-content:center;
 flex-wrap:wrap;
 gap:10px;
+margin-bottom:12px;
+}
+
+.package-filters{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:10px;
 margin-bottom:25px;
 }
 
@@ -233,8 +219,9 @@ background:#2f3a46;
 color:white;
 cursor:pointer;
 font-size:13px;
-transition:.25s;
 }
+
+/* language active colors */
 
 .filter-btn.active.tag-all{background:#4a90e2;}
 .filter-btn.active.tag-python{background:#3776AB;}
@@ -244,23 +231,19 @@ transition:.25s;
 .filter-btn.active.tag-excel{background:#217346;}
 .filter-btn.active.tag-sheets{background:#34A853;}
 
-/* PROJECT TAG COLORS */
+/* package buttons */
 
-.tag-python{background:#3776AB;}
-.tag-r{background:#276DC3;}
-.tag-sql{background:#336791;}
-.tag-tableau{background:#E97627;}
-.tag-excel{background:#217346;}
-.tag-sheets{background:#34A853;}
+.package-btn.active{
+background:#4a90e2;
+}
 
-/* PROJECT WINDOW */
+/* PROJECTS */
 
 .projects-window{
 max-width:920px;
 margin:auto;
 height:650px;
 overflow-y:auto;
-padding-right:8px;
 }
 
 .projects-grid{
@@ -269,16 +252,12 @@ grid-template-columns:repeat(4,1fr);
 gap:20px;
 }
 
-/* PROJECT CARD */
-
 .project-card{
 position:relative;
 border-radius:16px;
 overflow:hidden;
 aspect-ratio:1;
 cursor:pointer;
-text-decoration:none;
-color:inherit;
 }
 
 .project-card.hide{display:none;}
@@ -305,11 +284,6 @@ color:white;
 background:linear-gradient(transparent,rgba(0,0,0,.85));
 }
 
-.project-overlay h3{
-margin:0 0 6px;
-font-size:15px;
-}
-
 .project-tags{
 display:flex;
 flex-wrap:wrap;
@@ -320,7 +294,7 @@ font-size:10px;
 .project-tags span{
 padding:2px 6px;
 border-radius:6px;
-color:white;
+background:#555;
 }
 
 /* CERT */
@@ -337,12 +311,6 @@ padding:14px 18px;
 text-align:center;
 box-shadow:0 12px 30px rgba(0,0,0,.08);
 max-width:220px;
-transition:.25s ease;
-}
-
-.cert:hover{
-transform:translateY(-6px) scale(1.03);
-box-shadow:0 20px 40px rgba(0,0,0,.15);
 }
 
 footer{
@@ -358,7 +326,6 @@ color:white;
 <body>
 
 <header class="hero">
-
 <canvas id="dashboardCanvas"></canvas>
 
 <div class="hero-content">
@@ -370,7 +337,6 @@ color:white;
 <a href="https://github.com/ShadyEggs" target="_blank"><i class="fab fa-github"></i></a>
 </div>
 </div>
-
 </header>
 
 <nav>
@@ -390,14 +356,13 @@ color:white;
 <img src="profile.jpg" class="profile-pic">
 
 <div class="about-text">
-
 <p>Hi, I’m Alfred — an aspiring data analyst who enjoys turning messy data into clear insights and finding patterns that explain what’s really going on.</p>
 
 <p>Through hands-on projects, I’ve worked with Python, SQL, and visualization tools to analyze data and communicate findings in a way that’s easy to understand.</p>
 
 <p>I'm always looking for new problems to explore and new ways to learn.</p>
-
 </div>
+
 </div>
 </section>
 
@@ -432,11 +397,13 @@ color:white;
 
 </div>
 
+<div class="package-filters"></div>
+
 <div class="projects-window">
 
 <div class="projects-grid">
 
-<a class="project-card" data-tags="r"
+<a class="project-card" data-tags="r dplyr tidyr ggplot2 plotly"
 href="https://shadyeggs.github.io/Fifa21-Data-Cleaning-Project/" target="_blank">
 
 <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?w=800&q=80">
@@ -444,7 +411,6 @@ href="https://shadyeggs.github.io/Fifa21-Data-Cleaning-Project/" target="_blank"
 <div class="project-overlay">
 <h3>Fifa 21 Data Cleaning</h3>
 <div class="project-tags">
-<span class="tag-r">R</span>
 <span>dplyr</span>
 <span>tidyr</span>
 <span>ggplot2</span>
@@ -462,17 +428,15 @@ target="_blank">
 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80">
 
 <div class="project-overlay">
-
 <h3>Cyclistic Case Study</h3>
-
 <div class="project-tags">
-<span class="tag-sql">SQL</span>
-<span class="tag-tableau">Tableau</span>
-<span class="tag-excel">Excel</span>
-<span class="tag-sheets">Sheets</span>
+<span>SQL</span>
+<span>Tableau</span>
+<span>Excel</span>
+<span>Sheets</span>
+</div>
 </div>
 
-</div>
 </a>
 
 </div>
@@ -518,179 +482,103 @@ Issued via Coursera
 
 <script>
 
-/* HERO ANIMATION */
+/* PACKAGE MAP */
 
-const canvas=document.getElementById("dashboardCanvas")
-const ctx=canvas.getContext("2d")
-
-let bars=[]
-let particles=[]
-
-const spacing=28
-const barWidth=18
-
-const palette=[
-"rgba(52,152,219,.45)",
-"rgba(26,188,156,.45)",
-"rgba(160,160,160,.45)"
-]
-
-function setupCanvas(){
-
-const hero=document.querySelector(".hero")
-
-canvas.width=hero.offsetWidth
-canvas.height=hero.offsetHeight
-
-bars=[]
-particles=[]
-
-const count=Math.floor(canvas.width/spacing)
-const totalWidth=count*spacing
-const offsetX=(canvas.width-totalWidth)/2
-
-for(let i=0;i<count;i++){
-
-const h=Math.random()*120+60
-
-bars.push({
-x:offsetX+i*spacing,
-height:h,
-target:h,
-color:palette[Math.floor(Math.random()*palette.length)]
-})
-
+const packageMap={
+r:["dplyr","tidyr","ggplot2","plotly"]
 }
 
-for(let i=0;i<30;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-size:Math.random()*2+1,
-speed:Math.random()*.4+.1
-})
-}
+/* FILTERING */
 
-}
-
-function randomizeBars(){
-for(let i=0;i<6;i++){
-const index=Math.floor(Math.random()*bars.length)
-bars[index].target=Math.random()*120+60
-}
-}
-
-setInterval(randomizeBars,5000)
-
-function drawParticles(){
-
-particles.forEach(p=>{
-
-p.y-=p.speed
-
-if(p.y<0){
-p.y=canvas.height
-p.x=Math.random()*canvas.width
-}
-
-ctx.fillStyle="rgba(255,255,255,.25)"
-ctx.beginPath()
-ctx.arc(p.x,p.y,p.size,0,Math.PI*2)
-ctx.fill()
-
-})
-
-}
-
-function drawRoundedRect(x,y,w,h,r){
-
-ctx.beginPath()
-ctx.moveTo(x,y+r)
-ctx.lineTo(x,y+h)
-ctx.lineTo(x+w,y+h)
-ctx.lineTo(x+w,y+r)
-ctx.quadraticCurveTo(x+w,y,x+w-r,y)
-ctx.lineTo(x+r,y)
-ctx.quadraticCurveTo(x,y,x,y+r)
-ctx.fill()
-
-}
-
-function animate(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height)
-
-drawParticles()
-
-bars.forEach(bar=>{
-
-bar.height+=(bar.target-bar.height)*.05
-
-ctx.fillStyle=bar.color
-
-drawRoundedRect(bar.x,canvas.height-bar.height,barWidth,bar.height,6)
-
-})
-
-requestAnimationFrame(animate)
-
-}
-
-setupCanvas()
-animate()
-
-window.addEventListener("resize",setupCanvas)
-
-/* FILTER SYSTEM */
-
-const filterButtons=document.querySelectorAll(".filter-btn")
+const languageButtons=document.querySelectorAll(".filter-btn")
+const packageContainer=document.querySelector(".package-filters")
 const projects=document.querySelectorAll(".project-card")
 
-let activeFilters=[]
+let activeLanguages=[]
+let activePackages=[]
 
-filterButtons.forEach(btn=>{
-
-btn.addEventListener("click",()=>{
+languageButtons.forEach(btn=>{
+btn.onclick=()=>{
 
 const filter=btn.dataset.filter
 
 if(filter==="all"){
-
-activeFilters=[]
-filterButtons.forEach(b=>b.classList.remove("active"))
+activeLanguages=[]
+languageButtons.forEach(b=>b.classList.remove("active"))
 btn.classList.add("active")
-
-projects.forEach(card=>card.classList.remove("hide"))
-
+packageContainer.innerHTML=""
+showProjects()
 return
 }
 
 btn.classList.toggle("active")
 document.querySelector('[data-filter="all"]').classList.remove("active")
 
-activeFilters=[...document.querySelectorAll(".filter-btn.active")]
+activeLanguages=[...document.querySelectorAll(".filter-btn.active")]
 .map(b=>b.dataset.filter)
 .filter(f=>f!=="all")
 
-if(activeFilters.length===0){
-
-document.querySelector('[data-filter="all"]').classList.add("active")
-projects.forEach(card=>card.classList.remove("hide"))
-return
+updatePackageFilters()
+showProjects()
 }
+})
+
+function updatePackageFilters(){
+
+packageContainer.innerHTML=""
+activePackages=[]
+
+activeLanguages.forEach(lang=>{
+if(packageMap[lang]){
+
+packageMap[lang].forEach(pkg=>{
+
+const btn=document.createElement("button")
+btn.className="filter-btn package-btn"
+btn.textContent=pkg
+btn.dataset.filter=pkg
+
+btn.onclick=()=>{
+btn.classList.toggle("active")
+
+activePackages=[...document.querySelectorAll(".package-btn.active")]
+.map(b=>b.dataset.filter)
+
+showProjects()
+}
+
+packageContainer.appendChild(btn)
+
+})
+
+}
+
+})
+
+}
+
+function showProjects(){
 
 projects.forEach(card=>{
 
 const tags=card.dataset.tags
-const match=activeFilters.every(f=>tags.includes(f))
 
-card.classList.toggle("hide",!match)
+let languageMatch=true
+let packageMatch=true
+
+if(activeLanguages.length){
+languageMatch=activeLanguages.some(l=>tags.includes(l))
+}
+
+if(activePackages.length){
+packageMatch=activePackages.every(p=>tags.includes(p))
+}
+
+card.classList.toggle("hide",!(languageMatch && packageMatch))
 
 })
 
-})
-
-})
+}
 
 </script>
 
