@@ -744,24 +744,40 @@ background:linear-gradient(180deg,#028391,#F85525);
 
 
 
-/* PAPER PLANE JIGGLE */
+/* PAPER PLANE BURST JIGGLE */
 
 .apple-send i{
 font-size:18px;
-transition:transform .15s ease;
+display:inline-block;
+transform-origin:center;
 }
 
 .apple-send:hover i{
-animation:planeJiggle .45s infinite;
+animation:planeBurstJiggle 1s infinite;
 }
 
-@keyframes planeJiggle{
+@keyframes planeBurstJiggle{
 
-0%{transform:rotate(0deg) translateX(0)}
-25%{transform:rotate(-8deg) translateX(-1px)}
-50%{transform:rotate(8deg) translateX(1px)}
-75%{transform:rotate(-6deg) translateX(-1px)}
-100%{transform:rotate(0deg) translateX(0)}
+0%{transform:rotate(0deg)}
+5%{transform:rotate(-10deg)}
+10%{transform:rotate(10deg)}
+15%{transform:rotate(-10deg)}
+20%{transform:rotate(10deg)}
+25%{transform:rotate(-10deg)}
+30%{transform:rotate(0deg)}
+
+40%{transform:rotate(0deg)}
+50%{transform:rotate(0deg)}
+
+60%{transform:rotate(0deg)}
+65%{transform:rotate(-10deg)}
+70%{transform:rotate(10deg)}
+75%{transform:rotate(-10deg)}
+80%{transform:rotate(10deg)}
+85%{transform:rotate(-10deg)}
+90%{transform:rotate(0deg)}
+
+100%{transform:rotate(0deg)}
 
 }
 
