@@ -1118,7 +1118,6 @@ card.tags=card.dataset.tags.toLowerCase().split(" ")
 let activeLanguages=[]
 let activeTools=[]
 
-
 function buildToolButtons(){
 
 const previouslySelected = new Set(activeTools)
@@ -1162,40 +1161,6 @@ packageContainer.appendChild(btn)
 
 activeTools=[...document.querySelectorAll(".package-btn.active")]
 .map(b=>b.dataset.filter)
-
-}
-
-
-let tools=new Set()
-
-activeLanguages.forEach(lang=>{
-LANGUAGE_TOOLS[lang].forEach(tool=>{
-tools.add(tool)
-})
-})
-
-Array.from(tools).sort().forEach(tool=>{
-
-const btn=document.createElement("button")
-
-btn.className="filter-btn package-btn"
-btn.dataset.filter=tool
-btn.textContent=tool
-
-btn.onclick=()=>{
-
-btn.classList.toggle("active")
-
-activeTools=[...document.querySelectorAll(".package-btn.active")]
-.map(b=>b.dataset.filter)
-
-showProjects()
-
-}
-
-packageContainer.appendChild(btn)
-
-})
 
 }
 
