@@ -1924,7 +1924,7 @@ canvas.width=hero.offsetWidth
 canvas.height=hero.offsetHeight
 
 bars=[]
-particles=[]
+
 
 const count=Math.floor(canvas.width/spacing)
 const totalWidth=count*spacing
@@ -1950,6 +1950,10 @@ baseColor:color
 
 }
 
+)
+
+}
+
 }
 
 function randomizeBars(){
@@ -1965,6 +1969,17 @@ bars[index].target=Math.random()*120+60
 }
 
 setInterval(randomizeBars,4500)
+
+function {
+
+particles.forEach(p=>{
+
+p.y-=p.speed
+
+if(p.y<0){
+p.y=canvas.height
+p.x=Math.random()*canvas.width
+}
 
 ctx.fillStyle="rgba(255,255,255,.22)"
 
