@@ -700,6 +700,15 @@ background:linear-gradient(180deg,#028391,#F85525);
 }
 
 
+
+
+/* Disable floating particles safely */
+
+#dashboardCanvas{
+opacity:.45;
+}
+
+
 </style>
 
 </head>
@@ -1892,7 +1901,7 @@ Issued via Coursera
 const canvas=document.getElementById("dashboardCanvas")
 const ctx=canvas.getContext("2d")
 
-let bars=[]
+let bars=[],particles=[]
 
 const spacing=28
 const barWidth=18
@@ -1924,7 +1933,7 @@ canvas.width=hero.offsetWidth
 canvas.height=hero.offsetHeight
 
 bars=[]
-
+particles=[]
 
 const count=Math.floor(canvas.width/spacing)
 const totalWidth=count*spacing
@@ -1950,7 +1959,16 @@ baseColor:color
 
 }
 
-)
+/* PARTICLES */
+
+for(let i=0;i<40;i++){
+
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*2+1,
+speed:Math.random()*.35+.1
+})
 
 }
 
@@ -1970,7 +1988,7 @@ bars[index].target=Math.random()*120+60
 
 setInterval(randomizeBars,4500)
 
-function {
+function drawParticles(){
 
 particles.forEach(p=>{
 
@@ -2044,7 +2062,7 @@ function animate(){
 
 ctx.clearRect(0,0,canvas.width,canvas.height)
 
-
+drawParticles()
 
 bars.forEach(bar=>{
 
