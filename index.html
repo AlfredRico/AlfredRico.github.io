@@ -813,12 +813,37 @@ position:relative;
 animation:planeSlide .7s forwards linear;
 }
 
+
+
+/* FINAL PLANE SLIDE PATH (EXTENDED) */
+
+.apple-send{
+position:relative;
+overflow:hidden;
+}
+
+.apple-send i{
+position:relative;
+}
+
+.apple-send.launch i{
+animation:planeSlide .7s forwards linear;
+}
+
 @keyframes planeSlide{
 
 0%{
 transform:rotate(40deg) translate(0,0);
 opacity:1;
 }
+
+100%{
+transform:rotate(40deg) translate(150px,-125px);
+opacity:1;
+}
+
+}
+
 
 100%{
 transform:rotate(40deg) translate(130px,-110px);
@@ -1367,6 +1392,7 @@ try{
 
 
 
+
 await fetch(contactForm.action,{
 method:"POST",
 body:formData,
@@ -1387,6 +1413,7 @@ button.classList.remove("launch")
 },2700)
 
 contactForm.reset()
+
 
 
 
