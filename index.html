@@ -778,43 +778,52 @@ background:linear-gradient(180deg,#028391,#F85525);
 
 
 
-/* SEND BUTTON */
+/* plane icon */
 
 .plane-icon{
-font-size:20px;
+
+font-size:18px;
 color:#ffffff;
-transition:transform 1.6s cubic-bezier(.22,.61,.36,1);
+
+transform:rotate(45deg); /* makes plane point right */
+
+position:relative;
+z-index:2;
+
+transition:transform 1.2s ease, opacity 1.2s ease;
+
 }
 
 /* hover jiggle */
 
 .apple-send:hover .plane-icon{
-animation:planeJiggle .6s ease;
+
+animation:planeJiggle .5s ease;
+
 }
 
 @keyframes planeJiggle{
-0%{transform:rotate(0deg)}
-25%{transform:rotate(-8deg)}
-50%{transform:rotate(8deg)}
-75%{transform:rotate(-5deg)}
-100%{transform:rotate(0deg)}
-}
 
-/* launch */
+0%{transform:rotate(45deg)}
+25%{transform:rotate(40deg)}
+50%{transform:rotate(50deg)}
+75%{transform:rotate(42deg)}
+100%{transform:rotate(45deg)}
 
-.apple-send.sending .plane-icon{
-transform:translate(90px,-70px) rotate(18deg);
-opacity:0;
 }
 
 /* trail */
 
 .plane-trail{
+
 position:absolute;
-width:0;
-height:3px;
-left:50%;
+
+left:20px;
 top:50%;
+
+height:3px;
+width:0;
+
 background:linear-gradient(
 90deg,
 #01204E,
@@ -823,25 +832,42 @@ background:linear-gradient(
 #FAA968,
 #F85525
 );
+
 border-radius:3px;
+
+transform:translateY(-50%);
+
 opacity:0;
-transform:translate(-50%,-50%);
+
+}
+
+/* slide */
+
+.apple-send.sending .plane-icon{
+
+transform:translateX(120px) rotate(45deg);
+opacity:0;
+
 }
 
 .apple-send.sending .plane-trail{
-animation:trailLaunch 1.6s ease forwards;
+
+animation:trailSlide 1.2s ease forwards;
+
 }
 
-@keyframes trailLaunch{
+@keyframes trailSlide{
+
 0%{
 width:0;
 opacity:1;
 }
+
 100%{
-width:130px;
+width:110px;
 opacity:0;
-transform:translate(-50%,-100%);
 }
+
 }
 
 
@@ -1335,7 +1361,10 @@ let activeTools=[]
 
 function buildToolButtons(){
 
+
+const previousTools=[...activeTools]
 packageContainer.innerHTML=""
+
 
 if(activeLanguages.length===0){
 return
@@ -1364,7 +1393,10 @@ btn.classList.toggle("active")
 activeTools=[...document.querySelectorAll(".package-btn.active")]
 .map(b=>b.dataset.filter)
 
+
+activeTools=[...document.querySelectorAll(".package-btn.active")].map(b=>b.dataset.filter)
 showProjects()
+
 
 }
 
@@ -1374,7 +1406,10 @@ packageContainer.appendChild(btn)
 
 }
 
-function showProjects(){
+function 
+activeTools=[...document.querySelectorAll(".package-btn.active")].map(b=>b.dataset.filter)
+showProjects()
+{
 
 projects.forEach(card=>{
 
@@ -1410,9 +1445,15 @@ document.querySelectorAll(".project-filters .filter-btn")
 
 allBtn.classList.add("active")
 
+
+const previousTools=[...activeTools]
 packageContainer.innerHTML=""
 
+
+
+activeTools=[...document.querySelectorAll(".package-btn.active")].map(b=>b.dataset.filter)
 showProjects()
+
 
 return
 }
@@ -1433,7 +1474,10 @@ activeLanguages=activeLanguages.filter(l=>l!=="all")
 if(activeLanguages.length===0){
 
 allBtn.classList.add("active")
+
+const previousTools=[...activeTools]
 packageContainer.innerHTML=""
+
 
 }else{
 
@@ -1441,17 +1485,21 @@ buildToolButtons()
 
 }
 
+
+activeTools=[...document.querySelectorAll(".package-btn.active")].map(b=>b.dataset.filter)
 showProjects()
+
 
 }
 
 })
 
+
+activeTools=[...document.querySelectorAll(".package-btn.active")].map(b=>b.dataset.filter)
 showProjects()
 
 
 
-/* CONTACT FORM SEND */
 
 window.addEventListener("DOMContentLoaded",()=>{
 
@@ -1481,11 +1529,8 @@ headers:{
 button.classList.remove("sending")
 form.reset()
 })
-.catch(()=>{
-button.classList.remove("sending")
-})
 
-},1600)
+},1200)
 
 })
 
