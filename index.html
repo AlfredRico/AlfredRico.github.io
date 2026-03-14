@@ -18,763 +18,237 @@
 
 <style>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-body{
-font-family:'Inter',sans-serif;
-margin:0;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-background:
-radial-gradient(circle at 20% 15%,rgba(255,255,255,.03),transparent 40%),
-radial-gradient(circle at 80% 70%,rgba(255,255,255,.025),transparent 45%),
-#1f2933;
+<title>Alfred Rico | Data Analysis Portfolio</title>
 
-scroll-behavior:smooth;
-}
+<link rel="icon" type="image/png" href="/web_icon.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+
+body}
 
 /* HERO */
 
-.hero{
-position:relative;height:32vh;min-height:240px;
-display:flex;align-items:center;justify-content:center;
-text-align:center;overflow:hidden;color:white;
-background:
-radial-gradient(circle at 20% 30%,rgba(120,120,120,.35),transparent 40%),
-radial-gradient(circle at 80% 70%,rgba(180,180,180,.25),transparent 45%),
-linear-gradient(135deg,#020617,#111827 60%,#1f2933);
-}
+.hero}
 
-.hero::before{
-content:"";position:absolute;inset:0;
-background:radial-gradient(circle at 50% 80%,rgba(200,200,200,.25),transparent 60%);
-}
+.hero::before}
 
-.hero::after{
-content:"";position:absolute;inset:0;
-background-image:
-linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
-background-size:40px 40px;
-}
+.hero::after}
 
-#dashboardCanvas{position:absolute;inset:0;opacity:.45;z-index:2}
+#dashboardCanvas}
 
-.hero-content{position:relative;z-index:3;margin-top:-40px}
+.hero-content}
 
-.hero h1{
-font-family:'IBM Plex Sans',sans-serif;
-font-size:44px;
-letter-spacing:.5px;
-margin-bottom:6px;
-text-shadow:0 4px 18px rgba(0,0,0,.5);
-}
+.hero h1}
 
-.hero p{
-font-size:16px;
-letter-spacing:.8px;
-color:#cbd5e1;
-margin-top:4px;
-}
+.hero p}
 
-.social-links a{color:white;margin:0 10px;font-size:22px}
+.social-links a}
 
 /* NAV */
 
-nav{
+nav}
 
-position:sticky;
-top:0;
-z-index:50;
+nav ul}
 
-background:rgba(255,255,255,.06);
+nav a}
 
-backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px);
+nav a::after}
 
-border-bottom:1px solid rgba(255,255,255,.08);
-
-box-shadow:0 6px 16px rgba(0,0,0,.35);
-
-}
-
-nav ul{
-
-display:flex;
-justify-content:center;
-list-style:none;
-
-padding:16px;
-margin:0;
-
-gap:28px;
-
-}
-
-nav a{
-
-position:relative;
-
-font-weight:600;
-font-size:15px;
-letter-spacing:.4px;
-
-color:#e5e7eb;
-
-text-decoration:none;
-
-padding:6px 2px;
-
-transition:color .25s ease;
-
-}
-
-nav a::after{
-
-content:"";
-
-position:absolute;
-left:50%;
-bottom:-7px;
-
-width:0%;
-height:3px;
-
-transform:translateX(-50%);
-
-background:linear-gradient(
-90deg,
-rgba(1,32,78,0),
-#01204E,
-#028391,
-#F6DCAC,
-#FAA968,
-rgba(250,169,104,0)
-);
-
-border-radius:3px;
-
-transition:width .28s ease;
-
-}
-
-nav a:hover::after{
-
-width:70%;
-
-}
+nav a:hover::after}
 
 /* MAIN GRID */
 
-.main-layout{
-max-width:1100px;margin:60px auto;padding:0 30px;
-display:grid;
-grid-template-columns:1fr 1fr;
-grid-template-areas:
-"about contact"
-"projects projects"
-"certifications certifications";
-gap:40px;
-}
+.main-layout}
 
-#about{grid-area:about}
-#contact{grid-area:contact}
-#projects{grid-area:projects}
-#certifications{grid-area:certifications}
+#about}
+
+#contact}
+
+#projects}
+
+#certifications}
 
 /* SECTION TITLES */
 
-h2{
-text-align:center;
-margin-bottom:32px;
-color:white;
-font-family:'IBM Plex Sans',sans-serif;
-font-size:26px;
-letter-spacing:.6px;
-position:relative;
-}
+h2}
 
-h2::after{
-content:"";
-display:block;
-width:60px;
-height:3px;
-margin:12px auto 0;
-
-background:linear-gradient(
-90deg,
-#01204E,
-#028391,
-#F6DCAC,
-#FAA968
-);
-
-border-radius:2px;
-}
+h2::after}
 
 /* ABOUT */
 
-.about-grid{
-display:grid;
-grid-template-columns:200px 1fr;
-gap:30px;align-items:center;
-}
+.about-grid}
 
-.profile-pic{
-width:180px;
-height:180px;
-object-fit:cover;
-border-radius:50%;
-
-border:4px solid transparent;
-
-background:
-linear-gradient(white,white) padding-box,
-linear-gradient(135deg,#01204E,#028391,#F6DCAC,#FAA968) border-box;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,.15),
-0 0 18px rgba(2,131,145,.35);
-}
+.profile-pic}
 
 /* CHAT BUBBLE */
 
-.about-text{
+.about-text}
 
-position:relative;
+.about-text:hover}
 
-background:rgba(255,255,255,.92);
-
-padding:30px;
-
-border-radius:18px;
-
-box-shadow:
-0 16px 40px rgba(0,0,0,.18),
-inset 0 1px 0 rgba(255,255,255,.6);
-
-transition:transform .3s ease,box-shadow .3s ease;
-
-}
-
-.about-text:hover{
-transform:scale(1.03);
-box-shadow:0 25px 60px rgba(0,0,0,.15);
-}
-
-.about-text::before{
-content:"";
-position:absolute;
-left:-18px;
-top:70px;
-border-width:10px;
-border-style:solid;
-border-color:transparent rgba(255,255,255,.92) transparent transparent;
-}
+.about-text::before}
 
 /* CONTACT */
 
-.contact-form{
-
-background:rgba(255,255,255,.92);
-
-padding:40px;
-
-border-radius:16px;
-
-box-shadow:
-0 16px 40px rgba(0,0,0,.18),
-inset 0 1px 0 rgba(255,255,255,.6);
-
-}
+.contact-form}
 
 .contact-form input,
-.contact-form textarea{
+.contact-form textarea}
 
-width:100%;
-padding:12px;
-margin:6px 0 15px;
-
-border-radius:8px;
-border:1px solid #ddd;
-
-box-sizing:border-box;
-
-}
-
-.apple-send{
-width:100%;padding:14px;border:none;
-border-radius:999px;background:#1f2933;color:white;cursor:pointer;
-}
+.apple-send}
 
 /* FILTERS */
 
-.project-filters,.package-filters{
-display:flex;justify-content:center;flex-wrap:wrap;gap:10px
-}
+.project-filters,.package-filters}
 
-.project-filters{margin-bottom:12px}
-.package-filters{margin-bottom:25px}
+.project-filters}
 
-.filter-btn{
+.package-filters}
 
-padding:8px 16px;
-border-radius:999px;
+.filter-btn}
 
-border:1px solid rgba(255,255,255,.15);
-
-background:rgba(255,255,255,.06);
-
-backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px);
-
-color:#e5e7eb;
-
-cursor:pointer;
-font-size:13px;
-min-height:36px;
-
-box-shadow:
-0 6px 14px rgba(0,0,0,.35),
-inset 0 1px 0 rgba(255,255,255,.25);
-
-transition:
-transform .15s ease,
-box-shadow .2s ease,
-background .25s ease;
-
-}
-
-.filter-btn:hover{
-
-transform:translateY(-1px);
-
-background:rgba(255,255,255,.10);
-
-box-shadow:
-0 10px 20px rgba(0,0,0,.45),
-inset 0 1px 0 rgba(255,255,255,.35);
-
-}
+.filter-btn:hover}
 
 /* tinted glass colors */
 
+.filter-btn.tag-python.active}
 
-.filter-btn.tag-python.active{
+.filter-btn.tag-r.active}
 
-background:linear-gradient(
-90deg,
-rgba(246,220,172,.26),
-rgba(55,118,171,.24)
-);
+.filter-btn.tag-sql.active}
 
-border:1px solid rgba(255,255,255,.25);
+.filter-btn.tag-tableau.active}
 
-box-shadow:
-0 6px 14px rgba(0,0,0,.35),
-inset 0 0 10px rgba(255,255,255,.08);
+.filter-btn.tag-excel.active}
 
-}
+.filter-btn.tag-sheets.active}
 
-.filter-btn.tag-r.active{background:rgba(39,109,195,.35)}
-.filter-btn.tag-sql.active{background:rgba(51,103,145,.35)}
-.filter-btn.tag-tableau.active{background:rgba(233,118,39,.35)}
-.filter-btn.tag-excel.active{background:rgba(33,115,70,.35)}
-.filter-btn.tag-sheets.active{background:rgba(52,168,83,.35)}
-.filter-btn.tag-all.active{background:rgba(74,144,226,.35)}
-
-.filter-btn:hover{
-
-transform:translateY(-1px) scale(1.04);
-
-box-shadow:
-0 8px 18px rgba(0,0,0,.45),
-inset 0 1px 2px rgba(255,255,255,.35),
-inset 0 -4px 8px rgba(0,0,0,.35);
-
-}
-
-/* tinted glass colors */
-
-
-.filter-btn.tag-python.active{
-
-background:linear-gradient(
-90deg,
-rgba(246,220,172,.26),
-rgba(55,118,171,.24)
-);
-
-border:1px solid rgba(255,255,255,.25);
-
-box-shadow:
-0 6px 14px rgba(0,0,0,.35),
-inset 0 0 10px rgba(255,255,255,.08);
-
-}
-
-.filter-btn.tag-r.active{background:rgba(39,109,195,.35)}
-.filter-btn.tag-sql.active{background:rgba(51,103,145,.35)}
-.filter-btn.tag-tableau.active{background:rgba(233,118,39,.35)}
-.filter-btn.tag-excel.active{background:rgba(33,115,70,.35)}
-.filter-btn.tag-sheets.active{background:rgba(52,168,83,.35)}
-.filter-btn.tag-all.active{background:rgba(74,144,226,.35)}
-
+.filter-btn.tag-all.active}
 
 /* MINIMAL TINTED GLASS FILTER HIGHLIGHTS */
 
-.filter-btn.active{
-
-backdrop-filter:blur(12px);
--webkit-backdrop-filter:blur(12px);
-
-border:1px solid rgba(255,255,255,.25);
-
-box-shadow:
-0 6px 14px rgba(0,0,0,.35),
-inset 0 0 10px rgba(255,255,255,.08);
-
-}
+.filter-btn.active}
 
 /* language tint colors */
 
+.filter-btn.tag-python.active}
 
-.filter-btn.tag-python.active{
-
-background:linear-gradient(
-90deg,
-rgba(246,220,172,.26),
-rgba(55,118,171,.24)
-);
-
-border:1px solid rgba(255,255,255,.25);
-
-box-shadow:
-0 6px 14px rgba(0,0,0,.35),
-inset 0 0 10px rgba(255,255,255,.08);
-
-}
-
-.filter-btn.tag-r.active{background:rgba(39,109,195,.22)}
-.filter-btn.tag-sql.active{background:rgba(51,103,145,.22)}
-.filter-btn.tag-tableau.active{background:rgba(233,118,39,.22)}
-.filter-btn.tag-excel.active{background:rgba(33,115,70,.22)}
-.filter-btn.tag-sheets.active{background:rgba(52,168,83,.22)}
-.filter-btn.tag-all.active{background:rgba(74,144,226,.22)}
-
-.package-btn.active{
-
-background:rgba(74,144,226,.20);
-
-border:1px solid rgba(255,255,255,.25);
-
-}
-
+.package-btn.active}
 
 /* PROJECT GRID */
 
-.projects-window{max-width:920px;margin:auto;height:650px;overflow-y:auto}
+.projects-window}
 
-.projects-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-}
+.projects-grid}
 
+.project-card}
 
-.project-card{
+.project-card.hide}
 
-position:relative;
+.project-card img}
 
-border-radius:16px;
-overflow:hidden;
+.project-card:hover}
 
-aspect-ratio:1;
+.project-card:hover img}
 
-cursor:pointer;
-text-decoration:none;
-color:inherit;
-touch-action:manipulation;
+.project-overlay}
 
-/* subtle panel lift */
+.project-overlay h3}
 
-border:1px solid rgba(255,255,255,.06);
+.project-tags}
 
-box-shadow:
-0 10px 24px rgba(0,0,0,.35),
-0 0 0 1px rgba(255,255,255,.02);
+.project-tags span}
 
-transition:
-transform .35s ease,
-box-shadow .35s ease;
+.project-tags .tag-python}
 
-}
+.project-tags .tag-r}
 
+.project-tags .tag-sql}
 
-.project-card.hide{display:none}
+.project-tags .tag-tableau}
 
-.project-card img{
-width:100%;height:100%;object-fit:cover;
-transition:transform .4s ease,filter .4s ease;
-}
+.project-tags .tag-excel}
 
+.project-tags .tag-sheets}
 
-.project-card:hover{
-
-box-shadow:
-0 18px 40px rgba(0,0,0,.55),
-0 0 0 1px rgba(255,255,255,.08);
-
-}
-
-.project-card:hover img{
-filter:blur(4px) brightness(.55);
-transform:scale(1.08);
-}
-
-.project-overlay{
-position:absolute;bottom:0;left:0;right:0;
-padding:16px;color:white;
-background:linear-gradient(transparent,rgba(0,0,0,.85));
-}
-
-.project-overlay h3{
-font-size:17px;font-weight:700;margin:0 0 8px;
-}
-
-.project-tags{
-display:flex;flex-wrap:wrap;gap:6px;font-size:12px;
-}
-
-.project-tags span{
-padding:3px 8px;border-radius:6px;color:white;font-weight:600;
-}
-
-.project-tags .tag-python{background:#3776AB}
-.project-tags .tag-r{background:#276DC3}
-.project-tags .tag-sql{background:#336791}
-.project-tags .tag-tableau{background:#E97627}
-.project-tags .tag-excel{background:#217346}
-.project-tags .tag-sheets{background:#34A853}
-
-.tag-package{background:#555}
+.tag-package}
 
 /* CERT */
 
-.cert-column{display:flex;justify-content:center}
+.cert-column}
 
-.cert{
-background:linear-gradient(145deg,#3a3a3c,#2c2c2e);
-border-radius:14px;padding:18px 20px;text-align:center;
-box-shadow:0 12px 30px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08);
-border:1px solid rgba(255,255,255,.08);
-max-width:220px;
-transition:.25s ease;
-color:white;
-}
+.cert}
 
-.cert:hover{
-transform:translateY(-6px) scale(1.03);
-box-shadow:0 22px 50px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12);
-}
+.cert:hover}
 
-footer{text-align:center;padding:14px;background:#111;color:white}
+footer}
 
 /* MOBILE */
 
-@media (max-width:900px){
+@media (max-width:900px)}
 
-.main-layout{
-grid-template-columns:1fr;
-grid-template-areas:
-"about"
-"contact"
-"projects"
-"certifications";
-}
-
-.about-grid{grid-template-columns:1fr;text-align:center}
-
-.profile-pic{
-width:180px;
-height:180px;
-object-fit:cover;
-border-radius:50%;
-
-border:4px solid transparent;
-
-background:
-linear-gradient(white,white) padding-box,
-linear-gradient(135deg,#01204E,#028391,#F6DCAC,#FAA968) border-box;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,.15),
-0 0 18px rgba(2,131,145,.35);
-}
-
-.projects-grid{grid-template-columns:repeat(3,1fr)}
+.about-grid}
 
 }
 
-@media (max-width:600px){
+@media (max-width:600px)}
 
-.hero h1{font-size:34px}
+h2}
 
-h2{
-font-size:24px;
-margin-bottom:24px;
-}
-
-.projects-window{height:auto}
-
-.projects-grid{grid-template-columns:repeat(2,1fr)}
-
-.project-tags span{padding:4px 9px}
+.projects-window}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ------------------------------
    MOBILE PROJECT GRID (2x3)
 ------------------------------ */
 
-@media (max-width:900px){
-
-.projects-window{
-
-height:420px;
-overflow-y:auto;
-overflow-x:hidden;
-
--webkit-overflow-scrolling:touch;
-
-}
-
-.projects-grid{
-
-grid-template-columns:repeat(2,1fr);
-
-}
-
-.profile-pic{
-
-display:block;
-margin:auto;
-
-}
+@media (max-width:900px)}
 
 }
 
 /* smaller phones */
 
-@media (max-width:600px){
-
-.projects-window{
-
-height:420px;
+@media (max-width:600px)}
 
 }
-
-.projects-grid{
-
-grid-template-columns:repeat(2,1fr);
-
-}
-
-}
-
-
-
 
 /* ---------------- HERO GRADIENT RESTORE ---------------- */
 
-.hero{
-background:
-radial-gradient(
-circle at 50% 50%,
-rgba(180,180,180,.28) 0%,
-rgba(180,180,180,.18) 25%,
-rgba(180,180,180,.10) 40%,
-transparent 60%
-),
-linear-gradient(
-135deg,
-#020617,
-#111827 50%,
-#1f2933
-) !important;
-}
+.hero}
 
 /* ---------------- PROJECT SCROLLBAR ---------------- */
 
-.projects-window{
-scrollbar-width:auto;
-scrollbar-color:#028391 rgba(255,255,255,.06);
-}
-
-
-
-
-
-
-
-
-
-
-
+.projects-window}
 
 /* Certification link style fix */
-#certifications a{
-text-decoration:none;
-color:white;
-}
+#certifications a}
 
-#certifications a:hover{
-text-decoration:none;
-color:white;
-}
-
-
+#certifications a:hover}
 
 /* CLEAN PROJECT SCROLLBAR */
 
-.projects-window::-webkit-scrollbar{
-width:10px;
-}
+.projects-window::-webkit-scrollbar}
 
-.projects-window::-webkit-scrollbar-track{
-background:rgba(255,255,255,.05);
-border-radius:10px;
-}
+.projects-window::-webkit-scrollbar-track}
 
-.projects-window::-webkit-scrollbar-thumb{
-background:linear-gradient(180deg,#028391,#FAA968);
-border-radius:10px;
-}
+.projects-window::-webkit-scrollbar-thumb}
 
-.projects-window::-webkit-scrollbar-thumb:hover{
-background:linear-gradient(180deg,#028391,#F85525);
-}
+.projects-window::-webkit-scrollbar-thumb:hover}
 
 </style>
 
@@ -862,106 +336,307 @@ background:linear-gradient(180deg,#028391,#F85525);
 
 <div class="projects-grid">
 
+<a class="project-card" data-tags="r dplyr tidyr ggplot2 plotly"
+href="https://shadyeggs.github.io/Fifa21-Data-Cleaning-Project/" target="_blank">
 
+<img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?w=800&q=80">
 
+<div class="project-overlay">
+<h3>Fifa 21 Data Cleaning</h3>
 
+<div class="project-tags">
+<span class="tag-r">R</span>
+<span class="tag-package">dplyr</span>
+<span class="tag-package">tidyr</span>
+<span class="tag-package">ggplot2</span>
+<span class="tag-package">plotly</span>
+</div>
 
+</div>
+</a>
 
+<a class="project-card"
+data-tags="sql tableau excel sheets"
+href="https://public.tableau.com/app/profile/alfred.rico/viz/CyclisticCaseStudy_17031395269510/Dashboard1"
+target="_blank">
 
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80">
 
+<div class="project-overlay">
+<h3>Cyclistic Case Study</h3>
 
+<div class="project-tags">
+<span class="tag-sql">SQL</span>
+<span class="tag-tableau">Tableau</span>
+<span class="tag-excel">Excel</span>
+<span class="tag-sheets">Sheets</span>
+</div>
 
+</div>
+</a>
 
+</div>
+</div>
+</section>
 
+<section id="certifications">
 
+<h2>Certifications</h2>
 
+<div class="cert-column">
 
+<a href="https://www.coursera.org/account/accomplishments/professional-cert/MSCMJL682NT9" target="_blank">
 
+<div class="cert">
 
+<img height="24" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
 
+<div style="font-weight:700;font-size:14px;">
+Google Data Analytics Professional Certificate
+</div>
 
+<div style="font-size:11px;color:#c7c7cc;">
+Issued via Coursera
+</div>
 
+<img height="16" src="https://upload.wikimedia.org/wikipedia/commons/9/97/Coursera-Logo_600x600.svg">
 
+</div>
 
+</a>
 
+</div>
+</section>
 
+</div>
 
+<footer>
+<p>© 2026 Alfred Rico</p>
+</footer>
 
+<script>
 
+/* HERO DASHBOARD ANIMATION — STABLE SPIRAL */
 
+const canvas=document.getElementById("dashboardCanvas")
+const ctx=canvas.getContext("2d")
 
+let bars=[],particles=[]
 
+const spacing=28
+const barWidth=18
 
+/* USER PALETTE */
 
+const palette=[
+"#01204E",
+"#028391",
+"#F6DCAC",
+"#FAA968",
+"#F85525"
+]
 
+function hexToRGBA(hex,a)}
 
+,$}
 
+)`
+}
 
+function setupCanvas()}
 
+)
 
+}
 
+/* PARTICLES */
 
+for(let i=0;i<0;i++)}
 
+)
 
+}
 
+}
 
+function randomizeBars()}
 
+}
 
+setInterval(randomizeBars,2000)
 
+function drawParticles()}
 
+ctx.fillStyle="rgba(255,255,255,.22)"
 
+ctx.beginPath()
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2)
+ctx.fill()
 
+})
 
+}
 
+function drawRoundedRect(x,y,w,h,r)}
 
+function drawGlassBar(bar)}
 
+function animate()}
 
+)
 
+requestAnimationFrame(animate)
 
+}
 
+setupCanvas()
+animate()
 
+window.addEventListener("resize",setupCanvas)
 
+/* FINAL FILTER SYSTEM */
 
+const LANGUAGE_TOOLS=}
 
+const LANGUAGES=Object.keys(LANGUAGE_TOOLS)
 
+const projects=[...document.querySelectorAll(".project-card")]
+const packageContainer=document.querySelector(".package-filters")
 
+projects.forEach(card=>}
 
+)
 
+let activeLanguages=[]
+let activeTools=[]
 
+function buildToolButtons()}
 
+let tools=new Set()
 
+activeLanguages.forEach(lang=>}
 
+)
+})
 
+Array.from(tools).sort().forEach(tool=>}
 
+packageContainer.appendChild(btn)
 
+})
 
+}
 
+function showProjects()}
 
+)
 
+}
 
+document.querySelectorAll(".project-filters .filter-btn").forEach(btn=>}
 
+/* deactivate ALL immediately */
 
+allBtn.classList.remove("active")
 
+btn.classList.toggle("active")
 
+activeLanguages=[...document.querySelectorAll(".project-filters .filter-btn.active")]
+.map(b=>b.dataset.filter)
 
+/* remove ALL from activeLanguages */
 
+activeLanguages=activeLanguages.filter(l=>l!=="all")
 
+if(activeLanguages.length===0)}
 
+else}
 
+</style>
 
+</head>
+<body>
 
+<header class="hero">
 
+<canvas id="dashboardCanvas"></canvas>
 
+<div class="hero-content">
+<h1>Alfred Rico</h1>
+<p>Aspiring Data Analyst</p>
 
+<div class="social-links">
+<a href="https://www.linkedin.com/in/alfred-rico-3992338a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/ShadyEggs" target="_blank"><i class="fab fa-github"></i></a>
+</div>
+</div>
 
+</header>
 
+<nav>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#certifications">Certifications</a></li>
+</ul>
+</nav>
 
+<div class="main-layout">
 
+<section id="about">
+<h2>About Me</h2>
 
+<div class="about-grid">
 
+<img src="profile.jpg" class="profile-pic">
 
+<div class="about-text">
 
+<p>Hi, I'm Alfred — a data analyst focused on turning messy datasets into clear, actionable insights.</p>
 
+<p>Using tools like Python, SQL, and data visualization platforms, I explore patterns, build dashboards, and communicate findings that help explain what the data is really saying.</p>
+
+<p>My projects focus on exploratory data analysis, trend detection, and building clear visual stories from complex datasets.</p>
+
+</div>
+</div>
+</section>
+
+<section id="contact">
+
+<h2>Let's Connect!</h2>
+
+<form action="https://formsubmit.co/alfred.m.rico@gmail.com" method="POST" class="contact-form">
+
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
+
+<textarea name="message" rows="6" placeholder="Message" required></textarea>
+
+<button type="submit" class="apple-send">Send Message</button>
+
+</form>
+</section>
+
+<section id="projects">
+
+<h2>My Projects</h2>
+
+<div class="project-filters">
+<button class="filter-btn active tag-all" data-filter="all">All</button>
+<button class="filter-btn tag-python" data-filter="python">Python</button>
+<button class="filter-btn tag-r" data-filter="r">R</button>
+<button class="filter-btn tag-sql" data-filter="sql">SQL</button>
+<button class="filter-btn tag-tableau" data-filter="tableau">Tableau</button>
+<button class="filter-btn tag-excel" data-filter="excel">Excel</button>
+<button class="filter-btn tag-sheets" data-filter="sheets">Google Sheets</button>
+</div>
+
+<div class="package-filters"></div>
+
+<div class="projects-window">
+
+<div class="projects-grid">
 
 <a class="project-card" data-tags="r dplyr tidyr ggplot2 plotly"
 href="https://shadyeggs.github.io/Fifa21-Data-Cleaning-Project/" target="_blank">
@@ -1227,8 +902,6 @@ setupCanvas()
 animate()
 
 window.addEventListener("resize",setupCanvas)
-
-
 
 /* FINAL FILTER SYSTEM */
 
