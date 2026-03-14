@@ -776,112 +776,6 @@ border-radius:10px;
 background:linear-gradient(180deg,#028391,#F85525);
 }
 
-
-
-.apple-send{
-position:relative;
-overflow:hidden;
-}
-
-/* plane container */
-
-.plane-wrapper{
-position:relative;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-/* plane */
-
-.plane-icon{
-font-size:18px;
-color:white;
-transform:rotate(45deg);
-transition:transform 1.4s cubic-bezier(.25,.8,.25,1);
-}
-
-/* hover jiggle */
-
-.apple-send:hover .plane-icon{
-animation:planeJiggle .4s ease;
-}
-
-@keyframes planeJiggle{
-0%{transform:rotate(45deg)}
-25%{transform:rotate(40deg)}
-50%{transform:rotate(50deg)}
-75%{transform:rotate(42deg)}
-100%{transform:rotate(45deg)}
-}
-
-/* trail */
-
-.plane-trail{
-
-position:absolute;
-
-left:-140px;
-top:50%;
-
-height:3px;
-width:140px;
-
-transform:translateY(-50%);
-
-background:linear-gradient(
-90deg,
-#01204E,
-#028391,
-#F6DCAC,
-#FAA968,
-#F85525
-);
-
-border-radius:3px;
-
-opacity:0;
-}
-
-/* launch */
-
-.apple-send.sending .plane-wrapper{
-
-animation:planeSlide 1.4s ease forwards;
-
-}
-
-.apple-send.sending .plane-trail{
-
-animation:trailFade 1.4s ease forwards;
-
-}
-
-@keyframes planeSlide{
-
-0%{
-transform:translateX(0);
-}
-
-100%{
-transform:translateX(260px);
-}
-
-}
-
-@keyframes trailFade{
-
-0%{
-opacity:1;
-}
-
-100%{
-opacity:0;
-}
-
-}
-
-
 </style>
 
 </head>
@@ -943,14 +837,7 @@ opacity:0;
 
 <textarea name="message" rows="6" placeholder="Message" required></textarea>
 
-
-<button type="submit" class="apple-send">
-<div class="plane-wrapper">
-<i class="fas fa-paper-plane plane-icon"></i>
-<span class="plane-trail"></span>
-</div>
-</button>
-
+<button type="submit" class="apple-send">Send Message</button>
 
 </form>
 </section>
@@ -1343,6 +1230,8 @@ window.addEventListener("resize",setupCanvas)
 
 
 
+
+
 /* FINAL FILTER SYSTEM */
 
 const LANGUAGE_TOOLS={
@@ -1353,8 +1242,6 @@ tableau:["dashboard","viz"],
 excel:["pivot","powerquery"],
 sheets:["formulas","apps-script"]
 }
-
-const LANGUAGES=Object.keys(LANGUAGE_TOOLS)
 
 const projects=[...document.querySelectorAll(".project-card")]
 const packageContainer=document.querySelector(".package-filters")
@@ -1370,34 +1257,34 @@ function buildToolButtons(){
 
 const previousTools=[...activeTools]
 
-
 packageContainer.innerHTML=""
-activeTools=[]
 
 if(activeLanguages.length===0){
+activeTools=[]
 return
 }
 
-let tools=new Set()
+let toolSet=new Set()
 
 activeLanguages.forEach(lang=>{
 LANGUAGE_TOOLS[lang].forEach(tool=>{
-tools.add(tool)
+toolSet.add(tool)
 })
 })
 
-Array.from(tools).sort().forEach(tool=>{
+const tools=[...toolSet].sort()
+
+tools.forEach(tool=>{
 
 const btn=document.createElement("button")
-
-if(previousTools.includes(tool)){
-btn.classList.add("active")
-}
-
 
 btn.className="filter-btn package-btn"
 btn.dataset.filter=tool
 btn.textContent=tool
+
+if(previousTools.includes(tool)){
+btn.classList.add("active")
+}
 
 btn.onclick=()=>{
 
@@ -1409,6 +1296,77 @@ activeTools=[...document.querySelectorAll(".package-btn.active")]
 showProjects()
 
 }
+
+packageContainer.appendChild(btn)
+
+})
+
+activeTools=previousTools.filter(tool=>tools.includes(tool))
+
+}
+
+function showProjects(){
+
+projects.forEach(card=>{
+
+let languageMatch=
+activeLanguages.length===0 ||
+activeLanguages.every(lang=>card.tags.includes(lang))
+
+let toolMatch=
+activeTools.length===0 ||
+activeTools.every(tool=>card.tags.includes(tool))
+
+card.classList.toggle("hide",!(languageMatch && toolMatch))
+
+})
+
+}
+
+document.querySelectorAll(".project-filters .filter-btn").forEach(btn=>{
+
+btn.onclick=()=>{
+
+const filter=btn.dataset.filter
+
+const allBtn=document.querySelector('[data-filter="all"]')
+
+if(filter==="all"){
+
+activeLanguages=[]
+activeTools=[]
+
+document.querySelectorAll(".project-filters .filter-btn")
+.forEach(b=>b.classList.remove("active"))
+
+allBtn.classList.add("active")
+
+packageContainer.innerHTML=""
+
+showProjects()
+
+return
+}
+
+allBtn.classList.remove("active")
+
+btn.classList.toggle("active")
+
+activeLanguages=[...document.querySelectorAll(".project-filters .filter-btn.active")]
+.map(b=>b.dataset.filter)
+
+activeLanguages=activeLanguages.filter(l=>l!=="all")
+
+buildToolButtons()
+
+showProjects()
+
+}
+
+})
+
+showProjects()
+
 
 packageContainer.appendChild(btn)
 
@@ -1490,38 +1448,6 @@ showProjects()
 })
 
 showProjects()
-
-
-
-window.addEventListener("DOMContentLoaded",()=>{
-
-const form=document.querySelector(".contact-form")
-const button=document.querySelector(".apple-send")
-
-if(!form || !button) return
-
-form.addEventListener("submit",async (e)=>{
-
-e.preventDefault()
-
-button.classList.add("sending")
-
-const data=new FormData(form)
-
-await fetch(form.action,{
-method:"POST",
-body:data,
-headers:{'Accept':'application/json'}
-})
-
-setTimeout(()=>{
-button.classList.remove("sending")
-form.reset()
-},1400)
-
-})
-
-})
 
 </script>
 
