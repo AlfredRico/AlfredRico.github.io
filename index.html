@@ -798,6 +798,14 @@ background:linear-gradient(180deg,#028391,#F85525);
 
 <form action="https://formsubmit.co/alfred.m.rico@gmail.com" method="POST" class="contact-form">
 
+<input type="text" name="_honey" style="display:none">
+
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="">
+
+<input type="hidden" name="_timestamp" id="form-timestamp">
+
 <input type="text" name="name" placeholder="Name" required>
 <input type="email" name="email" placeholder="Email" required>
 
@@ -1238,6 +1246,31 @@ showProjects()
 })
 
 showProjects()
+
+
+/* BOT TIME TRAP */
+
+const form = document.querySelector(".contact-form")
+const timestampField = document.getElementById("form-timestamp")
+
+if(form && timestampField){
+
+timestampField.value = Date.now()
+
+form.addEventListener("submit", function(e){
+
+const timeTaken = Date.now() - parseInt(timestampField.value)
+
+if(timeTaken < 2000){
+
+e.preventDefault()
+console.log("Bot submission blocked")
+
+}
+
+})
+
+}
 
 </script>
 
