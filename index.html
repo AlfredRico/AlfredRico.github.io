@@ -1275,7 +1275,7 @@ tools.add(tool)
 
 const validTools=Array.from(tools).sort()
 
-/* preserve previously selected tools that are still valid */
+/* preserve previously selected tools */
 
 activeTools=previousTools.filter(tool=>validTools.includes(tool))
 
@@ -1308,39 +1308,6 @@ packageContainer.appendChild(btn)
 
 }
 
-
-let tools=new Set()
-
-activeLanguages.forEach(lang=>{
-LANGUAGE_TOOLS[lang].forEach(tool=>{
-tools.add(tool)
-})
-})
-
-Array.from(tools).sort().forEach(tool=>{
-
-const btn=document.createElement("button")
-
-btn.className="filter-btn package-btn"
-btn.dataset.filter=tool
-btn.textContent=tool
-
-btn.onclick=()=>{
-
-btn.classList.toggle("active")
-
-activeTools=[...document.querySelectorAll(".package-btn.active")]
-.map(b=>b.dataset.filter)
-
-showProjects()
-
-}
-
-packageContainer.appendChild(btn)
-
-})
-
-}
 
 function showProjects(){
 
