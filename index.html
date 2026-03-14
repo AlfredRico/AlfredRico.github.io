@@ -781,7 +781,7 @@ animation:planeBurstJiggle 5s infinite ease-in-out;
 
 
 
-/* SIMPLE SLIDE OUT OF BUTTON */
+/* ANGLED PLANE SLIDE (30° COUNTER-CLOCKWISE PATH) */
 
 .apple-send{
 position:relative;
@@ -799,12 +799,12 @@ animation:planeSlide .7s forwards linear;
 @keyframes planeSlide{
 
 0%{
-transform:rotate(40deg) translateX(0);
+transform:rotate(40deg) translate(0,0);
 opacity:1;
 }
 
 100%{
-transform:rotate(40deg) translateX(70px);
+transform:rotate(40deg) translate(60px,-35px);
 opacity:1;
 }
 
