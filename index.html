@@ -778,6 +778,13 @@ background:linear-gradient(180deg,#028391,#F85525);
 
 
 
+.apple-send{
+position:relative;
+overflow:hidden;
+}
+
+/* plane container */
+
 .plane-wrapper{
 position:relative;
 display:flex;
@@ -785,45 +792,40 @@ align-items:center;
 justify-content:center;
 }
 
-.plane-icon{
+/* plane */
 
+.plane-icon{
 font-size:18px;
 color:white;
-
 transform:rotate(45deg);
-transition:transform 1.2s cubic-bezier(.25,.8,.25,1);
-
+transition:transform 1.4s cubic-bezier(.25,.8,.25,1);
 }
 
 /* hover jiggle */
 
 .apple-send:hover .plane-icon{
-
 animation:planeJiggle .4s ease;
-
 }
 
 @keyframes planeJiggle{
-
 0%{transform:rotate(45deg)}
 25%{transform:rotate(40deg)}
 50%{transform:rotate(50deg)}
 75%{transform:rotate(42deg)}
 100%{transform:rotate(45deg)}
-
 }
 
-/* gradient trail */
+/* trail */
 
 .plane-trail{
 
 position:absolute;
 
-left:0;
+left:-140px;
 top:50%;
 
 height:3px;
-width:0;
+width:140px;
 
 transform:translateY(-50%);
 
@@ -839,32 +841,41 @@ background:linear-gradient(
 border-radius:3px;
 
 opacity:0;
-
 }
 
-/* launch animation */
+/* launch */
 
-.apple-send.sending .plane-icon{
+.apple-send.sending .plane-wrapper{
 
-transform:translateX(220px) rotate(45deg);
+animation:planeSlide 1.4s ease forwards;
 
 }
 
 .apple-send.sending .plane-trail{
 
-animation:trailFollow 1.2s ease forwards;
+animation:trailFade 1.4s ease forwards;
 
 }
 
-@keyframes trailFollow{
+@keyframes planeSlide{
 
 0%{
-width:0;
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(260px);
+}
+
+}
+
+@keyframes trailFade{
+
+0%{
 opacity:1;
 }
 
 100%{
-width:200px;
 opacity:0;
 }
 
@@ -1506,7 +1517,7 @@ headers:{'Accept':'application/json'}
 setTimeout(()=>{
 button.classList.remove("sending")
 form.reset()
-},1200)
+},1400)
 
 })
 
