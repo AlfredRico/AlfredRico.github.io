@@ -977,7 +977,30 @@ pointer-events:none;
 /* hero text rotation animation */
 
 #hero-rotator{
-transition:opacity .75s ease;
+transition:opacity .35s ease;
+}
+
+
+
+
+/* ---------------- MOBILE HERO IMPROVEMENTS ---------------- */
+
+@media (max-width:600px){
+
+.hero{
+min-height:300px;
+}
+
+.hero-content{
+margin-top:-20px;
+}
+
+#hero-rotator{
+font-size:17px;
+margin-top:10px;
+letter-spacing:.9px;
+}
+
 }
 
 
@@ -1665,7 +1688,7 @@ heroRotator.style.opacity = 1
 
 },300)
 
-},4000)
+},3500)
 
 }
 
