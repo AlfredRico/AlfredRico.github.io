@@ -170,9 +170,9 @@ max-width:1100px;margin:60px auto;padding:0 30px;
 display:grid;
 grid-template-columns:1fr 1fr;
 grid-template-areas:
-"about contact"
+"about highlights"
 "projects projects"
-"certifications certifications";
+"contact certifications";
 gap:40px;
 }
 
@@ -862,84 +862,18 @@ opacity:1;
 
 
 
-/* ABOUT SECTION CLEAN LAYOUT */
+/* PROJECT HIGHLIGHTS */
 
-#about{
-text-align:center;
-margin-bottom:40px;
+#highlights{
+grid-area:highlights;
 }
 
-/* centered title */
-
-.about-title{
-text-align:center;
-margin-bottom:20px;
-}
-
-/* wide bubble */
-
-.about-text{
-
-max-width:760px;
-margin:auto;
-
-background:rgba(255,255,255,.92);
-
-padding:32px;
-
-border-radius:18px;
-
-box-shadow:
-0 16px 40px rgba(0,0,0,.18),
-inset 0 1px 0 rgba(255,255,255,.6);
-
-}
-
-/* remove speech bubble tail */
-
-.about-text::before{
-display:none;
-}
-
-/* profile picture inside bubble */
-
-.about-profile{
-float:left;
-margin:0 18px 10px 0;
-}
-
-/* readable text */
-
-.about-text p{
-margin-bottom:14px;
-line-height:1.65;
-}
-
-.about-text p:first-child{
-font-weight:600;
-}
-
-/* contact section width */
-
-#contact{
+.highlights-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
 max-width:520px;
 margin:auto;
-}
-
-/* mobile layout */
-
-@media (max-width:900px){
-
-.about-profile{
-float:none;
-display:block;
-margin:0 auto 16px auto;
-}
-
-.about-text{
-padding:26px 22px;
-}
-
 }
 
 
@@ -974,26 +908,24 @@ padding:26px 22px;
 
 <div class="main-layout">
 
-
 <section id="about">
-<h2 class="about-title">About Me</h2>
+<h2>About Me</h2>
+
+<div class="about-grid">
+
+<img src="profile.jpg" class="profile-pic">
 
 <div class="about-text">
 
-<img src="profile.jpg" class="profile-pic about-profile">
+<p>Hi, I'm Alfred — a data analyst focused on turning messy datasets into clear, actionable insights.</p>
 
-<p>I've always been a data collector — long before I knew the term "data analyst."</p>
+<p>Using tools like Python, SQL, and data visualization platforms, I explore patterns, build dashboards, and communicate findings that help explain what the data is really saying.</p>
 
-<p>One of my earliest memories is of spending an afternoon watching anthills and carefully cataloging the ants’ behavior. That curiosity about patterns and systems has followed me ever since. I’ve always found myself collecting information about the things around me and looking for relationships hidden within.</p>
-
-<p>Professionally, I spent over six years working as a behaviorist, where collecting and analyzing behavioral data was a central part of my work. Today I bring that same analytical mindset to data analysis, using tools like Python, SQL, and visualization platforms to explore datasets, clean and transform information, and uncover meaningful insights.</p>
-
-<p>For me, working with data isn’t something new — it’s a way of thinking that has been present throughout my life.</p>
+<p>My projects focus on exploratory data analysis, trend detection, and building clear visual stories from complex datasets.</p>
 
 </div>
-
+</div>
 </section>
-
 
 <section id="contact">
 
@@ -1019,9 +951,42 @@ padding:26px 22px;
 </form>
 </section>
 
+
+
+<section id="highlights">
+
+<h2>Project Highlights</h2>
+
+<div class="highlights-grid">
+
+<a class="project-card" href="#">
+<img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?w=800&q=80">
+<div class="project-overlay"><h3>Project 1</h3></div>
+</a>
+
+<a class="project-card" href="#">
+<img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800&q=80">
+<div class="project-overlay"><h3>Project 2</h3></div>
+</a>
+
+<a class="project-card" href="#">
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80">
+<div class="project-overlay"><h3>Project 3</h3></div>
+</a>
+
+<a class="project-card" href="#">
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80">
+<div class="project-overlay"><h3>Project 4</h3></div>
+</a>
+
+</div>
+
+</section>
+
+
 <section id="projects">
 
-<h2>My Projects</h2>
+<h2>My Project Library</h2>
 
 <div class="project-filters">
 <button class="filter-btn active tag-all" data-filter="all">All</button>
