@@ -939,35 +939,6 @@ display:flex;
 align-items:center;
 justify-content:center;
 
-transition:opacity .35s ease;
-
-}
-
-.highlight-arrow.hidden{
-opacity:0;
-pointer-events:none;
-}
-
-
-border:1px solid rgba(255,255,255,.15);
-background:rgba(255,255,255,.06);
-
-backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px);
-
-color:white;
-
-width:38px;
-height:38px;
-
-border-radius:50%;
-
-cursor:pointer;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
 }
 
 /* GRID LAYOUT */
@@ -1602,39 +1573,15 @@ let page = 0
 const next = document.querySelector(".highlight-arrow.next")
 const prev = document.querySelector(".highlight-arrow.prev")
 
-function updateArrows(){
-
-if(page === 0){
-prev.classList.add("hidden")
-next.classList.remove("hidden")
-}
-
-if(page === 1){
-next.classList.add("hidden")
-prev.classList.remove("hidden")
-}
-
-}
-
 next.onclick = () => {
-
 page = 1
 highlightGrid.style.transform = "translateX(-460px)"
-
-updateArrows()
-
 }
 
 prev.onclick = () => {
-
 page = 0
 highlightGrid.style.transform = "translateX(0)"
-
-updateArrows()
-
 }
-
-updateArrows()
 
 }
 
