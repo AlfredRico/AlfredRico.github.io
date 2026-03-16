@@ -1216,32 +1216,38 @@ max-width:100%;
 
 
 
-/* ----- MOBILE HIGHLIGHTS FINAL FIX (4 CARDS PER PAGE) ----- */
+/* ----- MOBILE SWIPE HIGHLIGHTS (2x2 PAGES) ----- */
 
 @media (max-width:900px){
 
+.highlight-arrow{
+display:none;
+}
+
 .highlights-window{
 width:100%;
-overflow:hidden;
+overflow-x:auto;
+overflow-y:hidden;
+scroll-snap-type:x mandatory;
+-webkit-overflow-scrolling:touch;
 }
 
 .highlights-grid{
+display:flex;
+gap:0;
+width:200%;
+}
+
+.highlight-page{
+flex:0 0 100%;
+scroll-snap-align:start;
 
 display:grid;
-
-/* 4 columns total → 2 columns per page */
-
-grid-template-columns:repeat(4,1fr);
+grid-template-columns:repeat(2,1fr);
 grid-template-rows:repeat(2,1fr);
 
 gap:14px;
-
-/* two pages wide */
-
-width:200%;
-
-transition:transform .35s ease;
-
+padding:2px;
 }
 
 }
@@ -1357,20 +1363,20 @@ transition:transform .35s ease;
 
 <div class="highlights-window">
 
+
 <div class="highlights-grid">
 
-<!-- PAGE 1 -->
+<div class="highlight-page">
 
-<a class="project-card highlight-card" data-tags="python pandas matplotlib">
-<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80">
-<div class="project-overlay">
-<h3>Sales Trend Analysis</h3>
-<div class="project-tags">
-<span class="tag-python">Python</span>
-<span class="tag-package">pandas</span>
-<span class="tag-package">matplotlib</span>
+</div>
+
+<div class="highlight-page">
+
+</div>
+
 </div>
 </div>
+
 </a>
 
 <a class="project-card highlight-card" data-tags="r ggplot2 dplyr">
