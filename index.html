@@ -1214,58 +1214,6 @@ max-width:100%;
 }
 
 
-
-
-/* ===============================
-MOBILE NAVIGATION ADJUSTMENTS
-=============================== */
-
-@media (max-width:900px){
-
-/* swap highlight/library order */
-
-nav ul{
-flex-wrap:wrap;
-}
-
-nav ul li:nth-child(2){
-order:3;
-}
-
-nav ul li:nth-child(3){
-order:2;
-}
-
-/* remove underline from MORE button */
-
-.nav-more a::after{
-display:none !important;
-}
-
-}
-
-/* ===============================
-MOBILE HIGHLIGHT PAGINATION
-=============================== */
-
-@media (max-width:900px){
-
-.highlights-window{
-width:100%;
-height:440px;
-overflow:hidden;
-}
-
-.highlights-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-grid-auto-flow:column;
-gap:14px;
-}
-
-}
-
-
 </style>
 
 </head>
@@ -1295,6 +1243,8 @@ gap:14px;
 <li><a href="#highlights">My Project Highlights</a></li>
 <li><a href="#projects">My Project Library</a></li>
 
+<li><a href="#contact">Contact</a></li>
+<li><a href="#certifications">Certifications</a></li>
 <li class="nav-more">
 <a href="#">More <i class="fas fa-chevron-down"></i></a>
 <div class="nav-dropdown">
@@ -1371,11 +1321,85 @@ gap:14px;
 
 <div class="highlights-wrapper">
 
-<button class="highlight-arrow prev"><i class="fas fa-chevron-left"></i></button>
+
 
 <div class="highlights-window">
 
-<div class="highlights-grid">
+
+
+<div class="projects-grid">
+
+<a class="project-card" data-tags="python pandas matplotlib"
+href="#" target="_blank">
+
+<img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?w=800&q=80">
+
+<div class="project-overlay">
+<h3>Project Highlight 1</h3>
+
+<div class="project-tags">
+<span class="tag-python">Python</span>
+<span class="tag-package">pandas</span>
+<span class="tag-package">matplotlib</span>
+</div>
+
+</div>
+</a>
+
+
+<a class="project-card" data-tags="sql tableau"
+href="#" target="_blank">
+
+<img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800&q=80">
+
+<div class="project-overlay">
+<h3>Project Highlight 2</h3>
+
+<div class="project-tags">
+<span class="tag-sql">SQL</span>
+<span class="tag-tableau">Tableau</span>
+</div>
+
+</div>
+</a>
+
+
+<a class="project-card" data-tags="r ggplot2 dplyr"
+href="#" target="_blank">
+
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80">
+
+<div class="project-overlay">
+<h3>Project Highlight 3</h3>
+
+<div class="project-tags">
+<span class="tag-r">R</span>
+<span class="tag-package">ggplot2</span>
+<span class="tag-package">dplyr</span>
+</div>
+
+</div>
+</a>
+
+
+<a class="project-card" data-tags="excel sheets"
+href="#" target="_blank">
+
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80">
+
+<div class="project-overlay">
+<h3>Project Highlight 4</h3>
+
+<div class="project-tags">
+<span class="tag-excel">Excel</span>
+<span class="tag-sheets">Sheets</span>
+</div>
+
+</div>
+</a>
+
+</div>
+
 
 <a class="project-card"><img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?w=800&q=80"></a>
 <a class="project-card"><img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800&q=80"></a>
@@ -1391,7 +1415,7 @@ gap:14px;
 
 </div>
 
-<button class="highlight-arrow next"><i class="fas fa-chevron-right"></i></button>
+
 
 </div>
 
@@ -1893,7 +1917,7 @@ console.error("Submission error",err)
 
 
 
-const highlightGrid = document.querySelector(".highlights-grid")
+/* highlight carousel removed */
 
 if(highlightGrid){
 
@@ -1939,54 +1963,6 @@ updateArrows()
 }
 
 
-
-
-
-
-/* FIX MOBILE HIGHLIGHT PAGINATION */
-
-const highlightGrid = document.querySelector(".highlights-grid")
-
-if(highlightGrid){
-
-let page = 0
-
-const next = document.querySelector(".highlight-arrow.next")
-const prev = document.querySelector(".highlight-arrow.prev")
-
-function updateArrows(){
-
-if(page === 0){
-prev.classList.add("hidden")
-next.classList.remove("hidden")
-}
-
-if(page === 1){
-next.classList.add("hidden")
-prev.classList.remove("hidden")
-}
-
-}
-
-next.onclick = () => {
-
-page = 1
-highlightGrid.style.transform = "translateX(-100%)"
-updateArrows()
-
-}
-
-prev.onclick = () => {
-
-page = 0
-highlightGrid.style.transform = "translateX(0)"
-updateArrows()
-
-}
-
-updateArrows()
-
-}
 
 
 /* HERO TEXT ROTATION */
