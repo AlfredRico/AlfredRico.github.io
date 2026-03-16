@@ -170,8 +170,8 @@ max-width:1100px;margin:60px auto;padding:0 30px;
 display:grid;
 grid-template-columns:1fr 1fr;
 grid-template-areas:
-"about projects"
-"contact contact"
+"about contact"
+"projects projects"
 "certifications certifications";
 gap:40px;
 }
@@ -587,8 +587,8 @@ footer{text-align:center;padding:14px;background:#111;color:white}
 grid-template-columns:1fr;
 grid-template-areas:
 "about"
-"projects"
 "contact"
+"projects"
 "certifications";
 }
 
@@ -860,6 +860,52 @@ opacity:1;
 
 }
 
+
+
+/* Profile image inside bubble */
+
+.about-profile{
+float:left;
+margin:0 18px 10px 0;
+}
+
+/* remove chat bubble tail */
+
+.about-text::before{
+display:none;
+}
+
+/* improve readability */
+
+.about-text p{
+margin-bottom:14px;
+line-height:1.65;
+}
+
+.about-text p:first-child{
+font-weight:600;
+}
+
+/* contact section width fix */
+
+#contact{
+max-width:520px;
+margin:auto;
+}
+
+/* mobile layout */
+
+@media (max-width:900px){
+
+.about-profile{
+float:none;
+display:block;
+margin:0 auto 16px auto;
+}
+
+}
+
+
 </style>
 
 </head>
@@ -891,24 +937,29 @@ opacity:1;
 
 <div class="main-layout">
 
+
 <section id="about">
 <h2>About Me</h2>
 
 <div class="about-grid">
 
-<img src="profile.jpg" class="profile-pic">
-
 <div class="about-text">
 
-<p>Hi, I'm Alfred — a data analyst focused on turning messy datasets into clear, actionable insights.</p>
+<img src="profile.jpg" class="profile-pic about-profile">
 
-<p>Using tools like Python, SQL, and data visualization platforms, I explore patterns, build dashboards, and communicate findings that help explain what the data is really saying.</p>
+<p>I've always been a data collector — long before I knew the term "data analyst."</p>
 
-<p>My projects focus on exploratory data analysis, trend detection, and building clear visual stories from complex datasets.</p>
+<p>One of my earliest memories is of spending an afternoon watching anthills and carefully cataloging the ants’ behavior. That curiosity about patterns and systems has followed me ever since. I’ve always found myself collecting information about the things around me and looking for relationships hidden within.</p>
+
+<p>Professionally, I spent over six years working as a behaviorist, where collecting and analyzing behavioral data was a central part of my work. Today I bring that same analytical mindset to data analysis, using tools like Python, SQL, and visualization platforms to explore datasets, clean and transform information, and uncover meaningful insights.</p>
+
+<p>For me, working with data isn’t something new — it’s a way of thinking that has been present throughout my life.</p>
 
 </div>
+
 </div>
 </section>
+
 
 <section id="contact">
 
