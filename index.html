@@ -1147,11 +1147,11 @@ display:block;
 
 
 
-/* ---------------- MOBILE SCALING FIX ---------------- */
+/* ---------------- MOBILE SECTION SCALING ---------------- */
 
 @media (max-width:900px){
 
-/* align all sections with hero width */
+/* ensure sections align with hero width */
 
 .main-layout{
 max-width:100%;
@@ -1159,23 +1159,56 @@ padding:0 16px;
 margin:40px auto;
 }
 
-/* reduce oversized contact form */
+/* ---------- PROJECT HIGHLIGHTS ---------- */
+
+.highlights-wrapper{
+width:100%;
+justify-content:center;
+}
+
+.highlights-window{
+width:100%;
+max-width:100%;
+overflow:hidden;
+}
+
+.highlights-grid{
+grid-template-columns:repeat(2,1fr);
+grid-template-rows:repeat(2,1fr);
+gap:14px;
+}
+
+/* ---------- PROJECT LIBRARY ---------- */
+
+.projects-window{
+width:100%;
+max-width:100%;
+height:auto;
+overflow:visible;
+}
+
+.projects-grid{
+grid-template-columns:repeat(2,1fr);
+gap:14px;
+}
+
+/* ---------- CONTACT SECTION ---------- */
+
+#contact{
+max-width:100%;
+}
 
 .contact-form{
-padding:22px;
+width:100%;
+padding:20px;
+box-sizing:border-box;
 }
 
-/* improve hero proportion on phones */
+/* ---------- GENERAL SECTION FIT ---------- */
 
-.hero{
-height:28vh;
-min-height:200px;
-}
-
-/* adjust hero text position */
-
-.hero-content{
-margin-top:-20px;
+section{
+width:100%;
+max-width:100%;
 }
 
 }
