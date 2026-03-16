@@ -1216,17 +1216,19 @@ max-width:100%;
 
 
 
-/* ---------------- MOBILE GRID FIX ---------------- */
+/* ---------------- MOBILE HIGHLIGHTS FIX ---------------- */
 
 @media (max-width:900px){
 
-/* ---------- PROJECT HIGHLIGHTS (2x2) ---------- */
+/* highlight window size */
 
 .highlights-window{
 width:100%;
 max-width:100%;
 overflow:hidden;
 }
+
+/* force 2x2 layout */
 
 .highlights-grid{
 
@@ -1237,33 +1239,25 @@ gap:14px;
 
 }
 
-/* ---------- PROJECT LIBRARY (2x3 visible) ---------- */
+/* ensure highlight cards scale */
 
-.projects-window{
-
-width:100%;
-max-width:100%;
-
-/* height fits exactly 3 rows */
-
-height:660px;
-
-overflow-y:auto;
-
-}
-
-.projects-grid{
-
-grid-template-columns:repeat(2,1fr);
-
-gap:14px;
-
-}
-
-/* ensure cards scale cleanly */
-
-.project-card{
+.highlights-grid .project-card{
 aspect-ratio:1;
+}
+
+}
+
+/* ---------------- MOBILE NAV DROPDOWN FIX ---------------- */
+
+@media (max-width:900px){
+
+.mobile-dropdown{
+
+left:auto;
+right:0;
+
+transform:translateX(-100%);
+
 }
 
 }
@@ -2012,6 +2006,17 @@ moreNav.classList.toggle("open")
 })
 
 }
+
+
+
+
+/* FIX MOBILE NAV LINK BEHAVIOR */
+
+document.querySelectorAll(".mobile-dropdown a").forEach(link=>{
+link.addEventListener("click",()=>{
+window.location = link.getAttribute("href")
+})
+})
 
 
 </script>
