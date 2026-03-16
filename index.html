@@ -862,20 +862,53 @@ opacity:1;
 
 
 
-/* Profile image inside bubble */
+/* ABOUT SECTION CLEAN LAYOUT */
+
+#about{
+text-align:center;
+margin-bottom:40px;
+}
+
+/* centered title */
+
+.about-title{
+text-align:center;
+margin-bottom:20px;
+}
+
+/* wide bubble */
+
+.about-text{
+
+max-width:760px;
+margin:auto;
+
+background:rgba(255,255,255,.92);
+
+padding:32px;
+
+border-radius:18px;
+
+box-shadow:
+0 16px 40px rgba(0,0,0,.18),
+inset 0 1px 0 rgba(255,255,255,.6);
+
+}
+
+/* remove speech bubble tail */
+
+.about-text::before{
+display:none;
+}
+
+/* profile picture inside bubble */
 
 .about-profile{
 float:left;
 margin:0 18px 10px 0;
 }
 
-/* remove chat bubble tail */
-
-.about-text::before{
-display:none;
-}
-
-/* improve readability */
+/* readable text */
 
 .about-text p{
 margin-bottom:14px;
@@ -886,7 +919,7 @@ line-height:1.65;
 font-weight:600;
 }
 
-/* contact section width fix */
+/* contact section width */
 
 #contact{
 max-width:520px;
@@ -901,6 +934,10 @@ margin:auto;
 float:none;
 display:block;
 margin:0 auto 16px auto;
+}
+
+.about-text{
+padding:26px 22px;
 }
 
 }
@@ -939,9 +976,7 @@ margin:0 auto 16px auto;
 
 
 <section id="about">
-<h2>About Me</h2>
-
-<div class="about-grid">
+<h2 class="about-title">About Me</h2>
 
 <div class="about-text">
 
@@ -957,7 +992,6 @@ margin:0 auto 16px auto;
 
 </div>
 
-</div>
 </section>
 
 
