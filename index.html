@@ -1006,64 +1006,62 @@ letter-spacing:.9px;
 
 
 
-/* -------- MOBILE LAYOUT OPTIMIZATION -------- */
+/* ---------- MOBILE ABOUT PREVIEW ---------- */
 
 @media (max-width:600px){
 
-.main-layout{
-grid-template-columns:1fr;
-grid-template-areas:
-"about"
-"highlights"
-"projects"
-"contact"
-"certifications";
-gap:22px;
-margin:30px auto;
-padding:0 16px;
-}
-
-/* smaller section headers */
-
-h2{
-font-size:22px;
-margin-bottom:18px;
-}
-
-/* collapsible about */
-
-#about .about-text{
+.about-text{
 display:none;
 }
 
-#about.open .about-text{
-display:block;
+.about-preview{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+margin-top:10px;
 }
 
-#about h2{
+.preview-pic{
+width:160px;
+height:160px;
+border-radius:50%;
+}
+
+/* glass arrow */
+
+.about-arrow{
+
+position:absolute;
+bottom:-10px;
+
+width:42px;
+height:42px;
+
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,.15);
+
+color:white;
+font-size:18px;
+
 cursor:pointer;
+
+box-shadow:
+0 6px 14px rgba(0,0,0,.35),
+inset 0 1px 0 rgba(255,255,255,.2);
+
 }
 
-/* ---------- PROJECT LIBRARY MOBILE GRID ---------- */
-
-.projects-window{
-height:420px;
-overflow-y:auto;
-}
-
-.projects-grid{
-grid-template-columns:repeat(2,1fr);
-gap:14px;
-}
-
-/* ensures square cards */
-
-.project-card{
-aspect-ratio:1;
-border-radius:12px;
-}
-
-/* highlights fit mobile width */
+/* ---------- MOBILE HIGHLIGHTS 2x2 ---------- */
 
 .highlights-window{
 width:100%;
@@ -1071,13 +1069,8 @@ width:100%;
 
 .highlights-grid{
 grid-template-columns:repeat(2,1fr);
-grid-template-rows:auto;
-}
-
-/* contact form tighter */
-
-.contact-form{
-padding:26px;
+grid-template-rows:repeat(2,1fr);
+gap:16px;
 }
 
 }
@@ -1121,6 +1114,17 @@ padding:26px;
 
 <section id="about">
 <h2>About Me</h2>
+
+
+<div class="about-preview">
+
+<img src="profile.jpg" class="profile-pic preview-pic">
+
+<div class="about-arrow">
+<i class="fas fa-chevron-down"></i>
+</div>
+
+</div>
 
 <div class="about-text">
 
@@ -1773,19 +1777,18 @@ heroRotator.style.opacity = 1
 
 
 
-/* MOBILE ABOUT DROPDOWN */
+/* MOBILE ABOUT PREVIEW INTERACTION */
 
-const aboutSection = document.getElementById("about")
+const preview = document.querySelector(".about-preview")
+const aboutText = document.querySelector("#about .about-text")
+const arrow = document.querySelector(".about-arrow")
 
-if(aboutSection){
+if(preview && arrow){
 
-const aboutHeader = aboutSection.querySelector("h2")
+arrow.addEventListener("click",()=>{
 
-aboutHeader.addEventListener("click",()=>{
-
-if(window.innerWidth <= 600){
-aboutSection.classList.toggle("open")
-}
+preview.style.display = "none"
+aboutText.style.display = "block"
 
 })
 
