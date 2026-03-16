@@ -862,50 +862,21 @@ opacity:1;
 
 
 
+/* PROFILE IMAGE INSIDE CHAT BUBBLE */
+
 .about-profile{
-
 float:left;
-
-width:150px;
-height:150px;
-
 margin:0 18px 10px 0;
-
-border-radius:50%;
-
-object-fit:cover;
-
-border:4px solid transparent;
-
-background:
-linear-gradient(white,white) padding-box,
-linear-gradient(135deg,#01204E,#028391,#F6DCAC,#FAA968) border-box;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,.15),
-0 0 18px rgba(2,131,145,.35);
-
 }
+
+/* Wider chat bubble */
 
 .about-text{
-
-position:relative;
-
-background:rgba(255,255,255,.92);
-
-padding:34px 32px;
-
-border-radius:18px;
-
 max-width:900px;
-
 margin:auto;
-
-box-shadow:
-0 16px 40px rgba(0,0,0,.18),
-inset 0 1px 0 rgba(255,255,255,.6);
-
 }
+
+/* Paragraph readability */
 
 .about-text p{
 margin-bottom:14px;
@@ -916,20 +887,24 @@ line-height:1.65;
 font-weight:600;
 }
 
+/* Palette glow matching hero animation */
+
+.profile-pic{
+box-shadow:
+0 10px 30px rgba(0,0,0,.15),
+0 0 18px rgba(2,131,145,.35),
+0 0 30px rgba(246,220,172,.15),
+0 0 40px rgba(250,169,104,.10);
+}
+
+/* Mobile layout */
+
 @media (max-width:900px){
 
 .about-profile{
-
 float:none;
-
 display:block;
-
 margin:0 auto 16px auto;
-
-}
-
-.about-text{
-padding:26px 22px;
 }
 
 }
@@ -974,7 +949,7 @@ padding:26px 22px;
 
 <div class="about-text">
 
-<img src="profile.jpg" class="about-profile">
+<img src="profile.jpg" class="profile-pic about-profile">
 
 <p>I've always been a data collector — long before I knew the term "data analyst."</p>
 
