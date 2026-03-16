@@ -981,6 +981,29 @@ transition:opacity .35s ease;
 }
 
 
+
+
+/* HERO ROLLER TEXT */
+
+.hero-roller{
+height:22px;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+margin-top:6px;
+}
+
+.roller-track{
+display:flex;
+flex-direction:column;
+transition:transform .45s ease;
+font-size:16px;
+letter-spacing:.8px;
+color:#cbd5e1;
+}
+
+
 </style>
 
 </head>
@@ -1668,6 +1691,28 @@ heroRotator.style.opacity = 1
 },3500)
 
 }
+
+
+
+/* HERO TEXT ROLLER */
+
+const roller = document.getElementById("hero-roller-track")
+
+if(roller){
+
+const lines = roller.children.length
+let index = 0
+
+setInterval(()=>{
+
+index = (index + 1) % lines
+
+roller.style.transform = `translateY(-${index*22}px)`
+
+},2000)
+
+}
+
 
 </script>
 
