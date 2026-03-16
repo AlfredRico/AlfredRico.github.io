@@ -977,7 +977,7 @@ pointer-events:none;
 
 
 
-/* HERO TEXT PUSH DOWN */
+/* HERO TEXT DROP */
 
 .hero-roller-window{
 height:32px;
@@ -1003,6 +1003,22 @@ letter-spacing:.8px;
 color:#cbd5e1;
 text-align:center;
 width:100%;
+}
+
+.hero-line.drop{
+animation:heroDrop 1.2s cubic-bezier(.25,.8,.25,1);
+}
+
+@keyframes heroDrop{
+
+0%{
+transform:translateY(-32px);
+}
+
+100%{
+transform:translateY(0);
+}
+
 }
 
 
@@ -1670,7 +1686,7 @@ updateArrows()
 
 
 
-/* HERO TEXT PUSH DOWN */
+/* HERO TEXT DROP */
 
 const phrases = [
 "Data Cleaning • Transformation • Visualization",
@@ -1697,18 +1713,15 @@ setInterval(()=>{
 index = (index + 1) % phrases.length
 
 const newLine = createLine(phrases[index])
+newLine.classList.add("drop")
+
 roller.insertBefore(newLine, roller.firstChild)
 
-roller.style.transition = "transform 1.2s cubic-bezier(.25,.8,.25,1)"
-roller.style.transform = "translateY(32px)"
-
+if(roller.children.length > 2){
 setTimeout(()=>{
-
-roller.style.transition = "none"
-roller.style.transform = "translateY(0)"
 roller.removeChild(roller.lastChild)
-
 },1200)
+}
 
 },2500)
 
