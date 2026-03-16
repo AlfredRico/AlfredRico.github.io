@@ -1147,140 +1147,34 @@ display:block;
 
 
 
-/* ---------------- MOBILE ABOUT TOGGLE ---------------- */
-
-.about-toggle-pic{
-display:none;
-}
+/* ---------------- MOBILE LAYOUT FIX ---------------- */
 
 @media (max-width:900px){
 
-.about-toggle-pic{
-display:block;
-position:relative;
-width:160px;
-margin:10px auto 30px;
-cursor:pointer;
-}
-
-.about-toggle-pic img{
-width:160px;
-height:160px;
-border-radius:50%;
-object-fit:cover;
-
-border:4px solid transparent;
-
-background:
-linear-gradient(white,white) padding-box,
-linear-gradient(135deg,#01204E,#028391,#F6DCAC,#FAA968) border-box;
-}
-
-/* ARROW PERFECTLY CENTERED */
-
-.about-arrow{
-position:absolute;
-bottom:-19px;
-left:50%;
-transform:translateX(-50%);
-
-width:38px;
-height:38px;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-border-radius:50%;
-
-background:rgba(255,255,255,.10);
-
-backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px);
-
-border:1px solid rgba(255,255,255,.20);
-
-color:white;
-}
-
-/* TOGGLE BEHAVIOR */
-
-#about .about-text{
-display:none;
-}
-
-#about.open .about-text{
-display:block;
-}
-
-#about.open .about-toggle-pic{
-display:none;
-}
-
-/* MOBILE SECTION ALIGNMENT */
+/* align sections with hero */
 
 .main-layout{
 max-width:100%;
-padding:0 20px;
+padding:0 16px;
 margin:40px auto;
 }
 
-/* MOBILE GRID ORDER */
+/* reduce oversized contact box */
 
-.main-layout{
-grid-template-areas:
-"about"
-"highlights"
-"projects"
-"contact"
-"certifications";
+.contact-form{
+padding:24px;
 }
 
+/* prevent giant project window */
+
+.projects-window{
+height:auto;
 }
 
-/* ---------------- MOBILE NAV DROPDOWN ---------------- */
+/* keep section spacing consistent */
 
-.mobile-more{
-display:none;
-}
-
-@media (max-width:900px){
-
-nav ul li.contact-link,
-nav ul li.cert-link{
-display:none;
-}
-
-.mobile-more{
-display:block;
-position:relative;
-}
-
-.mobile-dropdown{
-display:none;
-
-position:absolute;
-top:38px;
-left:0;
-
-background:rgba(255,255,255,.06);
-
-backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px);
-
-border:1px solid rgba(255,255,255,.08);
-
-border-radius:10px;
-padding:8px;
-}
-
-.mobile-dropdown a{
-display:block;
-padding:8px 12px;
-}
-
-.mobile-more.open .mobile-dropdown{
-display:block;
+section{
+margin-bottom:30px;
 }
 
 }
@@ -1323,16 +1217,7 @@ display:block;
 </div>
 </li>
 
-
-<li class="mobile-more">
-<a href="#">More <i class="fas fa-chevron-down"></i></a>
-<div class="mobile-dropdown">
-<a href="#contact">Contact</a>
-<a href="#certifications">Certifications</a>
-</div>
-</li>
 </ul>
-
 </nav>
 
 <div class="main-layout">
@@ -1340,16 +1225,6 @@ display:block;
 
 <section id="about">
 <h2>About Me</h2>
-
-
-
-<div class="about-toggle-pic">
-<img src="profile.jpg">
-<div class="about-arrow">
-<i class="fas fa-chevron-down"></i>
-</div>
-</div>
-
 
 
 
@@ -2045,40 +1920,6 @@ moreNav.addEventListener("click",(e)=>{
 e.preventDefault()
 moreNav.classList.toggle("open")
 
-})
-
-}
-
-
-
-
-/* ABOUT TOGGLE */
-
-const aboutSection = document.getElementById("about")
-const togglePic = document.querySelector(".about-toggle-pic")
-const aboutBubble = document.querySelector("#about .about-text")
-
-if(togglePic){
-
-togglePic.addEventListener("click",()=>{
-aboutSection.classList.add("open")
-})
-
-aboutBubble.addEventListener("click",()=>{
-aboutSection.classList.remove("open")
-})
-
-}
-
-/* MOBILE NAV DROPDOWN */
-
-const mobileMore = document.querySelector(".mobile-more")
-
-if(mobileMore){
-
-mobileMore.addEventListener("click",(e)=>{
-e.preventDefault()
-mobileMore.classList.toggle("open")
 })
 
 }
