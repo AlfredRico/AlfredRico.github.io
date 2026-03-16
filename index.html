@@ -1004,49 +1004,6 @@ letter-spacing:.9px;
 }
 
 
-
-
-/* -------- MOBILE ABOUT TOGGLE -------- */
-
-@media (max-width:600px){
-
-.about-preview{
-display:flex;
-justify-content:center;
-margin-top:10px;
-cursor:pointer;
-}
-
-#about.open .about-preview{
-display:none;
-}
-
-#about.open .about-text{
-display:block;
-}
-
-/* -------- MOBILE HIGHLIGHTS FIX -------- */
-
-.highlights-wrapper{
-flex-direction:column;
-align-items:center;
-}
-
-.highlights-window{
-width:440px;
-max-width:100%;
-overflow:hidden;
-}
-
-.highlights-grid{
-grid-template-columns:repeat(2,1fr);
-grid-template-rows:repeat(4,1fr);
-gap:16px;
-}
-
-}
-
-
 </style>
 
 </head>
@@ -1734,41 +1691,6 @@ heroRotator.style.opacity = 1
 },3500)
 
 }
-
-
-
-/* MOBILE ABOUT TOGGLE */
-
-const aboutSection = document.getElementById("about")
-const preview = aboutSection.querySelector(".about-preview")
-const aboutText = aboutSection.querySelector(".about-text")
-
-if(preview){
-
-preview.addEventListener("click",()=>{
-
-if(window.innerWidth <= 600){
-aboutSection.classList.toggle("open")
-}
-
-})
-
-}
-
-/* allow closing when tapping about text */
-
-if(aboutText){
-
-aboutText.addEventListener("click",()=>{
-
-if(window.innerWidth <= 600){
-aboutSection.classList.remove("open")
-}
-
-})
-
-}
-
 
 </script>
 
