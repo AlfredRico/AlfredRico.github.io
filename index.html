@@ -1260,17 +1260,13 @@ scroll-snap-align:start;
 
 
 
-/* -------- MOBILE HIGHLIGHTS FINAL FIX -------- */
+/* -------- MOBILE HIGHLIGHTS (2x2 PAGES) -------- */
 
 @media (max-width:900px){
-
-/* hide arrows */
 
 .highlight-arrow{
 display:none;
 }
-
-/* swipe container */
 
 .highlights-window{
 width:100%;
@@ -1281,32 +1277,47 @@ scroll-snap-type:x mandatory;
 -webkit-overflow-scrolling:touch;
 }
 
-/* force two pages */
+/* keep desktop card size but allow horizontal paging */
 
 .highlights-grid{
 
 display:grid;
 
-grid-auto-flow:column;
-
-/* two columns per page */
-
-grid-template-columns:repeat(4,50%);
-grid-template-rows:repeat(2,1fr);
+grid-template-columns:repeat(4,210px);
+grid-template-rows:repeat(2,210px);
 
 gap:14px;
 
-/* total width = two pages */
+/* width of two pages */
 
-width:200%;
+min-width:840px;
 
 }
 
-/* snap page starts */
+/* snap start of each page */
 
 .highlights-grid a:nth-child(1),
 .highlights-grid a:nth-child(5){
 scroll-snap-align:start;
+}
+
+}
+
+
+/* -------- MOBILE PROJECT LIBRARY (2x3 WINDOW) -------- */
+
+@media (max-width:900px){
+
+.projects-window{
+
+height:540px;
+overflow-y:auto;
+overflow-x:hidden;
+
+}
+
+.projects-grid{
+grid-template-columns:repeat(2,1fr);
 }
 
 }
