@@ -1243,8 +1243,6 @@ max-width:100%;
 <li><a href="#highlights">My Project Highlights</a></li>
 <li><a href="#projects">My Project Library</a></li>
 
-<li><a href="#contact">Contact</a></li>
-<li><a href="#certifications">Certifications</a></li>
 <li class="nav-more">
 <a href="#">More <i class="fas fa-chevron-down"></i></a>
 <div class="nav-dropdown">
@@ -1321,85 +1319,13 @@ max-width:100%;
 
 <div class="highlights-wrapper">
 
-
+<button class="highlight-arrow prev"><i class="fas fa-chevron-left"></i></button>
 
 <div class="highlights-window">
 
 
 
 <div class="projects-grid">
-
-<a class="project-card" data-tags="python pandas matplotlib"
-href="#" target="_blank">
-
-<img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?w=800&q=80">
-
-<div class="project-overlay">
-<h3>Project Highlight 1</h3>
-
-<div class="project-tags">
-<span class="tag-python">Python</span>
-<span class="tag-package">pandas</span>
-<span class="tag-package">matplotlib</span>
-</div>
-
-</div>
-</a>
-
-
-<a class="project-card" data-tags="sql tableau"
-href="#" target="_blank">
-
-<img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800&q=80">
-
-<div class="project-overlay">
-<h3>Project Highlight 2</h3>
-
-<div class="project-tags">
-<span class="tag-sql">SQL</span>
-<span class="tag-tableau">Tableau</span>
-</div>
-
-</div>
-</a>
-
-
-<a class="project-card" data-tags="r ggplot2 dplyr"
-href="#" target="_blank">
-
-<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80">
-
-<div class="project-overlay">
-<h3>Project Highlight 3</h3>
-
-<div class="project-tags">
-<span class="tag-r">R</span>
-<span class="tag-package">ggplot2</span>
-<span class="tag-package">dplyr</span>
-</div>
-
-</div>
-</a>
-
-
-<a class="project-card" data-tags="excel sheets"
-href="#" target="_blank">
-
-<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80">
-
-<div class="project-overlay">
-<h3>Project Highlight 4</h3>
-
-<div class="project-tags">
-<span class="tag-excel">Excel</span>
-<span class="tag-sheets">Sheets</span>
-</div>
-
-</div>
-</a>
-
-</div>
-
 
 <a class="project-card"><img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?w=800&q=80"></a>
 <a class="project-card"><img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800&q=80"></a>
@@ -1413,9 +1339,11 @@ href="#" target="_blank">
 
 </div>
 
+
+
 </div>
 
-
+<button class="highlight-arrow next"><i class="fas fa-chevron-right"></i></button>
 
 </div>
 
@@ -1917,7 +1845,7 @@ console.error("Submission error",err)
 
 
 
-/* highlight carousel removed */
+const highlightGrid = document.querySelector(".highlights-grid")
 
 if(highlightGrid){
 
