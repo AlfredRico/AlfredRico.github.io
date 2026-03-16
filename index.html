@@ -1251,8 +1251,24 @@ min-width:200%;
 
 /* snap first card of each page */
 
+}
+
+
+/* -------- MOBILE HIGHLIGHTS HARD PAGE SNAP -------- */
+
+@media (max-width:900px){
+
+.highlights-window{
+scroll-snap-type:x mandatory;
+scroll-padding-left:0;
+}
+
+.highlights-grid{
+min-width:200%;
+}
+
 .highlight-card{
-scroll-snap-align:start;
+scroll-snap-align:none;
 }
 
 }
