@@ -1290,43 +1290,73 @@ scroll-snap-align:start;
 
 
 /* ============================
-   MOBILE RELAX MODE (TEMP)
-   LET EVERYTHING BREATHE
+   STABLE MOBILE LAYOUT PATCH
+   (NO HIGHLIGHTS MODIFICATIONS)
 ============================ */
 
 @media (max-width:900px){
 
-/* remove all vertical constraints */
-.projects-window,
-.highlights-window{
-    height:auto !important;
-    max-height:none !important;
-}
-
-/* allow full natural expansion */
-.highlights-grid,
-.projects-grid{
-    height:auto !important;
-}
-
-/* ensure no clipping */
-section{
-    overflow:visible !important;
-}
-
-/* keep everything inside viewport width */
+/* ---- HARD WIDTH LOCK ---- */
 html, body{
     overflow-x:hidden !important;
 }
 
-/* spacing between sections */
 .main-layout{
-    gap:50px !important;
+    max-width:100% !important;
+    padding:0 16px !important;
+    gap:40px !important;
 }
 
-/* give sections breathing margin */
+/* ensure all sections stay inside bounds */
 section{
-    margin-bottom:20px;
+    width:100%;
+    max-width:100%;
+    overflow:visible;
+}
+
+/* ---------------------------------
+   PROJECT LIBRARY (2 x 3 VIEWPORT)
+--------------------------------- */
+
+.projects-window{
+    max-height:520px;  /* ~3 rows */
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+.projects-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:14px;
+}
+
+/* ---------------------------------
+   CERTIFICATION TILE FIX
+--------------------------------- */
+
+.cert-column{
+    display:flex;
+    justify-content:center;
+    width:100%;
+}
+
+.cert{
+    width:100%;
+    max-width:240px;
+    padding:20px;
+}
+
+/* ---------------------------------
+   GENERAL MOBILE FIT
+--------------------------------- */
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
+.contact-form{
+    width:100%;
+    box-sizing:border-box;
 }
 
 }
