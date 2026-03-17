@@ -828,6 +828,189 @@ opacity:1;
 
 }
 
+/* ================================
+   FINAL MOBILE PROJECT FIX (2x2 VIEW)
+   ================================ */
+
+@media (max-width:600px){
+
+  .projects-window{
+    height: 420px; /* locks to ~2 rows */
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .projects-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .project-card{
+    aspect-ratio: 1;
+  }
+
+}
+
+/* =========================================
+   HARD OVERRIDE — MOBILE PROJECT GRID FIX
+   ========================================= */
+
+@media (max-width:600px){
+
+  .projects-window{
+    height: 360px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  .projects-grid{
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .project-card{
+    aspect-ratio: 1 / 1 !important;
+  }
+
+}
+
+/* =========================================
+   HARD OVERRIDE — MOBILE PROJECT GRID FIX
+   ========================================= */
+
+@media (max-width:600px){
+
+  .projects-window{
+    height: 360px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  .projects-grid{
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .project-card{
+    aspect-ratio: 1 / 1 !important;
+  }
+
+}
+
+/* =========================================
+   HARD OVERRIDE — MOBILE PROJECT GRID FIX
+   ========================================= */
+
+@media (max-width:600px){
+
+  .projects-window{
+    height: 360px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  .projects-grid{
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .project-card{
+    aspect-ratio: 1 / 1 !important;
+  }
+
+}
+
+/* ================================
+   PROJECT HIGHLIGHTS (FINAL)
+   ================================ */
+
+#highlights{
+max-width:1100px;
+margin:60px auto;
+padding:0 30px;
+box-sizing:border-box;
+}
+
+.highlights-container{
+width:100%;
+}
+
+.highlights-window{
+width:100%;
+overflow:hidden;
+}
+
+.highlights-track{
+display:flex;
+width:100%;
+}
+
+/* 2x2 GRID */
+.highlight-page{
+min-width:100%;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+}
+
+.highlight-card{
+width:100%;
+aspect-ratio:1;
+border-radius:16px;
+overflow:hidden;
+position:relative;
+}
+
+.highlight-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.3s;
+}
+
+.highlight-card:hover img{
+filter:brightness(.6);
+transform:scale(1.05);
+}
+
+.highlight-overlay{
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+padding:14px;
+background:linear-gradient(transparent,rgba(0,0,0,.85));
+color:white;
+}
+
+/* DESKTOP ARROWS */
+@media (min-width:601px){
+
+.highlights-container{
+display:flex;
+align-items:center;
+}
+
+.highlight-nav{
+flex:0 0 auto;
+background:rgba(0,0,0,.5);
+border:none;
+color:white;
+font-size:28px;
+padding:12px 14px;
+cursor:pointer;
+}
+
+.highlights-window{
+flex:1;
+}
+
+}
+
 /* MOBILE MAX SIZE */
 @media (max-width:600px){
 
@@ -842,10 +1025,176 @@ gap:12px;
 }
 
 /* ================================
-   MOBILE ONLY ABOUT ARROW (STABLE)
+   DESKTOP GRID OVERRIDE (FINAL)
    ================================ */
 
-/* ALWAYS HIDE ON DESKTOP */
+@media (min-width:901px){
+
+.main-layout{
+grid-template-columns:1fr 1fr;
+grid-template-areas:
+"about highlights"
+"projects projects"
+"contact certifications";
+}
+
+#highlights{grid-area:highlights}
+#contact{grid-area:contact}
+#certifications{grid-area:certifications}
+
+}
+
+/* ================================
+   PROJECT GRID FIX (DESKTOP 4x3)
+   ================================ */
+
+@media (min-width:901px){
+
+.projects-window{
+max-width:920px;
+margin:auto;
+
+/* force 3 visible rows */
+height:720px;
+overflow-y:auto;
+}
+
+.projects-grid{
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+}
+
+.project-card{
+aspect-ratio:1;
+}
+
+}
+
+/* ================================
+   HIGHLIGHTS WIDTH / CLIP FIX
+   ================================ */
+
+.highlights-track{
+display:flex;
+width:100%;
+will-change:transform;
+}
+
+.highlight-page{
+min-width:100%;
+box-sizing:border-box;
+}
+
+/* ================================
+   ABOUT SECTION (DESKTOP REBUILD)
+   ================================ */
+
+@media (min-width:901px){
+
+.about-grid{
+display:block;
+}
+
+.about-text{
+padding:22px;
+line-height:1.6;
+}
+
+.about-text::before{
+display:none;
+}
+
+/* inline image */
+.about-inline{
+float:left;
+width:140px;
+height:140px;
+margin:0 18px 10px 0;
+shape-outside:circle();
+border-radius:50%;
+}
+
+}
+
+/* ================================
+   MOBILE ABOUT (IMAGE INSIDE BUBBLE)
+   ================================ */
+
+@media (max-width:900px){
+
+/* remove chat bubble pointer */
+.about-text::before{
+display:none;
+}
+
+/* stack layout */
+.about-grid{
+display:block;
+}
+
+/* center image INSIDE bubble */
+.about-text img{
+display:block;
+margin:0 auto 18px auto;
+float:none !important;
+}
+
+/* ensure clean spacing */
+.about-text{
+text-align:left;
+padding:22px;
+}
+
+}
+
+/* ================================
+   MOBILE ABOUT TOGGLE (FINAL)
+   ================================ */
+
+@media (max-width:900px){
+
+/* remove pointer */
+.about-text::before{
+display:none;
+}
+
+/* layout */
+.about-grid{
+display:block;
+}
+
+/* image centered inside bubble */
+.about-text img{
+display:block;
+margin:0 auto 18px auto;
+float:none !important;
+}
+
+/* COLLAPSED STATE */
+.about-text.collapsed{
+background:transparent !important;
+box-shadow:none !important;
+padding:0 !important;
+text-align:center;
+}
+
+/* hide text when collapsed */
+.about-text.collapsed p{
+display:none;
+}
+
+/* EXPANDED STATE */
+.about-text.expanded{
+padding:22px;
+}
+
+}
+
+/* ================================
+   ABOUT ARROW (DESKTOP SAFE)
+   ================================ */
+
+/* HARD HIDE ON DESKTOP */
 .about-arrow{
 display:none;
 }
@@ -856,39 +1205,260 @@ display:none;
 position:relative;
 }
 
-/* ONLY SHOW WHEN EXPANDED */
-.about-text.expanded .about-arrow{
+/* SHOW ONLY ON MOBILE */
+.about-arrow{
 display:flex;
 position:absolute;
 left:50%;
 transform:translateX(-50%);
-bottom:-18px;
+bottom:-14px;
 
-width:38px;
-height:38px;
+width:34px;
+height:34px;
 
 border-radius:50%;
 
 align-items:center;
 justify-content:center;
 
-font-size:16px;
+font-size:14px;
 color:white;
 
 background:rgba(255,255,255,.12);
-backdrop-filter:blur(12px);
--webkit-backdrop-filter:blur(12px);
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
 
 border:1px solid rgba(255,255,255,.25);
 
 cursor:pointer;
-z-index:10;
-
-box-shadow:
-0 6px 16px rgba(0,0,0,.35),
-inset 0 1px 0 rgba(255,255,255,.25);
+z-index:3;
 }
 
+/* hide when expanded */
+.about-text.expanded .about-arrow{
+display:none;
+}
+
+}
+
+/* ================================
+   MOBILE SECTION REORDER (SAFE)
+   ================================ */
+
+@media (max-width:900px){
+
+.main-layout{
+display:flex;
+flex-direction:column;
+}
+
+/* order control */
+#about{order:1;}
+#highlights{order:2;}
+#projects{order:3;}
+#contact{order:4;}
+#certifications{order:5;}
+
+}
+
+/* ================================
+   HIGHLIGHTS ARROWS (GLASS STYLE - DESKTOP)
+   ================================ */
+
+@media (min-width:901px){
+
+.highlight-nav{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,0.2);
+
+color:white;
+font-size:22px;
+
+border-radius:50%;
+
+width:44px;
+height:44px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+cursor:pointer;
+transition:all 0.25s ease;
+}
+
+/* hover polish */
+.highlight-nav:hover{
+background:rgba(255,255,255,0.18);
+transform:scale(1.08);
+}
+
+}
+
+/* ================================
+   HIGHLIGHTS ARROW VISIBILITY
+   ================================ */
+
+@media (min-width:901px){
+
+.highlight-nav.hidden{
+opacity:0;
+pointer-events:none;
+}
+
+}
+
+/* ================================
+   DESKTOP NAV SPACING FIX (CONSISTENT)
+   ================================ */
+
+@media (min-width:901px){
+
+nav ul{
+gap:40px;
+flex-wrap:wrap;
+}
+
+nav li{
+list-style:none;
+}
+
+}
+
+/* ================================
+   MOBILE NAV DROPDOWN
+   ================================ */
+
+@media (max-width:900px){
+
+/* hide default nav list */
+nav ul{
+display:none;
+flex-direction:column;
+gap:16px;
+padding:20px 0;
+}
+
+/* show when active */
+nav.active ul{
+display:flex;
+}
+
+/* hamburger button */
+.mobile-nav-toggle{
+display:flex;
+justify-content:center;
+align-items:center;
+height:60px;
+font-size:22px;
+color:white;
+cursor:pointer;
+}
+
+/* center dropdown items */
+nav ul li{
+text-align:center;
+}
+
+}
+
+/* hide hamburger on desktop */
+@media (min-width:901px){
+.mobile-nav-toggle{
+display:none;
+}
+}
+
+/* ================================
+   MOBILE NAV SINGLE CHEVRON
+   ================================ */
+
+@media (max-width:900px){
+
+.mobile-nav-toggle{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:8px;
+
+height:60px;
+
+font-size:16px;
+font-weight:600;
+color:white;
+
+cursor:pointer;
+}
+
+/* subtle polish */
+.mobile-nav-toggle:hover{
+opacity:.85;
+}
+
+}
+
+/* ================================
+   MOBILE NAV CHEVRON ANIMATION
+   ================================ */
+
+@media (max-width:900px){
+
+/* rotate when open */
+nav.active 
+
+}
+
+/* ================================
+   MOBILE NAV DROPDOWN (NO PUSH FIX)
+   ================================ */
+
+@media (max-width:900px){
+
+/* make nav anchor context */
+nav{
+position:sticky;
+top:0;
+z-index:50;
+}
+
+/* dropdown becomes overlay */
+nav ul{
+position:absolute;
+top:100%;
+left:0;
+width:100%;
+
+display:none;
+flex-direction:column;
+gap:16px;
+padding:20px 0;
+
+background:rgba(31,41,51,.98); /* matches site tone */
+
+}
+
+/* show menu */
+nav.active ul{
+display:flex;
+}
+
+/* keep items centered */
+nav ul li{
+text-align:center;
+}
+
+}
+
+/* ================================
+   HERO ROTATING TEXT
+   ================================ */
+
+#rotating-text{
+display:inline-block;
+transition:opacity .35s ease;
 }
 
 </style>
@@ -936,7 +1506,7 @@ inset 0 1px 0 rgba(255,255,255,.25);
 <div class="about-text" id="aboutBubble">
 
 <div class="about-arrow" id="aboutArrow">
-<i class="fas fa-chevron-up"></i>
+<i class="fas fa-chevron-down"></i>
 </div>
 
 <img src="profile.jpg" class="profile-pic about-inline">
@@ -1294,7 +1864,402 @@ requestAnimationFrame(animate)
 setupCanvas()
 animate()
 
-)
+/* ================================
+   CANVAS RESIZE (WIDTH-LOCK FIX)
+   ================================ */
+
+let lastWidth = window.innerWidth
+
+window.addEventListener("resize", ()=>{
+
+  // only react to REAL layout changes (rotation / desktop resize)
+  if(window.innerWidth !== lastWidth){
+    lastWidth = window.innerWidth
+    setupCanvas()
+  }
+
+})
+
+/* FINAL FILTER SYSTEM */
+
+const LANGUAGE_TOOLS={
+python:["pandas","numpy","matplotlib","seaborn","scikit-learn"],
+r:["dplyr","tidyr","ggplot2","plotly","caret"],
+sql:["postgres","mysql","sqlite"],
+tableau:["dashboard","viz"],
+excel:["pivot","powerquery"],
+sheets:["formulas","apps-script"]
+}
+
+const LANGUAGES=Object.keys(LANGUAGE_TOOLS)
+
+const projects=[...document.querySelectorAll(".project-card")]
+const packageContainer=document.querySelector(".package-filters")
+
+projects.forEach(card=>{
+card.tags=card.dataset.tags.toLowerCase().split(" ")
+})
+
+let activeLanguages=[]
+let activeTools=[]
+
+function buildToolButtons(){
+
+const previouslySelected = new Set(activeTools)
+
+packageContainer.innerHTML=""
+
+let tools=new Set()
+
+activeLanguages.forEach(lang=>{
+LANGUAGE_TOOLS[lang].forEach(tool=>{
+tools.add(tool)
+})
+})
+
+Array.from(tools).sort().forEach(tool=>{
+
+const btn=document.createElement("button")
+
+btn.className="filter-btn package-btn"
+btn.dataset.filter=tool
+btn.textContent=tool
+
+if(previouslySelected.has(tool)){
+btn.classList.add("active")
+}
+
+btn.onclick=()=>{
+
+btn.classList.toggle("active")
+
+activeTools=[...document.querySelectorAll(".package-btn.active")]
+.map(b=>b.dataset.filter)
+
+showProjects()
+
+}
+
+packageContainer.appendChild(btn)
+
+})
+
+activeTools=[...document.querySelectorAll(".package-btn.active")]
+.map(b=>b.dataset.filter)
+
+}
+
+function showProjects(){
+
+projects.forEach(card=>{
+
+let languageMatch=
+activeLanguages.length===0 ||
+activeLanguages.every(lang=>card.tags.includes(lang))
+
+let toolMatch=
+activeTools.length===0 ||
+activeTools.every(tool=>card.tags.includes(tool))
+
+card.classList.toggle("hide",!(languageMatch && toolMatch))
+
+})
+
+}
+
+document.querySelectorAll(".project-filters .filter-btn").forEach(btn=>{
+
+btn.onclick=()=>{
+
+const filter=btn.dataset.filter
+
+const allBtn=document.querySelector('[data-filter="all"]')
+
+if(filter==="all"){
+
+activeLanguages=[]
+activeTools=[]
+
+document.querySelectorAll(".project-filters .filter-btn")
+.forEach(b=>b.classList.remove("active"))
+
+allBtn.classList.add("active")
+
+packageContainer.innerHTML=""
+
+showProjects()
+
+return
+}
+
+/* deactivate ALL immediately */
+
+allBtn.classList.remove("active")
+
+btn.classList.toggle("active")
+
+activeLanguages=[...document.querySelectorAll(".project-filters .filter-btn.active")]
+.map(b=>b.dataset.filter)
+
+/* remove ALL from activeLanguages */
+
+activeLanguages=activeLanguages.filter(l=>l!=="all")
+
+if(activeLanguages.length===0){
+
+allBtn.classList.add("active")
+packageContainer.innerHTML=""
+
+}else{
+
+buildToolButtons()
+
+}
+
+showProjects()
+
+}
+
+})
+
+showProjects()
+
+/* CONTACT FORM SECURITY + NO REDIRECT */
+
+const contactForm = document.getElementById("secure-contact-form")
+const timestampField = document.getElementById("form-timestamp")
+
+if(contactForm && timestampField){
+
+timestampField.value = Date.now()
+
+contactForm.addEventListener("submit", async function(e){
+
+e.preventDefault()
+
+const timeTaken = Date.now() - parseInt(timestampField.value)
+
+if(timeTaken < 2000){
+console.log("Bot blocked")
+return
+}
+
+const formData = new FormData(contactForm)
+
+try{
+
+await fetch(contactForm.action,{
+method:"POST",
+body:formData,
+headers:{'Accept':'application/json'}
+})
+
+const button = contactForm.querySelector(".apple-send")
+
+button.classList.add("launch")
+
+setTimeout(()=>{
+button.innerHTML="Message Sent"
+},700)
+
+setTimeout(()=>{
+button.innerHTML='<i class="fas fa-paper-plane"></i>'
+button.classList.remove("launch")
+},2700)
+
+contactForm.reset()
+
+}catch(err){
+
+console.error("Submission error",err)
+
+}
+
+})
+
+}
+
+/* ================================
+   PROJECT HIGHLIGHTS (SMOOTH SWIPE)
+   ================================ */
+
+const hContainer = document.querySelector(".highlights-container")
+const hTrack = document.querySelector(".highlights-track")
+
+let hIndex = 0
+let startX = 0
+let currentX = 0
+let isDragging = false
+let trackStart = 0
+
+function setTranslate(x, animate = true){
+  if(animate){
+    hTrack.style.transition = "transform .35s ease"
+  }else{
+    hTrack.style.transition = "none"
+  }
+  hTrack.style.transform = `translateX(${x}px)`
+}
+
+function getTranslateForIndex(index){
+  const windowEl = document.querySelector(".highlights-window")
+  return -index * windowEl.offsetWidth
+}
+
+function updateHighlights(){
+  setTranslate(getTranslateForIndex(hIndex))
+}
+
+/* DESKTOP NAV */
+function setupDesktopNav(){
+
+  if(window.innerWidth <= 600) return
+
+  const prev = document.createElement("button")
+  const next = document.createElement("button")
+
+  prev.className = "highlight-nav prev"
+  next.className = "highlight-nav next"
+
+  prev.innerHTML = "&#10094;"
+  next.innerHTML = "&#10095;"
+
+  hContainer.prepend(prev)
+  hContainer.appendChild(next)
+
+  next.addEventListener("click", ()=>{
+    if(hIndex < 1){
+      hIndex++
+      updateHighlights()
+    }
+  })
+
+  prev.addEventListener("click", ()=>{
+    if(hIndex > 0){
+      hIndex--
+      updateHighlights()
+    }
+  })
+}
+
+/* SMOOTH SWIPE */
+
+hTrack.addEventListener("touchstart", (e)=>{
+  isDragging = true
+  startX = e.touches[0].clientX
+  trackStart = getTranslateForIndex(hIndex)
+}, { passive: true })
+
+hTrack.addEventListener("touchmove", (e)=>{
+  if(!isDragging) return
+
+  currentX = e.touches[0].clientX
+  let delta = currentX - startX
+
+  let move = trackStart + delta
+
+  // resistance
+  if((hIndex === 0 && delta > 0) || (hIndex === 1 && delta < 0)){
+    move = trackStart + delta * 0.35
+  }
+
+  setTranslate(move, false)
+}, { passive: true })
+
+hTrack.addEventListener("touchend", ()=>{
+  if(!isDragging) return
+  isDragging = false
+
+  let delta = currentX - startX
+  const threshold = hContainer.offsetWidth * 0.2
+
+  if(delta < -threshold && hIndex < 1){
+    hIndex++
+  } else if(delta > threshold && hIndex > 0){
+    hIndex--
+  }
+
+  updateHighlights()
+})
+
+/* INIT */
+setupDesktopNav()
+updateHighlights()
+window.addEventListener("resize", updateHighlights)
+
+/* ================================
+   MOBILE ABOUT TOGGLE LOGIC
+   ================================ */
+
+const aboutBubble = document.getElementById("aboutBubble")
+
+function collapseAbout(){
+  aboutBubble.classList.add("collapsed")
+  aboutBubble.classList.remove("expanded")
+}
+
+function expandAbout(){
+  aboutBubble.classList.remove("collapsed")
+  aboutBubble.classList.add("expanded")
+}
+
+/* default collapsed on mobile */
+if(window.innerWidth <= 900){
+  collapseAbout()
+}
+
+/* toggle behavior */
+aboutBubble.addEventListener("click", ()=>{
+
+  if(window.innerWidth > 900) return
+
+  if(aboutBubble.classList.contains("collapsed")){
+    expandAbout()
+  }else{
+    collapseAbout()
+  }
+
+})
+
+/* ================================
+   ABOUT ARROW CLICK (SAFE)
+   ================================ */
+
+const aboutArrow = document.getElementById("aboutArrow")
+
+if(aboutArrow){
+  aboutArrow.addEventListener("click", (e)=>{
+    if(window.innerWidth > 900) return
+    e.stopPropagation()
+    expandAbout()
+  })
+}
+
+/* ================================
+   HIGHLIGHTS ARROW STATE CONTROL
+   ================================ */
+
+function updateArrowVisibility(){
+
+  if(window.innerWidth <= 900) return
+
+  const prev = document.querySelector(".highlight-nav.prev")
+  const next = document.querySelector(".highlight-nav.next")
+
+  if(!prev || !next) return
+
+  // page 1
+  if(hIndex === 0){
+    prev.classList.add("hidden")
+    next.classList.remove("hidden")
+  }
+
+  // page 2
+  if(hIndex === 1){
+    next.classList.add("hidden")
+    prev.classList.remove("hidden")
+  }
+
 }
 
 /* hook into existing update */
