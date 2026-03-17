@@ -1492,23 +1492,32 @@ transform:rotate(180deg);
 
 
 /* ================================
-   MOBILE NAV OVERLAY (NO PUSH)
+   MOBILE NAV OVERLAY + SCROLL UPGRADE
    ================================ */
 
 @media (max-width:900px){
 
+/* sticky nav */
 nav{
 position:sticky;
 top:0;
 z-index:1000;
+transition:all .25s ease;
 }
 
-/* container reference */
+/* scroll state (real upgrade) */
+nav.scrolled{
+background:rgba(10,15,25,.95);
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
+}
+
+/* dropdown container */
 nav{
 position:relative;
 }
 
-/* dropdown menu */
+/* overlay dropdown (NO PAGE PUSH) */
 nav ul{
 position:absolute;
 top:100%;
@@ -1520,16 +1529,15 @@ flex-direction:column;
 gap:16px;
 padding:18px 0;
 
-background:rgba(20,30,40,.85);
+background:rgba(20,30,40,.88);
 backdrop-filter:blur(12px);
 -webkit-backdrop-filter:blur(12px);
 
 border-bottom:1px solid rgba(255,255,255,.1);
-
 box-shadow:0 12px 30px rgba(0,0,0,.5);
 }
 
-/* show dropdown */
+/* show menu */
 nav.active ul{
 display:flex;
 }
@@ -1537,11 +1545,6 @@ display:flex;
 /* center items */
 nav ul li{
 text-align:center;
-}
-
-/* prevent layout shift */
-.main-layout{
-margin-top:0 !important;
 }
 
 }
@@ -2403,6 +2406,27 @@ document.addEventListener("click", (e)=>{
   // if open and clicked outside nav
   if(nav.classList.contains("active") && !nav.contains(e.target)){
     nav.classList.remove("active")
+  }
+
+})
+
+
+
+/* ================================
+   MOBILE NAV SCROLL DETECTION
+   ================================ */
+
+window.addEventListener("scroll", ()=>{
+
+  if(window.innerWidth > 900) return
+
+  const nav = document.querySelector("nav")
+  if(!nav) return
+
+  if(window.scrollY > 10){
+    nav.classList.add("scrolled")
+  }else{
+    nav.classList.remove("scrolled")
   }
 
 })
