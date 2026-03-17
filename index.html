@@ -542,11 +542,14 @@ footer{text-align:center;padding:14px;background:#111;color:white}
 @media (max-width:900px){
 
 .main-layout{
-grid-template-columns:1fr;
+max-width:1100px;margin:60px auto;padding:0 30px;
+display:grid;
+grid-template-columns:1fr 1fr;
 grid-template-areas:
 "about contact"
 "projects projects"
 "certifications certifications";
+gap:40px;
 }
 
 .about-grid{grid-template-columns:1fr;text-align:center}
@@ -836,10 +839,14 @@ box-shadow:
 /* HIGHLIGHTS REBUILT */
 
 .main-layout{
+max-width:1100px;margin:60px auto;padding:0 30px;
+display:grid;
+grid-template-columns:1fr 1fr;
 grid-template-areas:
 "about contact"
 "projects projects"
 "certifications certifications";
+gap:40px;
 }
 
 /* CONTACT WIDTH */
@@ -969,10 +976,14 @@ display:none;
 /* MOBILE GRID ORDER */
 
 .main-layout{
+max-width:1100px;margin:60px auto;padding:0 30px;
+display:grid;
+grid-template-columns:1fr 1fr;
 grid-template-areas:
 "about contact"
 "projects projects"
 "certifications certifications";
+gap:40px;
 }
 
 }
@@ -1132,13 +1143,7 @@ scroll-snap-align:start;
 
 
 
-/* ===========================
-   REBUILT PROJECT HIGHLIGHTS
-=========================== */
 
-#highlights{
-grid-area:highlights;
-}
 
 #highlights .highlights-wrapper{
 display:flex;
@@ -1209,13 +1214,7 @@ scroll-snap-align:start;
 
 
 
-/* ===========================
-   REBUILT PROJECT HIGHLIGHTS
-=========================== */
 
-#highlights{
-grid-area:highlights;
-}
 
 #highlights .highlights-wrapper{
 display:flex;
@@ -1286,11 +1285,10 @@ scroll-snap-align:start;
 }
 
 
-/* ===========================
-   STATIC 2x4 HIGHLIGHTS GRID
-=========================== */
+/* CLEAN STATIC 2x4 HIGHLIGHTS */
 
 #highlights{
+grid-area:projects;
 margin-top:40px;
 }
 
@@ -1304,12 +1302,9 @@ gap:20px;
 }
 
 @media (max-width:900px){
-
 .highlights-grid{
 grid-template-columns:repeat(2,1fr);
-gap:14px;
 }
-
 }
 
 </style>
@@ -1337,7 +1332,6 @@ gap:14px;
 <nav>
 <ul>
 <li><a href="#about">About Me</a></li>
-
 <li><a href="#highlights">My Project Highlights</a></li>
 <li><a href="#projects">My Project Library</a></li>
 
@@ -1380,56 +1374,6 @@ gap:14px;
 
 </section>
 
-<section id="highlights">
-
-<h2>My Project Highlights</h2>
-
-<div class="highlights-grid">
-
-<a class="project-card" href="#">
-<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80">
-<div class="project-overlay"><h3>Sales Trend Analysis</h3></div>
-</a>
-
-<a class="project-card" href="#">
-<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80">
-<div class="project-overlay"><h3>Customer Segmentation</h3></div>
-</a>
-
-<a class="project-card" href="#">
-<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80">
-<div class="project-overlay"><h3>Marketing Dashboard</h3></div>
-</a>
-
-<a class="project-card" href="#">
-<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80">
-<div class="project-overlay"><h3>Financial Reporting</h3></div>
-</a>
-
-<a class="project-card" href="#">
-<img src="https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=80">
-<div class="project-overlay"><h3>Data Pipeline Build</h3></div>
-</a>
-
-<a class="project-card" href="#">
-<img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80">
-<div class="project-overlay"><h3>Database Optimization</h3></div>
-</a>
-
-<a class="project-card" href="#">
-<img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=800&q=80">
-<div class="project-overlay"><h3>KPI Visualization</h3></div>
-</a>
-
-<a class="project-card" href="#">
-<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80">
-<div class="project-overlay"><h3>Spreadsheet Automation</h3></div>
-</a>
-
-</div>
-
-</section>
-
 <section id="contact">
 
 <h2>Let's Connect!</h2>
@@ -1454,6 +1398,101 @@ gap:14px;
 </form>
 </section>
 
+
+<section id="highlights">
+
+<h2>My Project Highlights</h2>
+
+<div class="highlights-grid">
+
+<!-- 8 STATIC CARDS -->
+
+<a class="project-card highlight-card" data-tags="python pandas matplotlib">
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80">
+<div class="project-overlay">
+<h3>Sales Trend Analysis</h3>
+<div class="project-tags">
+<span class="tag-python">Python</span>
+<span class="tag-package">pandas</span>
+<span class="tag-package">matplotlib</span>
+</div>
+</div>
+</a>
+<a class="project-card highlight-card" data-tags="r ggplot2 dplyr">
+<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80">
+<div class="project-overlay">
+<h3>Customer Segmentation</h3>
+<div class="project-tags">
+<span class="tag-r">R</span>
+<span class="tag-package">dplyr</span>
+<span class="tag-package">ggplot2</span>
+</div>
+</div>
+</a>
+<a class="project-card highlight-card" data-tags="sql tableau">
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80">
+<div class="project-overlay">
+<h3>Marketing Dashboard</h3>
+<div class="project-tags">
+<span class="tag-sql">SQL</span>
+<span class="tag-tableau">Tableau</span>
+</div>
+</div>
+</a>
+<a class="project-card highlight-card" data-tags="excel pivot">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80">
+<div class="project-overlay">
+<h3>Financial Reporting</h3>
+<div class="project-tags">
+<span class="tag-excel">Excel</span>
+<span class="tag-package">pivot</span>
+</div>
+</div>
+</a>
+<a class="project-card highlight-card" data-tags="python numpy">
+<img src="https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=80">
+<div class="project-overlay">
+<h3>Data Pipeline Build</h3>
+<div class="project-tags">
+<span class="tag-python">Python</span>
+<span class="tag-package">numpy</span>
+</div>
+</div>
+</a>
+<a class="project-card highlight-card" data-tags="sql postgres">
+<img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80">
+<div class="project-overlay">
+<h3>Database Optimization</h3>
+<div class="project-tags">
+<span class="tag-sql">SQL</span>
+<span class="tag-package">postgres</span>
+</div>
+</div>
+</a>
+<a class="project-card highlight-card" data-tags="tableau dashboard">
+<img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=800&q=80">
+<div class="project-overlay">
+<h3>KPI Visualization</h3>
+<div class="project-tags">
+<span class="tag-tableau">Tableau</span>
+<span class="tag-package">dashboard</span>
+</div>
+</div>
+</a>
+<a class="project-card highlight-card" data-tags="sheets formulas">
+<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80">
+<div class="project-overlay">
+<h3>Spreadsheet Automation</h3>
+<div class="project-tags">
+<span class="tag-sheets">Sheets</span>
+<span class="tag-package">formulas</span>
+</div>
+</div>
+</a>
+
+</div>
+
+</section>
 
 
 <section id="projects">
