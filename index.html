@@ -1367,6 +1367,25 @@ pointer-events:none;
 
 }
 
+
+
+/* ================================
+   DESKTOP NAV SPACING FIX (CONSISTENT)
+   ================================ */
+
+@media (min-width:901px){
+
+nav ul{
+gap:40px;
+flex-wrap:wrap;
+}
+
+nav li{
+list-style:none;
+}
+
+}
+
 </style>
 
 </head>
@@ -1389,16 +1408,15 @@ pointer-events:none;
 </header>
 
 <nav>
+
 <ul>
 <li><a href="#about">About Me</a></li>
-<li>
-<a href="#highlights">My Project Highlights</a>
-<a href="#projects">My Project Library</a>
-<a href="#contact">Contact</a>
-<a href="#certifications">Certifications</a>
-</li>
+<li><a href="#highlights">My Project Highlights</a></li>
+<li><a href="#projects">My Project Library</a></li>
+<li><a href="#contact">Contact</a></li>
 <li><a href="#certifications">Certifications</a></li>
 </ul>
+
 </nav>
 
 <div class="main-layout">
