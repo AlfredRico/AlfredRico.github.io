@@ -1290,41 +1290,43 @@ scroll-snap-align:start;
 
 
 /* ============================
-   MOBILE PATCH (LIBRARY + CERT ONLY)
-   DOES NOT TOUCH HIGHLIGHTS
+   MOBILE RELAX MODE (TEMP)
+   LET EVERYTHING BREATHE
 ============================ */
 
 @media (max-width:900px){
 
-/* ---- CERTIFICATION TILE RESTORE ---- */
-.cert-column{
-    width:100%;
-    display:flex;
-    justify-content:center;
+/* remove all vertical constraints */
+.projects-window,
+.highlights-window{
+    height:auto !important;
+    max-height:none !important;
 }
 
-.cert{
-    max-width:260px !important;
-    width:100%;
-    padding:20px !important;
+/* allow full natural expansion */
+.highlights-grid,
+.projects-grid{
+    height:auto !important;
 }
 
-/* ---- PROJECT LIBRARY: 2x3 VIEWPORT ---- */
-.projects-window{
-    height:520px !important; /* fits ~3 rows cleanly */
-    overflow-y:auto !important;
+/* ensure no clipping */
+section{
+    overflow:visible !important;
+}
+
+/* keep everything inside viewport width */
+html, body{
     overflow-x:hidden !important;
 }
 
-/* enforce 2 columns only */
-.projects-grid{
-    grid-template-columns:repeat(2,1fr) !important;
-    gap:14px;
+/* spacing between sections */
+.main-layout{
+    gap:50px !important;
 }
 
-/* ensure cards scale properly */
-.project-card{
-    width:100%;
+/* give sections breathing margin */
+section{
+    margin-bottom:20px;
 }
 
 }
