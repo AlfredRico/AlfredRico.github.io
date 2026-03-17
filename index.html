@@ -1461,6 +1461,55 @@ display:inline-block;
 transition:opacity .35s ease;
 }
 
+
+/* ================================
+   MOBILE BUBBLE UP ARROW (ADDED)
+   ================================ */
+
+@media (max-width:900px){
+
+.about-text{
+position:relative;
+}
+
+.bubble-arrow-up{
+display:none;
+}
+
+.about-text.expanded .bubble-arrow-up{
+display:flex;
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+bottom:-18px;
+
+width:38px;
+height:38px;
+
+border-radius:50%;
+
+align-items:center;
+justify-content:center;
+
+font-size:16px;
+color:white;
+
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,.25);
+
+cursor:pointer;
+z-index:10;
+
+box-shadow:
+0 6px 16px rgba(0,0,0,.35),
+inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+}
+
 </style>
 
 </head>
@@ -2233,6 +2282,16 @@ if(aboutArrow){
     e.stopPropagation()
     expandAbout()
   })
+}
+
+const bubbleArrowUp = document.getElementById("bubbleArrowUp")
+
+if(bubbleArrowUp){
+bubbleArrowUp.addEventListener("click",(e)=>{
+if(window.innerWidth > 900) return
+e.stopPropagation()
+collapseAbout()
+})
 }
 
 /* ================================
