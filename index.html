@@ -1367,45 +1367,6 @@ pointer-events:none;
 
 }
 
-
-
-/* ================================
-   DESKTOP NAV REPLACEMENT
-   ================================ */
-
-/* hide original nav on desktop */
-@media (min-width:901px){
-nav{
-display:none;
-}
-
-.desktop-nav{
-display:flex;
-justify-content:center;
-gap:30px;
-margin:20px 0;
-}
-
-.desktop-nav a{
-text-decoration:none;
-color:white;
-font-weight:500;
-font-size:15px;
-transition:opacity .2s ease;
-}
-
-.desktop-nav a:hover{
-opacity:0.7;
-}
-}
-
-/* hide new nav on mobile */
-@media (max-width:900px){
-.desktop-nav{
-display:none;
-}
-}
-
 </style>
 
 </head>
@@ -1427,22 +1388,15 @@ display:none;
 
 </header>
 
-
-<nav class="desktop-nav">
-
-<a href="#about">About Me</a>
+<nav>
+<ul>
+<li><a href="#about">About Me</a></li>
+<li>
 <a href="#highlights">My Project Highlights</a>
 <a href="#projects">My Project Library</a>
 <a href="#contact">Contact</a>
 <a href="#certifications">Certifications</a>
-
-</nav>
-
-
-<nav>
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#projects">Projects</a></li>
+</li>
 <li><a href="#certifications">Certifications</a></li>
 </ul>
 </nav>
