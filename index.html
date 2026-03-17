@@ -1386,6 +1386,52 @@ list-style:none;
 
 }
 
+
+
+/* ================================
+   MOBILE NAV DROPDOWN
+   ================================ */
+
+@media (max-width:900px){
+
+/* hide default nav list */
+nav ul{
+display:none;
+flex-direction:column;
+gap:16px;
+padding:20px 0;
+}
+
+/* show when active */
+nav.active ul{
+display:flex;
+}
+
+/* hamburger button */
+.mobile-nav-toggle{
+display:flex;
+justify-content:center;
+align-items:center;
+height:60px;
+font-size:22px;
+color:white;
+cursor:pointer;
+}
+
+/* center dropdown items */
+nav ul li{
+text-align:center;
+}
+
+}
+
+/* hide hamburger on desktop */
+@media (min-width:901px){
+.mobile-nav-toggle{
+display:none;
+}
+}
+
 </style>
 
 </head>
@@ -1408,6 +1454,11 @@ list-style:none;
 </header>
 
 <nav>
+
+<div class="mobile-nav-toggle" id="mobileNavToggle">
+<i class="fas fa-bars"></i>
+</div>
+
 
 <ul>
 <li><a href="#about">About Me</a></li>
@@ -2204,6 +2255,21 @@ updateHighlights = function(){
 
 /* run once */
 setTimeout(updateArrowVisibility, 100)
+
+
+
+/* ================================
+   MOBILE NAV TOGGLE
+   ================================ */
+
+const nav = document.querySelector("nav")
+const toggle = document.getElementById("mobileNavToggle")
+
+if(toggle){
+  toggle.addEventListener("click", ()=>{
+    nav.classList.toggle("active")
+  })
+}
 
 </script>
 
