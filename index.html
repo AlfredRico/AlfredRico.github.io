@@ -666,13 +666,7 @@ margin:auto;
 
 /* smaller phones */
 
-@media (max-width:600px){
 
-.projects-window{
-
-height:420px;
-
-}
 
 .projects-grid{
 
@@ -857,6 +851,58 @@ opacity:1;
 transform:rotate(40deg) translate(120px,-120px);
 opacity:1;
 }
+
+}
+
+
+
+/* ================================
+   FINAL MOBILE PROJECT FIX (2x2 VIEW)
+   ================================ */
+
+@media (max-width:600px){
+
+  .projects-window{
+    height: 420px; /* locks to ~2 rows */
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .projects-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .project-card{
+    aspect-ratio: 1;
+  }
+
+}
+
+
+
+/* =========================================
+   HARD OVERRIDE — MOBILE PROJECT GRID FIX
+   ========================================= */
+
+@media (max-width:600px){
+
+  .projects-window{
+    height: 360px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  .projects-grid{
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .project-card{
+    aspect-ratio: 1 / 1 !important;
+  }
 
 }
 
