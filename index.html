@@ -1291,6 +1291,28 @@ display:none;
 
 }
 
+
+
+/* ================================
+   MOBILE SECTION REORDER (SAFE)
+   ================================ */
+
+@media (max-width:900px){
+
+.main-layout{
+display:flex;
+flex-direction:column;
+}
+
+/* order control */
+#about{order:1;}
+#highlights{order:2;}
+#projects{order:3;}
+#contact{order:4;}
+#certifications{order:5;}
+
+}
+
 </style>
 
 </head>
