@@ -18,6 +18,7 @@
 
 <style>
 
+
 body{
 font-family:'Inter',sans-serif;
 margin:0;
@@ -29,6 +30,7 @@ radial-gradient(circle at 80% 70%,rgba(255,255,255,.025),transparent 45%),
 
 scroll-behavior:smooth;
 }
+
 
 /* HERO */
 
@@ -356,6 +358,23 @@ inset 0 1px 0 rgba(255,255,255,.35);
 
 /* tinted glass colors */
 
+
+.filter-btn.tag-python.active{
+
+background:linear-gradient(
+90deg,
+rgba(246,220,172,.26),
+rgba(55,118,171,.24)
+);
+
+border:1px solid rgba(255,255,255,.25);
+
+box-shadow:
+0 6px 14px rgba(0,0,0,.35),
+inset 0 0 10px rgba(255,255,255,.08);
+
+}
+
 .filter-btn.tag-r.active{background:rgba(39,109,195,.35)}
 .filter-btn.tag-sql.active{background:rgba(51,103,145,.35)}
 .filter-btn.tag-tableau.active{background:rgba(233,118,39,.35)}
@@ -376,12 +395,30 @@ inset 0 -4px 8px rgba(0,0,0,.35);
 
 /* tinted glass colors */
 
+
+.filter-btn.tag-python.active{
+
+background:linear-gradient(
+90deg,
+rgba(246,220,172,.26),
+rgba(55,118,171,.24)
+);
+
+border:1px solid rgba(255,255,255,.25);
+
+box-shadow:
+0 6px 14px rgba(0,0,0,.35),
+inset 0 0 10px rgba(255,255,255,.08);
+
+}
+
 .filter-btn.tag-r.active{background:rgba(39,109,195,.35)}
 .filter-btn.tag-sql.active{background:rgba(51,103,145,.35)}
 .filter-btn.tag-tableau.active{background:rgba(233,118,39,.35)}
 .filter-btn.tag-excel.active{background:rgba(33,115,70,.35)}
 .filter-btn.tag-sheets.active{background:rgba(52,168,83,.35)}
 .filter-btn.tag-all.active{background:rgba(74,144,226,.35)}
+
 
 /* MINIMAL TINTED GLASS FILTER HIGHLIGHTS */
 
@@ -399,6 +436,7 @@ inset 0 0 10px rgba(255,255,255,.08);
 }
 
 /* language tint colors */
+
 
 .filter-btn.tag-python.active{
 
@@ -431,6 +469,7 @@ border:1px solid rgba(255,255,255,.25);
 
 }
 
+
 /* PROJECT GRID */
 
 .projects-window{max-width:920px;margin:auto;height:650px;overflow-y:auto}
@@ -440,6 +479,7 @@ display:grid;
 grid-template-columns:repeat(4,1fr);
 gap:20px;
 }
+
 
 .project-card{
 
@@ -469,12 +509,14 @@ box-shadow .35s ease;
 
 }
 
+
 .project-card.hide{display:none}
 
 .project-card img{
 width:100%;height:100%;object-fit:cover;
 transition:transform .4s ease,filter .4s ease;
 }
+
 
 .project-card:hover{
 
@@ -590,6 +632,7 @@ margin-bottom:24px;
 
 }
 
+
 /* ------------------------------
    MOBILE PROJECT GRID (2x3)
 ------------------------------ */
@@ -639,6 +682,7 @@ grid-template-columns:repeat(2,1fr);
 
 }
 
+
 /* ---------------- HERO GRADIENT RESTORE ---------------- */
 
 .hero{
@@ -665,6 +709,7 @@ scrollbar-width:auto;
 scrollbar-color:#028391 rgba(255,255,255,.06);
 }
 
+
 /* Certification link style fix */
 #certifications a{
 text-decoration:none;
@@ -675,6 +720,7 @@ color:white;
 text-decoration:none;
 color:white;
 }
+
 
 /* CLEAN PROJECT SCROLLBAR */
 
@@ -695,6 +741,8 @@ border-radius:10px;
 .projects-window::-webkit-scrollbar-thumb:hover{
 background:linear-gradient(180deg,#028391,#F85525);
 }
+
+
 
 /* PAPER PLANE ORIENTED EAST + SOFT BURST JIGGLE */
 
@@ -730,6 +778,9 @@ animation:planeBurstJiggle 5s infinite ease-in-out;
 
 }
 
+
+
+
 /* ANGLED SLIDE PATH (45° COUNTER-CLOCKWISE, 2x LENGTH) */
 
 .apple-send{
@@ -745,6 +796,8 @@ position:relative;
 animation:planeSlide .7s forwards linear;
 }
 
+
+
 /* FINAL PLANE SLIDE PATH (40° COUNTER-CLOCKWISE) */
 
 .apple-send{
@@ -759,6 +812,8 @@ position:relative;
 .apple-send.launch i{
 animation:planeSlide .7s forwards linear;
 }
+
+
 
 /* FINAL PLANE SLIDE PATH (+20%) */
 
@@ -789,6 +844,7 @@ opacity:1;
 
 }
 
+
 100%{
 transform:rotate(40deg) translate(130px,-110px);
 opacity:1;
@@ -796,546 +852,10 @@ opacity:1;
 
 }
 
+
 100%{
 transform:rotate(40deg) translate(120px,-120px);
 opacity:1;
-}
-
-}
-
-/* ABOUT SECTION */
-
-.about-text{
-max-width:760px;
-margin:auto;
-background:rgba(255,255,255,.92);
-padding:32px;
-border-radius:18px;
-}
-
-.about-profile{
-float:left;
-margin:0 16px 10px 0;
-}
-
-/* remove bubble arrow */
-
-.about-text::before{
-display:none;
-}
-
-/* profile glow */
-
-.profile-pic{
-box-shadow:
-0 10px 30px rgba(0,0,0,.15),
-0 0 18px rgba(2,131,145,.35),
-0 0 30px rgba(246,220,172,.15),
-0 0 40px rgba(250,169,104,.10);
-}
-
-/* HIGHLIGHTS REBUILT */
-
-.main-layout{
-grid-template-areas:
-"about highlights"
-"projects projects"
-"contact certifications";
-}
-
-/* CONTACT WIDTH */
-
-#contact{
-max-width:520px;
-margin:auto;
-}
-
-/* highlight arrow fade logic */
-
-.highlight-arrow{
-transition:opacity .35s ease;
-}
-
-.highlight-arrow.hidden{
-opacity:0;
-pointer-events:none;
-}
-
-/* hero text rotation animation */
-
-#hero-rotator{
-transition:opacity .35s ease;
-}
-
-/* ---------------- MOBILE HERO IMPROVEMENTS ---------------- */
-
-@media (max-width:600px){
-
-.hero{
-min-height:300px;
-}
-
-.hero-content{
-margin-top:-20px;
-}
-
-#hero-rotator{
-font-size:17px;
-margin-top:10px;
-letter-spacing:.9px;
-}
-
-}
-
-/* ABOUT TOGGLE */
-
-.about-toggle-pic{
-display:none;
-}
-
-@media (max-width:900px){
-
-.about-toggle-pic{
-
-display:block;
-position:relative;
-
-width:160px;
-margin:10px auto 30px;
-
-cursor:pointer;
-
-}
-
-.about-toggle-pic img{
-
-width:160px;
-height:160px;
-border-radius:50%;
-object-fit:cover;
-
-border:4px solid transparent;
-
-background:
-linear-gradient(white,white) padding-box,
-linear-gradient(135deg,#01204E,#028391,#F6DCAC,#FAA968) border-box;
-
-}
-
-/* PERFECT CENTER + HALF ON/OFF */
-
-.about-arrow{
-
-position:absolute;
-
-bottom:-19px;
-left:50%;
-
-transform:translateX(-50%);
-
-width:38px;
-height:38px;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-border-radius:50%;
-
-background:rgba(255,255,255,.10);
-
-backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px);
-
-border:1px solid rgba(255,255,255,.20);
-
-color:white;
-
-}
-
-/* ABOUT SWAP */
-
-#about .about-text{
-display:none;
-}
-
-#about.open .about-text{
-display:block;
-}
-
-#about.open .about-toggle-pic{
-display:none;
-}
-
-/* MOBILE GRID ORDER */
-
-.main-layout{
-grid-template-areas:
-"about"
-"highlights"
-"projects"
-"contact"
-"certifications";
-}
-
-}
-
-/* NAV DROPDOWN */
-
-.nav-more{
-display:none;
-}
-
-@media (max-width:900px){
-
-.nav-more{
-display:block;
-position:relative;
-}
-
-.nav-dropdown{
-
-display:none;
-
-position:absolute;
-
-top:40px;
-left:0;
-
-background:rgba(255,255,255,.06);
-
-backdrop-filter:blur(10px);
-
-border:1px solid rgba(255,255,255,.08);
-
-border-radius:10px;
-
-padding:10px;
-
-}
-
-.nav-dropdown a{
-display:block;
-padding:8px 12px;
-}
-
-.nav-more.open .nav-dropdown{
-display:block;
-}
-
-}
-
-/* ---------------- MOBILE SECTION SCALING ---------------- */
-
-@media (max-width:900px){
-
-/* ensure sections align with hero width */
-
-.main-layout{
-max-width:100%;
-padding:0 16px;
-margin:40px auto;
-}
-
-/* ---------- PROJECT HIGHLIGHTS ---------- */
-
-.highlights-wrapper{
-width:100%;
-justify-content:center;
-}
-
-.highlights-window{
-width:100%;
-max-width:100%;
-overflow:hidden;
-}
-
-.highlights-grid{
-grid-template-columns:repeat(2,1fr);
-grid-template-rows:repeat(2,1fr);
-gap:14px;
-}
-
-/* ---------- PROJECT LIBRARY ---------- */
-
-.projects-window{
-width:100%;
-max-width:100%;
-height:auto;
-overflow:visible;
-}
-
-.projects-grid{
-grid-template-columns:repeat(2,1fr);
-gap:14px;
-}
-
-/* ---------- CONTACT SECTION ---------- */
-
-#contact{
-max-width:100%;
-}
-
-.contact-form{
-width:100%;
-padding:20px;
-box-sizing:border-box;
-}
-
-/* ---------- GENERAL SECTION FIT ---------- */
-
-section{
-width:100%;
-max-width:100%;
-}
-
-}
-
-/* -------- MOBILE HIGHLIGHTS 2x2 SWIPE PAGES -------- */
-
-@media (max-width:900px){
-
-.highlight-arrow{
-display:none;
-}
-
-.highlights-window{
-width:100%;
-overflow-x:auto;
-overflow-y:hidden;
-scroll-snap-type:x mandatory;
--webkit-overflow-scrolling:touch;
-}
-
-.highlights-grid{
-
-display:grid;
-
-/* two pages side-by-side */
-
-grid-template-columns:repeat(4,1fr);
-grid-template-rows:repeat(2,1fr);
-
-gap:14px;
-
-/* make grid 2 pages wide */
-
-min-width:200%;
-
-}
-
-/* snap first card of each page */
-
-.highlights-grid a:nth-child(1),
-.highlights-grid a:nth-child(5){
-scroll-snap-align:start;
-}
-
-}
-
-
-
-/* ===========================
-   REBUILT PROJECT HIGHLIGHTS
-=========================== */
-
-#highlights{
-grid-area:highlights;
-}
-
-#highlights .highlights-wrapper{
-display:flex;
-align-items:center;
-gap:12px;
-}
-
-#highlights .highlights-window{
-width:440px;
-overflow:hidden;
-}
-
-#highlights .highlights-grid{
-display:grid;
-grid-template-columns:repeat(4,210px);
-grid-template-rows:repeat(2,210px);
-gap:20px;
-transition:transform .35s ease;
-}
-
-#highlights .highlight-arrow{
-border:1px solid rgba(255,255,255,.15);
-background:rgba(255,255,255,.06);
-backdrop-filter:blur(10px);
-color:white;
-width:38px;
-height:38px;
-border-radius:50%;
-cursor:pointer;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-/* ===== MOBILE HIGHLIGHTS ===== */
-
-@media (max-width:900px){
-
-#highlights .highlight-arrow{
-display:none;
-}
-
-#highlights .highlights-window{
-width:100%;
-overflow-x:auto;
-overflow-y:hidden;
-scroll-snap-type:x mandatory;
--webkit-overflow-scrolling:touch;
-}
-
-#highlights .highlights-grid{
-
-display:grid;
-
-grid-template-columns:repeat(4,50%);
-grid-template-rows:repeat(2,auto);
-
-gap:14px;
-
-width:200%;
-}
-
-#highlights .highlights-grid a{
-scroll-snap-align:start;
-}
-
-}
-
-
-
-/* ===========================
-   REBUILT PROJECT HIGHLIGHTS
-=========================== */
-
-#highlights{
-grid-area:highlights;
-}
-
-#highlights .highlights-wrapper{
-display:flex;
-align-items:center;
-gap:12px;
-}
-
-#highlights .highlights-window{
-width:440px;
-overflow:hidden;
-}
-
-#highlights .highlights-grid{
-display:grid;
-grid-template-columns:repeat(4,210px);
-grid-template-rows:repeat(2,210px);
-gap:20px;
-transition:transform .35s ease;
-}
-
-#highlights .highlight-arrow{
-border:1px solid rgba(255,255,255,.15);
-background:rgba(255,255,255,.06);
-backdrop-filter:blur(10px);
-color:white;
-width:38px;
-height:38px;
-border-radius:50%;
-cursor:pointer;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-/* ===== MOBILE HIGHLIGHTS ===== */
-
-@media (max-width:900px){
-
-#highlights .highlight-arrow{
-display:none;
-}
-
-#highlights .highlights-window{
-width:100%;
-overflow-x:auto;
-overflow-y:hidden;
-scroll-snap-type:x mandatory;
--webkit-overflow-scrolling:touch;
-}
-
-#highlights .highlights-grid{
-
-display:grid;
-
-/* 40% larger than previous size */
-grid-template-columns:repeat(4,50.4vw);
-grid-template-rows:repeat(2,50.4vw);
-
-gap:14px;
-
-width:200%;
-}
-
-#highlights .highlights-grid a{
-scroll-snap-align:start;
-}
-
-}
-
-
-/* ======================================
-   MOBILE VISUAL ALIGNMENT FIX
-   (ACTUALLY NOTICEABLE)
-====================================== */
-
-@media (max-width:900px){
-
-/* shared padding system */
-:root{
-    --mobile-padding: 16px;
-}
-
-/* ---- HERO CONTENT ALIGNMENT ---- */
-.hero-content{
-    padding-left: var(--mobile-padding);
-    padding-right: var(--mobile-padding);
-}
-
-/* ---- MAIN CONTENT ALIGNMENT ---- */
-.main-layout{
-    padding-left: var(--mobile-padding);
-    padding-right: var(--mobile-padding);
-}
-
-/* ---- SECTION CONSISTENCY ---- */
-section{
-    padding-left: 0;
-    padding-right: 0;
-}
-
-/* ---- PREVENT EDGE OVERFLOW ---- */
-html, body{
-    overflow-x:hidden;
-}
-
-/* ---- FORCE INNER ELEMENTS TO FIT ---- */
-.projects-window,
-.highlights-window,
-.contact-form{
-    width:100%;
-    max-width:100%;
-}
-
-/* ---- IMAGE SAFETY ---- */
-img{
-    max-width:100%;
-    height:auto;
 }
 
 }
@@ -1351,8 +871,7 @@ img{
 
 <div class="hero-content">
 <h1>Alfred Rico</h1>
-
-<p id="hero-rotator">Data Cleaning • Transformation • Visualization</p>
+<p>Aspiring Data Analyst</p>
 
 <div class="social-links">
 <a href="https://www.linkedin.com/in/alfred-rico-3992338a/" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -1364,18 +883,9 @@ img{
 
 <nav>
 <ul>
-<li><a href="#about">About Me</a></li>
-<li><a href="#highlights">My Project Highlights</a></li>
-<li><a href="#projects">My Project Library</a></li>
-
-<li class="nav-more">
-<a href="#">More <i class="fas fa-chevron-down"></i></a>
-<div class="nav-dropdown">
-<a href="#contact">Contact</a>
-<a href="#certifications">Certifications</a>
-</div>
-</li>
-
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#certifications">Certifications</a></li>
 </ul>
 </nav>
 
@@ -1384,27 +894,20 @@ img{
 <section id="about">
 <h2>About Me</h2>
 
-<div class="about-toggle-pic">
-<img src="profile.jpg">
-<div class="about-arrow">
-<i class="fas fa-chevron-down"></i>
-</div>
-</div>
+<div class="about-grid">
+
+<img src="profile.jpg" class="profile-pic">
 
 <div class="about-text">
 
-<img src="profile.jpg" class="profile-pic about-profile">
+<p>Hi, I'm Alfred — a data analyst focused on turning messy datasets into clear, actionable insights.</p>
 
-<p>I've always been a data collector — long before I knew the term "data analyst."</p>
+<p>Using tools like Python, SQL, and data visualization platforms, I explore patterns, build dashboards, and communicate findings that help explain what the data is really saying.</p>
 
-<p>One of my earliest memories is of spending an afternoon watching anthills and carefully cataloging the ants’ behavior. That curiosity about patterns and systems has followed me ever since. I’ve always found myself collecting information about the things around me and looking for relationships hidden within.</p>
-
-<p>Professionally, I spent over six years working as a behaviorist, where collecting and analyzing behavioral data was a central part of my work. Today I bring that same analytical mindset to data analysis, using tools like Python, SQL, and visualization platforms to explore datasets, clean and transform information, and uncover meaningful insights.</p>
-
-<p>For me, working with data isn’t something new — it’s a way of thinking that has been present throughout my life.</p>
+<p>My projects focus on exploratory data analysis, trend detection, and building clear visual stories from complex datasets.</p>
 
 </div>
-
+</div>
 </section>
 
 <section id="contact">
@@ -1431,123 +934,9 @@ img{
 </form>
 </section>
 
-<section id="highlights">
-
-<h2>My Project Highlights</h2>
-
-<div class="highlights-wrapper">
-
-<button class="highlight-arrow prev"><i class="fas fa-chevron-left"></i></button>
-
-<div class="highlights-window">
-
-<div class="highlights-grid">
-
-<!-- PAGE 1 -->
-
-<a class="project-card highlight-card" data-tags="python pandas matplotlib">
-<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80">
-<div class="project-overlay">
-<h3>Sales Trend Analysis</h3>
-<div class="project-tags">
-<span class="tag-python">Python</span>
-<span class="tag-package">pandas</span>
-<span class="tag-package">matplotlib</span>
-</div>
-</div>
-</a>
-
-<a class="project-card highlight-card" data-tags="r ggplot2 dplyr">
-<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80">
-<div class="project-overlay">
-<h3>Customer Segmentation</h3>
-<div class="project-tags">
-<span class="tag-r">R</span>
-<span class="tag-package">dplyr</span>
-<span class="tag-package">ggplot2</span>
-</div>
-</div>
-</a>
-
-<a class="project-card highlight-card" data-tags="sql tableau">
-<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80">
-<div class="project-overlay">
-<h3>Marketing Dashboard</h3>
-<div class="project-tags">
-<span class="tag-sql">SQL</span>
-<span class="tag-tableau">Tableau</span>
-</div>
-</div>
-</a>
-
-<a class="project-card highlight-card" data-tags="excel pivot">
-<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80">
-<div class="project-overlay">
-<h3>Financial Reporting</h3>
-<div class="project-tags">
-<span class="tag-excel">Excel</span>
-<span class="tag-package">pivot</span>
-</div>
-</div>
-</a>
-
-<!-- PAGE 2 -->
-
-<a class="project-card highlight-card" data-tags="python numpy">
-<img src="https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=80">
-<div class="project-overlay">
-<h3>Data Pipeline Build</h3>
-<div class="project-tags">
-<span class="tag-python">Python</span>
-<span class="tag-package">numpy</span>
-</div>
-</div>
-</a>
-
-<a class="project-card highlight-card" data-tags="sql postgres">
-<img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80">
-<div class="project-overlay">
-<h3>Database Optimization</h3>
-<div class="project-tags">
-<span class="tag-sql">SQL</span>
-<span class="tag-package">postgres</span>
-</div>
-</div>
-</a>
-
-<a class="project-card highlight-card" data-tags="tableau dashboard">
-<img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=800&q=80">
-<div class="project-overlay">
-<h3>KPI Visualization</h3>
-<div class="project-tags">
-<span class="tag-tableau">Tableau</span>
-<span class="tag-package">dashboard</span>
-</div>
-</div>
-</a>
-
-<a class="project-card highlight-card" data-tags="sheets formulas">
-<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80">
-<div class="project-overlay">
-<h3>Spreadsheet Automation</h3>
-<div class="project-tags">
-<span class="tag-sheets">Sheets</span>
-<span class="tag-package">formulas</span>
-</div>
-</div>
-</a>
-
-</div>
-</div>
-
-<button class="highlight-arrow next"><i class="fas fa-chevron-right"></i></button>
-
-</div>
-</section>
-
 <section id="projects">
 
-<h2>My Project Library</h2>
+<h2>My Projects</h2>
 
 <div class="project-filters">
 <button class="filter-btn active tag-all" data-filter="all">All</button>
@@ -1564,6 +953,7 @@ img{
 <div class="projects-window">
 
 <div class="projects-grid">
+
 
 <a class="project-card" data-tags="r dplyr tidyr ggplot2 plotly"
 href="https://shadyeggs.github.io/Fifa21-Data-Cleaning-Project/" target="_blank">
@@ -1830,6 +1220,7 @@ animate()
 
 window.addEventListener("resize",setupCanvas)
 
+
 /* FINAL FILTER SYSTEM */
 
 const LANGUAGE_TOOLS={
@@ -1843,7 +1234,7 @@ sheets:["formulas","apps-script"]
 
 const LANGUAGES=Object.keys(LANGUAGE_TOOLS)
 
-const projects=[...document.querySelectorAll("#projects .project-card")]
+const projects=[...document.querySelectorAll(".project-card")]
 const packageContainer=document.querySelector(".package-filters")
 
 projects.forEach(card=>{
@@ -1974,6 +1365,7 @@ showProjects()
 
 showProjects()
 
+
 /* CONTACT FORM SECURITY + NO REDIRECT */
 
 const contactForm = document.getElementById("secure-contact-form")
@@ -1998,6 +1390,9 @@ const formData = new FormData(contactForm)
 
 try{
 
+
+
+
 await fetch(contactForm.action,{
 method:"POST",
 body:formData,
@@ -2019,123 +1414,14 @@ button.classList.remove("launch")
 
 contactForm.reset()
 
+
+
+
 }catch(err){
 
 console.error("Submission error",err)
 
 }
-
-})
-
-}
-
-const highlightGrid = window.innerWidth > 900 ? document.querySelector(".highlights-grid") : null
-
-if(highlightGrid){
-
-let page = 0
-
-const next = document.querySelector(".highlight-arrow.next")
-const prev = document.querySelector(".highlight-arrow.prev")
-
-function updateArrows(){
-
-if(page === 0){
-prev.classList.add("hidden")
-next.classList.remove("hidden")
-}
-
-if(page === 1){
-next.classList.add("hidden")
-prev.classList.remove("hidden")
-}
-
-}
-
-next.onclick = () => {
-
-page = 1
-highlightGrid.style.transform = "translateX(-100%)"
-
-updateArrows()
-
-}
-
-prev.onclick = () => {
-
-page = 0
-highlightGrid.style.transform = "translateX(0)"
-
-updateArrows()
-
-}
-
-updateArrows()
-
-}
-
-/* HERO TEXT ROTATION */
-
-const heroRotator = document.getElementById("hero-rotator")
-
-if(heroRotator){
-
-const phrases = [
-"Data Cleaning • Transformation • Visualization",
-"Python • SQL • R • Tableau"
-]
-
-let index = 0
-
-setInterval(()=>{
-
-index = (index + 1) % phrases.length
-
-heroRotator.style.opacity = 0
-
-setTimeout(()=>{
-
-heroRotator.textContent = phrases[index]
-heroRotator.style.opacity = 1
-
-},300)
-
-},3500)
-
-}
-
-/* ABOUT TOGGLE */
-
-const aboutSection = document.getElementById("about")
-const togglePic = document.querySelector(".about-toggle-pic")
-const aboutBubble = document.querySelector("#about .about-text")
-
-if(togglePic){
-
-togglePic.addEventListener("click",()=>{
-
-aboutSection.classList.add("open")
-
-})
-
-aboutBubble.addEventListener("click",()=>{
-
-aboutSection.classList.remove("open")
-
-})
-
-}
-
-/* NAV DROPDOWN */
-
-const moreNav = document.querySelector(".nav-more")
-
-if(moreNav){
-
-moreNav.addEventListener("click",(e)=>{
-
-e.preventDefault()
-moreNav.classList.toggle("open")
 
 })
 
