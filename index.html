@@ -1288,6 +1288,43 @@ scroll-snap-align:start;
 
 }
 
+
+
+/* ===== MOBILE HIGHLIGHTS FIX ===== */
+
+@media (max-width:900px){
+
+#highlights .highlight-arrow{
+display:none;
+}
+
+#highlights .highlights-window{
+width:100vw;
+max-width:100vw;
+overflow-x:auto;
+overflow-y:hidden;
+scroll-snap-type:x mandatory;
+-webkit-overflow-scrolling:touch;
+}
+
+#highlights .highlights-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,50vw);
+grid-template-rows:repeat(2,50vw);
+
+gap:14px;
+
+width:200vw;
+}
+
+#highlights .highlights-grid a{
+scroll-snap-align:start;
+}
+
+}
+
 </style>
 
 </head>
