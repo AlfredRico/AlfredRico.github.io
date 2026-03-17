@@ -1492,32 +1492,26 @@ transform:rotate(180deg);
 
 
 /* ================================
-   MOBILE NAV OVERLAY + SCROLL UPGRADE
+   MOBILE NAV CORE FIX (ANCHOR + OVERLAY)
    ================================ */
 
 @media (max-width:900px){
 
-/* sticky nav */
+/* FORCE NAV TO STAY AT TOP */
 nav{
-position:sticky;
+position:fixed !important;
 top:0;
-z-index:1000;
-transition:all .25s ease;
+left:0;
+width:100%;
+z-index:9999;
 }
 
-/* scroll state (real upgrade) */
-nav.scrolled{
-background:rgba(10,15,25,.95);
-backdrop-filter:blur(14px);
--webkit-backdrop-filter:blur(14px);
+/* PREVENT CONTENT HIDING */
+body{
+padding-top:72px;
 }
 
-/* dropdown container */
-nav{
-position:relative;
-}
-
-/* overlay dropdown (NO PAGE PUSH) */
+/* DROPDOWN OVERLAY (NO PUSH) */
 nav ul{
 position:absolute;
 top:100%;
@@ -1527,22 +1521,19 @@ width:100%;
 display:none;
 flex-direction:column;
 gap:16px;
-padding:18px 0;
+padding:20px 0;
 
-background:rgba(20,30,40,.88);
-backdrop-filter:blur(12px);
--webkit-backdrop-filter:blur(12px);
+background:rgba(20,30,40,.95);
 
 border-bottom:1px solid rgba(255,255,255,.1);
-box-shadow:0 12px 30px rgba(0,0,0,.5);
 }
 
-/* show menu */
+/* SHOW MENU */
 nav.active ul{
 display:flex;
 }
 
-/* center items */
+/* CENTER ITEMS */
 nav ul li{
 text-align:center;
 }
@@ -2406,27 +2397,6 @@ document.addEventListener("click", (e)=>{
   // if open and clicked outside nav
   if(nav.classList.contains("active") && !nav.contains(e.target)){
     nav.classList.remove("active")
-  }
-
-})
-
-
-
-/* ================================
-   MOBILE NAV SCROLL DETECTION
-   ================================ */
-
-window.addEventListener("scroll", ()=>{
-
-  if(window.innerWidth > 900) return
-
-  const nav = document.querySelector("nav")
-  if(!nav) return
-
-  if(window.scrollY > 10){
-    nav.classList.add("scrolled")
-  }else{
-    nav.classList.remove("scrolled")
   }
 
 })
