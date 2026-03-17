@@ -1290,55 +1290,54 @@ scroll-snap-align:start;
 
 
 /* ======================================
-   MOBILE SAFE OVERRIDE (APPEND ONLY)
-   DOES NOT MODIFY EXISTING RULES
+   MOBILE WIDTH LOCK (HERO-ALIGNED)
+   SINGLE SOURCE OF TRUTH
 ====================================== */
 
 @media (max-width:900px){
 
-/* ---- HARD WIDTH CONTAINMENT ---- */
+/* ---- DEFINE GLOBAL HORIZONTAL SYSTEM ---- */
+:root{
+    --page-padding: 16px;
+}
+
+/* ---- HERO (REFERENCE WIDTH) ---- */
+.hero{
+    padding-left: var(--page-padding);
+    padding-right: var(--page-padding);
+}
+
+/* ---- MAIN CONTENT MATCHES HERO ---- */
+.main-layout{
+    max-width:100%;
+    padding-left: var(--page-padding);
+    padding-right: var(--page-padding);
+}
+
+/* ---- FORCE ALL SECTIONS TO RESPECT WIDTH ---- */
+section{
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+}
+
+/* ---- PREVENT ANY OVERFLOW ---- */
 html, body{
     overflow-x:hidden;
 }
 
-.main-layout{
-    max-width:100%;
-    padding-left:16px;
-    padding-right:16px;
-}
-
-/* ensure sections never overflow */
-section{
+/* ---- FIX COMMON OVERFLOW OFFENDERS ---- */
+.projects-window,
+.highlights-window,
+.contact-form{
     max-width:100%;
 }
 
-/* ---------------------------------
-   PROJECT LIBRARY (2 x 3 VIEWPORT)
---------------------------------- */
-
-.projects-window{
-    max-height:540px;
-    overflow-y:auto;
-    overflow-x:hidden;
+/* ---- IMAGES NEVER EXCEED WIDTH ---- */
+img{
+    max-width:100%;
+    height:auto;
 }
-
-.projects-grid{
-    grid-template-columns:repeat(2,1fr);
-}
-
-/* ---------------------------------
-   CERTIFICATION TILE BALANCE
---------------------------------- */
-
-.cert{
-    max-width:260px;
-    width:100%;
-}
-
-/* ---------------------------------
-   SAFETY: DO NOT TOUCH HIGHLIGHTS
---------------------------------- */
-/* (intentionally no .highlights rules) */
 
 }
 
