@@ -1470,6 +1470,25 @@ opacity:.85;
 
 }
 
+
+
+/* ================================
+   MOBILE NAV CHEVRON ANIMATION
+   ================================ */
+
+@media (max-width:900px){
+
+.mobile-nav-toggle .chev i{
+transition:transform .25s ease;
+}
+
+/* rotate when open */
+nav.active .mobile-nav-toggle .chev i{
+transform:rotate(180deg);
+}
+
+}
+
 </style>
 
 </head>
@@ -2309,6 +2328,27 @@ if(toggle){
     nav.classList.toggle("active")
   })
 }
+
+
+
+/* ================================
+   MOBILE NAV OUTSIDE CLICK CLOSE
+   ================================ */
+
+document.addEventListener("click", (e)=>{
+
+  if(window.innerWidth > 900) return
+
+  const nav = document.querySelector("nav")
+
+  if(!nav) return
+
+  // if open and clicked outside nav
+  if(nav.classList.contains("active") && !nav.contains(e.target)){
+    nav.classList.remove("active")
+  }
+
+})
 
 </script>
 
