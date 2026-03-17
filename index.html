@@ -1313,6 +1313,45 @@ flex-direction:column;
 
 }
 
+
+
+/* ================================
+   HIGHLIGHTS ARROWS (GLASS STYLE - DESKTOP)
+   ================================ */
+
+@media (min-width:901px){
+
+.highlight-nav{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,0.2);
+
+color:white;
+font-size:22px;
+
+border-radius:50%;
+
+width:44px;
+height:44px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+cursor:pointer;
+transition:all 0.25s ease;
+}
+
+/* hover polish */
+.highlight-nav:hover{
+background:rgba(255,255,255,0.18);
+transform:scale(1.08);
+}
+
+}
+
 </style>
 
 </head>
@@ -1431,7 +1470,7 @@ flex-direction:column;
 
 <section id="projects">
 
-<h2>My Projects</h2>
+<h2>My Project Library</h2>
 
 <div class="project-filters">
 <button class="filter-btn active tag-all" data-filter="all">All</button>
