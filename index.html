@@ -1217,7 +1217,7 @@ max-width:100%;
 
 
 
-/* -------- MOBILE HIGHLIGHTS 2x2 FIX -------- */
+/* -------- MOBILE HIGHLIGHTS 2x2 PAGES -------- */
 
 @media (max-width:900px){
 
@@ -1228,20 +1228,25 @@ display:none;
 .highlights-window{
 width:100%;
 max-width:100%;
-overflow:hidden;
+overflow-x:auto;
+overflow-y:hidden;
+-webkit-overflow-scrolling:touch;
 }
 
 .highlights-grid{
 display:grid;
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:repeat(4,50%);
+grid-template-rows:repeat(2,auto);
 gap:14px;
-width:100%;
-min-width:0;
+width:200%;
+}
+
+.highlights-grid a:nth-child(1),
+.highlights-grid a:nth-child(5){
+scroll-snap-align:start;
 }
 
 }
-
-
 .highlights-window{
 width:100%;
 overflow-x:auto;
