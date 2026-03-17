@@ -1082,6 +1082,51 @@ grid-template-areas:
 
 }
 
+
+
+/* ================================
+   PROJECT GRID FIX (DESKTOP 4x3)
+   ================================ */
+
+@media (min-width:901px){
+
+.projects-window{
+max-width:920px;
+margin:auto;
+
+/* force 3 visible rows */
+height:720px;
+overflow-y:auto;
+}
+
+.projects-grid{
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+}
+
+.project-card{
+aspect-ratio:1;
+}
+
+}
+
+
+
+/* ================================
+   HIGHLIGHTS WIDTH / CLIP FIX
+   ================================ */
+
+.highlights-track{
+display:flex;
+width:100%;
+will-change:transform;
+}
+
+.highlight-page{
+min-width:100%;
+box-sizing:border-box;
+}
+
 </style>
 
 </head>
@@ -1710,7 +1755,8 @@ function setTranslate(x, animate = true){
 }
 
 function getTranslateForIndex(index){
-  return -index * hContainer.offsetWidth
+  const windowEl = document.querySelector(".highlights-window")
+  return -index * windowEl.offsetWidth
 }
 
 function updateHighlights(){
