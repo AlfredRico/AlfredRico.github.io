@@ -1288,6 +1288,85 @@ scroll-snap-align:start;
 
 }
 
+
+/* ============================
+   FINAL MOBILE HARD CONSTRAINTS
+   (NO DESKTOP IMPACT)
+============================ */
+
+@media (max-width:900px){
+
+/* ---- GLOBAL WIDTH LOCK ---- */
+html, body{
+    overflow-x:hidden !important;
+}
+
+.main-layout,
+section,
+.highlights-wrapper,
+.highlights-window,
+.projects-window,
+.contact-form{
+    width:100% !important;
+    max-width:100% !important;
+    box-sizing:border-box;
+}
+
+/* ---- REMOVE HIGHLIGHT ARROWS (MOBILE ONLY) ---- */
+.highlight-arrow{
+    display:none !important;
+}
+
+/* ---- HIGHLIGHTS GRID (STRICT 2x2 VIEWPORT) ---- */
+.highlights-window{
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+    scroll-snap-type:x mandatory;
+}
+
+.highlights-grid{
+    display:grid !important;
+    grid-template-columns:repeat(4,50%) !important;
+    grid-template-rows:repeat(2,auto) !important;
+    width:200% !important;
+    gap:14px;
+}
+
+.highlights-grid a{
+    scroll-snap-align:start;
+}
+
+/* ---- PROJECT LIBRARY SAFE GRID ---- */
+.projects-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+}
+
+/* ---- CONTACT FORM FIT ---- */
+.contact-form{
+    padding:18px !important;
+}
+
+/* ---- HERO ALIGNMENT ---- */
+.hero,
+.hero-content{
+    width:100%;
+    max-width:100%;
+}
+
+/* ---- ABOUT SECTION CLEAN FIT ---- */
+.about-text{
+    width:100%;
+    max-width:100%;
+}
+
+/* ---- IMAGE SAFETY ---- */
+img{
+    max-width:100%;
+    height:auto;
+}
+
+}
+
 </style>
 
 </head>
