@@ -1269,18 +1269,7 @@ scroll-snap-type:x mandatory;
 -webkit-overflow-scrolling:touch;
 }
 
-#highlights .highlights-grid{
 
-display:grid;
-
-/* 40% larger than previous size */
-grid-template-columns:repeat(4,50.4vw);
-grid-template-rows:repeat(2,50.4vw);
-
-gap:14px;
-
-width:200%;
-}
 
 #highlights .highlights-grid a{
 scroll-snap-align:start;
@@ -1290,8 +1279,7 @@ scroll-snap-align:start;
 
 
 /* ============================
-   FINAL MOBILE HARD CONSTRAINTS
-   (NO DESKTOP IMPACT)
+   FINAL MOBILE FIX (STABLE)
 ============================ */
 
 @media (max-width:900px){
@@ -1312,51 +1300,47 @@ section,
     box-sizing:border-box;
 }
 
-/* ---- REMOVE HIGHLIGHT ARROWS (MOBILE ONLY) ---- */
-.highlight-arrow{
+/* ---- REMOVE ARROWS (MOBILE ONLY) ---- */
+#highlights .highlight-arrow{
     display:none !important;
 }
 
-/* ---- HIGHLIGHTS GRID (STRICT 2x2 VIEWPORT) ---- */
-.highlights-window{
-    overflow-x:auto !important;
-    overflow-y:hidden !important;
+/* ---- CLEAN 2x2 HIGHLIGHTS GRID ---- */
+#highlights .highlights-window{
+    width:100%;
+    height:360px; /* adjust if needed */
+    overflow-x:auto;
+    overflow-y:hidden;
     scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
 }
 
-.highlights-grid{
-    display:grid !important;
-    grid-template-columns:repeat(4,50%) !important;
-    grid-template-rows:repeat(2,auto) !important;
-    width:200% !important;
-    gap:14px;
+#highlights .highlights-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows:repeat(2,1fr);
+    gap:12px;
+    width:200%;
 }
 
-.highlights-grid a{
+#highlights .highlights-grid a{
     scroll-snap-align:start;
 }
 
-/* ---- PROJECT LIBRARY SAFE GRID ---- */
+/* ---- PROJECT CARD SIZE CONTROL ---- */
+#highlights .project-card{
+    border-radius:12px;
+}
+
+/* ---- PROJECT LIBRARY GRID ---- */
 .projects-grid{
     grid-template-columns:repeat(2,1fr) !important;
+    gap:14px;
 }
 
-/* ---- CONTACT FORM FIT ---- */
+/* ---- CONTACT FIT ---- */
 .contact-form{
     padding:18px !important;
-}
-
-/* ---- HERO ALIGNMENT ---- */
-.hero,
-.hero-content{
-    width:100%;
-    max-width:100%;
-}
-
-/* ---- ABOUT SECTION CLEAN FIT ---- */
-.about-text{
-    width:100%;
-    max-width:100%;
 }
 
 /* ---- IMAGE SAFETY ---- */
