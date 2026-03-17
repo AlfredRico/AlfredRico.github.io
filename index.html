@@ -2393,6 +2393,35 @@ document.addEventListener("click", (e)=>{
 
 })
 
+
+
+/* ================================
+   MOBILE NAV CLOSE ON SCROLL
+   ================================ */
+
+let lastScrollY = window.scrollY
+
+window.addEventListener("scroll", ()=>{
+
+  if(window.innerWidth > 900) return
+
+  const nav = document.querySelector("nav")
+  if(!nav) return
+
+  // only act if menu is open
+  if(nav.classList.contains("active")){
+
+    // detect actual scroll movement
+    if(Math.abs(window.scrollY - lastScrollY) > 5){
+      nav.classList.remove("active")
+    }
+
+  }
+
+  lastScrollY = window.scrollY
+
+})
+
 </script>
 
 </body>
