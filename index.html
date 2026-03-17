@@ -1563,6 +1563,79 @@ transform:translateX(-50%) scale(1.08) rotate(var(--rot,0deg));
 
 }
 
+/* ================================
+   MOBILE ARROW SYSTEM (FINAL)
+   ================================ */
+
+@media (max-width:900px){
+
+/* WRAPPER FOR IMAGE */
+.profile-pic-wrapper{
+position:relative;
+display:inline-block;
+}
+
+/* BASE GLASS STYLE */
+.profile-arrow,
+.about-arrow{
+display:flex;
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+
+width:38px;
+height:38px;
+
+border-radius:50%;
+
+align-items:center;
+justify-content:center;
+
+font-size:16px;
+color:white;
+
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,.25);
+
+cursor:pointer;
+z-index:5;
+
+box-shadow:
+0 6px 16px rgba(0,0,0,.35),
+inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+/* PROFILE ARROW (COLLAPSED ONLY) */
+.profile-arrow{
+bottom:-18px;
+}
+
+/* hide when expanded */
+.about-text.expanded .profile-arrow{
+display:none;
+}
+
+/* ABOUT ARROW (EXPANDED ONLY) */
+.about-arrow{
+bottom:-18px;
+display:none;
+}
+
+/* show only when expanded */
+.about-text.expanded .about-arrow{
+display:flex;
+}
+
+/* rotate arrow direction */
+.about-arrow i{
+transform:rotate(180deg);
+}
+
+}
+
 </style>
 
 </head>
@@ -1611,7 +1684,10 @@ transform:translateX(-50%) scale(1.08) rotate(var(--rot,0deg));
 <i class="fas fa-chevron-down"></i>
 </div>
 
+<div class="profile-pic-wrapper">
 <img src="profile.jpg" class="profile-pic about-inline">
+<div class="profile-arrow"><i class="fas fa-chevron-down"></i></div>
+</div>
 
 <p><strong>I've always been a data collector — long before I knew the term "data analyst."</strong></p>
 
