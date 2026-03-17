@@ -1160,52 +1160,6 @@ border-radius:50%;
 
 }
 
-
-
-/* ================================
-   MOBILE ABOUT FINAL FIX
-   ================================ */
-
-@media (max-width:900px){
-
-/* REMOVE BUBBLE IN COLLAPSED STATE */
-.about-text.collapsed{
-background:transparent !important;
-box-shadow:none !important;
-padding:0 !important;
-}
-
-/* REMOVE CHAT POINTER */
-.about-text::before{
-display:none !important;
-}
-
-/* CENTER IMAGE WHEN EXPANDED */
-.about-text.expanded .about-mobile-img{
-display:block;
-margin:0 auto 16px auto;
-float:none;
-}
-
-/* ENSURE TEXT FULL WIDTH */
-.about-text.expanded p{
-display:block;
-text-align:left;
-}
-
-/* CENTER COLLAPSED IMAGE */
-.about-mobile-wrapper{
-display:flex;
-justify-content:center;
-}
-
-/* clean spacing */
-.about-text.expanded{
-padding:20px;
-}
-
-}
-
 </style>
 
 </head>
