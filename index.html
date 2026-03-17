@@ -1181,6 +1181,44 @@ scroll-snap-align:start;
 
 }
 
+
+
+/* ===== MOBILE HIGHLIGHTS FINAL OVERRIDE ===== */
+/* ensures 2x2 pages with horizontal swipe */
+
+@media (max-width:900px){
+
+#highlights .highlights-window{
+width:100%;
+overflow-x:auto;
+overflow-y:hidden;
+-webkit-overflow-scrolling:touch;
+scroll-snap-type:x mandatory;
+}
+
+#highlights .highlights-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,50%);
+grid-template-rows:repeat(2,auto);
+
+gap:14px;
+
+/* two pages */
+width:200%;
+
+}
+
+/* snap anchors */
+
+#highlights .highlights-grid a:nth-child(1),
+#highlights .highlights-grid a:nth-child(5){
+scroll-snap-align:start;
+}
+
+}
+
 </style>
 
 </head>
