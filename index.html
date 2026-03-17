@@ -1290,50 +1290,49 @@ scroll-snap-align:start;
 
 
 /* ======================================
-   MOBILE WIDTH LOCK (HERO-ALIGNED)
-   SINGLE SOURCE OF TRUTH
+   MOBILE VISUAL ALIGNMENT FIX
+   (ACTUALLY NOTICEABLE)
 ====================================== */
 
 @media (max-width:900px){
 
-/* ---- DEFINE GLOBAL HORIZONTAL SYSTEM ---- */
+/* shared padding system */
 :root{
-    --page-padding: 16px;
+    --mobile-padding: 16px;
 }
 
-/* ---- HERO (REFERENCE WIDTH) ---- */
-.hero{
-    padding-left: var(--page-padding);
-    padding-right: var(--page-padding);
+/* ---- HERO CONTENT ALIGNMENT ---- */
+.hero-content{
+    padding-left: var(--mobile-padding);
+    padding-right: var(--mobile-padding);
 }
 
-/* ---- MAIN CONTENT MATCHES HERO ---- */
+/* ---- MAIN CONTENT ALIGNMENT ---- */
 .main-layout{
-    max-width:100%;
-    padding-left: var(--page-padding);
-    padding-right: var(--page-padding);
+    padding-left: var(--mobile-padding);
+    padding-right: var(--mobile-padding);
 }
 
-/* ---- FORCE ALL SECTIONS TO RESPECT WIDTH ---- */
+/* ---- SECTION CONSISTENCY ---- */
 section{
-    width:100%;
-    max-width:100%;
-    box-sizing:border-box;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-/* ---- PREVENT ANY OVERFLOW ---- */
+/* ---- PREVENT EDGE OVERFLOW ---- */
 html, body{
     overflow-x:hidden;
 }
 
-/* ---- FIX COMMON OVERFLOW OFFENDERS ---- */
+/* ---- FORCE INNER ELEMENTS TO FIT ---- */
 .projects-window,
 .highlights-window,
 .contact-form{
+    width:100%;
     max-width:100%;
 }
 
-/* ---- IMAGES NEVER EXCEED WIDTH ---- */
+/* ---- IMAGE SAFETY ---- */
 img{
     max-width:100%;
     height:auto;
