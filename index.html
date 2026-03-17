@@ -1160,6 +1160,39 @@ border-radius:50%;
 
 }
 
+
+
+/* ================================
+   MOBILE ABOUT (IMAGE INSIDE BUBBLE)
+   ================================ */
+
+@media (max-width:900px){
+
+/* remove chat bubble pointer */
+.about-text::before{
+display:none;
+}
+
+/* stack layout */
+.about-grid{
+display:block;
+}
+
+/* center image INSIDE bubble */
+.about-text img{
+display:block;
+margin:0 auto 18px auto;
+float:none !important;
+}
+
+/* ensure clean spacing */
+.about-text{
+text-align:left;
+padding:22px;
+}
+
+}
+
 </style>
 
 </head>
