@@ -1127,6 +1127,39 @@ min-width:100%;
 box-sizing:border-box;
 }
 
+
+
+/* ================================
+   ABOUT SECTION (DESKTOP REBUILD)
+   ================================ */
+
+@media (min-width:901px){
+
+.about-grid{
+display:block;
+}
+
+.about-text{
+padding:22px;
+line-height:1.6;
+}
+
+.about-text::before{
+display:none;
+}
+
+/* inline image */
+.about-inline{
+float:left;
+width:140px;
+height:140px;
+margin:0 18px 10px 0;
+shape-outside:circle();
+border-radius:50%;
+}
+
+}
+
 </style>
 
 </head>
@@ -1158,24 +1191,29 @@ box-sizing:border-box;
 
 <div class="main-layout">
 
+
 <section id="about">
 <h2>About Me</h2>
 
 <div class="about-grid">
 
-<img src="profile.jpg" class="profile-pic">
-
 <div class="about-text">
 
-<p>Hi, I'm Alfred — a data analyst focused on turning messy datasets into clear, actionable insights.</p>
+<img src="profile.jpg" class="profile-pic about-inline">
 
-<p>Using tools like Python, SQL, and data visualization platforms, I explore patterns, build dashboards, and communicate findings that help explain what the data is really saying.</p>
+<p>I've always been a data collector — long before I knew the term "data analyst."</p>
 
-<p>My projects focus on exploratory data analysis, trend detection, and building clear visual stories from complex datasets.</p>
+<p>One of my earliest memories is of spending an afternoon watching anthills and carefully cataloging the ants’ behavior. That curiosity about patterns and systems has followed me ever since. I’ve always found myself collecting information about the things around me and looking for relationships hidden within.</p>
+
+<p>Professionally, I spent over six years working as a behaviorist, where collecting and analyzing behavioral data was a central part of my work. Today I bring that same analytical mindset to data analysis, using tools like Python, SQL, and visualization platforms to explore datasets, clean and transform information, and uncover meaningful insights.</p>
+
+<p>For me, working with data isn’t something new — it’s a way of thinking that has been present throughout my life.</p>
 
 </div>
+
 </div>
 </section>
+
 <section id="highlights">
 
 <h2>My Project Highlights</h2>
