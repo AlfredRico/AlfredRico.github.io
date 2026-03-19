@@ -1544,35 +1544,6 @@ inset 0 1px 0 rgba(255,255,255,.08);
 
 }
 
-
-@media (max-width:600px){
-
-  .project-overlay h3{
-    font-size:14px;
-    line-height:1.2;
-    margin-bottom:6px;
-  }
-
-  .project-tags{
-    display:flex;
-    flex-wrap:nowrap;
-    overflow-x:auto;
-    gap:4px;
-    padding-bottom:2px;
-  }
-
-  .project-tags::-webkit-scrollbar{
-    display:none;
-  }
-
-  .project-tags span{
-    font-size:10px;
-    padding:2px 6px;
-    white-space:nowrap;
-  }
-
-}
-
 </style>
 
 </head>
@@ -2312,25 +2283,28 @@ function setupDesktopNav(){
   })
 }
 
-/* SMOOTH SWIPE */
+/* SMOOTH SWIPE (FIXED — NO LOCK BUG) */
+
+let deltaX = 0
 
 hTrack.addEventListener("touchstart", (e)=>{
   isDragging = true
   startX = e.touches[0].clientX
+  deltaX = 0
   trackStart = getTranslateForIndex(hIndex)
 }, { passive: true })
 
 hTrack.addEventListener("touchmove", (e)=>{
   if(!isDragging) return
 
-  currentX = e.touches[0].clientX
-  let delta = currentX - startX
+  const current = e.touches[0].clientX
+  deltaX = current - startX
 
-  let move = trackStart + delta
+  let move = trackStart + deltaX
 
-  // resistance
-  if((hIndex === 0 && delta > 0) || (hIndex === 1 && delta < 0)){
-    move = trackStart + delta * 0.35
+  // edge resistance
+  if((hIndex === 0 && deltaX > 0) || (hIndex === 1 && deltaX < 0)){
+    move = trackStart + deltaX * 0.35
   }
 
   setTranslate(move, false)
@@ -2340,21 +2314,22 @@ hTrack.addEventListener("touchend", ()=>{
   if(!isDragging) return
   isDragging = false
 
-  let delta = currentX - startX
   const threshold = hContainer.offsetWidth * 0.18
 
-  if(delta < -threshold && hIndex < 1){
+  if(deltaX < -threshold && hIndex < 1){
     hIndex++
   }
-  else if(delta > threshold && hIndex > 0){
+  else if(deltaX > threshold && hIndex > 0){
     hIndex--
   }
 
-  // reset values (fixes stuck swipe bug)
-  startX = 0
-  currentX = 0
+  // force snap (prevents desync lock)
+  setTranslate(getTranslateForIndex(hIndex))
 
-  updateHighlights()
+  // reset state
+  deltaX = 0
+  startX = 0
+
 })
 
 /* INIT */
