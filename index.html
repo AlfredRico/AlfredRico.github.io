@@ -1545,41 +1545,49 @@ inset 0 1px 0 rgba(255,255,255,.08);
 }
 
 
-/* =========================================
-   MOBILE HIGHLIGHTS (SCROLL SNAP REBUILD)
-   ========================================= */
+/* ================================
+   DOT NAVIGATION (MOBILE)
+   ================================ */
 
-@media (max-width:600px){
+.highlight-dots{
+display:flex;
+justify-content:center;
+gap:8px;
+margin-top:14px;
+}
 
-  .highlights-window{
-    overflow-x:auto !important;
-    overflow-y:hidden !important;
-    scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling:touch;
-  }
+.dot{
+width:10px;
+height:10px;
+border-radius:50%;
+background:rgba(255,255,255,.25);
+cursor:pointer;
+transition:.2s;
+}
 
-  .highlights-window::-webkit-scrollbar{
-    display:none;
-  }
+.dot.active{
+background:#028391;
+transform:scale(1.2);
+}
 
-  .highlights-track{
-    display:flex !important;
-    width:200% !important; /* 2 pages */
-    transform:none !important;
-  }
+/* ================================
+   CARD TEXT FIX (GLOBAL)
+   ================================ */
 
-  .highlight-page{
-    flex:0 0 100%;
-    scroll-snap-align:start;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-  }
+.project-overlay{
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+height:100%;
+}
 
-  .highlight-card{
-    aspect-ratio:1;
-  }
+.project-overlay h3{
+margin-bottom:4px;
+line-height:1.2;
+}
 
+.project-tags{
+margin-top:auto;
 }
 
 </style>
@@ -1698,6 +1706,13 @@ data-tags="python numpy pandas jupyter">
 
 </div>
 </div>
+
+
+<div class="highlight-dots">
+  <span class="dot active" onclick="goToPage(0)"></span>
+  <span class="dot" onclick="goToPage(1)"></span>
+</div>
+
 
 </div>
 
@@ -2258,122 +2273,7 @@ console.error("Submission error",err)
 
 }
 
-/* ================================
-   PROJECT HIGHLIGHTS (SMOOTH SWIPE)
-   ================================ */
 
-const hContainer = document.querySelector(".highlights-container")
-const hTrack = document.querySelector(".highlights-track")
-
-let hIndex = 0
-let startX = 0
-let currentX = 0
-let isDragging = false
-let trackStart = 0
-
-function if(window.innerWidth <= 600) return;
-setTranslate(x, animate = true){
-  if(animate){
-    hTrack.style.transition = "transform .35s ease"
-  }else{
-    hTrack.style.transition = "none"
-  }
-  hTrack.style.transform = `translateX(${x}px)`
-}
-
-function getTranslateForIndex(index){
-  const windowEl = document.querySelector(".highlights-window")
-  return -index * windowEl.offsetWidth
-}
-
-function updateHighlights(){
-  if(window.innerWidth <= 600) return;
-setTranslate(getTranslateForIndex(hIndex))
-}
-
-/* DESKTOP NAV */
-function setupDesktopNav(){
-
-  if(window.innerWidth <= 600) return
-
-  const prev = document.createElement("button")
-  const next = document.createElement("button")
-
-  prev.className = "highlight-nav prev"
-  next.className = "highlight-nav next"
-
-  prev.innerHTML = "&#10094;"
-  next.innerHTML = "&#10095;"
-
-  hContainer.prepend(prev)
-  hContainer.appendChild(next)
-
-  next.addEventListener("click", ()=>{
-    if(hIndex < 1){
-      hIndex++
-      updateHighlights()
-    }
-  })
-
-  prev.addEventListener("click", ()=>{
-    if(hIndex > 0){
-      hIndex--
-      updateHighlights()
-    }
-  })
-}
-
-/* SMOOTH SWIPE */
-
-
-if(window.innerWidth <= 600){
-  console.log("Mobile highlights: JS swipe disabled");
-  return;
-}
-
-hTrack.addEventListener("touchstart", (e)=>{
-  isDragging = true
-  startX = e.touches[0].clientX
-  trackStart = getTranslateForIndex(hIndex)
-}, { passive: true })
-
-hTrack.addEventListener("touchmove", (e)=>{
-  if(!isDragging) return
-
-  currentX = e.touches[0].clientX
-  let delta = currentX - startX
-
-  let move = trackStart + delta
-
-  // resistance
-  if((hIndex === 0 && delta > 0) || (hIndex === 1 && delta < 0)){
-    move = trackStart + delta * 0.35
-  }
-
-  if(window.innerWidth <= 600) return;
-setTranslate(move, false)
-}, { passive: true })
-
-hTrack.addEventListener("touchend", ()=>{
-  if(!isDragging) return
-  isDragging = false
-
-  let delta = currentX - startX
-  const threshold = hContainer.offsetWidth * 0.2
-
-  if(delta < -threshold && hIndex < 1){
-    hIndex++
-  } else if(delta > threshold && hIndex > 0){
-    hIndex--
-  }
-
-  updateHighlights()
-})
-
-/* INIT */
-setupDesktopNav()
-updateHighlights()
-window.addEventListener("resize", updateHighlights)
 
 /* ================================
    MOBILE ABOUT TOGGLE LOGIC
@@ -2558,6 +2458,32 @@ if(rotatingText){
   }, 6000)
 
 }
+
+
+/* ================================
+   HIGHLIGHTS DOT NAV (CLEAN)
+   ================================ */
+
+let currentPage = 0
+
+function goToPage(index){
+  const track = document.querySelector(".highlights-track")
+  const windowEl = document.querySelector(".highlights-window")
+
+  currentPage = index
+
+  track.style.transform = `translateX(-${index * windowEl.offsetWidth}px)`
+  track.style.transition = "transform .35s ease"
+
+  document.querySelectorAll(".dot").forEach((d,i)=>{
+    d.classList.toggle("active", i === index)
+  })
+}
+
+/* ensure correct width on resize */
+window.addEventListener("resize", ()=>{
+  goToPage(currentPage)
+})
 
 </script>
 
