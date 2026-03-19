@@ -451,17 +451,18 @@ inset 0 0 10px rgba(255,255,255,.08);
 
 /* TABLEAU (MULTI-COLOR LOGO BLEND) */
 .filter-btn.tag-tableau.active{
-  background: linear-gradient(
-    90deg,
-    rgba(0,123,199,.28),
-    rgba(0,166,153,.25),
-    rgba(233,118,39,.28),
-    rgba(246,220,172,.25)
-  );
+  background:
+    radial-gradient(circle at top left, rgba(0,123,199,.35), transparent 60%),
+    radial-gradient(circle at top right, rgba(0,166,153,.35), transparent 60%),
+    radial-gradient(circle at bottom left, rgba(233,118,39,.35), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(246,220,172,.35), transparent 60%),
+    rgba(255,255,255,.04);
+
   border:1px solid rgba(255,255,255,.12);
+
   box-shadow:
     0 6px 14px rgba(0,0,0,.35),
-    inset 0 0 10px rgba(255,255,255,.08);
+    inset 0 0 12px rgba(255,255,255,.06);
 }
 
 /* language tint colors */
@@ -2020,9 +2021,16 @@ packageContainer.innerHTML=""
 let tools=new Set()
 
 activeLanguages.forEach(lang=>{
-LANGUAGE_TOOLS[lang].forEach(tool=>{
-tools.add(tool)
-})
+
+  // META FILTER: Jupyter should NOT generate tools
+  if(lang === "jupyter") return;
+
+  if(LANGUAGE_TOOLS[lang]){
+    LANGUAGE_TOOLS[lang].forEach(tool=>{
+      tools.add(tool)
+    })
+  }
+
 })
 
 Array.from(tools).sort().forEach(tool=>{
