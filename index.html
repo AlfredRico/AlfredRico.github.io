@@ -1546,13 +1546,32 @@ inset 0 1px 0 rgba(255,255,255,.08);
 
 
 
-/* === HIGHLIGHT TITLE FIX === */
-.highlight-overlay h3{
-  font-size:15px;
-  line-height:1.2;
-  margin:0 0 6px;
-  word-break:break-word;
-  overflow-wrap:break-word;
+/* === MOBILE SCROLLABLE TAGS (RESTORE CLEAN VERSION) === */
+@media (max-width:600px){
+
+  .highlight-overlay .project-tags{
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    overflow-y:hidden;
+    gap:6px;
+    padding-bottom:2px;
+
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+
+  .highlight-overlay .project-tags::-webkit-scrollbar{
+    display:none;
+  }
+
+  .highlight-overlay .project-tags span{
+    flex:0 0 auto;
+    white-space:nowrap;
+    font-size:10px;
+    padding:2px 6px;
+  }
+
 }
 
 </style>
