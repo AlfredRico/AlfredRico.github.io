@@ -4,9 +4,20 @@
 
 ---
 
-## Preview
+## 📸 Preview
 
-![Portfolio Preview](portfolio-preview.png)
+<details>
+<summary>View Portfolio Preview</summary>
+
+<br>
+
+<p align="center">
+  <a href="https://shadyeggs.github.io/">
+    <img src="portfolio-preview.png" width="900">
+  </a>
+</p>
+
+</details>
 
 ---
 
