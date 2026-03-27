@@ -39,9 +39,8 @@ The goal of this portfolio is to demonstrate not just technical ability, but the
 
 ## Tech Stack
 
-* **Python** (Pandas, NumPy)
+* **Python** (Pandas, NumPy, matplotlib, seaborn)
 * **Jupyter Notebook**
-* **HTML / CSS / JavaScript**
 * **GitHub Pages**
 
 ---
