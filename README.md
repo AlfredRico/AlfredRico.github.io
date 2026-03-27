@@ -52,7 +52,7 @@ The goal of this portfolio is to demonstrate both technical skills and the abili
 
 ## Purpose
 
-This portfolio is designed to present analytical work in a structured, accessible format that mirrors real-world data workflows — from raw data inspection to insight generation.
+This portfolio is designed to present analytical work in a structured, accessible format that mirrors real-world data workflows, from raw data inspection to insight generation.
 
 ---
 
