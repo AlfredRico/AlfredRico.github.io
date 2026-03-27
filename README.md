@@ -1,6 +1,6 @@
 # Alfred Rico — Data Analyst Portfolio
 
-🔗 **Live Portfolio:** https://shadyeggs.github.io/
+🔗 **Live Portfolio:** https://AlfredRico.github.io/
 
 ---
 
@@ -17,7 +17,7 @@ The goal of this portfolio is to demonstrate not just technical ability, but the
 
 ### TikTok Claims Classification (EDA with Python)
 
-🔗 https://shadyeggs.github.io/EDA-with-Python/
+🔗 https://AlfredRico.github.io/EDA-with-Python/
 
 * Conducted exploratory data analysis on ~19,000 TikTok videos
 * Identified engagement patterns differentiating claim vs opinion content
@@ -61,7 +61,7 @@ This portfolio is designed to present analytical work in a structured, accessibl
 
 ## Contact
 
-* GitHub: https://github.com/ShadyEggs
+* GitHub: https://github.com/AlfredRico
 
 ---
 
