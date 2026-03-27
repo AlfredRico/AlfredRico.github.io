@@ -4,23 +4,6 @@
 
 ---
 
-## 📸 Preview
-
-<details>
-<summary>View Portfolio Preview</summary>
-
-<br>
-
-<p align="center">
-  <a href="https://shadyeggs.github.io/">
-    <img src="portfolio-preview.png" width="900">
-  </a>
-</p>
-
-</details>
-
----
-
 ## Overview
 
 This repository contains the source code for my personal data analyst portfolio website.
