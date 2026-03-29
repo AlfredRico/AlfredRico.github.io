@@ -1546,36 +1546,7 @@ inset 0 1px 0 rgba(255,255,255,.08);
 
 
 
-/* === MOBILE SCROLLABLE TAGS (HIGHLIGHTS + LIBRARY) === */
-@media (max-width:600px){
 
-  .highlight-overlay .project-tags,
-  .project-overlay .project-tags{
-    display:flex;
-    flex-wrap:nowrap;
-    overflow-x:auto;
-    overflow-y:hidden;
-    gap:6px;
-    padding-bottom:2px;
-
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
-  }
-
-  .highlight-overlay .project-tags::-webkit-scrollbar,
-  .project-overlay .project-tags::-webkit-scrollbar{
-    display:none;
-  }
-
-  .highlight-overlay .project-tags span,
-  .project-overlay .project-tags span{
-    flex:0 0 auto;
-    white-space:nowrap;
-    font-size:10px;
-    padding:2px 6px;
-  }
-
-}
 
 
 
@@ -1671,6 +1642,53 @@ inset 0 1px 0 rgba(255,255,255,.08);
   background:#555;
 }
 
+
+/* =========================================
+   GLOBAL SCROLLABLE TAGS (DESKTOP + MOBILE)
+   ========================================= */
+
+.project-tags,
+.project-subtags{
+  display:flex;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  overflow-y:hidden;
+  gap:6px;
+  padding-bottom:2px;
+
+  scrollbar-width:none;
+}
+
+.project-tags::-webkit-scrollbar,
+.project-subtags::-webkit-scrollbar{
+  display:none;
+}
+
+.project-tags span,
+.project-subtags span{
+  flex:0 0 auto;
+  white-space:nowrap;
+}
+
+/* subtags styling */
+.project-subtags span{
+  font-size:11px;
+  color:#cbd5e1;
+  background:rgba(255,255,255,.08);
+  padding:3px 8px;
+  border-radius:6px;
+  margin-top:4px;
+}
+
+/* optional desktop interaction polish */
+.project-tags{
+  cursor:grab;
+}
+
+.project-tags:active{
+  cursor:grabbing;
+}
+
 </style>
 
 </head>
@@ -1724,7 +1742,7 @@ inset 0 1px 0 rgba(255,255,255,.08);
 
 <p>I've always been a data collector, long before I knew what a data analyst was. One of my earliest memories is of watching anthills and carefully collecting information about the ants’ behavior. That curiosity about patterns and systems has followed me ever since. I’ve always found myself collecting information about the things around me and looking for relationships hidden within.</p>
 
-<p>Professionally, I spent over six years working as a behaviorist, where collecting and analyzing behavioral data was a central part of my work. I bring that same analytical mindset to data analysis today, using tools like Python, SQL, and visualization platforms to explore datasets, clean and transform data, and uncover meaningful insights. Working with data is second nature to me and has been shaping how I see and understand the world for as long as I can remember.</p>
+<p>Professionally, I spent over six years working as a behaviorist, where collecting and analyzing behavioral data was a central part of my work. I bring that same analytical mindset to data analysis today, using tools like Python, SQL, and visualization platforms to explore datasets, clean and transform data, and uncover meaningful insights. For me, working with data isn’t something new — it’s a way of thinking that has been present throughout my life.</p>
 
 </div>
 
@@ -1780,7 +1798,11 @@ data-tags="python pandas numpy datetime matplotlib pyplot jupyter">
 
 <div class="highlight-overlay">
 <h3>NOAA Lightning Strike Analysis</h3>
-<p style="font-size:12px; color:#ccc; margin:2px 0 6px;">Python EDA/Feature Engineering/Visualization</p>
+<div class="project-subtags">
+<span>Python EDA</span>
+<span>Feature Engineering</span>
+<span>Visualization</span>
+</div>
 
 <div class="project-tags">
 <span class="tag-python">Python</span>
@@ -1804,7 +1826,11 @@ data-tags="python pandas matplotlib jupyter">
 
 <div class="highlight-overlay">
 <h3>Unicorn Company Analysis</h3>
-<p style="font-size:12px; color:#ccc; margin:2px 0 6px;">Python EDA/Feature Engineering/Visualization</p>
+<div class="project-subtags">
+<span>Python EDA</span>
+<span>Feature Engineering</span>
+<span>Visualization</span>
+</div>
 
 <div class="project-tags">
 <span class="tag-python">Python</span>
@@ -1825,7 +1851,11 @@ data-tags="python pandas matplotlib seaborn jupyter">
 
 <div class="highlight-overlay">
 <h3>NOAA Lightning Strike Analysis</h3>
-<p style="font-size:12px; color:#ccc; margin:2px 0 6px;">Date String Manipulation/Feature Engineering/Visualization</p>
+<div class="project-subtags">
+<span>Date String Manipulation</span>
+<span>Feature Engineering</span>
+<span>Visualization</span>
+</div>
 
 <div class="project-tags">
 <span class="tag-python">Python</span>
@@ -1851,7 +1881,10 @@ data-tags="python numpy pandas jupyter">
 
 <div class="highlight-overlay">
 <h3>TikTok Claims Project</h3>
-<p style="font-size:12px; color:#ccc; margin:2px 0 6px;">Python EDA/Feature Engineering</p>
+<div class="project-subtags">
+<span>Python EDA</span>
+<span>Feature Engineering</span>
+</div>
 
 <div class="project-tags">
 <span class="tag-python">Python</span>
@@ -2001,7 +2034,11 @@ href="https://AlfredRico.github.io/EDA-Feature-Engineering-with-Python/">
 
 <div class="project-overlay">
 <h3>NOAA Lightning Strike Analysis</h3>
-<p style="font-size:12px; color:#ccc; margin:2px 0 6px;">Python EDA/Feature Engineering/Visualization</p>
+<div class="project-subtags">
+<span>Python EDA</span>
+<span>Feature Engineering</span>
+<span>Visualization</span>
+</div>
 
 <div class="project-tags">
 <span class="tag-python">Python</span>
