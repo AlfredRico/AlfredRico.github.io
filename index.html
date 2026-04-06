@@ -2979,6 +2979,48 @@ function enableDragScroll(selector){
 enableDragScroll('.project-tags')
 enableDragScroll('.project-subheader')
 
+
+/* =========================================
+   SAFE CLICK BLOCK FOR DRAGGING
+   ========================================= */
+
+let globalDragActive = false
+
+document.querySelectorAll('.project-tags, .project-subheader').forEach(el => {
+
+  let startX = 0
+
+  el.addEventListener('mousedown', (e) => {
+    if (window.innerWidth <= 900) return
+
+    globalDragActive = false
+    startX = e.pageX
+  })
+
+  el.addEventListener('mousemove', (e) => {
+    if (window.innerWidth <= 900) return
+
+    if (Math.abs(e.pageX - startX) > 5){
+      globalDragActive = true
+    }
+  })
+
+})
+
+/* BLOCK LINK CLICK IF DRAGGING */
+document.querySelectorAll('.project-card').forEach(card => {
+
+  card.addEventListener('click', (e) => {
+
+    if (globalDragActive){
+      e.preventDefault()
+      e.stopPropagation()
+    }
+
+  })
+
+})
+
 </script>
 </body>
 </html>
