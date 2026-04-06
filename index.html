@@ -1883,18 +1883,18 @@ inset 0 1px 0 rgba(255,255,255,.08);
 }
 
 
-/* ===== ABOUT TEXT POLISH (NON-BLOAT) ===== */
+/* ===== ABOUT TEXT POLISH (READABILITY FOCUSED) ===== */
+.about-text {
+  line-height: 1.6; /* improved readability without excessive growth */
+}
+
 .about-text p {
-  margin: 0;                /* remove default spacing */
+  margin: 0;
 }
 
 .about-text p + p {
-  text-indent: 1.2em;       /* subtle separation */
-  margin-top: 6px;          /* VERY tight spacing */
-}
-
-.about-text {
-  line-height: 1.55;        /* controlled readability */
+  text-indent: 1.2em;
+  margin-top: 10px; /* controlled separation */
 }
 
 </style>
