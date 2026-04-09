@@ -2010,7 +2010,25 @@ inset 0 1px 0 rgba(255,255,255,.08);
 <div class="projects-window">
 <div class="projects-grid">
 
-</div></div></a>
+<a class="project-card" data-tags="python pandas numpy seaborn matplotlib jupyter" href="#">
+<img src="images/lightning_800x800.jpg"/>
+<div class="project-overlay">
+<h3>Purple Lightning Analysis</h3>
+<p class="project-subheader">
+Advanced Visualization / Pattern Detection / Atmospheric Analysis
+</p>
+<div class="project-tags">
+<span class="tag-python">Python</span>
+<span class="tag-package">pandas</span>
+<span class="tag-package">numpy</span>
+<span class="tag-package">seaborn</span>
+<span class="tag-package">matplotlib</span>
+<span class="tag-jupyter">Jupyter</span>
+</div>
+</div>
+</a>
+
+<a class="project-card" data-tags="python pandas numpy seaborn matplotlib" href="https://github.com/AlfredRico/Unicorn-Company-Analysis-EDA-Structuring"><img src="images/unicorn_card.jpg"/><div class="project-overlay"><h3>Unicorn Company Analysis</h3><p class="project-subheader">Python EDA/Data Structuring/Visualization</p><div class="project-tags"><span class="tag-python">Python</span><span class="tag-package">pandas</span><span class="tag-package">numpy</span><span class="tag-package">seaborn</span><span class="tag-package">matplotlib</span></div></div></a>
 <a class="project-card" data-tags="python pandas numpy seaborn datetime matplotlib pyplot jupyter" href="https://alfredrico.github.io/EDA-Structuring-with-Python/">
 <img src="images/lightning_card.jpg"/>
 <div class="project-overlay">
@@ -2123,26 +2141,6 @@ Data Cleaning with R
 </div>
 </div>
 </a>
-<a class="project-card" data-tags="python pandas numpy seaborn matplotlib jupyter" href="https://github.com/AlfredRico/NOAA-Missing-Data-Analysis">
-<img src="images/lightning_800x800.jpg"/>
-<div class="project-overlay">
-<h3>NOAA Missing Data Analysis</h3>
-<p class="project-subheader">
-Python EDA/Data Structuring/Data Engineering/Visualization
-</p>
-<div class="project-tags">
-<span class="tag-python">Python</span>
-<span class="tag-package">pandas</span>
-<span class="tag-package">numpy</span>
-<span class="tag-package">seaborn</span>
-<span class="tag-package">matplotlib</span>
-<span class="tag-jupyter">Jupyter</span>
-</div>
-</div>
-</a>
-
-
-
 </div>
 </div>
 </section>
@@ -2987,6 +2985,15 @@ document.querySelectorAll('.project-card, .project-card img').forEach(el => {
     e.preventDefault()
   })
 })
+
+
+/* === ADD NEW PROJECT TO TOP === */
+function addProjectCard(cardHTML){
+  const grid = document.querySelector('.projects-grid');
+  if(grid){
+    grid.insertAdjacentHTML('afterbegin', cardHTML);
+  }
+}
 
 </script>
 </body>
