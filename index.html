@@ -443,16 +443,6 @@ inset 0 0 10px rgba(255,255,255,.08);
     inset 0 0 10px rgba(255,255,255,.08);
 }
 
-
-.filter-btn.tag-plotly.active{
-  background:rgba(99,102,241,.28);
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:
-    0 6px 14px rgba(0,0,0,.35),
-    inset 0 0 10px rgba(255,255,255,.08);
-}
-
-
 /* TABLEAU (MULTI-COLOR LOGO BLEND) */
 .filter-btn.tag-tableau.active{
   background:
@@ -2010,7 +2000,6 @@ inset 0 1px 0 rgba(255,255,255,.08);
 <button class="filter-btn active tag-all" data-filter="all">All</button>
 <button class="filter-btn tag-python" data-filter="python">Python</button>
 <button class="filter-btn tag-jupyter" data-filter="jupyter">Jupyter</button>
-<button class="filter-btn tag-plotly" data-filter="plotly">Plotly</button>
 <button class="filter-btn tag-r" data-filter="r">R</button>
 <button class="filter-btn tag-sql" data-filter="sql">SQL</button>
 <button class="filter-btn tag-tableau" data-filter="tableau">Tableau</button>
@@ -2438,7 +2427,6 @@ window.addEventListener("resize", ()=>{
 
 const LANGUAGE_TOOLS={
 python:["pandas","numpy","matplotlib","seaborn","scikit-learn","plotly"],
-plotly:["plotly"],
 r:["dplyr","tidyr","ggplot2","plotly","caret"],
 sql:["postgres","mysql","sqlite"],
 tableau:["dashboard","viz"],
