@@ -425,11 +425,6 @@ inset 0 0 10px rgba(255,255,255,.08);
 
 }
 
-
-
-
-
-
 /* JUPYTER (ORANGE — CONSISTENT WITH SYSTEM) */
 .filter-btn.tag-jupyter.active{
   background: linear-gradient(
@@ -1538,12 +1533,6 @@ inset 0 1px 0 rgba(255,255,255,.08);
 
 }
 
-
-
-
-
-
-
 /* =========================================
    MOBILE HIGHLIGHTS — EXACT 2x2 VIEW
    ========================================= */
@@ -1571,8 +1560,6 @@ inset 0 1px 0 rgba(255,255,255,.08);
   }
 
 }
-
-
 
 /* =========================================
    DESKTOP EXPANSION (SAFE OVERRIDE)
@@ -1631,11 +1618,9 @@ inset 0 1px 0 rgba(255,255,255,.08);
 
 }
 
-
 .project-tags .tag-jupyter {
   background:#555;
 }
-
 
 /* =========================================
    GLOBAL SCROLLABLE TAGS (ALL DEVICES)
@@ -1693,7 +1678,6 @@ inset 0 1px 0 rgba(255,255,255,.08);
   cursor:grabbing;
 }
 
-
 /* =========================================
    GLOBAL SCROLLABLE TAGS
    ========================================= */
@@ -1749,7 +1733,6 @@ inset 0 1px 0 rgba(255,255,255,.08);
     line-height:1.2;
   }
 }
-
 
 /* =========================================
    GLOBAL SCROLLABLE TAGS
@@ -1867,13 +1850,11 @@ inset 0 1px 0 rgba(255,255,255,.08);
   border-radius:10px;
 }
 
-
 /* ===== DRAGGING STATE ===== */
 .project-tags.dragging,
 .project-subheader.dragging {
   cursor: grabbing;
 }
-
 
 /* ===== PREVENT IMAGE DRAG (DESKTOP UX FIX) ===== */
 .project-card img {
@@ -1903,13 +1884,11 @@ inset 0 1px 0 rgba(255,255,255,.08);
 
 }
 
-
 /* ===== DRAGGING STATE ===== */
 .project-tags.dragging,
 .project-subheader.dragging {
   cursor: grabbing;
 }
-
 
 /* ===== PREVENT IMAGE DRAG (DESKTOP UX FIX) ===== */
 .project-card img {
@@ -1965,9 +1944,6 @@ inset 0 1px 0 rgba(255,255,255,.08);
 <!-- PAGE 1 -->
 <div class="highlight-page">
 
-
-
-
 <div class="highlight-card"></div><div class="highlight-card"></div><div class="highlight-card"></div><div class="highlight-card"></div></div>
 <!-- PAGE 2 -->
 <div class="highlight-page">
@@ -2010,6 +1986,25 @@ inset 0 1px 0 rgba(255,255,255,.08);
 <div class="projects-window">
 <div class="projects-grid">
 
+<a class="project-card" data-tags="python pandas numpy matplotlib plotly seaborn jupyter" href="https://github.com/AlfredRico/Unicorn-Company-Missing-Data-Analysis">
+<img src="images/unicorn_image2.png"/>
+<div class="project-overlay">
+<h3>Unicorn Company Missing Data Analysis</h3>
+<p class="project-subheader">
+Python EDA/Data Structuring/Data Engineering/Visualization
+</p>
+<div class="project-tags">
+<span class="tag-python">Python</span>
+<span class="tag-package">pandas</span>
+<span class="tag-package">numpy</span>
+<span class="tag-package">matplotlib</span>
+<span class="tag-package">plotly</span>
+<span class="tag-package">seaborn</span>
+<span class="tag-jupyter">Jupyter</span>
+</div>
+</div>
+</a>
+
 <a class="project-card" data-tags="python pandas matplotlib plotly seaborn jupyter" href="https://github.com/AlfredRico/NOAA-Input-Validation-Analysis">
 <img src="images/lightning_image2.jpg"/>
 <div class="project-overlay">
@@ -2028,8 +2023,6 @@ Data Structuring/Visualization
 </div>
 </a>
 
-
-
 <a class="project-card" data-tags="python matplotlib pandas seaborn jupyter" href="https://github.com/AlfredRico/NOAA-Label-Encoding-Analysis">
 <img src="images/lightning_image3.jpg"/>
 <div class="project-overlay">
@@ -2046,7 +2039,6 @@ Python EDA/Data Structuring/Data Engineering/Visualization
 </div>
 </div>
 </a>
-
 
 <a class="project-card" data-tags="python pandas numpy matplotlib seaborn jupyter" href="https://github.com/AlfredRico/NOAA-Outliers-Data-Analysis">
 <img src="images/lightning_image.jpg"/>
@@ -2065,7 +2057,6 @@ Data Structuring/Data Engineering/Visualization
 </div>
 </div>
 </a>
-
 
 <a class="project-card" data-tags="python pandas numpy seaborn matplotlib jupyter" href="https://github.com/AlfredRico/NOAA-Missing-Data-Analysis">
 <img src="images/lightning_800x800.jpg"/>
@@ -2921,7 +2912,6 @@ if(rotatingText){
 
 }
 
-
 /* =========================================
    AUTO-FIT PROJECT TITLES (MOBILE ONLY)
    ========================================= */
@@ -2954,7 +2944,6 @@ window.addEventListener('load', autoFitTitles);
 /* run on resize */
 window.addEventListener('resize', autoFitTitles);
 
-
 function autoFitTitles(){
 
   if(window.innerWidth > 600) return;
@@ -2979,7 +2968,6 @@ function autoFitTitles(){
 
 window.addEventListener('load', autoFitTitles);
 window.addEventListener('resize', autoFitTitles);
-
 
 /* =========================================
    DESKTOP CLICK + DRAG SCROLL (TAGS + SUBHEADERS)
@@ -3032,7 +3020,6 @@ function enableDragScroll(selector){
 enableDragScroll('.project-tags')
 enableDragScroll('.project-subheader')
 
-
 /* =========================================
    PREVENT NATIVE IMAGE / LINK DRAG
    ========================================= */
@@ -3042,7 +3029,6 @@ document.querySelectorAll('.project-card, .project-card img').forEach(el => {
     e.preventDefault()
   })
 })
-
 
 /* === ADD NEW PROJECT TO TOP === */
 function addProjectCard(cardHTML){
