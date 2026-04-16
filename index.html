@@ -566,11 +566,28 @@ padding:3px 8px;border-radius:6px;color:white;font-weight:600;
 .project-tags .tag-python{background:#3776AB}
 .project-tags .tag-r{background:#276DC3}
 .project-tags .tag-sql{background:#336791}
-.project-tags .tag-tableau{background:#E97627}
+.project-tags .tag-tableau{
+  background:
+    radial-gradient(circle at top left, rgba(0,123,199,.95), transparent 58%),
+    radial-gradient(circle at top right, rgba(0,166,153,.92), transparent 58%),
+    radial-gradient(circle at bottom left, rgba(233,118,39,.95), transparent 58%),
+    radial-gradient(circle at bottom right, rgba(246,220,172,.92), transparent 58%),
+    rgba(255,255,255,.08);
+  color:white;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.10);
+}
 .project-tags .tag-excel{background:#217346}
 .project-tags .tag-sheets{background:#34A853}
 
-.tag-package{background:#555}
+.tag-package{
+  background:rgba(255,255,255,.14);
+  color:white;
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
 
 /* CERT */
 
@@ -1618,10 +1635,6 @@ inset 0 1px 0 rgba(255,255,255,.08);
 
 }
 
-.project-tags .tag-jupyter {
-  background:#555;
-}
-
 /* =========================================
    GLOBAL SCROLLABLE TAGS (ALL DEVICES)
    ========================================= */
@@ -1863,6 +1876,18 @@ inset 0 1px 0 rgba(255,255,255,.08);
   user-select: none;
 }
 
+.project-tags .tag-jupyter{
+  background:linear-gradient(
+    90deg,
+    rgba(240,136,62,.95),
+    rgba(255,173,96,.88)
+  );
+  color:white;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.12);
+}
 </style>
 <style>
 
@@ -1989,7 +2014,7 @@ inset 0 1px 0 rgba(255,255,255,.08);
 
 
 <a class="project-card" data-tags="python numpy pandas matplotlib seaborn tableau" href="https://github.com/AlfredRico/TikTok-Analysis-EDA-Visualization">
-<img src="images/tableau_image_optimized.png"/>
+<img src="images/tableau_image.png"/>
 <div class="project-overlay">
 <h3>TikTok Analysis: EDA &amp; Visualization</h3>
 <p class="project-subheader">
