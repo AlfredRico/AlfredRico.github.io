@@ -555,17 +555,50 @@ background:linear-gradient(transparent,rgba(0,0,0,.85));
 font-size:17px;font-weight:700;margin:0 0 8px;
 }
 
+
 .project-tags{
 display:flex;flex-wrap:wrap;gap:6px;font-size:12px;
 }
 
+/* =========================================
+   PROJECT TAGS MATCH MAIN FILTER BUTTONS
+   ========================================= */
+
 .project-tags span{
-padding:3px 8px;border-radius:6px;color:white;font-weight:600;
+  padding:3px 8px;
+  border-radius:6px;
+  color:white;
+  font-weight:600;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.10);
 }
 
-.project-tags .tag-python{background:#3776AB}
-.project-tags .tag-r{background:#276DC3}
-.project-tags .tag-sql{background:#336791}
+.project-tags .tag-python{
+  background:linear-gradient(
+    90deg,
+    rgba(246,220,172,.88),
+    rgba(55,118,171,.82)
+  );
+}
+
+.project-tags .tag-jupyter{
+  background:linear-gradient(
+    90deg,
+    rgba(240,136,62,.95),
+    rgba(255,173,96,.88)
+  );
+}
+
+.project-tags .tag-r{
+  background:rgba(39,109,195,.82);
+}
+
+.project-tags .tag-sql{
+  background:rgba(51,103,145,.82);
+}
+
 .project-tags .tag-tableau{
   background:
     radial-gradient(circle at top left, rgba(0,123,199,.95), transparent 58%),
@@ -573,14 +606,15 @@ padding:3px 8px;border-radius:6px;color:white;font-weight:600;
     radial-gradient(circle at bottom left, rgba(233,118,39,.95), transparent 58%),
     radial-gradient(circle at bottom right, rgba(246,220,172,.92), transparent 58%),
     rgba(255,255,255,.08);
-  color:white;
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:
-    0 2px 8px rgba(0,0,0,.18),
-    inset 0 1px 0 rgba(255,255,255,.10);
 }
-.project-tags .tag-excel{background:#217346}
-.project-tags .tag-sheets{background:#34A853}
+
+.project-tags .tag-excel{
+  background:rgba(33,115,70,.82);
+}
+
+.project-tags .tag-sheets{
+  background:rgba(52,168,83,.82);
+}
 
 .tag-package{
   background:rgba(255,255,255,.14);
@@ -1635,6 +1669,8 @@ inset 0 1px 0 rgba(255,255,255,.08);
 
 }
 
+
+
 /* =========================================
    GLOBAL SCROLLABLE TAGS (ALL DEVICES)
    ========================================= */
@@ -1876,18 +1912,6 @@ inset 0 1px 0 rgba(255,255,255,.08);
   user-select: none;
 }
 
-.project-tags .tag-jupyter{
-  background:linear-gradient(
-    90deg,
-    rgba(240,136,62,.95),
-    rgba(255,173,96,.88)
-  );
-  color:white;
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:
-    0 2px 8px rgba(0,0,0,.18),
-    inset 0 1px 0 rgba(255,255,255,.12);
-}
 </style>
 <style>
 
@@ -2013,8 +2037,8 @@ inset 0 1px 0 rgba(255,255,255,.08);
 
 
 
-<a class="project-card" data-tags="python numpy pandas matplotlib seaborn tableau jupyter" href="https://github.com/AlfredRico/TikTok-Analysis-EDA-Visualization">
-<img src="images/tableau_image.png"/>
+<a class="project-card" data-tags="python numpy pandas matplotlib seaborn tableau" href="https://github.com/AlfredRico/TikTok-Analysis-EDA-Visualization">
+<img src="images/tableau_image_optimized.png"/>
 <div class="project-overlay">
 <h3>TikTok Analysis: EDA &amp; Visualization</h3>
 <p class="project-subheader">
@@ -2026,7 +2050,6 @@ Python EDA/Data Visualization
 <span class="tag-package">pandas</span>
 <span class="tag-package">matplotlib</span>
 <span class="tag-package">seaborn</span>
-<span class="tag-jupyter">Jupyter</span>
 <span class="tag-tableau">Tableau</span>
 </div>
 </div>
